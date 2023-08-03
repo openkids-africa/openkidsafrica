@@ -5,11 +5,11 @@ const content = ref({
     "OpenKids Africa is a non-profit organization that was formerly known as Pranet Technology Initiative. We believe that information and communication technology is the key to the strong and sustainable development of a country. Therefore, we leverage open educational resources to provide quality information technology education and materials for kids and schools in rural communities in Africa.",
   images: [
     {
-      src: "/assets/images/kids-image (1).jpg",
+      src: "/assets/images/kids-image-1.jpg",
       alt: "Hero Image 1",
     },
     {
-      src: "/assets/images/kids-image (2).jpg",
+      src: "/assets/images/kids-image-2.jpg",
       alt: "Hero Image 2",
     },
     {
@@ -17,11 +17,11 @@ const content = ref({
       color: "purple",
     },
     {
-      src: "/assets/images/kids-image (3).jpg",
+      src: "/assets/images/kids-image-3.jpg",
       alt: "Hero Image 3",
     },
     {
-      src: "/assets/images/kids-image (4).jpg",
+      src: "/assets/images/kids-image-4.jpg",
       alt: "Hero Image 4",
     },
     {
