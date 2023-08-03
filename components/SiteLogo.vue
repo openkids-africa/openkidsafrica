@@ -9,6 +9,6 @@
 }
 
 .site-logo__text {
-  @apply font-heading text-xl font-extrabold text-indigo-700 dark:text-indigo-100;
+  @apply font-heading text-xl font-black text-purple-700 dark:text-purple-100;
 }
 </style>
