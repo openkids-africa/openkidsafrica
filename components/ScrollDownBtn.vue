@@ -11,7 +11,7 @@ import { ArrowDownIcon } from "@heroicons/vue/24/solid";
 </template>
 <style scoped>
 .scroll-down-btn {
-  @apply relative font-heading  font-bold text-purple-600;
+  @apply relative font-heading  font-bold text-purple-200;
 }
 .scroll-down-btn > .icon-cont {
   @apply relative;

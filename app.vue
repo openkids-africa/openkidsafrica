@@ -68,9 +68,9 @@ useHead({
       content: `https://openkidsafrica.netlify.app/assets/images/kids-image-3.jpg`, // Update with OpenKids Africa's image URL
     },
   ],
-  // htmlAttrs: {
-  //   class: theme.value === "dark" ? "dark" : "light",
-  // },
+  htmlAttrs: {
+    class: "dark",
+  },
 });
 </script>
 <template>

@@ -52,7 +52,7 @@ const toggleActive = () => {
 </template>
 <style scoped>
 .site-nav {
-  @apply fixed left-0 top-0 z-10 h-full w-full bg-white dark:bg-slate-800 lg:relative lg:w-fit lg:bg-transparent;
+  @apply fixed left-0 top-0 z-10 h-full w-full bg-white dark:bg-slate-800 lg:relative lg:w-fit lg:!bg-transparent;
   @apply pointer-events-none invisible opacity-0 lg:pointer-events-auto lg:visible lg:opacity-100;
   @apply transition-all duration-300;
 }
@@ -65,7 +65,7 @@ const toggleActive = () => {
   @apply ml-auto h-full max-w-6xl p-4 px-8 text-right lg:p-0;
 }
 
-.site-nav .site-nav__links {
+.site-nav__links {
   @apply flex h-full flex-col justify-center gap-4 lg:flex-row lg:items-center lg:gap-6;
   @apply text-4xl font-bold lg:text-base lg:text-purple-500 dark:lg:text-purple-100;
 }
