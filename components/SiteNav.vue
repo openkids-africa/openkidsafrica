@@ -67,7 +67,7 @@ const toggleActive = () => {
 
 .site-nav__links {
   @apply flex h-full flex-col justify-center gap-4 lg:flex-row lg:items-center lg:gap-6;
-  @apply text-4xl font-bold lg:text-base lg:text-purple-500 dark:lg:text-purple-100;
+  @apply text-4xl font-bold lg:text-base lg:text-purple-500 dark:lg:!text-purple-100;
 }
 
 .site-nav__link {
