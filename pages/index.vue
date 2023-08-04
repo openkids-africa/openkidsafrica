@@ -100,41 +100,7 @@ const content = ref({
           :key="index"
           class="card-list__item"
         >
-          <article class="doings-card">
-            <div class="wrapper">
-              <header class="doings-card__header">
-                <h3 class="doings-card__title">{{ card.title }}</h3>
-                <p class="doings-card__text">{{ card.text }}</p>
-              </header>
-              <div class="doings-card__icon-cont">
-                <UserGroupIcon
-                  v-if="card.id == 'leadership'"
-                  class="doings-card__icon icon"
-                />
-                <ArrowsPointingInIcon
-                  v-else-if="card.id == 'collaboration'"
-                  class="doings-card__icon icon"
-                />
-                <SpeakerWaveIcon
-                  v-else-if="card.id == 'awareness'"
-                  class="doings-card__icon icon"
-                />
-                <UserIcon
-                  v-else-if="card.id == 'equality'"
-                  class="doings-card__icon icon"
-                />
-                <GlobeEuropeAfricaIcon
-                  v-else-if="card.id == 'sustainability'"
-                  class="doings-card__icon icon"
-                />
-                <AcademicCapIcon
-                  v-else-if="card.id == 'education'"
-                  class="doings-card__icon icon"
-                />
-                <SparklesIcon v-else class="doings-card__icon icon" />
-              </div>
-            </div>
-          </article>
+          <DoingsCard :card-content="card" />
         </li>
       </ul>
       <!-- <SiteHeroImagesGrid :images="content.heroSection.images" /> -->
@@ -144,25 +110,5 @@ const content = ref({
 <style scoped>
 .card-list {
   @apply grid gap-8 lg:grid-cols-3;
-}
-
-.doings-card {
-  @apply h-full rounded-3xl border  border-slate-100 p-8 dark:border-slate-800 dark:bg-slate-900;
-}
-
-.doings-card > .wrapper {
-  @apply flex flex-col-reverse gap-4;
-}
-
-.doings-card__title {
-  @apply text-2xl font-bold;
-}
-
-.doings-card__icon-cont {
-  @apply flex w-fit items-center justify-center rounded-2xl border border-orange-200  bg-orange-100 p-4 shadow-inner shadow-orange-50 dark:border-orange-600 dark:bg-orange-800 dark:shadow-orange-700;
-}
-
-.doings-card__icon {
-  @apply h-10 w-10 text-orange-500 dark:text-orange-300;
 }
 </style>
