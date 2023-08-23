@@ -1,38 +1,16 @@
 <script setup lang="ts">
-// write a function to add the ".scrolled" class to the .site-header element when the user scrolls down past the height of the site header element
-// use the "onMounted" lifecycle hook to add an event listener to the window object for the "scroll" event
-// use the "onUnmounted" lifecycle hook to remove the event listener from the window object
+const { handleAddClassOnScroll, lightText, sticky, scrolled, siteHeader } =
+  useSiteHeader();
 
-const siteHeader = ref<HTMLElement>();
-
-const handleAddClassOnScroll = () => {
-  const handleScroll = () => {
-    if (!siteHeader.value) return;
-    if (window.scrollY > siteHeader.value.offsetHeight) {
-      siteHeader.value.classList.add("scrolled");
-    } else {
-      siteHeader.value.classList.remove("scrolled");
-    }
-  };
-  onMounted(() => {
-    console.log("mounted");
-    window.addEventListener("scroll", handleScroll);
-  });
-  onUnmounted(() => {
-    console.log("unmounted");
-    window.removeEventListener("scroll", handleScroll);
-  });
-};
-
-onMounted(() => {
-  console.log({
-    siteHeader: siteHeader.value,
-  });
-});
 handleAddClassOnScroll();
 </script>
 <template>
-  <header ref="siteHeader" class="site-header">
+  <header
+    ref="siteHeader"
+    :class="`site-header ${lightText ? 'site-header--light-text' : ''} ${
+      sticky ? 'site-header--sticky' : ''
+    }`"
+  >
     <div class="wrapper">
       <NuxtLink to="/">
         <SiteLogo />
@@ -46,6 +24,10 @@ handleAddClassOnScroll();
   @apply fixed top-0 z-20  w-full bg-transparent p-4  transition-all duration-300;
 }
 
+.site-header--sticky {
+  @apply sticky top-0;
+}
+
 .site-header.scrolled {
   @apply bg-white  shadow-2xl  dark:bg-slate-900;
 }
@@ -57,14 +39,14 @@ handleAddClassOnScroll();
   @apply m-auto max-w-6xl;
 }
 
-.site-header:deep(.site-logo__text) {
+.site-header--light-text:deep(.site-logo__text) {
   @apply text-purple-200;
 }
 .scrolled:deep(.site-logo__text) {
   @apply text-purple-600;
 }
 
-.site-header:deep(.site-nav__links) {
+.site-header--light-text:deep(.site-nav__links) {
   @apply text-purple-200;
 }
 .site-header.scrolled:deep(.site-nav__links) {

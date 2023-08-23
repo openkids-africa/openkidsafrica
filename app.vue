@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 const route = useRoute();
 const metaTitle = (route.meta.title || "Home") as string;
 const description = `OpenKids Africa is a non-profit organization that empowers young minds through education. Explore a vibrant portfolio of educational programs, activities, and partnerships for children in rural communities in Africa. Join us in shaping a brighter future for the next generation. Discover the magic of learning with OpenKids Africa today!`;

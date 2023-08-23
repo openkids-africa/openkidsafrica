@@ -3,7 +3,7 @@ import { XMarkIcon, Bars2Icon } from "@heroicons/vue/24/solid";
 const links = [
   {
     name: "About Us",
-    path: "/about-us",
+    path: "/about",
   },
   {
     name: "Programs",

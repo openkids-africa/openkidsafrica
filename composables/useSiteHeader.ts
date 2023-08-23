@@ -1,0 +1,43 @@
+export const useSiteHeader = () => {
+  const scrolled = useState("scrolled", () => false);
+  const lightText = useState("lightText", () => true);
+  const sticky = useState("sticky", () => false);
+  const siteHeader = useState<HTMLElement>("siteHeader");
+
+  // write a function to add the ".scrolled" class to the .site-header element when the user scrolls down past the height of the site header element
+  // use the "onMounted" lifecycle hook to add an event listener to the window object for the "scroll" event
+  // use the "onUnmounted" lifecycle hook to remove the event listener from the window object
+
+  const handleAddClassOnScroll = () => {
+    const handleScroll = () => {
+      if (!siteHeader.value) return;
+      if (window.scrollY > siteHeader.value.offsetHeight) {
+        scrolled.value = true;
+      } else {
+        scrolled.value = false;
+      }
+    };
+    onMounted(() => {
+      console.log("mounted");
+      window.addEventListener("scroll", handleScroll);
+    });
+    onUnmounted(() => {
+      console.log("unmounted");
+      window.removeEventListener("scroll", handleScroll);
+    });
+  };
+
+  watch(scrolled, () => {
+    scrolled.value
+      ? siteHeader.value.classList.add("scrolled")
+      : siteHeader.value.classList.remove("scrolled");
+  });
+
+  return {
+    scrolled,
+    sticky,
+    lightText,
+    siteHeader,
+    handleAddClassOnScroll,
+  };
+};

@@ -8,6 +8,8 @@ import {
   UserGroupIcon,
   UserIcon,
 } from "@heroicons/vue/24/solid";
+const {lightText, sticky} = useSiteHeader();
+
 const content = ref({
   heroSection: {
     caption: "Welcome to OpenKids Africa!",
@@ -77,6 +79,9 @@ const content = ref({
     ],
   },
 });
+
+lightText.value = true;
+sticky.value = false;
 </script>
 <template>
   <SiteHero
