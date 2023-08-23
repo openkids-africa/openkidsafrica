@@ -56,9 +56,12 @@ lightText.value = false;
         <h1 class="page-header__caption">
           {{ aboutContent.heroSection.title }}
         </h1>
-        <p class="page-header__subtext">
-          {{ aboutContent.heroSection.text[0] }}
+        <p v-for="(text, i) in aboutContent.heroSection.text" :key="i"  class="page-header__subtext">
+          {{ text }}
         </p>
+      </div>
+      <div class="page-header__media-cont img-cont">
+        <IllustrationsAbstract1 class="abstract-illustration" />
       </div>
     </div>
   </header>
@@ -73,19 +76,30 @@ lightText.value = false;
   </section> -->
 </template>
 <style scoped>
+.page-header {
+  @apply relative  overflow-x-clip;
+}
 .page-header > .wrapper {
-  @apply relative flex items-center justify-between;
+  @apply flex h-full items-center justify-between gap-4;
 }
 
-.page-header:has(.page-header__img-cont) {
+.page-header > .wrapper:has(.page-header__media-cont) {
   @apply flex-col-reverse lg:flex-row;
 }
 
 .page-header__text-cont {
-  @apply flex flex-col gap-2;
+  @apply lg:min-h-[42rem] justify-center flex lg:flex-1 flex-col gap-4;
 }
 
 .page-header__caption {
   @apply text-4xl font-bold;
+}
+
+.page-header__media-cont {
+  @apply w-full lg:flex-1;
+}
+
+.abstract-illustration {
+  @apply w-full h-96 lg:absolute 2xl:left-1/2 2xl:w-2/5 lg:-right-[3.75%] lg:top-1/2  lg:m-0 lg:h-[110%] lg:w-1/2 lg:-translate-y-[42.5%];
 }
 </style>
