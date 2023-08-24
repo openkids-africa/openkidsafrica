@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import gsap from "gsap";
+import { LinkedinIcon } from "lucide-vue-next";
+import { TwitterIcon, ExternalLinkIcon } from "lucide-vue-next";
 
 const { lightText, sticky } = useSiteHeader();
 
@@ -44,10 +46,76 @@ const aboutContent = ref({
       "We believe that parents and guardians have a role to play in inspiring children to learn digital skills and possibly explore a technology career in the future.",
     ],
   },
+  infographicSection: {
+    items: [
+      {
+        title:
+          "90% of children in sub-Saharan Africa do not have access to a computer",
+        text: [
+          "The demand for Information Technology knowledge and skills is an urgent demand in Africa. Children need creative, communication, problem solving and collaboration skills to thrive in the modern economy as they prepare for future jobs.",
+          "In West and Central Africa and Eastern and Southern Africa, over 300 million children and young people per region lack home internet access, totaling over 900 million without access. ",
+        ],
+        link: {
+          text: "Unicef Report",
+          link: "https://www.unicef.org/media/88381/file/How-many-children-and-young-people-have-internet-access-at-home-2020.pdf",
+        },
+        image: "/assets/images/svg/90percent.svg",
+      },
+      {
+        title:
+          "80% of African children do not enjoy a basic internet connection (UNESCO)",
+        text: [
+          "There is marked inequality in internet connectivity across the world’s regions. Only five percent of children and young people aged 25 years or younger in West and Central Africa, and just 13% in Eastern and Southern Africa, have internet access at home. Inaccessibility to Technology, lack of Internet, poor network has become a prevalent challenge for rural communities in Africa.",
+        ],
+        link: {
+          text: "Unicef Report",
+          link: "https://www.unicef.org/media/88381/file/How-many-children-and-young-people-have-internet-access-at-home-2020.pdf",
+        },
+        image: "/assets/images/svg/oneinfive.svg",
+      },
+    ],
+  },
+  teamSection: {
+    title: "Our Team",
+    team: [
+      {
+        name: "Regina Nkemchor",
+        role: "FOUNDER, OPENKIDS AFRICA",
+        image: "/assets/images/team/Regina Nkemchor.png",
+        socials: [
+          { name: "twitter", url: "https://twitter.com/reginaoradata" },
+          {
+            name: "linkedin",
+            url: "https://www.linkedin.com/in/reginankem/",
+          },
+        ],
+      },
+      {
+        name: "Adebola Ogunyemi",
+        role: "EARLY CHILDHOOD EDUCATOR, OPENKIDS AFRICA",
+        image: "/assets/images/team/Adebola Ogunyemi.png",
+        socials: [],
+      },
+      {
+        name: "Ibigbari",
+        role: "PROGRAM COORDINATOR, OPENKIDS AFRICA",
+        image: "/assets/images/team/Ibigbari.png",
+        socials: [],
+      },
+      {
+        name: "Uboho Essien",
+        role: "WEB DESIGNER, OPENKIDS AFRICA",
+        image: "/assets/images/team/Uboho Essien.png",
+        socials: [],
+      },
+    ],
+  },
 });
 
-sticky.value = true;
-lightText.value = false;
+onMounted(() => {
+  sticky.value = true;
+  lightText.value = false;
+});
 </script>
 <template>
   <header class="page-header site-section">
@@ -69,7 +137,7 @@ lightText.value = false;
       </div>
     </div>
   </header>
-  <section class="site-section">
+  <section class="site-section bg-purple-950 text-purple-100">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
@@ -85,8 +153,99 @@ lightText.value = false;
           <article class="value-card">
             <h3 class="value-card__title">{{ item }}</h3>
             <div class="value-card__img-cont img-cont">
-              <img :src="`/assets/images/svg/frame (${index + 1}).svg`" alt="">
+              <img
+                :src="`/assets/images/svg/frame (${index + 1}).svg`"
+                alt=""
+              />
             </div>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="site-section">
+    <div class="wrapper">
+      <ul class="infographic-list">
+        <li
+          v-for="(item, i) in aboutContent.infographicSection.items"
+          :key="i"
+          class="infographic-list__item"
+        >
+          <article
+            :class="`infographic ${i % 2 ? 'lg:!flex-row-reverse' : ''}`"
+          >
+            <header class="infographic__header">
+              <h2 class="infographic__title">
+                {{ item.title }}
+              </h2>
+              <div class="img-cont">
+                <img :src="item.image" :alt="item.title" />
+              </div>
+            </header>
+            <div class="infographic__text-cont">
+              <p v-for="text in item.text">
+                {{ text }}
+              </p>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="site-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ aboutContent.teamSection.title }}
+        </h2>
+      </header>
+
+      <ul class="team-list">
+        <li
+          v-for="(item, i) in aboutContent.teamSection.team"
+          :key="i"
+          class="team-list__item"
+        >
+          <article class="team-card">
+            <header class="team-card__header">
+              <div class="team-card__text-cont">
+                <h3 class="team-card__title">
+                  {{ item.name }}
+                </h3>
+                <p>
+                  {{ item.role }}
+                </p>
+              </div>
+              <div
+                class="team-card__img-cont img-cont"
+                :style="`background-image: url('/assets/images/svg/frame (${
+                  i % 4 === 0 ? 1 : (i % 4) + 1
+                }).svg');`"
+              >
+                <img :src="item.image" :alt="item.name" />
+              </div>
+            </header>
+            <ul class="team-card__socials">
+              <li
+                v-for="(social, i) in item.socials"
+                :key="i"
+                class="team-card__socials-item"
+              >
+                <a
+                  :href="social.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn block"
+                >
+                  <TwitterIcon v-if="social.name == 'twitter'" class="icon" />
+                  <LinkedinIcon
+                    v-else-if="social.name == 'linkedin'"
+                    class="icon"
+                  />
+                  <ExternalLinkIcon v-else class="icon" />
+                </a>
+              </li>
+            </ul>
           </article>
         </li>
       </ul>
@@ -115,7 +274,7 @@ lightText.value = false;
 }
 
 .page-header__text-cont {
-  @apply flex flex-col justify-center gap-4 lg:min-h-[22rem] xl:min-h-[38rem] 2xl:min-h-[40rem] lg:flex-1;
+  @apply flex flex-col justify-center gap-4 lg:min-h-[22rem] lg:flex-1 xl:min-h-[38rem] 2xl:min-h-[40rem];
 }
 
 .page-header__caption {
@@ -135,18 +294,66 @@ lightText.value = false;
 }
 
 .value-card {
-  @apply flex flex-col h-full justify-between gap-4 bg-white rounded-3xl overflow-clip border border-slate-200;
+  @apply flex h-full flex-col justify-between gap-4 overflow-clip rounded-3xl border border-purple-600;
 }
 
 .value-card__title {
-  @apply font-heading text-lg lg:text-2xl font-medium leading-tight p-6;
+  @apply p-6 font-heading text-lg font-medium leading-tight lg:text-2xl;
 }
 
 .value-card__img-cont {
-  @apply w-full h-24 ;
+  @apply h-24 w-full bg-purple-900;
 }
 
 .value-card__img-cont > img {
-  @apply w-full h-full object-cover object-top;
+  @apply h-full w-full object-cover object-top;
+}
+
+.infographic-list {
+  @apply flex flex-col gap-12;
+}
+
+.infographic {
+  @apply flex flex-col items-center gap-6 lg:flex-row;
+}
+
+.infographic__header {
+  @apply flex flex-1 flex-col-reverse gap-2 text-center;
+}
+
+.infographic__title {
+  @apply font-heading text-2xl font-bold;
+}
+
+.infographic__text-cont {
+  @apply flex flex-1 flex-col gap-2;
+}
+
+.team-list {
+  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-4;
+}
+
+.team-card {
+  @apply flex flex-col gap-4;
+}
+
+.team-card__header {
+  @apply flex  flex-col-reverse gap-4;
+}
+
+.team-card__title {
+  @apply font-heading text-2xl font-bold;
+}
+
+.team-card__img-cont {
+  @apply mt-12 flex h-48  items-end  rounded-3xl bg-purple-950 bg-cover;
+}
+
+.team-card__img-cont > img {
+  @apply h-64 rounded-3xl object-top;
+}
+
+.team-card__socials {
+  @apply flex flex-wrap gap-2;
 }
 </style>
