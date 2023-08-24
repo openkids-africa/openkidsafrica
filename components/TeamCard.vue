@@ -69,11 +69,11 @@ defineProps<{
 }
 
 .team-card__img-cont {
-  @apply mt-12 flex h-48  items-end  rounded-3xl bg-purple-950 bg-cover;
+  @apply mt-20 flex h-72 lg:h-56  items-end  rounded-3xl bg-purple-950 bg-cover;
 }
 
 .team-card__img-cont > img {
-  @apply h-64 rounded-3xl object-top;
+  @apply h-96 lg:h-80 rounded-3xl object-top;
 }
 
 .team-card__socials {

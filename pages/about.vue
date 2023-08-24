@@ -288,7 +288,7 @@ onMounted(() => {
 }
 
 .team-list {
-  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-4;
+  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-4;
 }
 
 </style>

@@ -12,9 +12,11 @@ export const useSiteHeader = () => {
     const handleScroll = () => {
       if (!siteHeader.value) return;
       if (window.scrollY > siteHeader.value.offsetHeight) {
+        siteHeader.value.classList.add("scrolled");
         scrolled.value = true;
       } else {
         scrolled.value = false;
+        siteHeader.value.classList.remove("scrolled");
       }
     };
     onMounted(() => {
@@ -26,12 +28,6 @@ export const useSiteHeader = () => {
       window.removeEventListener("scroll", handleScroll);
     });
   };
-
-  watch(scrolled, () => {
-    scrolled.value
-      ? siteHeader.value.classList.add("scrolled")
-      : siteHeader.value.classList.remove("scrolled");
-  });
 
   return {
     scrolled,
