@@ -21,7 +21,7 @@ handleAddClassOnScroll();
 </template>
 <style scoped>
 .site-header {
-  @apply fixed top-0 z-20  w-full bg-transparent p-4  transition-all duration-300;
+  @apply fixed top-0 z-20 w-full border  border-transparent bg-transparent p-4  transition-all duration-300;
 }
 
 .site-header--sticky {
@@ -29,7 +29,7 @@ handleAddClassOnScroll();
 }
 
 .site-header.scrolled {
-  @apply bg-white  shadow-2xl  dark:bg-slate-900;
+  @apply bg-white  shadow-lg shadow-slate-600/[.05] border-b-slate-200  dark:bg-slate-900;
 }
 
 .site-header > .wrapper {

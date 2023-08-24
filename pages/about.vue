@@ -56,7 +56,11 @@ lightText.value = false;
         <h1 class="page-header__caption">
           {{ aboutContent.heroSection.title }}
         </h1>
-        <p v-for="(text, i) in aboutContent.heroSection.text" :key="i"  class="page-header__subtext">
+        <p
+          v-for="(text, i) in aboutContent.heroSection.text"
+          :key="i"
+          class="page-header__subtext"
+        >
           {{ text }}
         </p>
       </div>
@@ -65,6 +69,29 @@ lightText.value = false;
       </div>
     </div>
   </header>
+  <section class="site-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ aboutContent.valuesSection.title }}
+        </h2>
+      </header>
+      <ul class="value-list">
+        <li
+          v-for="(item, index) in aboutContent.valuesSection.items"
+          :key="index"
+          class="card-list__item"
+        >
+          <article class="value-card">
+            <h3 class="value-card__title">{{ item }}</h3>
+            <div class="value-card__img-cont img-cont">
+              <img :src="`/assets/images/svg/frame (${index + 1}).svg`" alt="">
+            </div>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
   <!-- <section class="boxes-container" ref="main">
     <h1>Use the button to toggle a Timeline</h1>
     <div>
@@ -88,11 +115,11 @@ lightText.value = false;
 }
 
 .page-header__text-cont {
-  @apply lg:min-h-[42rem] justify-center flex lg:flex-1 flex-col gap-4;
+  @apply flex flex-col justify-center gap-4 lg:min-h-[22rem] xl:min-h-[38rem] 2xl:min-h-[40rem] lg:flex-1;
 }
 
 .page-header__caption {
-  @apply text-4xl font-bold;
+  @apply font-heading text-4xl font-bold;
 }
 
 .page-header__media-cont {
@@ -100,6 +127,26 @@ lightText.value = false;
 }
 
 .abstract-illustration {
-  @apply w-full h-96 lg:absolute 2xl:left-1/2 2xl:w-2/5 lg:-right-[3.75%] lg:top-1/2  lg:m-0 lg:h-[110%] lg:w-1/2 lg:-translate-y-[42.5%];
+  @apply h-96 w-full lg:absolute lg:-right-[3.85%] lg:top-1/2 lg:m-0 lg:h-[110%]  lg:w-1/2 lg:-translate-y-[45.5%] 2xl:left-[52.5%] 2xl:w-[45%];
+}
+
+.value-list {
+  @apply grid gap-6 md:grid-cols-2;
+}
+
+.value-card {
+  @apply flex flex-col h-full justify-between gap-4 bg-white rounded-3xl overflow-clip border border-slate-200;
+}
+
+.value-card__title {
+  @apply font-heading text-lg lg:text-2xl font-medium leading-tight p-6;
+}
+
+.value-card__img-cont {
+  @apply w-full h-24 ;
+}
+
+.value-card__img-cont > img {
+  @apply w-full h-full object-cover object-top;
 }
 </style>
