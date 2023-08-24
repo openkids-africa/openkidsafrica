@@ -29,7 +29,7 @@ handleAddClassOnScroll();
 }
 
 .site-header.scrolled {
-  @apply bg-white  shadow-lg shadow-slate-600/[.05] border-b-slate-200  dark:bg-slate-900;
+  @apply bg-white  shadow-lg shadow-slate-600/[.05] dark:shadow-slate-900/[.05] border-b-slate-200 dark:border-b-slate-800  dark:bg-slate-900;
 }
 
 .site-header > .wrapper {
