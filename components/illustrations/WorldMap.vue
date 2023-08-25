@@ -6,8 +6,8 @@ onMounted(() => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: svg.value,
-      start: "top 80%",
-      end: "bottom 50%",
+      start: "top 70%",
+      end: "bottom 100%",
       scrub: true,
       // markers: true,
     },
@@ -17,14 +17,14 @@ onMounted(() => {
   tl.fromTo(
     svg.value.querySelectorAll("g rect, path, circle"),
     {
-      scale: 0.2,
+      scale: 0.085,
       transformOrigin: "center center",
     },
     {
       scale: 1,
       stagger: {
-        amount: 1.5, 
-      }, 
+        amount: 1.5,
+      },
     },
   );
 });
