@@ -35,8 +35,13 @@ body {
   @apply rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700 dark:border-orange-200 dark:bg-orange-200 dark:text-orange-600 dark:shadow-orange-50 dark:active:shadow-orange-400;
 }
 
+.btn--secondary {
+  @apply border border-purple-700 bg-purple-600  text-purple-100 shadow-inner shadow-purple-400  active:shadow-purple-700 dark:border-purple-200 dark:bg-purple-200 dark:text-purple-600 dark:shadow-purple-50 dark:active:shadow-purple-400;
+  
+}
+
 .btn:has(> .icon) {
-  @apply p-3;
+  @apply flex gap-2 p-3;
 }
 
 /* IMG CONT */
@@ -49,6 +54,18 @@ body {
 }
 
 /* IMG CONT */
+
+/* ILLUSTRATION CONT */
+.illustration-cont > svg {
+  @apply h-full w-full;
+}
+/* END ILLUSTRATION CONT */
+
+/* ACTION CONT */
+.action-cont {
+  @apply flex gap-4 justify-center;
+}
+/* END ACTION CONT */
 
 /* SITE HERO */
 .site-hero {

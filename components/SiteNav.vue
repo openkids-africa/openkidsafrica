@@ -1,23 +1,6 @@
 <script setup>
 import { XMarkIcon, Bars2Icon } from "@heroicons/vue/24/solid";
-const links = [
-  {
-    name: "About Us",
-    path: "/about",
-  },
-  {
-    name: "Programs",
-    path: "/programs",
-  },
-  {
-    name: "News",
-    path: "/news",
-  },
-  // {
-  //   name: "Contact",
-  //   path: "/contact",
-  // },
-];
+const { links } = useSiteNav();
 const navActive = ref(false);
 
 const toggleActive = () => {
@@ -29,11 +12,11 @@ const toggleActive = () => {
     <div class="wrapper">
       <ul class="site-nav__links">
         <li v-for="link in links" :key="link.name" class="site-nav__link">
-          <NuxtLink :to="link.path">{{ link.name }}</NuxtLink>
-        </li>
-        <li class="site-nav__link">
-          <NuxtLink to="/contact">
-            <button class="btn">Get In Touch</button>
+          <NuxtLink :to="link.path">
+            <button v-if="link.name.toLowerCase() == 'contact'" class="btn">
+              Get In Touch
+            </button>
+            <template v-else>{{ link.name }}</template>
           </NuxtLink>
         </li>
       </ul>

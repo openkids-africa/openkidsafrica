@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import gsap from "gsap";
+import { HelpingHandIcon, MailIcon } from "lucide-vue-next";
 
 const { lightText, sticky } = useSiteHeader();
 
@@ -209,6 +210,32 @@ onMounted(() => {
       </ul>
     </div>
   </section>
+  <section class="site-section partner-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">Partner with us</h2>
+        <p>
+          At OpenKids Africa, we believe in the power of collaboration and
+          partnership to make a lasting impact on the lives of African children.
+          By partnering with us, you can contribute to the growth and
+          development of young minds in underserved communities, empowering them
+          with essential digital skills for a brighter future.
+        </p>
+        <div class="action-cont">
+          <button class="btn">
+            <HelpingHandIcon class="icon" />
+            <span class="text"> Donate </span>
+          </button>
+          <button class="btn btn--secondary">
+            <MailIcon class="icon" />
+            <span class="text"> Contact Us </span>
+          </button>
+        </div>
+      </header>
+
+      <IllustrationsWorldMap />
+    </div>
+  </section>
   <!-- <section class="boxes-container" ref="main">
     <h1>Use the button to toggle a Timeline</h1>
     <div>
@@ -291,4 +318,15 @@ onMounted(() => {
   @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-4;
 }
 
+.partner-section {
+  @apply px-0;
+}
+
+.partner-section > .wrapper {
+  @apply flex max-w-[140rem] flex-col-reverse gap-6;
+}
+
+.partner-section .site-section__header {
+  @apply m-auto max-w-6xl;
+}
 </style>
