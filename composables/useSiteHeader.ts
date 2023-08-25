@@ -1,6 +1,6 @@
 export const useSiteHeader = () => {
   const scrolled = useState("scrolled", () => false);
-  const lightText = useState("lightText", () => true);
+  const lightText = useState("lightText", () => false);
   const sticky = useState("sticky", () => false);
   const siteHeader = useState<HTMLElement>("siteHeader");
 

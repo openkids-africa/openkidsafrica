@@ -1,11 +1,16 @@
 <script setup>
 import { XMarkIcon, Bars2Icon } from "@heroicons/vue/24/solid";
+const router = useRouter();
 const { links } = useSiteNav();
 const navActive = ref(false);
 
 const toggleActive = () => {
   navActive.value = !navActive.value;
 };
+
+router.afterEach(() => {
+  navActive.value = false;
+});
 </script>
 <template>
   <nav class="site-nav" :class="`${navActive ? 'site-nav--active' : ''}`">

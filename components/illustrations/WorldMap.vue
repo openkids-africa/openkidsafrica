@@ -6,8 +6,8 @@ onMounted(() => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: svg.value,
-      start: "top 70%",
-      end: "bottom 100%",
+      start: "top 60%",
+      end: "bottom 50%",
       scrub: true,
       // markers: true,
     },

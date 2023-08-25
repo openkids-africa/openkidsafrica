@@ -247,29 +247,6 @@ onMounted(() => {
   </section> -->
 </template>
 <style scoped>
-.page-header {
-  @apply relative  overflow-x-clip;
-}
-.page-header > .wrapper {
-  @apply flex h-full items-center justify-between gap-4;
-}
-
-.page-header > .wrapper:has(.page-header__media-cont) {
-  @apply flex-col-reverse lg:flex-row;
-}
-
-.page-header__text-cont {
-  @apply flex flex-col justify-center gap-4 lg:min-h-[22rem] lg:flex-1 xl:min-h-[38rem] 2xl:min-h-[40rem];
-}
-
-.page-header__caption {
-  @apply font-heading text-4xl font-bold;
-}
-
-.page-header__media-cont {
-  @apply w-full lg:flex-1;
-}
-
 .abstract-illustration {
   @apply h-96 w-full lg:absolute lg:-right-[3.85%] lg:top-1/2 lg:m-0 lg:h-[110%]  lg:w-1/2 lg:-translate-y-[45.5%] 2xl:left-[52.5%] 2xl:w-auto;
 }

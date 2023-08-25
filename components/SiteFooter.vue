@@ -15,7 +15,7 @@ const { links, socialLinks } = useSiteNav();
       <section class="site-footer__section site-section">
         <div class="wrapper">
           <NuxtLink to="/">
-            <SiteLogo class="!px-0" />
+            <SiteLogo class="!z-0 !px-0" />
           </NuxtLink>
 
           <ul class="site-links">
