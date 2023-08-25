@@ -233,7 +233,7 @@ onMounted(() => {
         </div>
       </header>
 
-      <IllustrationsWorldMap />
+      <IllustrationsWorldMap class="py-12" />
     </div>
   </section>
   <!-- <section class="boxes-container" ref="main">
@@ -319,7 +319,7 @@ onMounted(() => {
 }
 
 .partner-section {
-  @apply px-0;
+  @apply px-0 pt-4;
 }
 
 .partner-section > .wrapper {
@@ -327,6 +327,6 @@ onMounted(() => {
 }
 
 .partner-section .site-section__header {
-  @apply m-auto max-w-6xl;
+  @apply m-auto flex max-w-5xl flex-col gap-4 p-4;
 }
 </style>
