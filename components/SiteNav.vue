@@ -74,7 +74,7 @@ const toggleActive = () => {
 }
 
 .site-nav-btn {
-  @apply fixed bottom-0 right-0 z-20 mb-6 mr-6 lg:hidden;
+  @apply fixed bottom-0 right-0 z-20 mb-6 mr-6 block lg:hidden;
 }
 
 .site-nav-btn__icon {
