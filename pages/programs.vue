@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { HelpingHandIcon } from "lucide-vue-next";
 const programsContent = ref({
   heroSection: {
     caption: "Every child deserves equal access to technology",
@@ -47,18 +48,22 @@ const programsContent = ref({
     title: "Our Objectives",
     objectives: [
       {
+        id: "africa",
         title: "Focus On Underserved Communities In Africa",
         text: "To collaborate with organizations to educate, create, and distribute open digital resources to schools in rural communities.",
       },
       {
+        id: "advocate",
         title: "Advocate",
         text: "Advocate for the use of and access to open educational technologies and resources in rural schools in Africa.",
       },
       {
+        id: "ratio",
         title: "Changing The Ratio",
         text: "We are getting more women and girls to consider a future career in technology by partnering with TechSheCan UK and using digital lesson plans with female instructors.",
       },
       {
+        id: "collaboration",
         title: "Collaborate",
         text: "To collaborate with organizations to educate, create, and distribute open digital resources to schools in rural communities.",
       },
@@ -100,10 +105,41 @@ const programsContent = ref({
       >
         {{ text }}
       </p>
+      <div class="action-cont !justify-start">
+        <a :href="programsContent.whySection.donateLink.url" class="btn">
+          <HelpingHandIcon class="icon" />
+          <span class="text">
+            {{ programsContent.whySection.donateLink.text }}
+          </span>
+        </a>
+      </div>
     </div>
   </section>
-  <section class="site-section">
-    <div class="wrapper"></div>
+  <section class="site-section objectives-section">
+    <div class="wrapper">
+      <div class="objectives-section__text-cont">
+        <header class="site-section__header">
+          <h2 class="site-section__caption">
+            {{ programsContent.objectiveSection.title }}
+          </h2>
+        </header>
+        <ul class="objectives">
+          <li
+            v-for="(objective, i) in programsContent.objectiveSection
+              .objectives"
+            class="objectives__item"
+          >
+            <DoingsCard :card-content="objective" />
+          </li>
+        </ul>
+      </div>
+      <figure class="objectives-section__media-cont illustration-cont">
+        <IllustrationsStats class="objectives-section__illustration" />
+        <figcaption class="text-center">
+          Our goal is to reach 1,000 kids by 2025
+        </figcaption>
+      </figure>
+    </div>
   </section>
 </template>
 <style scoped>
@@ -146,7 +182,29 @@ const programsContent = ref({
   @apply flex flex-col gap-4;
 }
 
-.why-section .site-section__header {
+.why-section .site-section__header,
+.objectives-section .site-section__header {
   @apply text-left;
+}
+
+.objectives-section > .wrapper {
+  @apply flex flex-col gap-4 lg:flex-row;
+}
+
+.objectives-section__text-cont,
+.objectives-section__media-cont {
+  @apply flex-1;
+}
+
+.objectives {
+  @apply flex flex-col;
+}
+
+.objectives-section__media-cont {
+  @apply flex flex-col items-center justify-center gap-4;
+}
+
+.objectives-section__illustration {
+  @apply lg:h-[30rem];
 }
 </style>

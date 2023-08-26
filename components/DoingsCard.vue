@@ -13,6 +13,8 @@ import {
   SpeakerWaveIcon,
   UserGroupIcon,
   UserIcon,
+  HandRaisedIcon,
+  AdjustmentsVerticalIcon,
 } from "@heroicons/vue/24/solid";
 defineProps<{
   cardContent: CardContent;
@@ -43,11 +45,21 @@ defineProps<{
           class="doings-card__icon icon"
         />
         <GlobeEuropeAfricaIcon
-          v-else-if="cardContent.id == 'sustainability'"
+          v-else-if="
+            cardContent.id == 'sustainability' || cardContent.id == 'africa'
+          "
           class="doings-card__icon icon"
         />
         <AcademicCapIcon
           v-else-if="cardContent.id == 'education'"
+          class="doings-card__icon icon"
+        />
+        <HandRaisedIcon
+          v-else-if="cardContent.id == 'advocate'"
+          class="doings-card__icon icon"
+        />
+        <AdjustmentsVerticalIcon
+          v-else-if="cardContent.id == 'ratio'"
           class="doings-card__icon icon"
         />
         <SparklesIcon v-else class="doings-card__icon icon" />
