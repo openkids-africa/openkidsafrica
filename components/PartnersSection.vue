@@ -46,7 +46,11 @@ defineProps<{
             </span>
           </a>
 
-          <NuxtLink to="/contact" class="btn btn--secondary">
+          <NuxtLink
+            v-if="sectionData.contactCTA"
+            to="/contact"
+            class="btn btn--secondary"
+          >
             <HeartHandshakeIcon
               v-if="sectionData.contactCTA?.id === 'partner'"
               class="icon"

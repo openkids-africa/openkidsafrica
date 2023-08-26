@@ -86,6 +86,10 @@ const content = ref({
       text: "Donate to OpenKids Africa",
       url: "http://paypal.me/openkidsafrica",
     },
+    contactCTA: {
+      id: "partner",
+      text: "Partner with Us",
+    },
     partners: [
       {
         name: "Tech She Can",
