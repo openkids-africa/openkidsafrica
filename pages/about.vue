@@ -276,10 +276,6 @@ onMounted(() => {
   </section> -->
 </template>
 <style scoped>
-.abstract-illustration {
-  @apply h-96 w-full lg:absolute lg:-right-[3.85%] lg:top-1/2 lg:m-0 lg:h-[110%]  lg:w-1/2 lg:-translate-y-[45.5%] 2xl:left-[52.5%] 2xl:w-auto;
-}
-
 .value-list {
   @apply grid gap-6 md:grid-cols-2;
 }
