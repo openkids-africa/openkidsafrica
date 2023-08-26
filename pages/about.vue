@@ -28,7 +28,40 @@ const { lightText, sticky } = useSiteHeader();
 //   ctx.revert(); // <- Easy Cleanup!
 // });
 
-const aboutContent = ref({
+const aboutContent = ref<{
+  heroSection: {
+    title: string;
+    text: string[];
+  };
+  valuesSection: {
+    title: string;
+    items: string[];
+  };
+  infographicSection: {
+    items: {
+      title: string;
+      text: string[];
+      link: {
+        text: string;
+        link: string;
+      };
+      image: string;
+    }[];
+  };
+  teamSection: {
+    title: string;
+    team: {
+      name: string;
+      role: string;
+      image: string;
+      socials: {
+        name: string;
+        url: string;
+      }[];
+    }[];
+  };
+  partnersSection: PartnerSection;
+}>({
   heroSection: {
     title: "Our Journey",
     text: [
@@ -108,6 +141,26 @@ const aboutContent = ref({
         socials: [],
       },
     ],
+  },
+  partnersSection: {
+    title: "Partner with us",
+    description:
+      "At OpenKids Africa, we believe in the power of collaboration and partnership to make a lasting impact on the lives of African children. By partnering with us, you can contribute to the growth and development of young minds in underserved communities, empowering them with essential digital skills for a brighter future.",
+    donateLink: {
+      text: "Donate",
+      url: "http://paypal.me/openkidsafrica",
+    },
+    contactCTA: {
+      id: "contact",
+      text: "Contact Us",
+    },
+    partners: [
+      {
+        name: "Tech She Can",
+        logo: "/assets/images/partners/tech-she-can-logo.svg",
+      },
+    ],
+    hidePartners: true,
   },
 });
 
@@ -210,32 +263,8 @@ onMounted(() => {
       </ul>
     </div>
   </section>
-  <section class="site-section partner-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">Partner with us</h2>
-        <p>
-          At OpenKids Africa, we believe in the power of collaboration and
-          partnership to make a lasting impact on the lives of African children.
-          By partnering with us, you can contribute to the growth and
-          development of young minds in underserved communities, empowering them
-          with essential digital skills for a brighter future.
-        </p>
-        <div class="action-cont">
-          <button class="btn">
-            <HelpingHandIcon class="icon" />
-            <span class="text"> Donate </span>
-          </button>
-          <button class="btn btn--secondary">
-            <MailIcon class="icon" />
-            <span class="text"> Contact Us </span>
-          </button>
-        </div>
-      </header>
+  <PartnersSection :section-data="aboutContent.partnersSection" />
 
-      <IllustrationsWorldMap class="partner-section__illustration" />
-    </div>
-  </section>
   <!-- <section class="boxes-container" ref="main">
     <h1>Use the button to toggle a Timeline</h1>
     <div>
@@ -293,21 +322,5 @@ onMounted(() => {
 
 .team-list {
   @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-4;
-}
-
-.partner-section {
-  @apply px-0 pt-8;
-}
-
-.partner-section > .wrapper {
-  @apply flex max-w-[140rem] flex-col-reverse gap-6;
-}
-
-.partner-section .site-section__header {
-  @apply m-auto flex max-w-5xl flex-col gap-4 p-4;
-}
-
-.partner-section__illustration {
-  @apply py-6;
 }
 </style>

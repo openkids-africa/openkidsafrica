@@ -106,7 +106,12 @@ const programsContent = ref({
         {{ text }}
       </p>
       <div class="action-cont !justify-start">
-        <a :href="programsContent.whySection.donateLink.url" class="btn">
+        <a
+          :href="programsContent.whySection.donateLink.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn"
+        >
           <HelpingHandIcon class="icon" />
           <span class="text">
             {{ programsContent.whySection.donateLink.text }}
@@ -197,7 +202,7 @@ const programsContent = ref({
 }
 
 .objectives {
-  @apply flex flex-col;
+  @apply flex flex-col gap-4;
 }
 
 .objectives-section__media-cont {

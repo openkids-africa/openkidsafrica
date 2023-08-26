@@ -91,3 +91,21 @@ body {
 }
 
 /* END PAGE HEADER */
+
+/* PARTNER SECTION */
+.partner-section {
+  @apply px-0 pt-2;
+}
+
+.partner-section > .wrapper {
+  @apply flex max-w-[140rem] flex-col-reverse gap-6;
+}
+
+.partner-section .site-section__header {
+  @apply m-auto flex max-w-5xl flex-col gap-4 p-4;
+}
+
+.partner-section__illustration {
+  @apply py-2;
+}
+/* END PARTNER SECTION */

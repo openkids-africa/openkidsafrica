@@ -8,6 +8,8 @@ import {
   UserGroupIcon,
   UserIcon,
 } from "@heroicons/vue/24/solid";
+import { HelpingHandIcon, HeartHandshakeIcon } from "lucide-vue-next";
+
 const { lightText, sticky } = useSiteHeader();
 
 const content = ref({
@@ -78,6 +80,19 @@ const content = ref({
       },
     ],
   },
+  partnersSection: {
+    title: "Our Partners",
+    donateLink: {
+      text: "Donate to OpenKids Africa",
+      url: "http://paypal.me/openkidsafrica",
+    },
+    partners: [
+      {
+        name: "Tech She Can",
+        logo: "/assets/images/partners/tech-she-can-logo.svg",
+      },
+    ],
+  },
 });
 
 onMounted(() => {
@@ -113,6 +128,7 @@ onMounted(() => {
       <!-- <SiteHeroImagesGrid :images="content.heroSection.images" /> -->
     </div>
   </section>
+  <PartnersSection :section-data="content.partnersSection" />
 </template>
 <style scoped>
 .card-list {
