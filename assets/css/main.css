@@ -83,7 +83,7 @@ body {
 }
 
 .page-header__caption {
-  @apply font-heading text-6xl font-bold;
+  @apply font-heading text-4xl font-bold lg:text-6xl;
 }
 
 .page-header__media-cont {

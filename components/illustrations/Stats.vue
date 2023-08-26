@@ -13,7 +13,7 @@ onMounted(() => {
       scrollTrigger: {
         trigger: svg.value,
         start: "top 40%",
-        end: "bottom 80%",
+        end: "bottom 45%",
         scrub: true,
         // markers: true,
       },

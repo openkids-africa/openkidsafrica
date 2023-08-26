@@ -161,13 +161,13 @@ const programsContent = ref({
 }
 
 .why-section {
-  @apply relative px-[calc(100%/9)];
+  @apply relative px-[calc(100%/7)];
 }
 
 .why-section::before,
 .why-section::after {
   content: "";
-  @apply absolute left-0 top-0 h-full max-h-96 w-[calc(100%/9)] bg-cover bg-center bg-no-repeat lg:max-h-full xl:bg-contain;
+  @apply absolute left-0 top-0 h-full max-h-96 w-[calc(100%/7)] bg-cover bg-center bg-no-repeat lg:max-h-full xl:bg-contain;
 }
 
 .why-section::before {
