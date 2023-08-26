@@ -136,11 +136,11 @@ const programsContent = ref({
 
 .why-section::before {
   @apply bg-right xl:bg-left;
-  background-image: url("/assets/images/svg/Left Illustrationabstract.svg");
+  background-image: url("/assets/images/svg/LeftIllustrationabstract.svg");
 }
 .why-section::after {
   @apply left-auto right-0 bg-left xl:bg-right;
-  background-image: url("/assets/images/svg/Right Illustrationabstract.svg");
+  background-image: url("/assets/images/svg/RightIllustrationabstract.svg");
 }
 .why-section > .wrapper {
   @apply flex flex-col gap-4;
