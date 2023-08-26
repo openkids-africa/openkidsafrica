@@ -70,6 +70,33 @@ const programsContent = ref({
     ],
   },
 });
+
+useHead({
+  title: "Programs",
+  meta: [
+    {
+      name: "description",
+      content: programsContent.value.heroSection.subtext,
+      key: "description",
+    },
+    {
+      property: "og:title",
+      content: "Contact Us",
+    },
+    {
+      property: "og:description",
+      content: programsContent.value.heroSection.subtext,
+    },
+    {
+      property: "twitter:title",
+      content: "Contact Us",
+    },
+    {
+      property: "twitter:description",
+      content: programsContent.value.heroSection.subtext,
+    },
+  ],
+});
 </script>
 <template>
   <header class="page-header site-section programs-header">

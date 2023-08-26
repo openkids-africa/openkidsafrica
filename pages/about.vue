@@ -168,6 +168,10 @@ onMounted(() => {
   sticky.value = true;
   lightText.value = false;
 });
+
+useHead({
+  title: "About Us",
+});
 </script>
 <template>
   <header class="page-header site-section">

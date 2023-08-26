@@ -19,6 +19,32 @@ onMounted(() => {
   sticky.value = true;
   lightText.value = false;
 });
+useHead({
+  title: "Contact Us",
+  meta: [
+    {
+      name: "description",
+      content: contactContent.value.heroSection.subtext,
+      key: "description",
+    },
+    {
+      property: "og:title",
+      content: "Contact Us",
+    },
+    {
+      property: "og:description",
+      content: contactContent.value.heroSection.subtext,
+    },
+    {
+      property: "twitter:title",
+      content: "Contact Us",
+    },
+    {
+      property: "twitter:description",
+      content: contactContent.value.heroSection.subtext,
+    },
+  ],
+});
 </script>
 <template>
   <header class="page-header site-section">

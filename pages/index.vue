@@ -103,6 +103,10 @@ onMounted(() => {
   lightText.value = true;
   sticky.value = false;
 });
+
+useHead({
+  title: "Home",
+});
 </script>
 <template>
   <SiteHero
