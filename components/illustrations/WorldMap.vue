@@ -1,32 +1,42 @@
 <script setup lang="ts">
 import gsap from "gsap";
 const svg = ref<HTMLElement>();
+let tl: gsap.core.Timeline;
+let ctx: gsap.Context;
 
 onMounted(() => {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: svg.value,
-      start: "top 60%",
-      end: "bottom 50%",
-      scrub: true,
-      // markers: true,
-    },
-  });
+  ctx = gsap.context((self) => {
+    if (!self.selector) return;
+    const elements = self.selector("g rect, path, circle");
 
-  if (!svg.value) return;
-  tl.fromTo(
-    svg.value.querySelectorAll("g rect, path, circle"),
-    {
-      scale: 0.085,
-      transformOrigin: "center center",
-    },
-    {
-      scale: 1,
-      stagger: {
-        amount: 1.5,
+    tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: svg.value,
+        start: "top 60%",
+        end: "bottom 50%",
+        scrub: true,
+        // markers: true,
       },
-    },
-  );
+    });
+
+    tl.fromTo(
+      elements,
+      {
+        scale: 0.085,
+        transformOrigin: "center center",
+      },
+      {
+        scale: 1,
+        stagger: {
+          amount: 1.5,
+        },
+      },
+    );
+  }, svg.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
 });
 </script>
 <template>

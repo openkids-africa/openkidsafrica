@@ -21,23 +21,23 @@ export const useSiteNav = () => {
   const socialLinks = useState("socialLinks", () => [
     {
       name: "Twitter",
-      url: "https://www.twitter.com",
+      url: "https://twitter.com/openkidsafrica",
     },
     {
       name: "Instagram",
-      url: "https://www.instagram.com",
+      url: "https://www.instagram.com/openkidsafrica/",
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com",
+      url: "https://www.linkedin.com/company/openkidsafrica/",
     },
     {
       name: "YouTube",
-      url: "https://www.youtube.com",
+      url: "https://www.youtube.com/@openkidsafrica",
     },
     {
       name: "Facebook",
-      url: "https://www.facebook.com",
+      url: "https://www.facebook.com/openkidsafrica",
     },
   ]);
 
