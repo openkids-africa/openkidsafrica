@@ -64,8 +64,9 @@ const { links, socialLinks } = useSiteNav();
       <section class="site-section site-footer__section">
         <div class="wrapper">
           <p>
-            © 2022 OpenKids Africa. Registered charity number 189502 (formerly
-            Pranet Technology Initiative)
+            © 2022 OpenKids Africa. Registered charity number 189502
+            <!-- (formerly
+            Pranet Technology Initiative) -->
           </p>
         </div>
       </section>

@@ -1,6 +1,11 @@
 export { PartnerSection };
 
 declare global {
+  interface BasicSectionContent {
+    title: string;
+    text: string[];
+  }
+
   interface PartnerSection {
     title: string;
     description?: string;
@@ -18,5 +23,38 @@ declare global {
       name: string;
       logo: string;
     }[];
+  }
+
+  interface AboutPageContent {
+    heroSection: BasicSectionContent;
+    journeySection: BasicSectionContent;
+    valuesSection: {
+      title: string;
+      items: string[];
+    };
+    infographicSection: {
+      items: {
+        title: string;
+        text: string[];
+        link: {
+          text: string;
+          link: string;
+        };
+        image: string;
+      }[];
+    };
+    teamSection: {
+      title: string;
+      team: {
+        name: string;
+        role: string;
+        image: string;
+        socials: {
+          name: string;
+          url: string;
+        }[];
+      }[];
+    };
+    partnersSection: PartnerSection;
   }
 }

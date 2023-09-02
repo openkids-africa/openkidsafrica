@@ -28,45 +28,21 @@ const { lightText, sticky } = useSiteHeader();
 //   ctx.revert(); // <- Easy Cleanup!
 // });
 
-const aboutContent = ref<{
+const aboutContent = ref<AboutPageContent>({
   heroSection: {
-    title: string;
-    text: string[];
-  };
-  valuesSection: {
-    title: string;
-    items: string[];
-  };
-  infographicSection: {
-    items: {
-      title: string;
-      text: string[];
-      link: {
-        text: string;
-        link: string;
-      };
-      image: string;
-    }[];
-  };
-  teamSection: {
-    title: string;
-    team: {
-      name: string;
-      role: string;
-      image: string;
-      socials: {
-        name: string;
-        url: string;
-      }[];
-    }[];
-  };
-  partnersSection: PartnerSection;
-}>({
-  heroSection: {
+    title: "About Us",
+    text: [
+      "OpenKids Africa was established in 2019 by Regina Nkenchor. The organization's primary objective is to provide students in underserved communities with equitable access to information technology skills.",
+      "Acknowledging that achieving this goal requires collaborative efforts, we actively partner with other groups, schools, and governmental bodies to advance the mission of OpenKids Africa.",
+      "Our initiative began in Nigeria, where we leverage free digital resources to introduce children in rural communities to the world of technology and its potential for shaping their future careers. To date, we have successfully equipped over 1000 children with a foundational understanding of the internet and how technology relates to different career fields.",
+    ],
+  },
+  journeySection: {
     title: "Our Journey",
     text: [
-      "OpenKids Africa was previously referred to as Pranet Technology Initiative. It was started in 2019 by Regina Nkemchor with the aim of giving students in underserved communities equitable access to information technology skills. Recognizing that a single organization cannot do this, we are cooperating with other groups, schools, and the government to promote the OpenKids Africa mission.",
-      "Starting in Nigeria, we are utilizing the Tech She Can open digital resources to expose children to technology and its advantages for future professions, with over 200 kids gaining a foundational grasp of the internet and technology-related career sectors. We utilize Tech She Can's resources to introduce kids to animation courses in technology for medical, agriculture, education, safety, and security, as well as space. We anticipate that these exposures will develop future innovators in technology.",
+      "OpenKids Africa was established in 2019 by Regina Nkenchor with the primary goal of providing students in underserved communities with equitable access to information technology skills. Recognizing the magnitude of this task, we have formed collaborations with other organizations, schools, and governmental bodies to advance the mission of OpenKids Africa.",
+      "Commencing our efforts in Nigeria, we harness freely available digital resources to introduce children to the realm of technology and its potential benefits for their future careers. To date, we have successfully enabled over 1000 children to grasp the fundamentals of the internet and various technology-related vocational sectors.",
+      "Our curriculum includes introductory courses in basic animation and technology applications for fields such as medicine, agriculture, education, safety, security, and even space exploration. Our aspiration is that these early exposures will nurture the growth of future technology innovators.",
     ],
   },
   valuesSection: {
@@ -111,7 +87,7 @@ const aboutContent = ref<{
     title: "Our Team",
     team: [
       {
-        name: "Regina Nkemchor",
+        name: "Regina Nkenchor",
         role: "FOUNDER, OPENKIDS AFRICA",
         image: "/assets/images/team/Regina Nkemchor.png",
         socials: [
@@ -128,18 +104,18 @@ const aboutContent = ref<{
         image: "/assets/images/team/Adebola Ogunyemi.png",
         socials: [],
       },
-      {
-        name: "Ibigbari",
-        role: "PROGRAM COORDINATOR, OPENKIDS AFRICA",
-        image: "/assets/images/team/Ibigbari.png",
-        socials: [],
-      },
-      {
-        name: "Uboho Essien",
-        role: "WEB DESIGNER, OPENKIDS AFRICA",
-        image: "/assets/images/team/Uboho Essien.png",
-        socials: [],
-      },
+      // {
+      //   name: "Ibigbari",
+      //   role: "PROGRAM COORDINATOR, OPENKIDS AFRICA",
+      //   image: "/assets/images/team/Ibigbari.png",
+      //   socials: [],
+      // },
+      // {
+      //   name: "Uboho Essien",
+      //   role: "WEB DESIGNER, OPENKIDS AFRICA",
+      //   image: "/assets/images/team/Uboho Essien.png",
+      //   socials: [],
+      // },
     ],
   },
   partnersSection: {
@@ -193,6 +169,24 @@ useHead({
       </div>
     </div>
   </header>
+  <section class="site-section bg-orange-100 text-orange-950">
+    <div class="wrapper">
+      <header class="site-section__header site-section__header--left">
+        <h2 class="site-section__caption">
+          {{ aboutContent.journeySection.title }}
+        </h2>
+      </header>
+      <div class="site-section__text-cont">
+        <p
+          v-for="(text, i) in aboutContent.journeySection.text"
+          :key="i"
+          class="site-section__text"
+        >
+          {{ text }}
+        </p>
+      </div>
+    </div>
+  </section>
   <section class="site-section bg-purple-950 text-purple-100">
     <div class="wrapper">
       <header class="site-section__header">

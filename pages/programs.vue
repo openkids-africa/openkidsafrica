@@ -165,12 +165,12 @@ useHead({
           </li>
         </ul>
       </div>
-      <figure class="objectives-section__media-cont illustration-cont">
+      <!-- <figure class="objectives-section__media-cont illustration-cont">
         <IllustrationsStats class="objectives-section__illustration" />
         <figcaption class="text-center">
           Our goal is to reach 1,000 kids by 2025
         </figcaption>
-      </figure>
+      </figure> -->
     </div>
   </section>
 </template>
@@ -229,7 +229,7 @@ useHead({
 }
 
 .objectives {
-  @apply flex flex-col gap-4;
+  @apply grid gap-4 md:grid-cols-2;
 }
 
 .objectives-section__media-cont {
