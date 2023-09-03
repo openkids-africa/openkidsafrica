@@ -315,6 +315,11 @@ useHead({
 }
 
 .team-list {
-  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-4;
+  /* @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-4; */
+  @apply flex flex-wrap justify-center gap-6;
+}
+
+.team-list__item {
+  @apply max-w-xs;
 }
 </style>
