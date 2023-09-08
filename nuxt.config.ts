@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     },
   },
   build: {
-    transpile: ['gsap']
-  }
+    transpile: ["gsap"],
+  },
+  modules: ["@nuxtjs/sanity"],
+  sanity: {
+    projectId: "xhwhqbhq",
+    apiVersion: "2023-09-08",
+  },
 });
