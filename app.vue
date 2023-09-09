@@ -76,7 +76,7 @@ useHead({
     },
   ],
   htmlAttrs: {
-    class: "dark",
+    // class: "dark",
   },
 });
 </script>
