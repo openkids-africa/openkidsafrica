@@ -57,4 +57,19 @@ declare global {
     };
     partnersSection: PartnerSection;
   }
+
+  interface ArticleCard {
+    _id: string;
+    slug: {
+      current: string;
+      _type: string;
+    };
+    title: string;
+    publishedAt: string;
+    description: string;
+    imageUrl: string;
+    author: {
+      name: string;
+    };
+  }
 }
