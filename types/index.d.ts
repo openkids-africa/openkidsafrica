@@ -4,6 +4,10 @@ declare global {
   interface BasicSectionContent {
     title: string;
     text: string[];
+    images?: {
+      src: string;
+      alt: string;
+    }[];
   }
 
   interface PartnerSection {

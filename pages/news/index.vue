@@ -15,6 +15,12 @@ const newsContent = ref<{
     text: [
       "Grab all the latest news for campaigns, donations, fund-raising or new projects from OpenKids Africa.",
     ],
+    images: [
+      {
+        src: "/assets/images/svg/updates.svg",
+        alt: "Blog Hero",
+      },
+    ],
   },
 });
 
@@ -79,6 +85,14 @@ if (data.value) {
           {{ text }}
         </p>
       </div>
+      <div class="page-header__media-cont">
+        <img
+          v-if="newsContent.heroSection?.images"
+          :src="newsContent.heroSection?.images[0].src"
+          :alt="newsContent.heroSection?.images[0].alt"
+          class="abstract-illustration"
+        />
+      </div>
     </div>
   </header>
   <section class="site-section">
@@ -115,6 +129,6 @@ if (data.value) {
   @apply py-0;
 }
 .page-header__text-cont {
-  @apply min-h-[20rem];
+  /* @apply min-h-[20rem]; */
 }
 </style>
