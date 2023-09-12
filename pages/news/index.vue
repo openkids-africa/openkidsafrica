@@ -4,7 +4,7 @@ const query = groq`
 *[_type == "post" && (
   publishedAt > $lastPublishedAt ||
   (publishedAt == $lastPublishedAt && _id > $lastId)
-)] | order(publishedAt) [0...1]
+)] | order(publishedAt) [0...3]
 {_id, slug, title, publishedAt, description, "imageUrl": mainImage.asset->url, author->{name}}`;
 
 const newsContent = ref<{
@@ -48,9 +48,10 @@ const fetchNextPage = async () => {
 
 const handleFetchNextPage = async () => {
   const result = await fetchNextPage();
-  console.log("articles", articles.value);
+  console.log("articles", articles.value, "articlessss", articles);
+  console.log("result", result);
 
-  articles.value = [...articles.value, ...result.value];
+  articles.value = [...(articles.value || []), ...result.value];
 };
 
 const { data, refresh } = useSanityQuery(query, {
