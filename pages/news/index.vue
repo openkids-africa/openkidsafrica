@@ -87,13 +87,21 @@ if (data.value) {
       </header>
       <ul class="flex flex-col gap-8 lg:gap-12">
         <li v-for="article in articles || data" :key="article._id">
-          <NuxtLink :to="`/news/${article.slug.current}`">
+          <NuxtLink
+            :to="`/news/${article.slug.current}`"
+            :aria-current-value="article.title"
+          >
             <ArticleCard :article="article" />
           </NuxtLink>
         </li>
       </ul>
       <div class="flex justify-center py-12">
-        <button v-if="lastId !== null" class="btn" @click="handleFetchNextPage">
+        <button
+          :aria-label="isLoading ? 'Loading...' : 'Load More'"
+          v-if="lastId !== null"
+          class="btn"
+          @click="handleFetchNextPage"
+        >
           <Loader class="icon animate-spin" v-if="isLoading" />
           <span v-else class="text"> Load More </span>
         </button>

@@ -34,7 +34,12 @@ const { links, socialLinks } = useSiteNav();
               }))"
               class="social-links__item"
             >
-              <a :href="link.url" target="_blank" rel="noopener noreferrer">
+              <a
+                :aria-label="link.name"
+                :href="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <TwitterIcon
                   v-if="link.name == 'twitter'"
                   class="icon social-links__icon"

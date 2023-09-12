@@ -59,6 +59,7 @@ useHead({
         <a
           href="mailto:openkidsafrica@gmail.com"
           class="btn btn--primary !w-fit"
+          :aria-label="`Email OpenKids Africa`"
         >
           <MailIcon class="icon" />
           <span class="text"> Email Us </span>

@@ -34,6 +34,7 @@ defineProps<{
         </ul>
         <div class="action-cont">
           <a
+            :aria-label="sectionData.donateLink?.text || 'Donate'"
             v-if="sectionData.donateLink"
             :href="sectionData.donateLink.url"
             target="_blank"
@@ -50,6 +51,7 @@ defineProps<{
             v-if="sectionData.contactCTA"
             to="/contact"
             class="btn btn--secondary"
+            :aria-label="sectionData.contactCTA?.text || 'Contact Us'"
           >
             <HeartHandshakeIcon
               v-if="sectionData.contactCTA?.id === 'partner'"
