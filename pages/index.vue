@@ -10,7 +10,7 @@ import {
 } from "@heroicons/vue/24/solid";
 import { HelpingHandIcon, HeartHandshakeIcon } from "lucide-vue-next";
 
-const { lightText, sticky } = useSiteHeader();
+const { lightText, sticky, scrolled } = useSiteHeader();
 
 const content = ref({
   heroSection: {
@@ -99,10 +99,10 @@ const content = ref({
   },
 });
 
-onMounted(() => {
-  lightText.value = true;
-  sticky.value = false;
-});
+// onMounted(() => {
+lightText.value = true;
+sticky.value = false;
+// });
 
 useHead({
   title: "Home",

@@ -1,4 +1,5 @@
 export const useSiteHeader = () => {
+  const route = useRoute();
   const scrolled = useState("scrolled", () => false);
   const lightText = useState("lightText", () => false);
   const sticky = useState("sticky", () => false);
@@ -29,11 +30,27 @@ export const useSiteHeader = () => {
     });
   };
 
+  const resetHeaderState = (path: string) => {
+    console.log(path);
+    if (path == "/") return;
+    sticky.value = true;
+    lightText.value = false;
+  };
+
+  resetHeaderState(route.path);
+  watch(
+    () => route.path,
+    (value) => {
+      resetHeaderState(value);
+    },
+  );
+
   return {
     scrolled,
     sticky,
     lightText,
     siteHeader,
     handleAddClassOnScroll,
+    resetHeaderState,
   };
 };

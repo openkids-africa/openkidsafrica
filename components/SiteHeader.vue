@@ -3,6 +3,10 @@ const { handleAddClassOnScroll, lightText, sticky, scrolled, siteHeader } =
   useSiteHeader();
 
 handleAddClassOnScroll();
+
+const route = useRoute();
+console.log("path", route.path);
+if (route.path == "/") lightText.value = true;
 </script>
 <template>
   <header

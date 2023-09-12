@@ -30,7 +30,12 @@ defineProps<HeroProps>();
         </ScrollDownBtn>
       </div>
       <div class="site-hero__img-cont img-cont">
-        <img :src="images[1].src" :alt="images[1].alt" />
+        <img
+          width="100%"
+          height="832px"
+          :src="images[1].src"
+          :alt="images[1].alt"
+        />
       </div>
       <!-- <SiteHeroImagesGrid :images="images" /> -->
     </div>

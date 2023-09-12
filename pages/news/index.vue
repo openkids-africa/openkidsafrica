@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Loader } from "lucide-vue-next";
-import {} from "lucide-vue-next";
 const query = groq`
 *[_type == "post" && (
   publishedAt > $lastPublishedAt ||
@@ -49,6 +48,8 @@ const fetchNextPage = async () => {
 
 const handleFetchNextPage = async () => {
   const result = await fetchNextPage();
+  console.log("articles", articles.value);
+
   articles.value = [...articles.value, ...result.value];
 };
 
@@ -102,7 +103,7 @@ if (data.value) {
 </template>
 <style scoped>
 .page-header {
-  @apply pb-0;
+  @apply py-0;
 }
 .page-header__text-cont {
   @apply min-h-[20rem];
