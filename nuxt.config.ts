@@ -11,9 +11,12 @@ export default defineNuxtConfig({
   build: {
     transpile: ["gsap"],
   },
-  modules: ["@nuxtjs/sanity"],
+  modules: ["@nuxtjs/sanity", "@nuxt/image"],
   sanity: {
     projectId: "xhwhqbhq",
     apiVersion: "2023-09-08",
+  },
+  image: {
+    domains: ["cdn.sanity.io"],
   },
 });
