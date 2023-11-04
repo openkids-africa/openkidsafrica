@@ -76,4 +76,27 @@ declare global {
       name: string;
     };
   }
+
+  /* Represents amount options for donate form */
+  type DonateAmountOption = number | string;
+
+  /* Represents donate form options */
+  interface DonateOptions {
+    mode: "once" | "monthly";
+    onceAmounts: DonateAmountOption[];
+    monthlyAmounts: DonateAmountOption[];
+  }
+
+  /* Represents donate form data */
+  interface DonateFormData {
+    mode: "once" | "monthly";
+    amountOption: number | string;
+    amount: number;
+  }
+
+  /** FAQ */
+  interface FAQ {
+    topic: string;
+    content: string;
+  }
 }
