@@ -93,10 +93,10 @@ declare global {
     amountOption: number | string;
     amount: number;
   }
+}
 
-  /** FAQ */
-  interface FAQ {
-    topic: string;
-    content: string;
-  }
+/** FAQ */
+interface FAQ {
+  topic: string;
+  content: string;
 }

@@ -13,6 +13,10 @@ export const useSiteNav = () => {
       path: "/news",
     },
     {
+      name: "Donate",
+      path: "/donate",
+    },
+    {
       name: "Contact",
       path: "/contact",
     },
