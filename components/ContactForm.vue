@@ -70,7 +70,7 @@ const submitForm = () => {
         ></textarea>
       </div>
       <div class="action-cont !justify-start">
-        <button type="submit" class="btn btn--primary">
+        <button :disabled="isLoading" type="submit" class="btn btn--primary">
           <LoaderIcon v-if="isLoading" class="icon animate-spin" />
           <SendIcon v-else class="icon" />
           <span class="text">

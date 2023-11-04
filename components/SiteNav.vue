@@ -9,6 +9,7 @@ const toggleActive = () => {
 };
 
 router.afterEach(() => {
+  console.log("routed");
   navActive.value = false;
 });
 </script>
