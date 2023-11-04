@@ -13,6 +13,45 @@ li {
   @apply list-none;
 }
 
+@layer components {
+  /* ICON */
+  .icon {
+    @apply h-6 w-6;
+  }
+
+  /* BUTTON */
+  .btn {
+    @apply flex rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700 dark:border-orange-200 dark:bg-orange-200 dark:text-orange-600 dark:shadow-white dark:active:shadow-orange-400;
+  }
+
+  .btn--secondary {
+    @apply border border-purple-700 bg-purple-600  text-purple-100 shadow-inner shadow-purple-400  active:shadow-purple-700 dark:border-purple-200 dark:bg-purple-200 dark:text-purple-600 dark:shadow-purple-50 dark:active:shadow-purple-400;
+  }
+
+  .btn--alt {
+    @apply border-orange-300 bg-orange-200 text-orange-700 shadow-orange-50 active:shadow-orange-300;
+  }
+
+  .btn--alt.btn--active {
+    @apply border-orange-700  bg-orange-600 text-orange-100 shadow-orange-400 active:shadow-orange-700;
+  }
+
+  .btn:has(> .icon) {
+    @apply flex gap-2 p-3;
+  }
+
+  /* IMG CONT */
+  .img-cont {
+    /* @apply r elative; */
+  }
+
+  .img-cont > img {
+    @apply h-full w-full object-cover;
+  }
+
+  /* IMG CONT */
+}
+
 .site-section {
   @apply p-4 py-20;
 }
@@ -36,34 +75,6 @@ li {
 .site-section__text-cont {
   @apply flex flex-col gap-4;
 }
-/* ICON */
-.icon {
-  @apply h-6 w-6;
-}
-
-/* BUTTON */
-.btn {
-  @apply rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700 dark:border-orange-200 dark:bg-orange-200 dark:text-orange-600 dark:shadow-white dark:active:shadow-orange-400;
-}
-
-.btn--secondary {
-  @apply border border-purple-700 bg-purple-600  text-purple-100 shadow-inner shadow-purple-400  active:shadow-purple-700 dark:border-purple-200 dark:bg-purple-200 dark:text-purple-600 dark:shadow-purple-50 dark:active:shadow-purple-400;
-}
-
-.btn:has(> .icon) {
-  @apply flex gap-2 p-3;
-}
-
-/* IMG CONT */
-.img-cont {
-  /* @apply r elative; */
-}
-
-.img-cont > img {
-  @apply h-full w-full object-cover;
-}
-
-/* IMG CONT */
 
 /* ILLUSTRATION CONT */
 .illustration-cont > svg {
@@ -134,6 +145,18 @@ li {
 
 .form-control {
   @apply flex flex-col gap-2;
+}
+
+.form-control--radio {
+  @apply btn btn--alt relative items-center;
+}
+
+.form-control--radio > .form-radio {
+  @apply absolute opacity-0;
+}
+
+.form-control--radio:has(.form-radio:checked) {
+  @apply btn btn--active;
 }
 
 .form-group {
