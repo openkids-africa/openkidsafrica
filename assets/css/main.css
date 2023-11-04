@@ -21,7 +21,7 @@ li {
 
   /* BUTTON */
   .btn {
-    @apply flex rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700 dark:border-orange-200 dark:bg-orange-200 dark:text-orange-600 dark:shadow-white dark:active:shadow-orange-400;
+    @apply flex justify-center rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700 dark:border-orange-200 dark:bg-orange-200 dark:text-orange-600 dark:shadow-white dark:active:shadow-orange-400;
   }
 
   .btn--secondary {
@@ -29,16 +29,35 @@ li {
   }
 
   .btn--alt {
-    @apply border-orange-300 bg-orange-200 text-orange-700 shadow-orange-50 active:shadow-orange-300;
+    @apply border-orange-200 bg-orange-100 text-orange-600 shadow-orange-50 active:shadow-orange-200;
   }
 
   .btn--alt.btn--active {
     @apply border-orange-700  bg-orange-600 text-orange-100 shadow-orange-400 active:shadow-orange-700;
   }
 
+  .btn:disabled {
+    @apply pointer-events-none cursor-not-allowed opacity-60 grayscale;
+  }
+
   .btn:has(> .icon) {
     @apply flex gap-2 p-3;
   }
+
+  /* BTN GROUP */
+  .btn-group {
+    @apply flex flex-row !gap-0;
+  }
+
+  .btn-group > .btn:first-of-type {
+    @apply rounded-r-none;
+  }
+
+  .btn-group > .btn:last-of-type {
+    @apply rounded-l-none;
+  }
+
+  /* END BTN GROUP */
 
   /* IMG CONT */
   .img-cont {
@@ -139,8 +158,12 @@ li {
 /* END ABSTRACT ILLUSTRATION */
 
 /* FORM */
+.site-form {
+  @apply rounded-3xl border-2 border-slate-200 p-6 ring-8 ring-slate-50 ring-offset-8 ring-offset-slate-100;
+}
+
 .site-form > .wrapper {
-  @apply flex flex-col gap-4;
+  @apply flex flex-col gap-6;
 }
 
 .form-control {
@@ -157,6 +180,10 @@ li {
 
 .form-control--radio:has(.form-radio:checked) {
   @apply btn btn--active;
+}
+
+.form-control--radio .form-input {
+  @apply border-none bg-transparent p-0 text-orange-100 shadow-none outline-none ring-0 placeholder:text-orange-300;
 }
 
 .form-group {
@@ -181,3 +208,53 @@ li {
   @apply py-5;
 }
 /* END FORM */
+
+/* DONATE FORM */
+.donate-form__amount-group {
+  @apply flex flex-row flex-wrap gap-2;
+}
+
+.donate-form__amount-group > .form-control {
+  @apply min-w-[18rem];
+}
+/* END DONATE FORM */
+
+/* FAQ */
+/* Style for the wrapper */
+.faq {
+  @apply rounded-2xl border border-slate-100 p-5;
+}
+
+.faq .wrapper {
+  @apply flex items-center justify-between;
+}
+
+/* Style for the summary */
+.faq__summary {
+  @apply block cursor-pointer;
+}
+
+/* Style for the topic */
+.faq__topic {
+  @apply font-heading text-xl font-semibold;
+}
+
+/* Style for the icon container */
+.faq__icon-cont {
+  @apply flex items-center space-x-2 transition;
+}
+
+.faq[open] .faq__icon-cont {
+  @apply rotate-180 transform;
+}
+
+/* Style for the content */
+.faq__content {
+  @apply mt-2 hidden;
+}
+
+.faq[open] .faq__content {
+  @apply block;
+}
+
+/* END FAQ */

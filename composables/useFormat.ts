@@ -17,7 +17,20 @@ export const useFormat = () => {
     }
   };
 
+  const formatNumber = (value: number, locale: string = "en-US") => {
+    try {
+      const formatter = new Intl.NumberFormat(locale, {
+        minimumFractionDigits: 0,
+      });
+      return formatter.format(value);
+    } catch (error) {
+      console.error(`Error formatting number: ${error}`);
+      return value.toString(); // Fallback to the original value if formatting fails
+    }
+  };
+
   return {
     formatCurrency,
+    formatNumber,
   };
 };
