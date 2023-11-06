@@ -16,35 +16,35 @@ const [emblaNode] = emblaCarouselVue(
 
 const images = ref([
   {
-    src: "/assets/images/photos/photo (1).jpg",
+    src: "/assets/images/photos/photo-1.jpg",
     alt: "Kids Image 1",
   },
   {
-    src: "/assets/images/photos/photo (1).jpeg",
+    src: "/assets/images/photos/photo-1.jpeg",
     alt: "Kids Image 1",
   },
   {
-    src: "/assets/images/photos/photo (2).jpg",
+    src: "/assets/images/photos/photo-2.jpg",
     alt: "Kids Image 2",
   },
   {
-    src: "/assets/images/photos/photo (2).jpeg",
+    src: "/assets/images/photos/photo-2.jpeg",
     alt: "Kids Image 2",
   },
   {
-    src: "/assets/images/photos/photo (4).jpg",
+    src: "/assets/images/photos/photo-4.jpg",
     alt: "Kids Image 3",
   },
   {
-    src: "/assets/images/photos/photo (5).jpg",
+    src: "/assets/images/photos/photo-5.jpg",
     alt: "Kids Image 3",
   },
   {
-    src: "/assets/images/photos/photo (6).jpg",
+    src: "/assets/images/photos/photo-6.jpg",
     alt: "Kids Image 3",
   },
   {
-    src: "/assets/images/photos/photo (7).jpg",
+    src: "/assets/images/photos/photo-7.jpg",
     alt: "Kids Image 3",
   },
 ]);

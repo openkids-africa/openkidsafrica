@@ -7,11 +7,11 @@ const programsContent = ref({
       "OpenKids Africa is reaching out to kids and schools in remote African areas using open educational resources.",
     images: [
       {
-        src: "/assets/images/photos/photo (1).jpg",
+        src: "/assets/images/photos/photo-1.jpg",
         alt: "Hero Image 1",
       },
       {
-        src: "/assets/images/photos/photo (1).jpeg",
+        src: "/assets/images/photos/photo-1.jpeg",
         alt: "Hero Image 2",
       },
       {
@@ -19,11 +19,11 @@ const programsContent = ref({
         color: "orange",
       },
       {
-        src: "/assets/images/photos/photo (2).jpg",
+        src: "/assets/images/photos/photo-2.jpg",
         alt: "Hero Image 3",
       },
       {
-        src: "/assets/images/photos/photo (2).jpeg",
+        src: "/assets/images/photos/photo-2.jpeg",
         alt: "Hero Image 4",
       },
       {
