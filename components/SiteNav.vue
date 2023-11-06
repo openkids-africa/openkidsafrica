@@ -18,11 +18,11 @@ router.afterEach(() => {
     <div class="wrapper">
       <ul class="site-nav__links">
         <li v-for="link in links" :key="link.name" class="site-nav__link">
-          <NuxtLink :to="link.path">
-            <button v-if="link.name.toLowerCase() == 'contact'" class="btn">
-              Get In Touch
-            </button>
-            <template v-else>{{ link.name }}</template>
+          <NuxtLink
+            :class="`${link.name.toLowerCase() == 'contact' ? 'btn' : ''}`"
+            :to="link.path"
+          >
+            {{ link.name }}
           </NuxtLink>
         </li>
       </ul>
@@ -60,7 +60,7 @@ router.afterEach(() => {
 }
 
 .site-nav__link {
-  @apply py-1 hover:text-purple-800 dark:hover:text-purple-100 lg:overflow-visible;
+  @apply py-1 hover:text-purple-500 dark:hover:text-purple-100 lg:overflow-visible;
 }
 
 .site-nav__link,

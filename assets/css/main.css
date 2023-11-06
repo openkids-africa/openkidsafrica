@@ -86,7 +86,7 @@ li {
 }
 
 .site-section__caption {
-  @apply font-heading text-3xl font-extrabold lg:text-4xl;
+  @apply font-heading text-3xl font-extrabold lg:text-5xl;
 }
 
 .site-section__text-cont {

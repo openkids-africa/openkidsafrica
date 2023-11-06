@@ -1,7 +1,8 @@
 <script setup lang="ts">
 interface HeroProps {
   caption: string;
-  subtext: string;
+  subtext?: string;
+  subcaption?: string;
   images: {
     src?: string;
     alt?: string;
@@ -15,11 +16,18 @@ defineProps<HeroProps>();
   <header class="site-hero site-section">
     <div class="wrapper">
       <div class="site-hero__text-cont">
-        <h1 class="site-hero__caption">
+        <span v-if="subtext" class="site-hero__subtext">
+          {{ subtext }}
+        </span>
+        <h1
+          :class="`site-hero__caption ${
+            !subcaption ? 'site-hero__caption--md' : ''
+          }`"
+        >
           {{ caption }}
         </h1>
-        <p class="site-hero__subtext">
-          {{ subtext }}
+        <p v-if="subcaption" class="site-hero__subcaption">
+          {{ subcaption }}
         </p>
 
         <ScrollDownBtn>
@@ -52,7 +60,11 @@ defineProps<HeroProps>();
 }
 
 .site-hero__text-cont {
-  @apply relative -z-10 flex max-w-3xl flex-col gap-2 lg:col-span-4 lg:ml-auto;
+  @apply relative -z-10 flex max-w-3xl flex-col gap-4 lg:col-span-4 lg:ml-auto;
+}
+
+.site-hero__text-cont:has(.site-hero__caption--md) {
+  @apply lg:col-span-5 lg:ml-0;
 }
 
 .site-hero__text-cont > .scroll-down-btn {
@@ -60,10 +72,19 @@ defineProps<HeroProps>();
 }
 
 .site-hero__caption {
-  @apply font-heading text-5xl font-black text-purple-100 dark:text-purple-100  lg:text-7xl;
+  @apply font-heading text-5xl font-black text-slate-100 dark:text-slate-100  lg:text-7xl;
 }
+
+.site-hero__caption--md {
+  @apply text-4xl lg:text-6xl;
+}
+
+.site-hero__subcaption {
+  @apply text-xl text-slate-50 dark:text-slate-200;
+}
+
 .site-hero__subtext {
-  @apply text-xl text-purple-50 dark:text-purple-200;
+  @apply text-xl text-slate-50 dark:text-slate-200;
 }
 
 .site-hero__img-cont {
@@ -72,7 +93,8 @@ defineProps<HeroProps>();
 
 .site-hero__img-cont::before {
   content: "";
-  @apply absolute left-0 top-0 h-full w-full bg-gradient-to-tl from-transparent via-purple-600/90 to-purple-800/90;
+  /* @apply absolute left-0 top-0 h-full w-full bg-gradient-to-tl from-transparent via-purple-600/90 to-purple-800/90; */
+  @apply absolute left-0 top-0 h-full w-full bg-gradient-to-tl from-transparent via-slate-900/90 to-slate-950/90;
 }
 /* END SITE HERO */
 .site-hero__text-cont > .scroll-down-btn {

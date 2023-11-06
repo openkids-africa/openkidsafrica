@@ -14,16 +14,18 @@ const { lightText, sticky, scrolled } = useSiteHeader();
 
 const content = ref({
   heroSection: {
-    caption: "Welcome to OpenKids Africa!",
-    subtext:
-      "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country. Therefore, we leverage open educational resources to provide quality information technology education and materials for kids and schools in rural communities in Africa.",
+    caption:
+      "Connecting every African child to a digital future through open educational resources",
+    subtext: "Welcome to OpenKids Africa",
+    // subcaption:
+    //   "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country. Therefore, we leverage open educational resources to provide quality information technology education and materials for kids and schools in rural communities in Africa.",
     images: [
       {
-        src: "/assets/images/kids-image-1.jpg",
+        src: "/assets/images/photos/photo (1).jpg",
         alt: "Hero Image 1",
       },
       {
-        src: "/assets/images/kids-image-2.jpg",
+        src: "/assets/images/photos/photo (1).jpeg",
         alt: "Hero Image 2",
       },
       {
@@ -31,17 +33,24 @@ const content = ref({
         color: "purple",
       },
       {
-        src: "/assets/images/kids-image-3.jpg",
+        src: "/assets/images/photos/photo (2).jpg",
         alt: "Hero Image 3",
       },
       {
-        src: "/assets/images/kids-image-4.jpg",
+        src: "/assets/images/photos/photo (2).jpeg",
         alt: "Hero Image 4",
       },
       {
         type: "block",
         color: "orange",
       },
+    ],
+  },
+  welcomeSection: {
+    title: "Welcome to Openkids Africa",
+    text: [
+      "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country.",
+      "Therefore, we leverage open educational resources to provide quality information technology education and materials for kids and schools in rural communities in Africa.",
     ],
   },
   whatWeDoSection: {
@@ -114,6 +123,20 @@ useHead({
     :subtext="content.heroSection.subtext"
     :images="content.heroSection.images"
   />
+  <section class="site-section welcome-section">
+    <div class="wrapper">
+      <header class="site-section__header site-section__header--left">
+        <h2 class="site-section__caption">
+          {{ content.welcomeSection.title }}
+        </h2>
+      </header>
+      <div class="site-section__text-cont">
+        <p v-for="(text, i) in content.welcomeSection.text" :key="i">
+          {{ text }}
+        </p>
+      </div>
+    </div>
+  </section>
   <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
@@ -145,5 +168,9 @@ useHead({
 <style scoped>
 .card-list {
   @apply grid gap-8 lg:grid-cols-3;
+}
+
+.welcome-section {
+  @apply bg-purple-200 text-purple-900;
 }
 </style>
