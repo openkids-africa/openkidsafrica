@@ -46,7 +46,7 @@ useHead({
     {
       key: "og-image",
       property: "og:image",
-      content: `https://openkidsafrica.netlify.app/assets/images/kids-image-3.jpg`, // Update with OpenKids Africa's image URL
+      content: `https://openkidsafrica.netlify.app/assets/images/photos/photo (4).jpg`, // Update with OpenKids Africa's image URL
     },
     //Twitter
     {
@@ -72,7 +72,7 @@ useHead({
     {
       key: "twitter-image",
       property: "twitter:image",
-      content: `https://openkidsafrica.netlify.app/assets/images/kids-image-3.jpg`, // Update with OpenKids Africa's image URL
+      content: `https://openkidsafrica.netlify.app/assets/images/photos/photo (4).jpg`, // Update with OpenKids Africa's image URL
     },
   ],
   link: [
