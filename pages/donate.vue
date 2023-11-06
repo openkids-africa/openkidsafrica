@@ -9,8 +9,8 @@ const donateContent = ref({
       "Support our projects and help us reach more children in Africa. Your donation will help us provide education, food, and shelter to children in need.",
     images: [
       {
-        src: "/assets/images/svg/Africa.svg",
-        alt: "Contact Hero",
+        src: "/assets/images/svg/Donate.svg",
+        alt: "Donate Illustration",
       },
     ],
   },
