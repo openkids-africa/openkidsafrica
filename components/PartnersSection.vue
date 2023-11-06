@@ -63,7 +63,9 @@ defineProps<{
         </div>
       </div>
 
-      <IllustrationsWorldMap class="partner-section__illustration" />
+      <slot name="illustration">
+        <IllustrationsWorldMap class="partner-section__illustration" />
+      </slot>
     </div>
   </section>
 </template>

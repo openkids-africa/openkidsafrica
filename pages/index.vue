@@ -136,7 +136,11 @@ useHead({
       <!-- <SiteHeroImagesGrid :images="content.heroSection.images" /> -->
     </div>
   </section>
-  <PartnersSection :section-data="content.partnersSection" />
+  <PartnersSection :section-data="content.partnersSection">
+    <template #illustration>
+      <SiteSlideshow />
+    </template>
+  </PartnersSection>
 </template>
 <style scoped>
 .card-list {
