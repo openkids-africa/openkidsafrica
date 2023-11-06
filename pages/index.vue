@@ -161,7 +161,7 @@ useHead({
   </section>
   <PartnersSection :section-data="content.partnersSection">
     <template #illustration>
-      <SiteSlideshow />
+      <SiteSlideshow class="m-auto max-w-7xl" />
     </template>
   </PartnersSection>
 </template>
