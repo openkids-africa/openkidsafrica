@@ -25,7 +25,7 @@ const content = ref({
         alt: "Hero Image 1",
       },
       {
-        src: "/assets/images/photos/photo-1.jpeg",
+        src: "/assets/images/photos/photo-3.jpg",
         alt: "Hero Image 2",
       },
       {

@@ -1,6 +1,10 @@
 export const useSiteNav = () => {
   const links = useState("links", () => [
     {
+      name: "Home",
+      path: "/",
+    },
+    {
       name: "About Us",
       path: "/about",
     },

@@ -261,7 +261,11 @@ useHead({
       </ul>
     </div>
   </section>
-  <PartnersSection :section-data="aboutContent.partnersSection" />
+  <PartnersSection :section-data="aboutContent.partnersSection">
+    <template #illustration>
+      <SiteSlideshow class="m-auto max-w-7xl" />
+    </template>
+  </PartnersSection>
 
   <!-- <section class="boxes-container" ref="main">
     <h1>Use the button to toggle a Timeline</h1>

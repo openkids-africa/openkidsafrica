@@ -1,7 +1,7 @@
 <template>
   <figure class="site-logo">
     <NuxtImg
-      src="/favicon-32x32.png"
+      src="/android-chrome-512x512.png"
       alt="Openkids Africa Logo"
       width="42"
       height="42"
