@@ -92,11 +92,7 @@ const images = ref([
       <div class="embla__container">
         <div v-for="(image, index) in images" :key="index" class="embla__slide">
           <figure class="img-cont">
-            <NuxtImg
-              :src="image.src"
-              :alt="image.alt"
-              class="embla__slide__img"
-            />
+            <NuxtImg :src="image.src" :alt="image.alt" class="embla__img" />
           </figure>
         </div>
       </div>
@@ -122,9 +118,7 @@ const images = ref([
             class="embla__dot btn btn--alt"
             :class="{ 'btn--active': index === activeSlide }"
             @click="emblaAPI?.scrollTo(index)"
-          >
-            <span class="sr-only"> Go to slide {{ index + 1 }} </span>
-          </button>
+          ></button>
         </li>
       </ul>
     </div>
@@ -136,7 +130,7 @@ const images = ref([
 }
 
 .embla__viewport {
-  @apply relative overflow-hidden;
+  @apply relative overflow-hidden rounded-2xl;
 }
 
 .embla__container {
@@ -144,19 +138,27 @@ const images = ref([
 }
 .embla__slide {
   flex: 0 0 100%;
-  @apply max-h-[42rem] min-w-0 max-w-full;
+  @apply mx-4 max-h-[42rem] min-w-0 max-w-full;
 }
 
 .embla__button {
-  @apply absolute top-1/2 z-10 -translate-y-1/2;
+  @apply absolute top-1/2 z-10 -translate-y-1/2 scale-75 transform lg:scale-100;
 }
 
 .embla__prev {
-  @apply left-12;
+  @apply left-4;
 }
 
 .embla__next {
-  @apply right-12;
+  @apply right-4;
+}
+
+.embla__dot {
+  @apply h-3 w-3 rounded-full p-0 lg:h-5 lg:w-5;
+}
+
+.embla__img {
+  @apply rounded-3xl;
 }
 
 .img-cont {
