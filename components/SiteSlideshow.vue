@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import emblaCarouselVue from "embla-carousel-vue";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
 
 const [emblaNode, emblaAPI] = emblaCarouselVue(
   {
@@ -98,21 +98,17 @@ const images = ref([
       </div>
       <button
         @click="scrollPrev"
-        class="embla__button btn btn--secondary embla__prev"
+        class="embla__button btn btn--ghost embla__prev"
       >
         <ChevronLeftIcon class="icon" />
-        <span class="text"> Prev </span>
       </button>
       <button
         @click="scrollNext"
-        class="embla__button btn btn--secondary embla__next"
+        class="embla__button btn btn--ghost embla__next"
       >
-        <span class="text"> Next </span>
         <ChevronRightIcon class="icon" />
       </button>
-      <ul
-        class="embla__dots absolute bottom-12 left-1/2 flex -translate-x-1/2 gap-2"
-      >
+      <ul class="embla__dots">
         <li v-for="(image, index) in images" :key="index">
           <button
             class="embla__dot btn btn--alt"
@@ -142,15 +138,19 @@ const images = ref([
 }
 
 .embla__button {
-  @apply absolute top-1/2 z-10 -translate-y-1/2 scale-75 transform lg:scale-100;
+  @apply absolute top-1/2 z-10 -translate-y-1/2 text-white hover:text-orange-600;
 }
 
 .embla__prev {
-  @apply left-4;
+  @apply left-3;
 }
 
 .embla__next {
-  @apply right-4;
+  @apply right-3;
+}
+
+.embla__dots {
+  @apply absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2;
 }
 
 .embla__dot {

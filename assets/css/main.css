@@ -34,6 +34,10 @@ li {
     @apply border-orange-700  bg-orange-600 text-orange-100 shadow-orange-400 active:shadow-orange-700;
   }
 
+  .btn--ghost {
+    @apply border-none bg-transparent text-orange-600 shadow-none shadow-orange-50 hover:bg-orange-100 active:shadow-inner active:shadow-orange-200;
+  }
+
   .btn:disabled {
     @apply pointer-events-none cursor-not-allowed opacity-60 grayscale;
   }
