@@ -66,7 +66,7 @@ useHead({
         </a>
       </div>
       <div class="page-header__media-cont">
-        <img
+        <NuxtImg
           :src="contactContent.heroSection.images[0].src"
           :alt="contactContent.heroSection.images[0].alt"
           class="abstract-illustration"

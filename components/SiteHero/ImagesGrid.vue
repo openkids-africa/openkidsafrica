@@ -25,7 +25,7 @@ defineProps({
         v-if="image.type === 'block'"
         :class="`${image.color} ${image.type}`"
       ></div>
-      <img v-else :src="image.src" :alt="image.alt" />
+      <NuxtImg else :src="image.src" :alt="image.alt" />
     </div>
   </div>
 </template>

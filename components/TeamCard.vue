@@ -32,7 +32,7 @@ defineProps<{
           i % 4 === 0 ? 1 : (i % 4) + 1
         }).svg');`"
       >
-        <img :src="member.image" :alt="member.name" />
+        <NuxtImg :src="member.image" :alt="member.name" />
       </div>
     </header>
     <ul class="team-card__socials">
@@ -69,11 +69,11 @@ defineProps<{
 }
 
 .team-card__img-cont {
-  @apply mt-20 flex h-72 lg:h-56  items-end  rounded-3xl bg-purple-950 bg-cover;
+  @apply mt-20 flex h-72 items-end  rounded-3xl  bg-purple-950 bg-cover lg:h-56;
 }
 
 .team-card__img-cont > img {
-  @apply h-96 lg:h-80 rounded-3xl object-top;
+  @apply h-96 rounded-3xl object-top lg:h-80;
 }
 
 .team-card__socials {

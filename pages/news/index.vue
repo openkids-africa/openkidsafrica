@@ -86,7 +86,7 @@ if (data.value) {
         </p>
       </div>
       <div class="page-header__media-cont">
-        <img
+        <NuxtImg
           v-if="newsContent.heroSection?.images"
           :src="newsContent.heroSection?.images[0].src"
           :alt="newsContent.heroSection?.images[0].alt"

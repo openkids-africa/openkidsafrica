@@ -25,7 +25,7 @@ defineProps<{
         </div>
       </header>
       <figure class="article-card__img-cont img-cont">
-        <img
+        <NuxtImg
           :src="article.imageUrl + '?h=200&w=400&fit=crop'"
           width="400"
           height="200"

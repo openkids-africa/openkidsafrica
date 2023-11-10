@@ -38,7 +38,7 @@ defineProps<HeroProps>();
         </ScrollDownBtn>
       </div>
       <div class="site-hero__img-cont img-cont">
-        <img
+        <NuxtImg
           width="100%"
           height="832px"
           :src="images[1].src"
