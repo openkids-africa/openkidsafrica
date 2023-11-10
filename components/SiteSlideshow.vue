@@ -122,7 +122,7 @@ const images = ref([
 </template>
 <style scoped>
 .embla {
-  @apply py-24;
+  @apply w-full py-24;
 }
 
 .embla__viewport {
