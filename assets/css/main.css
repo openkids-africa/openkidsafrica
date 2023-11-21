@@ -93,6 +93,10 @@ li {
   @apply font-heading text-3xl font-extrabold lg:text-5xl;
 }
 
+.site-section__subtext {
+  @apply text-lg lg:text-xl;
+}
+
 .site-section__text-cont {
   @apply flex flex-col gap-4;
 }
@@ -127,6 +131,10 @@ li {
 
 .page-header__caption {
   @apply font-heading text-4xl font-bold lg:text-6xl;
+}
+
+.page-header__subtext {
+  @apply text-lg lg:text-xl;
 }
 
 .page-header__media-cont {

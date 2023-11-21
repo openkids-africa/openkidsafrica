@@ -131,7 +131,11 @@ useHead({
         </h2>
       </header>
       <div class="site-section__text-cont">
-        <p v-for="(text, i) in content.welcomeSection.text" :key="i">
+        <p
+          class="site-section__subtext"
+          v-for="(text, i) in content.welcomeSection.text"
+          :key="i"
+        >
           {{ text }}
         </p>
       </div>

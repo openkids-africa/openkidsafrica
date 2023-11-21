@@ -28,7 +28,7 @@ defineProps<{
             class="partners__item"
           >
             <div class="img-cont h-40 w-40">
-              <NuxtImg src="partner.logo" :alt="partner.name" />
+              <NuxtImg :src="partner.logo" :alt="partner.name" />
             </div>
           </li>
         </ul>

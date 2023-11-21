@@ -80,7 +80,7 @@ if (data.value) {
         </h1>
         <p
           v-for="text in newsContent.heroSection.text"
-          class="page-header__text"
+          class="page-header__subtext"
         >
           {{ text }}
         </p>

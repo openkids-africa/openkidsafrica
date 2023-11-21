@@ -180,7 +180,7 @@ useHead({
         <p
           v-for="(text, i) in aboutContent.journeySection.text"
           :key="i"
-          class="site-section__text"
+          class="site-section__subtext"
         >
           {{ text }}
         </p>
