@@ -6,13 +6,13 @@ const { calculateDonationImpact } = useDonate();
 const isLoading = ref(false);
 
 const donateOptions = ref<DonateOptions>({
-  mode: "once",
+  mode: "monthly",
   onceAmounts: [50, 100, 200, 500, 1000, "custom"],
   monthlyAmounts: [25, 50, 100, 200, 500, "custom"],
 });
 
 const formData = ref<DonateFormData>({
-  mode: "once",
+  mode: "monthly",
   amountOption: 50,
   amount: 50,
 });

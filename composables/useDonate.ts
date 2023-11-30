@@ -21,7 +21,7 @@ export const useDonate = () => {
         laptopsDeployed = Math.floor(amount / 50) * 2;
       }
     } else if (mode === "monthly") {
-      studentsEnabled = Math.floor(amount / 4) * 12;
+      studentsEnabled = Math.floor(amount / 2.5) * 12;
 
       if (amount >= 25) {
         laptopsDeployed = Math.floor(amount / 25) * 6;
@@ -31,13 +31,18 @@ export const useDonate = () => {
     const statement =
       `Because of your ${formatCurrency(amount)} ${
         mode === "monthly" ? "monthly " : ""
-      }donation, we can enable ${formatNumber(studentsEnabled)} more students` +
+      }donation,` +
       `${
         laptopsDeployed > 0
-          ? ` and deploy ${formatNumber(laptopsDeployed)} more laptops`
+          ? ` we can make a tangible difference by deploying ${formatNumber(
+              laptopsDeployed,
+            )} additional laptops. This means that `
           : ""
       }` +
-      `${mode === "monthly" ? " every year" : "."}`;
+      `we can enable ${formatNumber(studentsEnabled)} more students` +
+      `${
+        mode === "monthly" ? " every year," : ","
+      } opening up new possibilities and opportunities for their education and future.`;
 
     return { studentsEnabled, laptopsDeployed, statement };
   };

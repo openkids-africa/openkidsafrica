@@ -5,8 +5,7 @@ const { lightText, sticky } = useSiteHeader();
 const donateContent = ref({
   heroSection: {
     caption: "Donate to Openkids Africa",
-    subtext:
-      "Support our projects and help us reach more children in Africa. Your donation will help us provide education, food, and shelter to children in need.",
+    subtext: "Support the Future: Donate Monthly to Empower African Youth",
     images: [
       {
         src: "/assets/images/svg/Donate.svg",
@@ -94,6 +93,22 @@ useHead({
       </div>
     </div>
   </header>
+  <section class="site-section bg-purple-100 text-purple-950">
+    <div class="wrapper">
+      <header class="site-section__header site-section__header--left">
+        <h2 class="site-section__caption">Your impact</h2>
+      </header>
+      <div class="site-section__text-cont">
+        <p class="site-section__subtext">
+          Every month, your contribution plays a pivotal role in shaping the
+          future of African kids, particularly those in rural areas.
+          <br />
+          Your generosity creates a lasting impact, providing essential
+          resources to empower the next generation.
+        </p>
+      </div>
+    </div>
+  </section>
   <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
