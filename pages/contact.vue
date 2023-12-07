@@ -8,9 +8,33 @@ const contactContent = ref({
     subtext:
       "If you would like to get in touch with OpenKids Africa or donate to our projects, email us. We will be happy to get in touch with you.",
     images: [
+      // {
+      //   src: "/assets/images/svg/Africa.svg",
+      //   alt: "Contact Hero",
+      // },
       {
-        src: "/assets/images/svg/Africa.svg",
-        alt: "Contact Hero",
+        src: "/assets/images/photos/photo-1.jpg",
+        alt: "Hero Image 1",
+      },
+      {
+        src: "/assets/images/photos/photo-1.jpeg",
+        alt: "Hero Image 2",
+      },
+      {
+        type: "block",
+        color: "orange",
+      },
+      {
+        src: "/assets/images/photos/photo-2.jpg",
+        alt: "Hero Image 3",
+      },
+      {
+        src: "/assets/images/photos/photo-2.jpeg",
+        alt: "Hero Image 4",
+      },
+      {
+        type: "block",
+        color: "purple",
       },
     ],
   },
@@ -65,13 +89,17 @@ useHead({
           <span class="text"> Email Us </span>
         </a>
       </div>
-      <div class="page-header__media-cont">
+      <SiteHeroImagesGrid
+        class="images-grid programs-header__media-cont"
+        :images="contactContent.heroSection.images"
+      />
+      <!-- <div class="page-header__media-cont">
         <NuxtImg
           :src="contactContent.heroSection.images[0].src"
           :alt="contactContent.heroSection.images[0].alt"
           class="abstract-illustration"
         />
-      </div>
+      </div> -->
     </div>
   </header>
   <section class="site-section">
@@ -84,9 +112,9 @@ useHead({
   </section>
 </template>
 <style scoped>
-.page-header > .wrapper {
+/* .page-header > .wrapper {
   @apply flex-row;
-}
+} */
 
 .abstract-illustration {
   @apply absolute right-[0] top-1/2  h-[130%] w-2/3 -translate-y-[45.5%] max-sm:-right-[30%] md:w-1/2 lg:h-[110%] 2xl:w-auto;

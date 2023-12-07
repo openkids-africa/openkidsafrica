@@ -21,11 +21,8 @@ defineProps({
       :key="i"
       class="site-hero__img-cont img-cont"
     >
-      <div
-        v-if="image.type === 'block'"
-        :class="`${image.color} ${image.type}`"
-      ></div>
-      <NuxtImg else :src="image.src" :alt="image.alt" />
+      <NuxtImg v-if="image.src" :src="image.src" :alt="image.alt" />
+      <div v-else :class="`${image.color} ${image.type}`"></div>
     </div>
   </div>
 </template>

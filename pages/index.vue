@@ -171,7 +171,7 @@ useHead({
 </template>
 <style scoped>
 .card-list {
-  @apply grid gap-8 lg:grid-cols-3;
+  @apply grid gap-8 lg:grid-cols-2;
 }
 
 .welcome-section {

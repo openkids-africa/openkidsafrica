@@ -29,6 +29,26 @@ const donateContent = ref({
       },
     ],
   },
+  partnersSection: {
+    title: "Partner with us",
+    description:
+      "At OpenKids Africa, we believe in the power of collaboration and partnership to make a lasting impact on the lives of African children. By partnering with us, you can contribute to the growth and development of young minds in underserved communities, empowering them with essential digital skills for a brighter future.",
+    // donateLink: {
+    //   text: "Donate",
+    //   url: "http://paypal.me/openkidsafrica",
+    // },
+    contactCTA: {
+      id: "contact",
+      text: "Contact Us",
+    },
+    partners: [
+      {
+        name: "Tech She Can",
+        logo: "/assets/images/partners/tech-she-can-logo.svg",
+      },
+    ],
+    hidePartners: true,
+  },
 });
 onMounted(() => {
   sticky.value = true;
@@ -139,6 +159,11 @@ useHead({
       </ul>
     </div>
   </section>
+  <PartnersSection :section-data="donateContent.partnersSection">
+    <template #illustration>
+      <SiteSlideshow class="m-auto max-w-7xl" />
+    </template>
+  </PartnersSection>
 </template>
 <style scoped>
 .page-header > .wrapper {

@@ -141,6 +141,14 @@ li {
   @apply w-full lg:flex-1;
 }
 
+.page-header:has(.images-grid) > .wrapper {
+  @apply max-w-7xl flex-col gap-8 lg:flex-row;
+}
+
+.page-header:has(.images-grid) .page-header__text-cont {
+  @apply xl:ml-16;
+}
+
 /* END PAGE HEADER */
 
 /* PARTNER SECTION */

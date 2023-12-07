@@ -110,7 +110,7 @@ useHead({
         </p>
       </div>
       <SiteHeroImagesGrid
-        class="programs-header__media-cont"
+        class="images-grid programs-header__media-cont"
         :images="programsContent.heroSection.images"
       />
     </div>
@@ -128,7 +128,7 @@ useHead({
       <p
         v-for="(text, index) in programsContent.whySection.text.slice(1)"
         :key="index"
-        class="site-section__text"
+        class="site-section__text text-lg"
       >
         {{ text }}
       </p>

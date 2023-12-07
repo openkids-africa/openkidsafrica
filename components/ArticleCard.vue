@@ -57,7 +57,7 @@ defineProps<{
 }
 
 .article-card__img-cont {
-  @apply h-[250px] w-[400px] shrink-0 overflow-hidden rounded-xl;
+  @apply h-[250px] w-full shrink-0 overflow-hidden rounded-xl lg:w-[400px];
 }
 
 .article-card__meta {
