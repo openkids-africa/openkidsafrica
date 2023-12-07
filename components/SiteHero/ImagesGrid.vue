@@ -65,7 +65,7 @@ defineProps({
 /* .site-hero__img-cont:has(> .block):nth-of-type(1) .block {
 } */
 .site-hero__img-cont .block.purple {
-  @apply border border-purple-800 bg-purple-700 shadow-inner shadow-purple-400 dark:bg-purple-100;
+  @apply border border-slate-800 bg-slate-700 shadow-inner shadow-slate-400 dark:bg-slate-100;
 }
 
 .site-hero__img-cont .block.orange {

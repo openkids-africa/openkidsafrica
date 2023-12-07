@@ -93,7 +93,7 @@ defineProps<HeroProps>();
 
 .site-hero__img-cont::before {
   content: "";
-  /* @apply absolute left-0 top-0 h-full w-full bg-gradient-to-tl from-transparent via-purple-600/90 to-purple-800/90; */
+  /* @apply absolute left-0 top-0 h-full w-full bg-gradient-to-tl from-transparent via-slate-600/90 to-slate-800/90; */
   @apply absolute left-0 top-0 h-full w-full bg-gradient-to-tl from-transparent via-slate-900/90 to-slate-950/90;
 }
 /* END SITE HERO */

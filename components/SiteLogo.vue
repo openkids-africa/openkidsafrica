@@ -15,6 +15,6 @@
 }
 
 .site-logo__text {
-  @apply font-heading text-xl font-black text-purple-700 dark:!text-purple-100;
+  @apply font-heading text-xl font-black text-slate-700 dark:!text-slate-100;
 }
 </style>

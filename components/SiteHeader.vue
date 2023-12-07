@@ -47,13 +47,13 @@ if (route.path == "/") lightText.value = true;
   @apply text-slate-400;
 }
 .scrolled:deep(.site-logo__text) {
-  @apply text-purple-600;
+  @apply text-slate-600;
 }
 
 .site-header--light-text:deep(.site-nav__links) {
   @apply text-slate-200;
 }
 .site-header.scrolled:deep(.site-nav__links) {
-  @apply text-purple-600 dark:!text-purple-100;
+  @apply text-slate-600 dark:!text-slate-100;
 }
 </style>

@@ -84,7 +84,7 @@ const { links, socialLinks } = useSiteNav();
 }
 
 .site-footer__section:first-of-type {
-  @apply bg-purple-50 dark:bg-purple-900;
+  @apply bg-slate-50 dark:bg-slate-900;
 }
 
 .site-footer__section:nth-of-type(2) {

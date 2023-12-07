@@ -187,7 +187,7 @@ useHead({
       </div>
     </div>
   </section>
-  <section class="site-section bg-purple-950 text-purple-100">
+  <section class="site-section bg-slate-950 text-slate-100">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
@@ -283,7 +283,7 @@ useHead({
 }
 
 .value-card {
-  @apply flex h-full flex-col justify-between gap-4 overflow-clip rounded-3xl border border-purple-600;
+  @apply flex h-full flex-col justify-between gap-4 overflow-clip rounded-3xl border border-slate-600;
 }
 
 .value-card__title {
@@ -291,7 +291,7 @@ useHead({
 }
 
 .value-card__img-cont {
-  @apply h-24 w-full bg-purple-900;
+  @apply h-24 w-full bg-slate-900;
 }
 
 .value-card__img-cont > img {

@@ -175,6 +175,6 @@ useHead({
 }
 
 .welcome-section {
-  @apply bg-purple-200 text-purple-900;
+  @apply bg-slate-200 text-slate-900;
 }
 </style>

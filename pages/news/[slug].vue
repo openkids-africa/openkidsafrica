@@ -76,7 +76,7 @@ const { data, refresh } = useSanityQuery(query, {
 }
 
 .meta__item {
-  @apply inline-flex items-center gap-2 rounded-full bg-purple-50 p-2 font-heading font-semibold text-purple-600;
+  @apply inline-flex items-center gap-2 rounded-full bg-slate-50 p-2 font-heading font-semibold text-slate-600;
 }
 
 .article__cover {

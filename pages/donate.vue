@@ -93,7 +93,7 @@ useHead({
       </div>
     </div>
   </header>
-  <section class="site-section bg-purple-100 text-purple-950">
+  <section class="site-section bg-slate-100 text-slate-950">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
         <h2 class="site-section__caption">Your impact</h2>
