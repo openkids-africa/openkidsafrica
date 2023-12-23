@@ -41,6 +41,14 @@ const donateContent = ref({
       },
     ],
   },
+  videoSection: {
+    title: "Watch our video",
+    text: "Watch our video to learn more about our mission and how you can help.",
+    video: {
+      src: "https://www.youtube.com/embed/2dRdmfElpy4?si=OlEPAb2Jz8D-OBJR",
+      alt: "Video",
+    },
+  },
   faqSection: {
     caption: "Donate FAQs",
     subtext: "Questions About Donating",
@@ -179,6 +187,28 @@ useHead({
       </div>
     </div>
   </header>
+  <section class="site-section video-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ donateContent.videoSection.title }}
+        </h2>
+        <p class="site-section__subtext">
+          {{ donateContent.videoSection.text }}
+        </p>
+      </header>
+
+      <div class="site-section__media-cont">
+        <iframe
+          :src="donateContent.videoSection.video.src"
+          :alt="donateContent.videoSection.video.alt"
+          class="video h-[500px] w-full"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
   <section class="site-section bg-slate-100 text-slate-950">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
