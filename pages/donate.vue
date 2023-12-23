@@ -7,10 +7,36 @@ const donateContent = ref({
     caption: "Donate to Openkids Africa",
     subtext:
       "Support the Future of Children: Donate Monthly to Empower Children and Schools in Rural African Communities.",
+    // images: [
+    //   {
+    //     src: "/assets/images/svg/Donate.svg",
+    //     alt: "Donate Illustration",
+    //   },
+    // ],
     images: [
       {
-        src: "/assets/images/svg/Donate.svg",
-        alt: "Donate Illustration",
+        src: "/assets/images/photos/photo-23.jpg",
+        alt: "Hero Image 1",
+      },
+      {
+        type: "block",
+        color: "orange",
+      },
+      {
+        src: "/assets/images/photos/photo-24.jpg",
+        alt: "Hero Image 2",
+      },
+      {
+        src: "/assets/images/photos/photo-25.jpg",
+        alt: "Hero Image 3",
+      },
+      {
+        type: "block",
+        color: "purple",
+      },
+      {
+        src: "/assets/images/photos/photo-22.jpg",
+        alt: "Hero Image 4",
       },
     ],
   },
@@ -88,8 +114,8 @@ useHead({
 </script>
 <template>
   <header class="page-header site-section">
-    <div class="wrapper">
-      <div class="page-header__text-cont">
+    <div class="wrapper !max-w-[90rem]">
+      <div class="page-header__text-cont 2xl:!ml-40">
         <h1 class="page-header__caption">
           {{ donateContent.heroSection.caption }}
         </h1>
@@ -105,11 +131,18 @@ useHead({
           <span class="text"> Email Us </span>
         </a>
       </div>
-      <div class="page-header__media-cont">
+      <!-- <div class="page-header__media-cont">
         <img
           :src="donateContent.heroSection.images[0].src"
           :alt="donateContent.heroSection.images[0].alt"
           class="abstract-illustration"
+        />
+      </div> -->
+      <div class="page-header__media-cont img-cont">
+        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
+        <SiteHeroImagesGrid
+          class="images-grid programs-header__media-cont"
+          :images="donateContent.heroSection.images || []"
         />
       </div>
     </div>
