@@ -33,7 +33,7 @@ if (route.path == "/") lightText.value = true;
 }
 
 .site-header.scrolled {
-  @apply border-b-slate-200  bg-white shadow-lg shadow-slate-600/[.05] dark:border-b-slate-800 dark:bg-slate-900  dark:shadow-slate-900/[.05];
+  @apply border-b-slate-900 bg-slate-900   shadow-lg shadow-slate-600/[.05] dark:border-b-slate-800 dark:bg-slate-900  dark:shadow-slate-900/[.05];
 }
 
 .site-header > .wrapper {
@@ -44,7 +44,7 @@ if (route.path == "/") lightText.value = true;
 }
 
 .site-header--light-text:deep(.site-logo__text) {
-  @apply text-slate-400;
+  @apply text-slate-200;
 }
 .scrolled:deep(.site-logo__text) {
   @apply text-slate-600;
@@ -54,6 +54,6 @@ if (route.path == "/") lightText.value = true;
   @apply text-slate-200;
 }
 .site-header.scrolled:deep(.site-nav__links) {
-  @apply text-slate-600 dark:!text-slate-100;
+  @apply text-slate-200 dark:!text-slate-100;
 }
 </style>

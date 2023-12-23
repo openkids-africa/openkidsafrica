@@ -386,6 +386,20 @@ useHead({
       </ul>
     </div>
   </section>
+  <section class="site-section contact-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">Get in touch with us</h2>
+        <p class="site-section__subtext">
+          We are constantly seeking volunteers, including teachers and
+          technology enthusiasts. Please contact us below, and we will get back
+          to you
+        </p>
+      </header>
+
+      <ContactForm />
+    </div>
+  </section>
   <PartnersSection :section-data="aboutContent.partnersSection">
     <template #illustration>
       <SiteSlideshow class="m-auto max-w-7xl" />
