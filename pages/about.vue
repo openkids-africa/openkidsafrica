@@ -360,6 +360,27 @@ useHead({
                 children to a digital future.
               </p>
             </template>
+            <template v-else-if="item.name == 'Anita Ihuman'">
+              <p>
+                As a program coordinator at Openkids Africa, I am in charge of
+                managing programs and ensuring that each project coincides with
+                our organizational goals and delivers exceptional results. I am
+                enthusiastic about topics that strongly resonate with values
+                promoting growth, inclusivity, and sustainability, all of which
+                contribute to shaping the future of technology.
+              </p>
+              <p>
+                I am passionate about empowering the next generation of
+                technologists through mentorships and onboarding.
+              </p>
+              <p>
+                With a background in technology and open source, I am uniquely
+                positioned to educate children on technology and how it can
+                translate to their career choices. In my role as a program
+                manager, I can play a part in introducing children to a digital
+                future, particularly those from marginalized groups.
+              </p>
+            </template>
           </TeamCard>
         </li>
       </ul>
@@ -423,8 +444,8 @@ useHead({
 }
 
 .team-list {
-  /* @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-4; */
-  @apply flex flex-wrap justify-center gap-6;
+  @apply grid gap-12 sm:grid-cols-2 lg:grid-cols-3;
+  /* @apply flex flex-wrap justify-center gap-6; */
 }
 
 .team-list__item {

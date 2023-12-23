@@ -62,16 +62,16 @@ defineProps<{
     </ul>
     <!-- accordion for description slot -->
     <details class="team-card__details">
-      <summary class="team-card__summary">
-        <span class="team-card__summary-text">Read more</span>
-      </summary>
-      <slot />
+      <summary class="team-card__summary btn btn--alt">Read more</summary>
+      <div class="team-card__description">
+        <slot />
+      </div>
     </details>
   </article>
 </template>
 <style scoped>
 .team-card {
-  @apply flex flex-col gap-4;
+  @apply flex h-full flex-col gap-4;
 }
 
 .team-card__header {
@@ -92,5 +92,17 @@ defineProps<{
 
 .team-card__socials {
   @apply flex flex-wrap gap-2;
+}
+
+.team-card__details {
+  @apply flex flex-col gap-4;
+}
+
+.team-card__summary {
+  @apply flex w-fit cursor-pointer;
+}
+
+.team-card__description {
+  @apply -mx-4 my-4 flex flex-col gap-4 rounded-2xl border border-slate-100 p-4;
 }
 </style>
