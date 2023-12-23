@@ -60,6 +60,13 @@ defineProps<{
         </a>
       </li>
     </ul>
+    <!-- accordion for description slot -->
+    <details class="team-card__details">
+      <summary class="team-card__summary">
+        <span class="team-card__summary-text">Read more</span>
+      </summary>
+      <slot />
+    </details>
   </article>
 </template>
 <style scoped>

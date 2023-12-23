@@ -139,6 +139,21 @@ const aboutContent = ref<AboutPageContent>({
           },
         ],
       },
+      {
+        name: "Anita Ihuman",
+        role: "Program Coordinator  & Fundraising Assistant, OpenKids Africa ",
+        image: "/assets/images/team/Anita Ihuman.png",
+        socials: [
+          {
+            name: "twitter",
+            url: "https://twitter.com/Anita_ihuman",
+          },
+          {
+            name: "linkedin",
+            url: "https://www.linkedin.com/in/anita-ihuman/",
+          },
+        ],
+      },
       // {
       //   name: "Ibigbari",
       //   role: "PROGRAM COORDINATOR, OpenKids Africa ",
@@ -295,7 +310,57 @@ useHead({
           :key="i"
           class="team-list__item"
         >
-          <TeamCard :member="item" :i="i" />
+          <TeamCard :member="item" :i="i">
+            <template v-if="item.name == 'Regina Nkenchor'">
+              <p>
+                To address the challenge in Africa, where children in rural
+                schools lack digital skills and risk being left behind in the
+                rapidly advancing digital space, and considering the scarcity of
+                women in technology roles, I founded OpenKids Africa and
+                currently serve as its executive director.
+              </p>
+              <p>
+                My vision is to ensure that all children have equal rights to
+                quality education and exposure to digital skills, regardless of
+                their gender, race, or location.
+              </p>
+              <p>
+                Early exposure to digital skills empowers children to make
+                informed career choices, paving the way for them to become
+                future leaders in technology, business, or even in the field of
+                medicine.
+              </p>
+              <p>
+                Our work at OpenKids Africa have been recognized and supported
+                by our partners at
+                <a
+                  class="text-orange-600 underline"
+                  href="https://techshecan.org/"
+                  >Tech She Can</a
+                >.
+              </p>
+            </template>
+            <template v-else-if="item.name == 'Adebola Ogunyemi'">
+              <p>
+                With a background in Computer Science and a Postgraduate degree
+                in Early Childhood and Educational Foundation, I am passionate
+                about fostering digital literacy in children.
+              </p>
+              <p>
+                Having joined OpenKids Africa in 2020 as an Early Childhood
+                Educator, my focus extends to reaching schools in low-tech and
+                rural communities. I am committed to bridging the digital gap
+                and firmly believe in nurturing the innovative potential of
+                today's children.
+              </p>
+              <p>
+                As part of OpenKids Africa, I take pride in igniting children's
+                interest in technology, especially among girls, and aspire to
+                contribute to the organization's future impact, connecting more
+                children to a digital future.
+              </p>
+            </template>
+          </TeamCard>
         </li>
       </ul>
     </div>
@@ -363,6 +428,6 @@ useHead({
 }
 
 .team-list__item {
-  @apply max-w-xs;
+  @apply min-w-[12rem] max-w-lg;
 }
 </style>
