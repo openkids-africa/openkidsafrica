@@ -5,8 +5,10 @@ declare global {
     title: string;
     text: string[];
     images?: {
-      src: string;
-      alt: string;
+      src?: string;
+      alt?: string;
+      type?: string;
+      color?: string;
     }[];
   }
 

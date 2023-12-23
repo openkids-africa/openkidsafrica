@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { TwitterIcon, ExternalLinkIcon, LinkedinIcon } from "lucide-vue-next";
+import {
+  TwitterIcon,
+  ExternalLinkIcon,
+  LinkedinIcon,
+  FacebookIcon,
+} from "lucide-vue-next";
 
 interface Member {
   name: string;
@@ -49,6 +54,8 @@ defineProps<{
         >
           <TwitterIcon v-if="social.name == 'twitter'" class="icon" />
           <LinkedinIcon v-else-if="social.name == 'linkedin'" class="icon" />
+          <!-- for fb -->
+          <FacebookIcon v-else-if="social.name == 'facebook'" class="icon" />
           <ExternalLinkIcon v-else class="icon" />
         </a>
       </li>

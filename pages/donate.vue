@@ -5,7 +5,8 @@ const { lightText, sticky } = useSiteHeader();
 const donateContent = ref({
   heroSection: {
     caption: "Donate to Openkids Africa",
-    subtext: "Support the Future: Donate Monthly to Empower African Youth",
+    subtext:
+      "Support the Future of Children: Donate Monthly to Empower Children and Schools in Rural African Communities.",
     images: [
       {
         src: "/assets/images/svg/Donate.svg",
@@ -25,7 +26,7 @@ const donateContent = ref({
       {
         topic: "What is the impact of my donation?",
         content:
-          "Your donation will help us provide education, food, and shelter to children in need.",
+          "Your donation will help us provide education, resources and shelter to children in need.",
       },
     ],
   },

@@ -32,9 +32,35 @@ const aboutContent = ref<AboutPageContent>({
   heroSection: {
     title: "About Us",
     text: [
-      "OpenKids Africa was established in 2019 by Regina Nkenchor. The organization's primary objective is to provide students in underserved communities with equitable access to information technology skills",
-      "Acknowledging that achieving this goal requires collaborative efforts, we actively partner with other groups, schools, and governmental bodies to advance the mission of OpenKids Africa.",
-      "Our initiative began in Nigeria, where we leverage free digital resources to introduce children in rural communities to the world of technology and its potential for shaping their future careers. To date, we have successfully equipped over 1000 children with a foundational understanding of the internet and how technology relates to different career fields.",
+      "OpenKids Africa was established in 2020 by Regina Nkenchor. The organization's primary objective is to provide students in underserved communities with equitable access to information technology skills.",
+      "Recognizing that achieving this goal requires collaborative efforts, we actively partner with other groups, schools, and governmental bodies to advance the mission of OpenKids Africa.",
+      "Our initiative began in Nigeria, where we leverage free digital resources to introduce children in rural communities to the world of technology and its potential for shaping their future careers. To date, we have successfully equipped over 5,000 children with a foundational understanding of the internet and how technology relates to different career fields. Our goal is to reach 20,000 children by 2030",
+    ],
+    images: [
+      {
+        src: "/assets/images/photos/photo-13.jpg",
+        alt: "Hero Image 1",
+      },
+      {
+        type: "block",
+        color: "orange",
+      },
+      {
+        src: "/assets/images/photos/photo-14.jpg",
+        alt: "Hero Image 2",
+      },
+      {
+        src: "/assets/images/photos/photo-15.jpg",
+        alt: "Hero Image 3",
+      },
+      {
+        src: "/assets/images/photos/photo-16.jpg",
+        alt: "Hero Image 4",
+      },
+      {
+        type: "block",
+        color: "purple",
+      },
     ],
   },
   journeySection: {
@@ -88,31 +114,40 @@ const aboutContent = ref<AboutPageContent>({
     team: [
       {
         name: "Regina Nkenchor",
-        role: "FOUNDER, OPENKIDS AFRICA",
+        role: "Founder, OpenKids Africa ",
         image: "/assets/images/team/Regina Nkemchor.png",
         socials: [
-          { name: "twitter", url: "https://twitter.com/reginaoradata" },
+          { name: "twitter", url: "https://twitter.com/reginankenchor" },
           {
             name: "linkedin",
-            url: "https://www.linkedin.com/in/reginankem/",
+            url: "https://www.linkedin.com/in/reginankenchor/",
           },
         ],
       },
       {
         name: "Adebola Ogunyemi",
-        role: "EARLY CHILDHOOD EDUCATOR, OPENKIDS AFRICA",
+        role: "Early childhood educator, OpenKids Africa ",
         image: "/assets/images/team/Adebola Ogunyemi.png",
-        socials: [],
+        socials: [
+          {
+            name: "facebook",
+            url: "https://www.facebook.com/AmBeulah?mibextid=ZbWKwL",
+          },
+          {
+            name: "linkedin",
+            url: "https://www.linkedin.com/in/jesutimilehin-temitayo-ogunyemi-a260aa13a",
+          },
+        ],
       },
       // {
       //   name: "Ibigbari",
-      //   role: "PROGRAM COORDINATOR, OPENKIDS AFRICA",
+      //   role: "PROGRAM COORDINATOR, OpenKids Africa ",
       //   image: "/assets/images/team/Ibigbari.png",
       //   socials: [],
       // },
       // {
       //   name: "Uboho Essien",
-      //   role: "WEB DESIGNER, OPENKIDS AFRICA",
+      //   role: "WEB DESIGNER, OpenKids Africa ",
       //   image: "/assets/images/team/Uboho Essien.png",
       //   socials: [],
       // },
@@ -151,8 +186,8 @@ useHead({
 </script>
 <template>
   <header class="page-header site-section">
-    <div class="wrapper">
-      <div class="page-header__text-cont">
+    <div class="wrapper !max-w-[90rem]">
+      <div class="page-header__text-cont 2xl:!ml-40">
         <h1 class="page-header__caption">
           {{ aboutContent.heroSection.title }}
         </h1>
@@ -165,11 +200,15 @@ useHead({
         </p>
       </div>
       <div class="page-header__media-cont img-cont">
-        <IllustrationsAbstract1 class="abstract-illustration" />
+        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
+        <SiteHeroImagesGrid
+          class="images-grid programs-header__media-cont"
+          :images="aboutContent.heroSection.images || []"
+        />
       </div>
     </div>
   </header>
-  <section class="site-section bg-orange-100 text-orange-950">
+  <!-- <section class="site-section bg-orange-100 text-orange-950">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
         <h2 class="site-section__caption">
@@ -186,7 +225,7 @@ useHead({
         </p>
       </div>
     </div>
-  </section>
+  </section> -->
   <section class="site-section bg-slate-950 text-slate-100">
     <div class="wrapper">
       <header class="site-section__header">

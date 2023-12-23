@@ -121,18 +121,18 @@ useHead({
         <h2 class="site-section__caption">
           {{ programsContent.whySection.title }}
         </h2>
-        <p class="site-section__subtext">
+        <!-- <p class="site-section__subtext">
           {{ programsContent.whySection.text[0] }}
-        </p>
+        </p> -->
       </header>
       <p
-        v-for="(text, index) in programsContent.whySection.text.slice(1)"
+        v-for="(text, index) in programsContent.whySection.text"
         :key="index"
-        class="site-section__text text-lg"
+        class="site-section__text text-xl"
       >
         {{ text }}
       </p>
-      <div class="action-cont !justify-start">
+      <div class="action-cont !justify-start py-8">
         <a
           :href="programsContent.whySection.donateLink.url"
           target="_blank"

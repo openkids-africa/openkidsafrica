@@ -15,10 +15,36 @@ const newsContent = ref<{
     text: [
       "Grab all the latest news for campaigns, donations, fund-raising or new projects from OpenKids Africa.",
     ],
+    // images: [
+    //   {
+    //     src: "/assets/images/svg/updates.svg",
+    //     alt: "Blog Hero",
+    //   },
+    // ],
     images: [
       {
-        src: "/assets/images/svg/updates.svg",
-        alt: "Blog Hero",
+        src: "/assets/images/photos/photo-17.jpg",
+        alt: "Hero Image 1",
+      },
+      {
+        type: "block",
+        color: "orange",
+      },
+      {
+        src: "/assets/images/photos/photo-18.jpg",
+        alt: "Hero Image 2",
+      },
+      {
+        src: "/assets/images/photos/photo-19.jpg",
+        alt: "Hero Image 3",
+      },
+      {
+        src: "/assets/images/photos/photo-20.jpg",
+        alt: "Hero Image 4",
+      },
+      {
+        type: "block",
+        color: "purple",
       },
     ],
   },
@@ -73,8 +99,8 @@ if (data.value) {
 </script>
 <template>
   <header class="page-header site-section">
-    <div class="wrapper">
-      <div class="page-header__text-cont">
+    <div class="wrapper !max-w-[90rem]">
+      <div class="page-header__text-cont 2xl:!ml-40">
         <h1 class="page-header__caption">
           {{ newsContent.heroSection.title }}
         </h1>
@@ -85,12 +111,19 @@ if (data.value) {
           {{ text }}
         </p>
       </div>
-      <div class="page-header__media-cont">
+      <!-- <div class="page-header__media-cont">
         <NuxtImg
           v-if="newsContent.heroSection?.images"
           :src="newsContent.heroSection?.images[0].src"
           :alt="newsContent.heroSection?.images[0].alt"
           class="abstract-illustration"
+        />
+      </div> -->
+      <div class="page-header__media-cont img-cont">
+        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
+        <SiteHeroImagesGrid
+          class="images-grid programs-header__media-cont"
+          :images="newsContent.heroSection.images || []"
         />
       </div>
     </div>
