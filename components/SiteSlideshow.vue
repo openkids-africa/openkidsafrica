@@ -1,4 +1,18 @@
 <script setup lang="ts">
+const { images } = defineProps({
+  images: {
+    type: Array as PropType<
+      {
+        src?: string;
+        alt?: string;
+        type?: string;
+        color?: string;
+      }[]
+    >,
+    // required: true,
+  },
+});
+
 import emblaCarouselVue from "embla-carousel-vue";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/outline";
@@ -30,67 +44,73 @@ watch(
   },
 );
 
-const images = ref([
-  {
-    src: "/assets/images/photos/photo-1.jpg",
-    alt: "Kids Image 1",
-  },
-  {
-    src: "/assets/images/photos/photo-1.jpeg",
-    alt: "Kids Image 1",
-  },
-  {
-    src: "/assets/images/photos/photo-2.jpg",
-    alt: "Kids Image 2",
-  },
-  {
-    src: "/assets/images/photos/photo-2.jpeg",
-    alt: "Kids Image 2",
-  },
-  {
-    src: "/assets/images/photos/photo-4.jpg",
-    alt: "Kids Image 3",
-  },
-  {
-    src: "/assets/images/photos/photo-5.jpg",
-    alt: "Kids Image 3",
-  },
-  {
-    src: "/assets/images/photos/photo-6.jpg",
-    alt: "Kids Image 3",
-  },
-  {
-    src: "/assets/images/photos/photo-7.jpg",
-    alt: "Kids Image 3",
-  },
-  {
-    src: "/assets/images/photos/photo-8.jpg",
-    alt: "Kids Image 3",
-  },
-  {
-    src: "/assets/images/photos/photo-9.jpg",
-    alt: "Kids Image 3",
-  },
-  {
-    src: "/assets/images/photos/photo-10.jpg",
-    alt: "Kids Image 3",
-  },
-  {
-    src: "/assets/images/photos/photo-11.jpg",
-    alt: "Kids Image 3",
-  },
-  {
-    src: "/assets/images/photos/photo-12.jpg",
-    alt: "Kids Image 3",
-  },
-]);
+const slideImages = ref(
+  images || [
+    {
+      src: "/assets/images/photos/photo-1.jpg",
+      alt: "Kids Image 1",
+    },
+    {
+      src: "/assets/images/photos/photo-1.jpeg",
+      alt: "Kids Image 1",
+    },
+    {
+      src: "/assets/images/photos/photo-2.jpg",
+      alt: "Kids Image 2",
+    },
+    {
+      src: "/assets/images/photos/photo-2.jpeg",
+      alt: "Kids Image 2",
+    },
+    {
+      src: "/assets/images/photos/photo-4.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-5.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-6.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-7.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-8.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-9.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-10.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-11.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-12.jpg",
+      alt: "Kids Image 3",
+    },
+  ],
+);
 </script>
 
 <template>
   <div class="embla">
     <div class="embla__viewport" ref="emblaNode">
       <div class="embla__container">
-        <div v-for="(image, index) in images" :key="index" class="embla__slide">
+        <div
+          v-for="(image, index) in slideImages"
+          :key="index"
+          class="embla__slide"
+        >
           <figure class="img-cont">
             <NuxtImg :src="image.src" :alt="image.alt" class="embla__img" />
           </figure>
@@ -109,7 +129,7 @@ const images = ref([
         <ChevronRightIcon class="icon" />
       </button>
       <ul class="embla__dots">
-        <li v-for="(image, index) in images" :key="index">
+        <li v-for="(image, index) in slideImages" :key="index">
           <button
             class="embla__dot btn btn--alt"
             :class="{ 'btn--active': index === activeSlide }"

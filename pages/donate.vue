@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { HelpingHandIcon } from "lucide-vue-next";
 import { MailIcon } from "lucide-vue-next";
 
 const { lightText, sticky } = useSiteHeader();
@@ -47,12 +48,17 @@ const donateContent = ref({
       {
         topic: "How do I donate?",
         content:
-          "You can donate to us by clicking the donate button on the top right corner of the page. You can also donate to us via PayPal by clicking the button below.",
+          "You can donate to us through our website by clicking the 'Donate' button on the top right corner of the page. Additionally, we offer the option to donate via PayPal for added convenience.",
       },
+      // {
+      //   topic: "What is the impact of my donation?",
+      //   content:
+      //     "Your donation will help us provide education, resources and shelter to children in need.",
+      // },
       {
-        topic: "What is the impact of my donation?",
+        topic: "Can I donate via check?",
         content:
-          "Your donation will help us provide education, resources and shelter to children in need.",
+          "Absolutely! If you prefer to donate via check, please reach out to us at openkidsafrica@gmail.com, and we will promptly provide you with the required details. Your commitment to empowering young minds in Africa is making a significant difference. Thank you for being a crucial part of our mission!",
       },
     ],
   },
@@ -75,6 +81,32 @@ const donateContent = ref({
       },
     ],
     hidePartners: true,
+    images: [
+      {
+        src: "/assets/images/photos/photo-11.jpg",
+        alt: "Kids Image 1",
+      },
+      {
+        src: "/assets/images/photos/photo-12.jpg",
+        alt: "Kids Image 1",
+      },
+      {
+        src: "/assets/images/photos/photo-13.jpg",
+        alt: "Kids Image 2",
+      },
+      {
+        src: "/assets/images/photos/photo-10.jpg",
+        alt: "Kids Image 2",
+      },
+      {
+        src: "/assets/images/photos/photo-14.jpg",
+        alt: "Kids Image 3",
+      },
+      {
+        src: "/assets/images/photos/photo-15.jpg",
+        alt: "Kids Image 3",
+      },
+    ],
   },
 });
 onMounted(() => {
@@ -163,6 +195,73 @@ useHead({
       </div>
     </div>
   </section>
+  <!-- <section class="site-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">How to Make Donations</h2>
+      </header>
+      <p class="site-section__text">
+        Making a difference is just a click away!
+      </p>
+      <p class="site-section__text">
+        You can easily contribute by clicking the "Donate" button located in the
+        top right corner of this page. We've also made it convenient for you to
+        donate via PayPal by clicking the button below.
+      </p>
+    </div>
+  </section> -->
+  <section class="site-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">How to make Online Donations</h2>
+        <p class="site-section__subtext">
+          You can easily contribute by choosing any of the options available in
+          this page. We've also made it convenient for you to donate via PayPal
+          by clicking the button below.
+        </p>
+      </header>
+
+      <div class="options flex gap-4">
+        <article
+          class="flex flex-1 flex-col gap-2 rounded-xl border border-slate-200 p-4"
+        >
+          <h3 class="font-heading text-3xl font-semibold">Donate via PayPal</h3>
+          <p>
+            Donating via PayPal is very simple. <br />
+            You can donate to us via PayPal by clicking the button below.
+          </p>
+          <a
+            href="http://paypal.me/openkidsafrica"
+            class="btn btn--primary mt-auto !w-fit"
+            :aria-label="`Donate to OpenKids Africa`"
+          >
+            <HelpingHandIcon class="icon" />
+            <span class="text"> Donate via PayPal </span>
+          </a>
+        </article>
+        <article
+          class="flex flex-1 flex-col gap-2 rounded-xl border border-slate-200 p-4"
+        >
+          <h3 class="font-heading text-3xl font-semibold">Donate via Check</h3>
+          <p>
+            If you prefer to donate via check, kindly send an email to
+            <a href="mailto:openkidsafrica@gmail.com">
+              openkidsafrica@gmail.com </a
+            >, and we'll provide you with the necessary details. Your support is
+            highly valued, and we are here to assist you every step of the way.
+          </p>
+          <a
+            href="mailto:openkidsafrica@gmail.com"
+            class="btn btn--primary mt-auto !w-fit"
+            :aria-label="`Email OpenKids Africa`"
+          >
+            <MailIcon class="icon" />
+            <span class="text"> Email Us </span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
   <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
@@ -195,7 +294,10 @@ useHead({
   </section>
   <PartnersSection :section-data="donateContent.partnersSection">
     <template #illustration>
-      <SiteSlideshow class="m-auto max-w-7xl" />
+      <SiteSlideshow
+        :images="donateContent.partnersSection.images"
+        class="m-auto max-w-7xl"
+      />
     </template>
   </PartnersSection>
 </template>
