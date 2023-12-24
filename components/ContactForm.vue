@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RotateCcwIcon } from "lucide-vue-next";
 import { LoaderIcon } from "lucide-vue-next";
 import { SendHorizontalIcon, SendIcon } from "lucide-vue-next";
 const formData = ref({
@@ -8,12 +9,37 @@ const formData = ref({
   message: "",
 });
 const isLoading = ref(false);
+const submitted = ref(false);
 const submitForm = () => {
   isLoading.value = true;
   console.log(formData.value);
-  setTimeout(() => {
+  try {
+    useFetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData.value),
+    }).then((res) => {
+      console.log(res);
+      if (res.data) {
+        submitted.value = true;
+      }
+      isLoading.value = false;
+    });
+  } catch (error) {
+    console.log(error);
     isLoading.value = false;
-  }, 2000);
+  }
+};
+const resetForm = () => {
+  formData.value = {
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  };
+  submitted.value = false;
 };
 </script>
 <template>
@@ -29,6 +55,7 @@ const submitForm = () => {
           id="name"
           placeholder="Your Name"
           required
+          :disabled="submitted"
         />
       </div>
       <div class="form-group">
@@ -41,6 +68,7 @@ const submitForm = () => {
             name="phone"
             id="phone"
             placeholder="Phone Number"
+            :disabled="submitted"
           />
         </div>
         <div class="form-control">
@@ -53,6 +81,7 @@ const submitForm = () => {
             id="email"
             placeholder="Your Email Address"
             required
+            :disabled="submitted"
           />
         </div>
       </div>
@@ -67,15 +96,29 @@ const submitForm = () => {
           rows="10"
           placeholder="Your Message"
           required
+          :disabled="submitted"
         ></textarea>
       </div>
       <div class="action-cont !justify-start">
-        <button :disabled="isLoading" type="submit" class="btn btn--primary">
+        <button
+          :disabled="isLoading || submitted"
+          type="submit"
+          class="btn btn--primary"
+        >
           <LoaderIcon v-if="isLoading" class="icon animate-spin" />
           <SendIcon v-else class="icon" />
           <span class="text">
             {{ isLoading ? "Sending..." : "Send Message" }}
           </span>
+        </button>
+        <button
+          v-if="submitted"
+          class="btn"
+          :disabled="isLoading"
+          @click.prevent="() => resetForm()"
+        >
+          <RotateCcwIcon class="icon" />
+          <span class="text">Reset</span>
         </button>
       </div>
     </div>
