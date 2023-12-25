@@ -100,8 +100,8 @@ useHead({
 </script>
 <template>
   <header class="page-header site-section programs-header">
-    <div class="wrapper">
-      <div class="page-header__text-cont">
+    <div class="wrapper !max-w-[90rem]">
+      <div class="page-header__text-cont 2xl:!ml-40">
         <h1 class="page-header__caption">
           {{ programsContent.heroSection.caption }}
         </h1>
@@ -109,10 +109,17 @@ useHead({
           {{ programsContent.heroSection.subtext }}
         </p>
       </div>
-      <SiteHeroImagesGrid
+      <!-- <SiteHeroImagesGrid
         class="images-grid programs-header__media-cont"
         :images="programsContent.heroSection.images"
-      />
+      /> -->
+      <div class="page-header__media-cont img-cont">
+        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
+        <SiteHeroImagesGrid
+          class="images-grid programs-header__media-cont"
+          :images="programsContent.heroSection.images || []"
+        />
+      </div>
     </div>
   </header>
   <section class="site-section why-section">
@@ -177,9 +184,9 @@ useHead({
 <style scoped>
 .programs-header {
 }
-.programs-header > .wrapper {
+/* .programs-header > .wrapper {
   @apply max-w-7xl flex-col-reverse gap-8 lg:flex-row;
-}
+} */
 .page-header__text-cont {
   @apply lg:max-w-xl xl:ml-16;
 }
