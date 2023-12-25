@@ -45,7 +45,7 @@ export default defineEventHandler(async (event) => {
 
   const options: Mail.Options = {
     from: "openkidsafrica.gmail.com",
-    to: ["miracleficient@gmail.com", "openkidsafrica.gmail.com"],
+    to: [email, "openkidsafrica.gmail.com"],
     subject: "Open Kids Africa Contact Form",
     html: template.html,
     text: template.text,
