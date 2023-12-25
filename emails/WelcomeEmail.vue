@@ -26,7 +26,7 @@ const main = {
 
 const container = {
   margin: "0 auto",
-  padding: "20px 0 48px",
+  padding: "48px",
 };
 
 const logo = {
@@ -86,7 +86,7 @@ const footer = {
           <br />
           We will be in touch with you shortly to get you started.
         </EText>
-        <ESection :style="btnContainer">
+        <ESection :style="container">
           <EHeading as="h2" size="lg" :style="paragraph">
             Form submission details
           </EHeading>
@@ -138,7 +138,9 @@ const footer = {
           The Openkids Africa team
         </EText>
         <EHr :style="hr" />
-        <EText :style="footer"> 408 Warren Rd - San Mateo, CA 94402 </EText>
+        <EText :style="footer"
+          >© 2023 OpenKids Africa. Registered charity number 189502</EText
+        >
       </EContainer>
     </EBody>
   </EHtml>

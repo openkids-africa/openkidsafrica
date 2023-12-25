@@ -10,6 +10,7 @@ const formData = ref({
 });
 const isLoading = ref(false);
 const submitted = ref(false);
+const error = ref("");
 const submitForm = () => {
   isLoading.value = true;
   console.log(formData.value);
@@ -24,6 +25,9 @@ const submitForm = () => {
       console.log(res);
       if (res.data) {
         submitted.value = true;
+      }
+      if (res.error.value) {
+        error.value = res.error.value.message;
       }
       isLoading.value = false;
     });
@@ -55,7 +59,7 @@ const resetForm = () => {
           id="name"
           placeholder="Your Name"
           required
-          :disabled="submitted"
+          :disabled="!error && submitted"
         />
       </div>
       <div class="form-group">
@@ -68,7 +72,7 @@ const resetForm = () => {
             name="phone"
             id="phone"
             placeholder="Phone Number"
-            :disabled="submitted"
+            :disabled="!error && submitted"
           />
         </div>
         <div class="form-control">
@@ -81,7 +85,7 @@ const resetForm = () => {
             id="email"
             placeholder="Your Email Address"
             required
-            :disabled="submitted"
+            :disabled="!error && submitted"
           />
         </div>
       </div>
@@ -96,12 +100,12 @@ const resetForm = () => {
           rows="10"
           placeholder="Your Message"
           required
-          :disabled="submitted"
+          :disabled="!error && submitted"
         ></textarea>
       </div>
       <div class="action-cont !justify-start">
         <button
-          :disabled="isLoading || submitted"
+          :disabled="isLoading || (submitted && !error)"
           type="submit"
           class="btn btn--primary"
         >
