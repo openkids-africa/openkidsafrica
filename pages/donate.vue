@@ -302,6 +302,30 @@ useHead({
       <DonateForm />
     </div>
   </section>
+  <section class="site-section bg-orange-200 text-orange-800">
+    <div class="wrapper">
+      <header class="site-section__header site-section__header--left">
+        <h2 class="site-section__caption">Donate Educational Resources</h2>
+        <p class="site-section__subtext">
+          If you would like to contribute educational resources, such as
+          refurbished laptops or digital learning materials for children, please
+          send an email to
+          <a class="underline" href="mailto:openkidsafrica@gmail.com">
+            openkidsafrica@gmail.com</a
+          >
+        </p>
+        <p class="site-section__subtext">
+          We will promptly provide you with the necessary details. Your support
+          is immensely appreciated, and we are committed to assisting you
+          throughout the entire process.
+        </p>
+        <p class="site-section__subtext">
+          Thank you for making a difference in the lives of children through
+          education.
+        </p>
+      </header>
+    </div>
+  </section>
   <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">

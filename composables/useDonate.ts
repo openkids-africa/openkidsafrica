@@ -1,5 +1,5 @@
 interface DonationResult {
-  studentsEnabled: number;
+  childrenEnabled: number;
   laptopsDeployed: number;
   statement: string;
 }
@@ -11,17 +11,17 @@ export const useDonate = () => {
     amount: number,
     mode: "once" | "monthly",
   ): DonationResult => {
-    let studentsEnabled = 0;
+    let childrenEnabled = 0;
     let laptopsDeployed = 0;
 
     if (mode === "once") {
-      studentsEnabled = amount < 4 && amount > 0 ? 1 : Math.floor(amount / 4);
+      childrenEnabled = amount < 4 && amount > 0 ? 1 : Math.floor(amount / 4);
 
       if (amount >= 100) {
         laptopsDeployed = Math.floor(amount / 50) * 2;
       }
     } else if (mode === "monthly") {
-      studentsEnabled = Math.floor(amount / 2.5) * 12;
+      childrenEnabled = Math.floor(amount / 2.5) * 12;
 
       if (amount >= 25) {
         laptopsDeployed = Math.floor(amount / 25) * 6;
@@ -39,12 +39,14 @@ export const useDonate = () => {
             )} additional laptops. This means that `
           : ""
       }` +
-      `we can enable ${formatNumber(studentsEnabled)} more students` +
+      `we can enable ${formatNumber(
+        childrenEnabled,
+      )} more children in rural schools` +
       `${
         mode === "monthly" ? " every year," : ","
       } opening up new possibilities and opportunities for their education and future.`;
 
-    return { studentsEnabled, laptopsDeployed, statement };
+    return { childrenEnabled, laptopsDeployed, statement };
   };
 
   return {
