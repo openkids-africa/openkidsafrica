@@ -26,7 +26,7 @@ const main = {
 
 const container = {
   margin: "0 auto",
-  padding: "48px",
+  padding: "12px",
 };
 
 const logo = {

@@ -21,16 +21,23 @@ const submitForm = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData.value),
-    }).then((res) => {
-      console.log(res);
-      if (res.data) {
-        submitted.value = true;
-      }
-      if (res.error.value) {
-        error.value = res.error.value.message;
-      }
-      isLoading.value = false;
-    });
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.data) {
+          submitted.value = true;
+        }
+        if (res.error.value) {
+          error.value = res.error.value.message;
+          throw new Error(res.error.value.message);
+        }
+        isLoading.value = false;
+        resetForm();
+      })
+      .catch((err) => {
+        console.log(err);
+        isLoading.value = false;
+      });
   } catch (error) {
     console.log(error);
     isLoading.value = false;
@@ -115,7 +122,7 @@ const resetForm = () => {
             {{ isLoading ? "Sending..." : "Send Message" }}
           </span>
         </button>
-        <button
+        <!-- <button
           v-if="submitted"
           class="btn"
           :disabled="isLoading"
@@ -123,7 +130,7 @@ const resetForm = () => {
         >
           <RotateCcwIcon class="icon" />
           <span class="text">Reset</span>
-        </button>
+        </button> -->
       </div>
     </div>
   </form>

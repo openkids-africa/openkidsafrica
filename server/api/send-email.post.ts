@@ -46,14 +46,14 @@ export default defineEventHandler(async (event) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "threepointo.dev@gmail.com",
+        user: "openkidsafrica@gmail.com",
         pass: password,
       },
     });
 
     const options: Mail.Options = {
-      from: "openkidsafrica.gmail.com",
-      to: [email, "openkidsafrica.gmail.com"],
+      from: "openkidsafrica@gmail.com",
+      to: `${email}, openkidsafrica@gmail.com`,
       subject: "Open Kids Africa Contact Form",
       html: template.html,
       text: template.text,

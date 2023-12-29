@@ -19,7 +19,7 @@ router.afterEach(() => {
       <ul class="site-nav__links">
         <li v-for="link in links" :key="link.name" class="site-nav__link">
           <NuxtLink
-            :class="`${link.name.toLowerCase() == 'contact' ? 'btn' : ''}`"
+            :class="`${link.name.toLowerCase() == 'donate' ? 'btn' : ''}`"
             :to="link.path"
           >
             {{ link.name }}

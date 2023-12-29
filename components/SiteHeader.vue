@@ -2,7 +2,7 @@
 const { handleAddClassOnScroll, lightText, sticky, scrolled, siteHeader } =
   useSiteHeader();
 
-handleAddClassOnScroll();
+// handleAddClassOnScroll();
 
 const route = useRoute();
 console.log("path", route.path);
@@ -11,9 +11,9 @@ if (route.path == "/") lightText.value = true;
 <template>
   <header
     ref="siteHeader"
-    :class="`site-header ${lightText ? 'site-header--light-text' : ''} ${
-      sticky ? 'site-header--sticky' : ''
-    }`"
+    :class="`site-header scrolled ${
+      lightText ? 'site-header--light-text' : ''
+    } ${sticky ? 'site-header--sticky' : ''}`"
   >
     <div class="wrapper">
       <NuxtLink to="/">
@@ -47,7 +47,7 @@ if (route.path == "/") lightText.value = true;
   @apply text-slate-200;
 }
 .scrolled:deep(.site-logo__text) {
-  @apply text-slate-600;
+  @apply text-slate-200;
 }
 
 .site-header--light-text:deep(.site-nav__links) {
