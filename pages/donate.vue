@@ -253,7 +253,7 @@ useHead({
 
       <div class="options flex flex-wrap gap-4">
         <article
-          class="flex flex-1 flex-col gap-2 rounded-xl border border-slate-200 p-4"
+          class="flex flex-1 flex-col gap-4 rounded-xl border border-slate-200 p-4"
         >
           <h3 class="font-heading text-3xl font-semibold">Donate via PayPal</h3>
           <p>
@@ -270,7 +270,40 @@ useHead({
           </a>
         </article>
         <article
-          class="flex flex-1 flex-col gap-2 rounded-xl border border-slate-200 p-4"
+          class="flex flex-1 flex-col gap-4 rounded-xl border border-slate-200 p-4"
+        >
+          <h3 class="font-heading text-3xl font-semibold">
+            Donate Educational Resources
+          </h3>
+          <p class="">
+            If you would like to contribute educational resources, such as
+            refurbished laptops or digital learning materials for children,
+            please send an email to
+            <a class="underline" href="mailto:openkidsafrica@gmail.com">
+              openkidsafrica@gmail.com</a
+            >
+          </p>
+          <p class="">
+            We will promptly provide you with the necessary details. Your
+            support is immensely appreciated, and we are committed to assisting
+            you throughout the entire process.
+          </p>
+          <p class="">
+            Thank you for making a difference in the lives of children through
+            education.
+          </p>
+
+          <a
+            href="mailto:openkidsafrica@gmail.com"
+            class="btn btn--primary mt-auto !w-fit"
+            :aria-label="`Email OpenKids Africa`"
+          >
+            <MailIcon class="icon" />
+            <span class="text"> Email Us </span>
+          </a>
+        </article>
+        <article
+          class="flex flex-1 flex-col gap-4 rounded-xl border border-slate-200 p-4"
         >
           <h3 class="font-heading text-3xl font-semibold">Donate via Check</h3>
           <p>
@@ -302,7 +335,7 @@ useHead({
       <DonateForm />
     </div>
   </section>
-  <section class="site-section bg-orange-200 text-orange-800">
+  <!-- <section class="site-section bg-orange-200 text-orange-800">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
         <h2 class="site-section__caption">Donate Educational Resources</h2>
@@ -325,7 +358,7 @@ useHead({
         </p>
       </header>
     </div>
-  </section>
+  </section> -->
   <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
