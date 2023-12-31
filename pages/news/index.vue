@@ -159,7 +159,7 @@ if (data.value) {
 </template>
 <style scoped>
 .page-header {
-  @apply py-0;
+  /* @apply py-0; */
 }
 .page-header__text-cont {
   /* @apply min-h-[20rem]; */

@@ -196,7 +196,7 @@ useHead({
 }
 
 .programs-header__media-cont {
-  @apply relative lg:w-[150%];
+  /* @apply relative lg:w-[150%]; */
 }
 
 .why-section {
