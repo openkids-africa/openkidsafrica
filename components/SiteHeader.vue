@@ -51,9 +51,9 @@ if (route.path == "/") lightText.value = true;
 }
 
 .site-header--light-text:deep(.site-nav__links) {
-  @apply text-slate-200;
+  @apply text-slate-500;
 }
 .site-header.scrolled:deep(.site-nav__links) {
-  @apply text-slate-200 dark:!text-slate-100;
+  @apply text-slate-500 dark:!text-slate-100;
 }
 </style>

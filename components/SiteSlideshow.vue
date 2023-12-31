@@ -55,47 +55,67 @@ const slideImages = ref(
       alt: "Kids Image 1",
     },
     {
-      src: "/assets/images/photos/photo-2.jpg",
-      alt: "Kids Image 2",
-    },
-    {
       src: "/assets/images/photos/photo-2.jpeg",
       alt: "Kids Image 2",
     },
     {
-      src: "/assets/images/photos/photo-4.jpg",
+      src: "/assets/images/photos/photo-29.jpeg",
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-5.jpg",
+      src: "/assets/images/photos/photo-30.jpg",
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-6.jpg",
+      src: "/assets/images/phot   os/photo-31.jpg",
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-7.jpg",
+      src: "/assets/images/photos/photo-32.jpeg",
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-8.jpg",
+      src: "/assets/images/photos/photo-33.jpeg",
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-9.jpg",
+      src: "/assets/images/photos/photo-34.jpg",
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-10.jpg",
+      src: "/assets/images/photos/photo-35.jpg",
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-11.jpg",
+      src: "/assets/images/photos/photo-36.jpg",
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-12.jpg",
+      src: "/assets/images/photos/photo-37.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-38.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-39.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-40.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-41.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-42.jpg",
+      alt: "Kids Image 3",
+    },
+    {
+      src: "/assets/images/photos/photo-43.jpg",
       alt: "Kids Image 3",
     },
   ],

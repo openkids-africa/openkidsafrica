@@ -41,8 +41,8 @@ defineProps<HeroProps>();
         <NuxtImg
           width="100%"
           height="832px"
-          :src="images[1].src"
-          :alt="images[1].alt"
+          :src="images[0].src"
+          :alt="images[0].alt"
         />
       </div>
       <!-- <SiteHeroImagesGrid :images="images" /> -->

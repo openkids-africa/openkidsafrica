@@ -21,7 +21,7 @@ const content = ref({
     //   "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country. Therefore, we leverage open educational resources to provide quality information technology education and materials for kids and schools in rural communities in Africa.",
     images: [
       {
-        src: "/assets/images/photos/photo-1.jpg",
+        src: "/assets/images/photos/photo-14.jpg",
         alt: "Hero Image 1",
       },
       {

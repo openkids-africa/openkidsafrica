@@ -13,11 +13,11 @@ const contactContent = ref({
       //   alt: "Contact Hero",
       // },
       {
-        src: "/assets/images/photos/photo-1.jpg",
+        src: "/assets/images/photos/photo-29.jpeg",
         alt: "Hero Image 1",
       },
       {
-        src: "/assets/images/photos/photo-1.jpeg",
+        src: "/assets/images/photos/photo-30.jpg",
         alt: "Hero Image 2",
       },
       {
@@ -25,11 +25,11 @@ const contactContent = ref({
         color: "orange",
       },
       {
-        src: "/assets/images/photos/photo-2.jpg",
+        src: "/assets/images/photos/photo-31.jpg",
         alt: "Hero Image 3",
       },
       {
-        src: "/assets/images/photos/photo-2.jpeg",
+        src: "/assets/images/photos/photo-32.jpeg",
         alt: "Hero Image 4",
       },
       {

@@ -38,7 +38,7 @@ const aboutContent = ref<AboutPageContent>({
     ],
     images: [
       {
-        src: "/assets/images/photos/photo-13.jpg",
+        src: "/assets/images/photos/photo-29.jpeg",
         alt: "Hero Image 1",
       },
       {
@@ -50,11 +50,11 @@ const aboutContent = ref<AboutPageContent>({
         alt: "Hero Image 2",
       },
       {
-        src: "/assets/images/photos/photo-15.jpg",
+        src: "/assets/images/photos/photo-30.jpg",
         alt: "Hero Image 3",
       },
       {
-        src: "/assets/images/photos/photo-16.jpg",
+        src: "/assets/images/photos/photo-31.jpg",
         alt: "Hero Image 4",
       },
       {
@@ -126,7 +126,7 @@ const aboutContent = ref<AboutPageContent>({
       },
       {
         name: "Adebola Ogunyemi",
-        role: "Early childhood educator, OpenKids Africa ",
+        role: "Early Child Educator & Program Coordinator",
         image: "/assets/images/team/Adebola Ogunyemi.png",
         socials: [
           {

@@ -17,7 +17,15 @@ router.afterEach(() => {
   <nav class="site-nav" :class="`${navActive ? 'site-nav--active' : ''}`">
     <div class="wrapper">
       <ul class="site-nav__links">
-        <li v-for="link in links" :key="link.name" class="site-nav__link">
+        <li
+          v-for="link in links"
+          :key="link.name"
+          :class="`site-nav__link ${
+            router.currentRoute.value.fullPath.includes(link.path)
+              ? 'active'
+              : ''
+          }`"
+        >
           <NuxtLink
             :class="`${link.name.toLowerCase() == 'donate' ? 'btn' : ''}`"
             :to="link.path"
@@ -56,7 +64,7 @@ router.afterEach(() => {
 
 .site-nav__links {
   @apply flex h-full flex-col justify-center gap-4 lg:flex-row lg:items-center lg:gap-6;
-  @apply text-4xl font-bold lg:text-base lg:text-slate-500 dark:lg:!text-slate-100;
+  @apply text-4xl font-bold lg:text-base lg:text-slate-700 dark:lg:!text-slate-100;
 }
 
 .site-nav__link {
@@ -89,5 +97,9 @@ router.afterEach(() => {
 
 .site-nav-btn__icon--active {
   @apply h-6 translate-y-0;
+}
+
+.router-link-active {
+  @apply text-slate-100;
 }
 </style>
