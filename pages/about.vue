@@ -32,9 +32,10 @@ const aboutContent = ref<AboutPageContent>({
   heroSection: {
     title: "About Us",
     text: [
-      "OpenKids Africa was established in 2020 by Regina Nkenchor. The organization's primary objective is to provide students in underserved communities with equitable access to information technology skills.",
-      "Recognizing that achieving this goal requires collaborative efforts, we actively partner with other groups, schools, and governmental bodies to advance the mission of OpenKids Africa.",
-      "Our initiative began in Nigeria, where we leverage free digital resources to introduce children in rural communities to the world of technology and its potential for shaping their future careers. To date, we have successfully equipped over 5,000 children with a foundational understanding of the internet and how technology relates to different career fields. Our goal is to reach 20,000 children by 2030",
+      "Established in 2020 by Regina Nkenchor, OpenKids Africa is a non-profit organization that started in Nigeria.",
+      "Our primary focus is on utilizing free digital resources to introduce children in rural schools to the world of technology and its potential impact on their future careers.",
+      "To date, we have successfully provided over 5,000 children with digital technology exposure and its connections to various career fields.",
+      "Our goal is to expand this impact to reach 20,000 children by the year 2030. Recognizing that achieving such a goal necessitates collaborative efforts, we actively partner with diverse groups, schools, and governmental bodies to advance our mission.",
     ],
     images: [
       {

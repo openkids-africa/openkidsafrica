@@ -103,7 +103,7 @@ const slideImages = ref(
       alt: "Kids Image 3",
     },
     {
-      src: "/assets/images/photos/photo-40.jpg",
+      src: "/assets/images/photos/photo-40.jpeg",
       alt: "Kids Image 3",
     },
     {
