@@ -330,7 +330,7 @@ useHead({
                 future leaders in technology, business, or even in the field of
                 medicine.
               </p>
-              <p>
+              <!-- <p>
                 Our work at OpenKids Africa have been recognized and supported
                 by our partners at
                 <a
@@ -338,7 +338,7 @@ useHead({
                   href="https://techshecan.org/"
                   >Tech She Can</a
                 >.
-              </p>
+              </p> -->
             </template>
             <template v-else-if="item.name == 'Adebola Ogunyemi'">
               <p>
