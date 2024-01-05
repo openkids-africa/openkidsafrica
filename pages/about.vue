@@ -115,7 +115,7 @@ const aboutContent = ref<AboutPageContent>({
     team: [
       {
         name: "Regina Nkenchor",
-        role: "Founder, OpenKids Africa ",
+        role: "Founder & Executive Director OpenKids Africa",
         image: "/assets/images/team/Regina Nkemchor.png",
         socials: [
           { name: "twitter", url: "https://twitter.com/reginankenchor" },
@@ -126,7 +126,7 @@ const aboutContent = ref<AboutPageContent>({
         ],
       },
       {
-        name: "Adebola Ogunyemi",
+        name: "Adebola",
         role: "Early Child Educator & Program Coordinator",
         image: "/assets/images/team/Adebola Ogunyemi.png",
         socials: [
@@ -137,6 +137,14 @@ const aboutContent = ref<AboutPageContent>({
           {
             name: "linkedin",
             url: "https://www.linkedin.com/in/jesutimilehin-temitayo-ogunyemi-a260aa13a",
+          },
+          {
+            name: "twitter",
+            url: "https://x.com/D_Repairer",
+          },
+          {
+            name: "instagram",
+            url: "https://www.instagram.com/officialrepairer",
           },
         ],
       },

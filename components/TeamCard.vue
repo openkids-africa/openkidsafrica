@@ -4,6 +4,7 @@ import {
   ExternalLinkIcon,
   LinkedinIcon,
   FacebookIcon,
+  InstagramIcon,
 } from "lucide-vue-next";
 
 interface Member {
@@ -56,6 +57,8 @@ defineProps<{
           <LinkedinIcon v-else-if="social.name == 'linkedin'" class="icon" />
           <!-- for fb -->
           <FacebookIcon v-else-if="social.name == 'facebook'" class="icon" />
+          <!-- instagram -->
+          <InstagramIcon v-else-if="social.name == 'instagram'" class="icon" />
           <ExternalLinkIcon v-else class="icon" />
         </a>
       </li>
