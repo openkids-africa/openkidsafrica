@@ -43,7 +43,9 @@ defineProps<{
     </header>
     <ul class="team-card__socials">
       <li
-        v-for="(social, i) in member.socials"
+        v-for="(social, i) in member.socials.filter(
+          (s) => s.name == 'linkedin' || s.name == 'twitter',
+        )"
         :key="i"
         class="team-card__socials-item"
       >
