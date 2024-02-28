@@ -349,7 +349,7 @@ useHead({
                 >.
               </p> -->
             </template>
-            <template v-else-if="item.name == 'Adebola Ogunyemi'">
+            <template v-else-if="item.name == 'Adebola'">
               <p>
                 With a background in Computer Science and a Postgraduate degree
                 in Early Childhood and Educational Foundation, I am passionate
