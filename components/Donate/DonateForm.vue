@@ -9,6 +9,8 @@ const donateOptions = ref<DonateOptions>({
   mode: "monthly",
   onceAmounts: [50, 100, 200, 500, 1000, "custom"],
   monthlyAmounts: [25, 50, 100, 200, 500, "custom"],
+  // onceAmounts: ["custom"],
+  // monthlyAmounts: ["custom"],
 });
 
 const formData = ref<DonateFormData>({

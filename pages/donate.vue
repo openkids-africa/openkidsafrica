@@ -7,7 +7,7 @@ const donateContent = ref({
   heroSection: {
     caption: "Donate to Openkids Africa",
     subtext:
-      "Support the Future of Children: Donate Monthly to Empower Children and Schools in Rural African Communities.",
+      "Support the Future of Children in Rural African Schools: Donate Now",
     // images: [
     //   {
     //     src: "/assets/images/svg/Donate.svg",
@@ -45,7 +45,7 @@ const donateContent = ref({
     title: "Watch our video",
     text: "Watch our video to learn more about our mission and how you can help.",
     video: {
-      src: "https://www.youtube.com/embed/2dRdmfElpy4?si=OlEPAb2Jz8D-OBJR",
+      src: "https://www.youtube.com/embed/_MtO_fHlkG4?si=R37hJIpwNbbwtJdM",
       alt: "Video",
     },
   },
@@ -209,6 +209,22 @@ useHead({
       </div>
     </div>
   </section>
+  <section class="site-section bg-orange-100 text-orange-800">
+    <div class="wrapper">
+      <header class="site-section__header site-section__header--left">
+        <h2 class="site-section__caption">About OpenKids Africa
+</h2>
+      </header>
+      <div class="site-section__text-cont">
+        <p class="site-section__subtext">
+          OpenKids Africa is a non-profit organization dedicated to transforming the educational landscape in rural African communities. 
+          <br />
+          We work in collaboration with government entities, schools, and industry partners to provide free, quality information technology education and resources for children in underserved regions.
+
+        </p>
+      </div>
+    </div>
+  </section>
   <section class="site-section bg-slate-100 text-slate-950">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
@@ -216,11 +232,9 @@ useHead({
       </header>
       <div class="site-section__text-cont">
         <p class="site-section__subtext">
-          Every month, your contribution plays a pivotal role in shaping the
-          future of African kids, particularly those in rural areas.
+          Every month, your contribution plays a pivotal role in shaping the future of African children by providing access to our free tech lessons. Through your donations, we ensure that children in underserved regions are not left behind in this rapidly evolving digital economy.
           <br />
-          Your generosity creates a lasting impact, providing essential
-          resources to empower the next generation.
+          Your support directly funds our school outreach programs, providing essential resources and training for both children and educators in rural schools.
         </p>
       </div>
     </div>
@@ -329,7 +343,7 @@ useHead({
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
-          Donate to empower the future of Africa
+          Donate to Empower Children in Rural Schools in Africa
         </h2>
       </header>
       <DonateForm />
