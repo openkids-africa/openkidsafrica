@@ -15,7 +15,7 @@ const { lightText, sticky, scrolled } = useSiteHeader();
 const content = ref({
   heroSection: {
     caption:
-      "Connecting every African child to a digital future through open educational resources",
+      "Connecting every African child to a digital future through free tech lessons",
     subtext: "Welcome to OpenKids Africa",
     // subcaption:
     //   "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country. Therefore, we leverage open educational resources to provide quality information technology education and materials for kids and schools in rural communities in Africa.",
@@ -50,42 +50,42 @@ const content = ref({
     title: "Welcome to Openkids Africa",
     text: [
       "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country.",
-      "Therefore, we leverage open educational resources to provide quality information technology education and materials for kids and schools in rural communities in Africa.",
+      "Therefore, we leverage free digital resources and open educational resources to provide quality information technology lessons and materials for kids and schools in rural communities in Africa.",
     ],
   },
   whatWeDoSection: {
     title: "What We Do",
-    text: "OpenKids Africa is a non-profit organization collaborating with government, schools, and industry to provide free, quality information technology education and resources for children in rural African communities.",
+    text: "OpenKids Africa is a non-profit organization collaborating with government, schools, and industry to provide free,  quality information technology lessons and resources for children in rural African communities.",
     cards: [
       {
         id: "leadership",
         title: "Leadership",
-        text: "We lead by advocating for the use and development of open educational resources for schools in underserved communities in Africa. This way, we can all work together to close the digital gap in our society.",
+        text: "We lead by advocating for the use and development of open educational resources and free digital materials for schools in underserved communities in Africa. This way, we can all work together to close the digital gap in our society.",
       },
       {
         id: "collaboration",
         title: "Collaboration",
-        text: "We are partnering with organizations to provide open educational resources for schools in underserved communities to aid in teaching and preparing children for a future career in technology.",
+        text: "We partner with organizations to provide free digital resources for schools in underserved communities, aiding in teaching and preparing children for a future career in technology.",
       },
       {
         id: "awareness",
         title: "Awareness",
-        text: "We are promoting technology awareness for parents and guardians to help inspire and motivate children to consider a career in technology in the future.",
+        text: "We promote technology awareness for parents and guardians to inspire and motivate children to consider a career in technology in the future. Understanding the essence of technology in their future career pursuits is crucial for equipping children with the skills and mindset needed to thrive in the digital age.",
       },
       {
         id: "equality",
         title: "Equality",
-        text: "To address the digital imbalance in the ICT industry, we are promoting information technology skills for girls in Africa. We are collaborating with Tech She Can UK to improve the ratio and inspire more females to choose a career in technology.",
+        text: "To address the digital imbalance in the ICT industry, we promote information technology skills for girls in Africa. We collaborate with organizations that align with this mission.",
       },
       {
         id: "sustainability",
         title: "Sustainability",
-        text: "To enable us to conserve resources and avoid e-waste, we accept donations of refurbished laptops from our partner organizations for children and schools in underserved communities.",
+        text: "To conserve resources and avoid e-waste, we accept donations of refurbished laptops from our partner organizations for children and schools in underserved communities.",
       },
       {
         id: "education",
         title: "Education",
-        text: "With free educational materials, we are educating, inspiring, and equipping African kids in underserved communities to take the lead in Africa's emerging digital economy.",
+        text: "With free educational materials, we empower African children in underserved communities to take the lead in Africa's emerging digital economy.",
       },
     ],
   },
