@@ -32,8 +32,8 @@ const aboutContent = ref<AboutPageContent>({
   heroSection: {
     title: "About Us",
     text: [
-      "Established in 2020 by Regina Nkenchor, OpenKids Africa is a non-profit organization that started in Nigeria.",
-      "Our primary focus is on utilizing free digital resources to introduce children in rural schools to the world of technology and its potential impact on their future careers.",
+      "Established in 2021 by Regina Nkenchor, OpenKids Africa is a non-profit organization registered in Sweden, with operations in Nigeria.",
+      "Our primary focus is on utilizing free digital resources and open educational resources to deliver tech lessons to children in rural schools, introducing them to the world of technology and its potential impact on their future careers.",
       "To date, we have successfully provided over 5,000 children with digital technology exposure and its connections to various career fields.",
       "Our goal is to expand this impact to reach 20,000 children by the year 2030. Recognizing that achieving such a goal necessitates collaborative efforts, we actively partner with diverse groups, schools, and governmental bodies to advance our mission.",
     ],
@@ -77,7 +77,7 @@ const aboutContent = ref<AboutPageContent>({
     items: [
       "We are champions of change; we believe every African child in underserved communities deserves equal access to information technology resources and skills.",
       "We recognize the importance of children having equal access to technology skills and resources.",
-      "We believe that through open educational resources, children can have access to resources that will help their present and future innovation and creativity.",
+      "We believe that through tech lessons, children gain access to resources and skills that nurture both present and future innovation and creativity.",
       "We believe that parents and guardians have a role to play in inspiring children to learn digital skills and possibly explore a technology career in the future.",
     ],
   },
@@ -126,7 +126,7 @@ const aboutContent = ref<AboutPageContent>({
         ],
       },
       {
-        name: "Adebola",
+        name: "Adebola Temitayo Ogunyemi",
         role: "Early Child Educator & Program Coordinator",
         image: "/assets/images/team/Adebola Ogunyemi.png",
         socials: [
