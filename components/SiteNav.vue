@@ -1,5 +1,5 @@
 <script setup>
-import { XMarkIcon, Bars2Icon } from "@heroicons/vue/24/solid";
+import { XMarkIcon, Bars2Icon, ChevronDownIcon } from "@heroicons/vue/24/solid";
 const router = useRouter();
 const { links } = useSiteNav();
 const navActive = ref(false);
@@ -20,18 +20,51 @@ router.afterEach(() => {
         <li
           v-for="link in links"
           :key="link.name"
-          :class="`site-nav__link ${
+          :class="`site-nav__link group  relative flex justify-center ${
             router.currentRoute.value.fullPath.includes(link.path)
               ? 'active'
               : ''
           }`"
         >
           <NuxtLink
-            :class="`${link.name.toLowerCase() == 'donate' ? 'btn' : ''}`"
+            v-if="!link.subLinks"
+            :class="` ${link.name.toLowerCase() == 'donate' ? 'btn' : ''}`"
             :to="link.path"
           >
             {{ link.name }}
           </NuxtLink>
+          <div v-else class="!flex cursor-pointer items-center gap-1">
+            {{ link.name }}
+            <ChevronDownIcon class="icon h-5 w-5" v-if="link.subLinks" />
+          </div>
+
+          <div
+            v-if="link.subLinks"
+            class="site-nav__dropdown !absolute !top-full !hidden min-w-64 rounded-xl bg-white shadow-lg shadow-slate-600/[.05] transition group-hover:!flex dark:border-b-slate-800 dark:border-t-slate-800 dark:bg-slate-800 dark:shadow-slate-900/[.05]"
+          >
+            <ul class="site-nav__dropdown__links w-full">
+              <!-- <li
+                class="site-nav__dropdown__link border-b border-slate-100 text-left dark:border-slate-800"
+              >
+                <NuxtLink
+                  :to="link.path"
+                  class="flex w-full p-2 px-4 !text-slate-600"
+                  >{{ link.name }}</NuxtLink
+                >
+              </li> -->
+              <li
+                v-for="sublink in link.subLinks"
+                :key="sublink.name"
+                class="site-nav__dropdown__link border-b border-slate-100 text-left last-of-type:border-b-0 dark:border-slate-800"
+              >
+                <NuxtLink
+                  class="flex w-full p-2 px-4 !text-slate-600"
+                  :to="sublink.path"
+                  >{{ sublink.name }}</NuxtLink
+                >
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -68,7 +101,7 @@ router.afterEach(() => {
 }
 
 .site-nav__link {
-  @apply py-1 hover:text-slate-500 dark:hover:text-slate-100 lg:overflow-visible;
+  @apply py-1 hover:text-slate-500 dark:hover:text-slate-100 lg:!overflow-y-visible;
 }
 
 .site-nav__link,

@@ -34,6 +34,7 @@ declare global {
   interface AboutPageContent {
     heroSection: BasicSectionContent;
     journeySection: BasicSectionContent;
+    believeSection: { text: string[] };
     valuesSection: {
       title: string;
       items: string[];
@@ -60,6 +61,31 @@ declare global {
           url: string;
         }[];
       }[];
+    };
+    partnersSection: PartnerSection;
+  }
+
+  interface TeamPageContent {
+    teamSection: {
+      title: string;
+      team: {
+        name: string;
+        role: string;
+        image: string;
+        socials: {
+          name: string;
+          url: string;
+        }[];
+      }[];
+    };
+    educationChampionsSection: {
+      title: string;
+      description: string[];
+      additionalInfo: {
+        title: string;
+        list: string[];
+      }[];
+      mentoringInfo: string;
     };
     partnersSection: PartnerSection;
   }

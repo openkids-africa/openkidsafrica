@@ -1,0 +1,333 @@
+<script setup lang="ts">
+import { HelpingHandIcon } from "lucide-vue-next";
+const programsContent = ref({
+  heroSection: {
+    caption: "OpenKids Africa Educator Program",
+    subtext:
+      "Join the OpenKids Africa Educator Program and become a catalyst for change in secondary education!",
+    images: [
+      {
+        src: "/assets/images/photos/photo-1.jpeg",
+        alt: "Educator interacting with students",
+      },
+      {
+        src: "/assets/images/photos/photo-24.jpg",
+        alt: "Students using computers",
+      },
+      {
+        type: "block",
+        color: "orange",
+      },
+      {
+        src: "/assets/images/photos/photo-8.jpg",
+        alt: "Classroom technology session",
+      },
+      {
+        src: "/assets/images/photos/photo-16.jpg",
+        alt: "Mentor teaching technology",
+      },
+      {
+        type: "block",
+        color: "purple",
+      },
+    ],
+  },
+  programDetails: {
+    title: "Program Overview",
+    sections: [
+      {
+        title: "How It Works",
+        text: "The OpenKids Africa Educator Program aims to educate and empower educators with the tools and expertise needed to prepare students for the digital age. Participants will receive comprehensive training, expert mentorship, and support within a collaborative community.",
+      },
+      {
+        title: "Why Participate?",
+        text: [
+          "Gain essential skills in technology integration for your curriculum.",
+          "Receive mentorship from technology experts.",
+          "Join a community of like-minded educators and enhance your career prospects.",
+        ],
+      },
+    ],
+  },
+  eligibility: {
+    title: "Who Can Apply?",
+    criteria: [
+      {
+        role: "Mentees",
+        requirements: [
+          "Must be proficient in English.",
+          "Should be a teacher at primary or secondary level eager to integrate technology into teaching.",
+          "Should demonstrate a teaching track record with children or teens.",
+        ],
+      },
+      {
+        role: "Mentors",
+        requirements: [
+          "Must be proficient in English and have a strong background in technology.",
+          "Should possess interpersonal skills and be capable of empathetic communication.",
+          "Should be able to commit to 2 hours weekly for personalized mentorship.",
+        ],
+      },
+    ],
+  },
+  programTimeline: {
+    title: "Program Timeline",
+    events: [
+      {
+        date: "April 5-30, 2024",
+        description: "Application Period",
+      },
+      {
+        date: "May 6-8, 2024",
+        description: "Notification of Acceptance",
+      },
+      {
+        date: "May 11 - June 22, 2024",
+        description: "Mentorship Period",
+      },
+      {
+        date: "July 7, 2024",
+        description: "Graduation and Selection as OpenKids Tech Ambassadors",
+      },
+    ],
+  },
+  applicationDetails: {
+    title: "Application Process",
+    steps: [
+      {
+        step: "Apply",
+        description:
+          "Complete the online application form detailing your skills, interests, and availability.",
+      },
+      {
+        step: "Match",
+        description:
+          "We will pair you with a mentor or mentee based on the information provided in your application.",
+      },
+      {
+        step: "Launch",
+        description:
+          "Begin the program with six weeks of learning, supported by interactions in Slack and email.",
+      },
+    ],
+  },
+  FAQ: {
+    title: "Frequently Asked Questions",
+    questions: [
+      {
+        question: "Can I sponsor this program?",
+        answer:
+          "Yes, OpenKids Africa welcomes sponsorships from individuals and companies to provide resources like e-learning courses, books, and software. For more details, visit our partnership page.",
+      },
+      {
+        question:
+          "I am an aspiring educator but have not taught in school, can I apply?",
+        answer:
+          "Yes, aspiring educators are encouraged to apply and gain experience through our program.",
+      },
+    ],
+  },
+  sponsorshipDetails: {
+    title: "Sponsorship Opportunities",
+    text: "Support the OpenKids Africa Educators Program by providing critical resources to help educators. Your sponsorship helps enhance learning experiences and increases accessibility, thus elevating the program's impact.",
+  },
+});
+
+useHead({
+  title: "Programs",
+  meta: [
+    {
+      name: "description",
+      content: programsContent.value.heroSection.subtext,
+      key: "description",
+    },
+    {
+      property: "og:title",
+      content: "Contact Us",
+    },
+    {
+      property: "og:description",
+      content: programsContent.value.heroSection.subtext,
+    },
+    {
+      property: "twitter:title",
+      content: "Contact Us",
+    },
+    {
+      property: "twitter:description",
+      content: programsContent.value.heroSection.subtext,
+    },
+  ],
+});
+</script>
+<template>
+  <header class="page-header site-section programs-header">
+    <div class="wrapper !max-w-[90rem]">
+      <div class="page-header__text-cont 2xl:!ml-40">
+        <h1 class="page-header__caption">
+          {{ programsContent.heroSection.caption }}
+        </h1>
+        <p class="page-header__subtext">
+          {{ programsContent.heroSection.subtext }}
+        </p>
+      </div>
+      <div class="page-header__media-cont img-cont">
+        <SiteHeroImagesGrid
+          class="images-grid programs-header__media-cont"
+          :images="programsContent.heroSection.images || []"
+        />
+      </div>
+    </div>
+  </header>
+  <section class="site-section why-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.programDetails.sections[1].title }}
+        </h2>
+      </header>
+      <p
+        v-for="(text, index) in programsContent.programDetails.sections[1].text"
+        :key="index"
+        class="site-section__text"
+      >
+        {{ text }}
+      </p>
+    </div>
+  </section>
+  <section class="site-section eligibility-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.eligibility.title }}
+        </h2>
+      </header>
+      <div
+        v-for="(criteria, role) in programsContent.eligibility.criteria"
+        :key="role"
+        class="eligibility-criteria"
+      >
+        <h3>{{ criteria.role }}</h3>
+        <ul>
+          <li v-for="requirement in criteria.requirements" :key="requirement">
+            {{ requirement }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="site-section timeline-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.programTimeline.title }}
+        </h2>
+      </header>
+      <ul>
+        <li
+          v-for="event in programsContent.programTimeline.events"
+          :key="event.date"
+          class="timeline-event"
+        >
+          <strong>{{ event.date }}:</strong> {{ event.description }}
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="site-section faq-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.FAQ.title }}
+        </h2>
+      </header>
+      <dl>
+        <div
+          v-for="item in programsContent.FAQ.questions"
+          :key="item.question"
+          class="faq-item"
+        >
+          <dt>{{ item.question }}</dt>
+          <dd>{{ item.answer }}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+  <section class="site-section sponsorship-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.sponsorshipDetails.title }}
+        </h2>
+      </header>
+      <p>{{ programsContent.sponsorshipDetails.text }}</p>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.programs-header {
+}
+/* .programs-header > .wrapper {
+  @apply max-w-7xl flex-col-reverse gap-8 lg:flex-row;
+} */
+.page-header__text-cont {
+  @apply lg:max-w-xl xl:ml-16;
+}
+.page-header__text-cont,
+.programs-header__media-cont {
+  @apply lg:flex-1;
+}
+
+.programs-header__media-cont {
+  /* @apply relative lg:w-[150%]; */
+}
+
+.why-section {
+  @apply relative px-[calc(100%/7)];
+}
+
+.why-section::before,
+.why-section::after {
+  content: "";
+  @apply absolute left-0 top-0 h-full max-h-96 w-[calc(100%/7)] bg-cover bg-center bg-no-repeat lg:max-h-full xl:bg-contain;
+}
+
+.why-section::before {
+  @apply bg-right xl:bg-left;
+  background-image: url("/assets/images/svg/LeftIllustrationabstract.svg");
+}
+.why-section::after {
+  @apply left-auto right-0 bg-left xl:bg-right;
+  background-image: url("/assets/images/svg/RightIllustrationabstract.svg");
+}
+.why-section > .wrapper {
+  @apply flex flex-col gap-4;
+}
+
+.why-section .site-section__header,
+.objectives-section .site-section__header {
+  @apply text-left;
+}
+
+.objectives-section > .wrapper {
+  @apply flex flex-col gap-4 lg:flex-row;
+}
+
+.objectives-section__text-cont,
+.objectives-section__media-cont {
+  @apply flex-1;
+}
+
+.objectives {
+  @apply grid gap-4 md:grid-cols-2;
+}
+
+.objectives-section__media-cont {
+  @apply flex flex-col items-center justify-center gap-4;
+}
+
+.objectives-section__illustration {
+  @apply lg:h-[30rem];
+}
+</style>

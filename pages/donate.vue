@@ -45,9 +45,38 @@ const donateContent = ref({
     title: "Watch our video",
     text: "Watch our video to learn more about our mission and how you can help.",
     video: {
-      src: "https://www.youtube.com/embed/_MtO_fHlkG4?si=R37hJIpwNbbwtJdM",
+      src: "https://www.youtube.com/embed/_MtO_fHlkG4?si=m3fvsb9YxK9rXnNE",
       alt: "Video",
     },
+  },
+  donateSection: {
+    donateOptions: [
+      {
+        title: "$50 Monthly Donation",
+        description:
+          "With your $50 monthly donation, we can provide 4 free tech lessons and resources to rural schools every month. This enables 15 more children in rural schools annually to learn tech lessons, opening up new possibilities and opportunities for their education and future.",
+      },
+      {
+        title: "$100 Monthly Donation",
+        description:
+          "With your $100 monthly donation, we can provide 8 free tech lessons and resources to rural schools every month. This enables 30 more children in rural schools annually to learn tech lessons, opening up new possibilities and opportunities for their education and future.",
+      },
+      {
+        title: "$150 Monthly Donation",
+        description:
+          "With your $150 monthly donation, we can provide 12 free tech lessons to rural schools every month. This enables 45 more children in rural schools annually to learn tech lessons, opening up new possibilities and opportunities for their education and future.",
+      },
+      {
+        title: "$500 Monthly Donation",
+        description:
+          "With your $500 monthly donation, we can provide 16 free tech lessons to rural schools every month. This enables 150 more children in rural schools annually to learn tech lessons, opening up new possibilities and opportunities for their education and future.",
+      },
+      {
+        title: "Custom Donations",
+        description:
+          "Your custom donation empowers children in rural African schools with essential tech lessons and resources, shaping their educational journey and future opportunities.",
+      },
+    ],
   },
   faqSection: {
     caption: "Donate FAQs",
@@ -212,15 +241,16 @@ useHead({
   <section class="site-section bg-orange-100 text-orange-800">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
-        <h2 class="site-section__caption">About OpenKids Africa
-</h2>
+        <h2 class="site-section__caption">About OpenKids Africa</h2>
       </header>
       <div class="site-section__text-cont">
         <p class="site-section__subtext">
-          OpenKids Africa is a non-profit organization dedicated to transforming the educational landscape in rural African communities. 
+          OpenKids Africa is a non-profit organization dedicated to transforming
+          the educational landscape in rural African communities.
           <br />
-          We work in collaboration with government entities, schools, and industry partners to provide free, quality information technology education and resources for children in underserved regions.
-
+          We work in collaboration with government entities, schools, and
+          industry partners to provide free, quality information technology
+          education and resources for children in underserved regions.
         </p>
       </div>
     </div>
@@ -232,13 +262,57 @@ useHead({
       </header>
       <div class="site-section__text-cont">
         <p class="site-section__subtext">
-          Every month, your contribution plays a pivotal role in shaping the future of African children by providing access to our free tech lessons. Through your donations, we ensure that children in underserved regions are not left behind in this rapidly evolving digital economy.
+          Every month, your contribution plays a pivotal role in shaping the
+          future of African children by providing access to our free tech
+          lessons. Through your donations, we ensure that children in
+          underserved regions are not left behind in this rapidly evolving
+          digital economy.
           <br />
-          Your support directly funds our school outreach programs, providing essential resources and training for both children and educators in rural schools.
+          Your support directly funds our school outreach programs, providing
+          essential resources and training for both children and educators in
+          rural schools.
         </p>
       </div>
     </div>
   </section>
+
+  <!-- donation options -->
+
+  <section class="site-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">Donate Monthly</h2>
+        <p class="site-section__subtext">
+          Choose a donation amount that suits you best.
+        </p>
+      </header>
+      <div class="donate-options flex flex-wrap gap-4 lg:grid lg:grid-cols-2">
+        <article
+          v-for="(option, index) in donateContent.donateSection.donateOptions"
+          :key="index"
+          :class="`donate-option flex flex-col gap-4 rounded-xl border border-slate-200 p-4 ${
+            index === donateContent.donateSection.donateOptions.length - 1
+              ? 'lg:col-span-2'
+              : ''
+          }`"
+        >
+          <h3 class="font-heading text-3xl font-semibold">
+            {{ option.title }}
+          </h3>
+          <p>{{ option.description }}</p>
+          <a
+            href="#contact"
+            class="btn btn--primary mt-auto !w-fit"
+            :aria-label="`Contact OpenKids Africa`"
+          >
+            <MailIcon class="icon" />
+            <span class="text"> Contact Us </span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">

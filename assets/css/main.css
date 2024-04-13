@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100;
+  @apply bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 lg:text-lg;
 }
 
 li {
@@ -82,7 +82,7 @@ li {
 }
 
 .site-section__header {
-  @apply mb-12 flex flex-col gap-2 text-center;
+  @apply mb-5 flex flex-col gap-2 text-center;
 }
 
 .site-section__header--left {
@@ -94,7 +94,7 @@ li {
 }
 
 .site-section__subtext {
-  @apply text-lg lg:text-xl;
+  /* @apply text-lg lg:text-xl; */
 }
 
 .site-section__text-cont {
@@ -134,7 +134,7 @@ li {
 }
 
 .page-header__subtext {
-  @apply text-lg lg:text-xl;
+  /* @apply text-lg lg:text-xl; */
 }
 
 .page-header__media-cont {

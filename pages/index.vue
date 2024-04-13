@@ -55,7 +55,7 @@ const content = ref({
   },
   whatWeDoSection: {
     title: "What We Do",
-    text: "OpenKids Africa is a non-profit organization collaborating with government, schools, and industry to provide free,  quality information technology lessons and resources for children in rural African communities.",
+    text: "OpenKids Africa is a non-profit organization collaborating with government, schools, and industry to provide free, quality information technology lessons and resources for children in rural African communities.",
     cards: [
       {
         id: "leadership",

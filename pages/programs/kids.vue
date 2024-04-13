@@ -2,9 +2,9 @@
 import { HelpingHandIcon } from "lucide-vue-next";
 const programsContent = ref({
   heroSection: {
-    caption: "Every child deserves equal access to technology",
+    caption: "Empowering Every Child: The OpenKids Africa Kids Program",
     subtext:
-      "OpenKids Africa is reaching out to kids and schools in remote African areas using open educational resources.",
+      "In a world where thousands of children lack access to quality education, the OpenKids Africa Kids Program stands as a beacon of hope. We believe that every child, regardless of their background or circumstances, deserves the opportunity to thrive in today's digital age",
     images: [
       {
         src: "/assets/images/photos/photo-33.jpeg",
@@ -33,15 +33,53 @@ const programsContent = ref({
     ],
   },
   whySection: {
-    title: "Why start now?",
+    title: "Why Act Now?",
     text: [
-      "The world is rapidly developing because of the way digital technologies and resources are shaping the educational sector. We believe that every child should be given the right to access open digital resources regardless of their location, gender, or income status. This way, kids can maximize technology resources to find solutions to common problems, innovate, and thrive in Africa’s emerging digital economy.",
-      "OpenKids Africa is leveraging open educational resources to help kids gain early digital skills that will build their cognitive intelligence and engage their imaginations to build and create. Through these materials, they will acquire the foundational skills required to thrive as they grow and develop in their respective career choices. We teach the children to recognize problems in their immediate environment, creatively think of solutions, design an algorithm, and execute solutions. These active exercises build a solid structure of teamwork, critical thinking, communication, and creativity. It also builds major life skills such as patience, tolerance, and focus, which prepare them to surmount future problems.",
-      "Also, we are teaching rural schools how to access free digital resources that will aid their teaching. We also provide them with refurbished computers powered by open-source technologies.",
+      "The Kids Program is a vital lifeline for children in rural schools, where access to quality education is limited. By delivering tech lessons and innovative learning experiences, we empower these children to unlock their full potential and shape their futures.",
+      "At OpenKids Africa, we understand that education is the key to unlocking endless opportunities. Through the Kids Program, we strive to equip children with the digital skills and knowledge needed to succeed in an increasingly interconnected world. By fostering creativity, problem-solving, critical-thinking, and collaboration, we prepare children to thrive in Africa's emerging digital economy.",
     ],
-    donateLink: {
-      text: "Donate to OpenKids Africa",
-      url: "http://paypal.me/openkidsafrica",
+  },
+  approachSection: {
+    title: "Our Approach",
+    text: [
+      "The heart of the Kids Program lies in its delivery of tech lessons to children in rural schools. Through interactive lessons and hands-on activities, we engage children in the learning process, igniting their curiosity and passion for technology. From coding and robotics to digital literacy and beyond, our curriculum is designed to be inclusive and accessible to all.",
+      "But our impact doesn't stop there. We also work closely with schools to ensure they have the tools and resources they need to support their students' learning journeys. From providing access to free digital resources to supplying refurbished computers, we empower schools to create environments where every child can succeed.",
+    ],
+    images: [
+      {
+        src: "/assets/images/photos/photo-12.jpg",
+        alt: "Approach Image 1",
+      },
+      {
+        src: "/assets/images/photos/photo-13.jpg",
+        alt: "Approach Image 2",
+      },
+      {
+        src: "/assets/images/photos/photo-14.jpg",
+        alt: "Approach Image 3",
+      },
+      {
+        src: "/assets/images/photos/photo-15.jpg",
+        alt: "Approach Image 4",
+      },
+      {
+        src: "/assets/images/photos/photo-16.jpg",
+        alt: "Approach Image 3",
+      },
+      {
+        src: "/assets/images/photos/photo-17.jpg",
+        alt: "Approach Image 4",
+      },
+    ],
+  },
+  joinSection: {
+    title: "Join Us",
+    text: [
+      "The OpenKids Africa Kids Program is more than just a program—it's a movement for change. Together, we can break down barriers and build a brighter future for children everywhere.",
+    ],
+    actionLink: {
+      text: "Support Us",
+      url: "/donate",
     },
   },
   objectiveSection: {
@@ -49,23 +87,23 @@ const programsContent = ref({
     objectives: [
       {
         id: "africa",
-        title: "Focus On Underserved Communities In Africa",
-        text: "To collaborate with organizations to educate, create, and distribute open digital resources to schools in rural communities.",
+        title: "Empowering Underserved Communities in Africa",
+        text: "We collaborate with organizations to provide tech lessons to schools in rural communities, fostering education and innovation.",
       },
       {
         id: "advocate",
         title: "Advocate",
-        text: "Advocate for the use of and access to open educational technologies and resources in rural schools in Africa.",
+        text: "Advocate for the utilization of free digital resources and open educational technologies in rural schools across Africa",
       },
       {
         id: "ratio",
         title: "Changing The Ratio",
-        text: "We are getting more women and girls to consider a future career in technology by partnering with TechSheCan UK and using digital lesson plans with female instructors.",
+        text: "Empowering women and girls to pursue careers in technology.",
       },
       {
         id: "collaboration",
         title: "Collaborate",
-        text: "To collaborate with organizations to educate, create, and distribute open digital resources to schools in rural communities.",
+        text: "We collaborate directly with rural schools in educating, creating, and delivering our tech lessons to communities in rural areas.",
       },
     ],
   },
@@ -135,20 +173,62 @@ useHead({
       <p
         v-for="(text, index) in programsContent.whySection.text"
         :key="index"
-        class="site-section__text text-xl"
+        class="site-section__text"
       >
         {{ text }}
       </p>
-      <div class="action-cont !justify-start py-8">
+    </div>
+  </section>
+  <section class="site-section approach-section">
+    <div
+      class="wrapper flex !max-w-7xl flex-col items-center gap-4 lg:grid lg:grid-cols-5 lg:gap-8"
+    >
+      <div class="cont lg:col-span-2 lg:col-start-4 lg:row-start-1">
+        <header class="site-section__header site-section__header--left">
+          <h2 class="site-section__caption">
+            {{ programsContent.approachSection.title }}
+          </h2>
+        </header>
+        <p
+          v-for="(text, index) in programsContent.approachSection.text"
+          :key="index"
+          class="site-section__text"
+        >
+          {{ text }}
+        </p>
+      </div>
+      <div class="cont lg:col-span-3 lg:col-start-1 lg:row-start-1">
+        <SiteHeroImagesGrid
+          class="images-grid programs-header__media-cont"
+          :images="programsContent.approachSection.images"
+        />
+      </div>
+    </div>
+  </section>
+  <section class="site-section join-section bg-orange-100 text-orange-800">
+    <div class="wrapper text-center">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.joinSection.title }}
+        </h2>
+      </header>
+      <p
+        v-for="(text, index) in programsContent.joinSection.text"
+        :key="index"
+        class="site-section__text"
+      >
+        {{ text }}
+      </p>
+      <div class="action-cont py-8">
         <a
-          :href="programsContent.whySection.donateLink.url"
+          :href="programsContent.joinSection.actionLink.url"
           target="_blank"
           rel="noopener noreferrer"
           class="btn"
         >
           <HelpingHandIcon class="icon" />
           <span class="text">
-            {{ programsContent.whySection.donateLink.text }}
+            {{ programsContent.joinSection.actionLink.text }}
           </span>
         </a>
       </div>
@@ -157,11 +237,11 @@ useHead({
   <section class="site-section objectives-section">
     <div class="wrapper">
       <div class="objectives-section__text-cont">
-        <header class="site-section__header">
+        <!-- <header class="site-section__header">
           <h2 class="site-section__caption">
             {{ programsContent.objectiveSection.title }}
           </h2>
-        </header>
+        </header> -->
         <ul class="objectives">
           <li
             v-for="(objective, i) in programsContent.objectiveSection

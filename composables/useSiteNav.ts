@@ -7,10 +7,30 @@ export const useSiteNav = () => {
     {
       name: "About Us",
       path: "/about",
+      subLinks: [
+        {
+          name: "About Us",
+          path: "/about",
+        },
+        {
+          name: "Our Team",
+          path: "/about/team",
+        },
+      ],
     },
     {
       name: "Programs",
       path: "/programs",
+      subLinks: [
+        {
+          name: "Kids Program",
+          path: "/programs/kids",
+        },
+        {
+          name: "Educators Program",
+          path: "/programs/educators",
+        },
+      ],
     },
     {
       name: "News",

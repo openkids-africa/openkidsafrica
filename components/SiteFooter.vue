@@ -14,9 +14,20 @@ const { links, socialLinks } = useSiteNav();
     <div class="wrapper">
       <section class="site-footer__section site-section">
         <div class="wrapper">
-          <NuxtLink to="/">
-            <SiteLogo class="!z-0 !px-0" />
-          </NuxtLink>
+          <div
+            class="flex max-w-xs flex-col items-center gap-4 text-center lg:items-start lg:text-left"
+          >
+            <NuxtLink to="/">
+              <SiteLogo class="!z-0 !px-0" />
+            </NuxtLink>
+            <p class="text-base">
+              Connecting every African child to a digital future through the
+              delivery of free tech lessons.
+            </p>
+            <p class="text-base">
+              © 2024 Openkids Africa. Registered charity number 8025460588
+            </p>
+          </div>
 
           <ul class="site-links">
             <li v-for="(link, i) in links" class="site-links__item">
@@ -66,15 +77,13 @@ const { links, socialLinks } = useSiteNav();
           </ul>
         </div>
       </section>
-      <section class="site-section site-footer__section">
+      <!-- <section class="site-section site-footer__section">
         <div class="wrapper">
           <p>
-            © 2023 OpenKids Africa. Registered charity number 189502
-            <!-- (formerly
-            Pranet Technology Initiative) -->
+            © 2024 Openkids Africa. Registered charity number 8025460588
           </p>
         </div>
-      </section>
+      </section> -->
     </div>
   </footer>
 </template>

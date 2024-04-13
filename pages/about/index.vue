@@ -34,7 +34,6 @@ const aboutContent = ref<AboutPageContent>({
     text: [
       "Established in 2021 by Regina Nkenchor, OpenKids Africa is a non-profit organization registered in Sweden, with operations in Nigeria.",
       "Our primary focus is on utilizing free digital resources and open educational resources to deliver tech lessons to children in rural schools, introducing them to the world of technology and its potential impact on their future careers.",
-      "To date, we have successfully provided over 5,000 children with digital technology exposure and its connections to various career fields.",
       "Our goal is to expand this impact to reach 20,000 children by the year 2030. Recognizing that achieving such a goal necessitates collaborative efforts, we actively partner with diverse groups, schools, and governmental bodies to advance our mission.",
     ],
     images: [
@@ -62,6 +61,11 @@ const aboutContent = ref<AboutPageContent>({
         type: "block",
         color: "purple",
       },
+    ],
+  },
+  believeSection: {
+    text: [
+      "We believe that through tech lessons, children gain access to resources and skills that nurture both present and future innovation and creativity.",
     ],
   },
   journeySection: {
@@ -250,6 +254,20 @@ useHead({
       </div>
     </div>
   </section> -->
+  <section class="site-section bg-slate-800 text-slate-100">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <q
+          v-for="(text, i) in aboutContent.believeSection.text"
+          :key="i"
+          class="font-heading text-lg font-medium leading-tight lg:text-2xl"
+        >
+          {{ text }}
+        </q>
+      </header>
+    </div>
+  </section>
+
   <section class="site-section bg-slate-950 text-slate-100">
     <div class="wrapper">
       <header class="site-section__header">
@@ -301,96 +319,6 @@ useHead({
               </p>
             </div>
           </article>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ aboutContent.teamSection.title }}
-        </h2>
-      </header>
-
-      <ul class="team-list">
-        <li
-          v-for="(item, i) in aboutContent.teamSection.team"
-          :key="i"
-          class="team-list__item"
-        >
-          <TeamCard :member="item" :i="i">
-            <template v-if="item.name == 'Regina Nkenchor'">
-              <p>
-                To address the challenge in Africa, where children in rural
-                schools lack digital skills and risk being left behind in the
-                rapidly advancing digital space, and considering the scarcity of
-                women in technology roles, I founded OpenKids Africa and
-                currently serve as its executive director.
-              </p>
-              <p>
-                My vision is to ensure that all children have equal rights to
-                quality education and exposure to digital skills, regardless of
-                their gender, race, or location.
-              </p>
-              <p>
-                Early exposure to digital skills empowers children to make
-                informed career choices, paving the way for them to become
-                future leaders in technology, business, or even in the field of
-                medicine.
-              </p>
-              <!-- <p>
-                Our work at OpenKids Africa have been recognized and supported
-                by our partners at
-                <a
-                  class="text-orange-600 underline"
-                  href="https://techshecan.org/"
-                  >Tech She Can</a
-                >.
-              </p> -->
-            </template>
-            <template v-else-if="item.name == 'Adebola'">
-              <p>
-                With a background in Computer Science and a Postgraduate degree
-                in Early Childhood and Educational Foundation, I am passionate
-                about fostering digital literacy in children.
-              </p>
-              <p>
-                Having joined OpenKids Africa in 2020 as an Early Childhood
-                Educator, my focus extends to reaching schools in low-tech and
-                rural communities. I am committed to bridging the digital gap
-                and firmly believe in nurturing the innovative potential of
-                today's children.
-              </p>
-              <p>
-                As part of OpenKids Africa, I take pride in igniting children's
-                interest in technology, especially among girls, and aspire to
-                contribute to the organization's future impact, connecting more
-                children to a digital future.
-              </p>
-            </template>
-            <template v-else-if="item.name == 'Anita Ihuman'">
-              <p>
-                As a program coordinator at Openkids Africa, I am in charge of
-                managing programs and ensuring that each project coincides with
-                our organizational goals and delivers exceptional results. I am
-                enthusiastic about topics that strongly resonate with values
-                promoting growth, inclusivity, and sustainability, all of which
-                contribute to shaping the future of technology.
-              </p>
-              <p>
-                I am passionate about empowering the next generation of
-                technologists through mentorships and onboarding.
-              </p>
-              <p>
-                With a background in technology and open source, I am uniquely
-                positioned to educate children on technology and how it can
-                translate to their career choices. In my role as a program
-                manager, I can play a part in introducing children to a digital
-                future, particularly those from marginalized groups.
-              </p>
-            </template>
-          </TeamCard>
         </li>
       </ul>
     </div>
