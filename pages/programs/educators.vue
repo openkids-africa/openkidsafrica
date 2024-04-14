@@ -246,6 +246,13 @@ const programsContent = ref({
       },
     ],
   },
+  selection: {
+    title: "Selection Process",
+    text: [
+      "A committee will review all applications and select participants based on their qualifications, experience, and commitment to the program's goals. Shortlisted candidates may be contacted for an interview.",
+    ],
+    deadline: " 30th April 2024",
+  },
   FAQ: {
     title: "Frequently Asked Questions",
     questions: [
@@ -263,9 +270,77 @@ const programsContent = ref({
       },
     ],
   },
-  sponsorshipDetails: {
-    title: "Sponsorship Opportunities",
-    text: "Support the OpenKids Africa Educators Program by providing critical resources to help educators. Your sponsorship helps enhance learning experiences and increases accessibility, thus elevating the program's impact.",
+  sponsorship: {
+    title: "Sponsorship Program",
+    text: "Thank you for your interest in sponsoring the OpenKids Africa Educators Program! We are deeply grateful for your consideration in supporting our mission to empower future generations.",
+    sections: [
+      {
+        title: "Your Impact:",
+        text: [
+          "As a non-profit organization, we rely on the generosity of individuals and companies like yours to provide critical resources to educators participating in the program. By becoming a sponsor, you'll be directly contributing to:",
+        ],
+        items: [
+          {
+            title: "Enhanced learning experience:",
+            text: [
+              "Your contribution will help us furnish program participants with valuable resources like e-learning courses, books, and specialized software. These resources will equip them with the latest knowledge and tools to effectively mentor young minds.",
+            ],
+          },
+          {
+            title: "Increased accessibility:",
+            text: [
+              "With your support, we can offer these resources at a reduced cost or even completely free to educators who might not have access to them otherwise. This ensures that financial limitations do not hinder their growth and development as mentors.",
+            ],
+          },
+
+          {
+            title: "Elevated program impact:",
+            text: [
+              "By providing these resources, you'll be contributing to creating a more effective and impactful mentorship experience for the program participants. This, in turn, will empower the next generation of learners and leaders in Africa.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Benefits of Sponsorship",
+        text: [
+          "In addition to supporting a worthy cause, your sponsorship comes with several advantages, including:",
+        ],
+        items: [
+          {
+            title: "Brand recognition:",
+            text: [
+              "We will proudly feature your company logo on our website, program materials, and social media platforms, increasing your brand visibility and reputation within the education and community development sectors.",
+            ],
+          },
+
+          {
+            title: "Networking opportunities:",
+            text: [
+              "You'll gain access to a network of like-minded businesses and organizations committed to social responsibility and educational advancement.",
+            ],
+          },
+
+          {
+            title: "Positive impact storytelling:",
+            text: [
+              "We'll work with you to co-create content that showcases your company's commitment to supporting the education sector and empowering future generations in Africa.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Sponsorship Opportunities",
+        text: [
+          `OpenKids Africa offers various sponsorship opportunities tailored to your company's objectives and budget. To explore these options and find the best fit, please email us at 
+          <a href="mailto:openkidsafrica@gmail.com" class="text-blue-500 underline">
+          openkidsafrica@gmail.com
+          </a>
+          `,
+          `We look forward to partnering with you in making a positive impact on the future of Africa!`,
+        ],
+      },
+    ],
   },
 });
 
@@ -509,6 +584,28 @@ useHead({
       </ul>
     </div>
   </section>
+  <section class="site-section selection-section bg-slate-50">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.selection.title }}
+        </h2>
+      </header>
+      <p
+        v-for="(text, index) in programsContent.selection.text"
+        :key="index"
+        class="site-section__text mx-auto max-w-3xl text-center"
+      >
+        {{ text }}
+      </p>
+      <p
+        class="site-section__text mt-12 w-full rounded-2xl bg-slate-100 p-24 text-center text-2xl"
+      >
+        <strong>Application Deadline:</strong>
+        {{ programsContent.selection.deadline }}
+      </p>
+    </div>
+  </section>
   <section class="site-section faq-section">
     <div class="wrapper">
       <header class="site-section__header">
@@ -526,14 +623,48 @@ useHead({
       </ul>
     </div>
   </section>
-  <section class="site-section sponsorship-section">
+  <section class="site-section sponsorship-section bg-slate-100">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header !mb-20">
         <h2 class="site-section__caption">
-          {{ programsContent.sponsorshipDetails.title }}
+          {{ programsContent.sponsorship.title }}
         </h2>
+        <p class="site-section__subtext mx-auto max-w-3xl">
+          {{ programsContent.sponsorship.text }}
+        </p>
       </header>
-      <p>{{ programsContent.sponsorshipDetails.text }}</p>
+
+      <ul class="sponsorship-section__details flex flex-col gap-24">
+        <li
+          v-for="(section, index) in programsContent.sponsorship.sections"
+          :key="index"
+          class="sponsorship-section__section"
+        >
+          <header class="site-section__header !mb-8">
+            <h3 class="font-heading text-3xl font-bold">{{ section.title }}</h3>
+            <p
+              v-for="(text, index) in section.text"
+              :key="index"
+              class="mx-auto max-w-2xl"
+              v-html="text"
+            ></p>
+          </header>
+          <ul
+            class="sponsorship-section__items flex flex-col gap-4 lg:grid lg:grid-cols-3"
+          >
+            <li
+              v-for="(item, index) in section.items"
+              :key="index"
+              class="sponsorship-section__item rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+            >
+              <h4 class="font-heading text-xl font-bold">{{ item.title }}</h4>
+              <p v-for="(text, index) in item.text" :key="index">
+                {{ text }}
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
