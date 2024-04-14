@@ -16,8 +16,9 @@ router.afterEach(() => {
 <template>
   <nav class="site-nav" :class="`${navActive ? 'site-nav--active' : ''}`">
     <div class="wrapper">
-      <ul class="site-nav__links !justify-start pt-[20vh]">
+      <ul class="site-nav__links !justify-start pt-[20vh] lg:pt-0">
         <li
+          tabindex="0"
           v-for="link in links"
           :key="link.name"
           :class="`site-nav__link group relative flex  flex-col justify-center max-lg:items-center ${
