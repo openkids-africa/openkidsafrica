@@ -18,6 +18,6 @@ defineProps<FAQProps>();
         </div>
       </div>
     </summary>
-    <p class="faq__content">{{ faq.content }}</p>
+    <p class="faq__content" v-html="faq.content"></p>
   </details>
 </template>

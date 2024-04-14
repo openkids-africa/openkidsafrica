@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { HelpingHandIcon } from "lucide-vue-next";
+import type { AcademicCapIcon, BanknotesIcon } from "@heroicons/vue/24/solid";
+import {
+  BanknoteIcon,
+  GraduationCapIcon,
+  HelpingHandIcon,
+} from "lucide-vue-next";
 const programsContent = ref({
   heroSection: {
     caption: "OpenKids Africa Educator Program",
@@ -32,6 +37,74 @@ const programsContent = ref({
       },
     ],
   },
+  actionsSection: {
+    text: [
+      "We are thrilled to invite passionate and dedicated educators to apply for this unique opportunity to promote a comprehensive awareness of technology in primary schools.",
+    ],
+    actions: [
+      {
+        id: "register",
+        text: "Register as an Educator",
+        link: "https://forms.gle/hatWEecV94sZ3vgj6",
+      },
+      {
+        id: "volunteer",
+        text: "Volunteer as a mentor",
+        link: "https://forms.gle/VmLq1F1Vijwzc8bn6",
+      },
+      {
+        id: "sponsor",
+        text: "Sponsor this program",
+        link: "https://forms.gle/R6Q7HJbYmFbp4QZM8",
+      },
+    ],
+  },
+  howItWorksSection: {
+    caption: "How The Program Works",
+    text: [
+      "The OpenKids Africa Educator Program is a transformative initiative that aims to attract, educate and empower educators across other countries in Africa on technology.",
+      "Through comprehensive digital exposure and awareness, we strive to bridge the knowledge gap and equip educators with the tools and expertise they need to prepare students for the digital age",
+    ],
+    images: [
+      {
+        src: "/assets/images/photos/photo-1.jpeg",
+        alt: "Educator interacting with students",
+      },
+      {
+        src: "/assets/images/photos/photo-24.jpg",
+        alt: "Students using computers",
+      },
+      {
+        src: "/assets/images/photos/photo-8.jpg",
+        alt: "Classroom technology session",
+      },
+      {
+        type: "block",
+        color: "purple",
+      },
+    ],
+  },
+  whyParticipateSection: {
+    caption: "Why Participate In the OpenKids Africa Educator Program?",
+    details: [
+      {
+        title: "Comprehensive Training",
+        text: "Gain valuable skills in integrating technology into your curriculum, encompassing aspects like digital literacy, introduction to technology, and online learning platforms.",
+      },
+      {
+        title: "Expert Mentorship",
+        text: "Receive personalized guidance and support from experts in technology and how it works in various fields, who will help you navigate your digital learning journey.",
+      },
+      {
+        title: "Collaborative Community",
+        text: "Connect with a network of passionate educators, share best practices, and foster a vibrant learning environment via Slack.",
+      },
+      {
+        title: "Career Advancement",
+        text: "Equip yourself with the skills and knowledge to stand out in the evolving educational space.",
+      },
+    ],
+  },
   programDetails: {
     title: "Program Overview",
     sections: [
@@ -49,25 +122,87 @@ const programsContent = ref({
       },
     ],
   },
-  eligibility: {
+  whoCanApplySection: {
     title: "Who Can Apply?",
     criteria: [
       {
         role: "Mentees",
         requirements: [
-          "Must be proficient in English.",
-          "Should be a teacher at primary or secondary level eager to integrate technology into teaching.",
-          "Should demonstrate a teaching track record with children or teens.",
+          "Secondary and primary school teachers across Africa who are eager to integrate technology into their classrooms and empower their students",
         ],
       },
       {
         role: "Mentors",
         requirements: [
-          "Must be proficient in English and have a strong background in technology.",
-          "Should possess interpersonal skills and be capable of empathetic communication.",
-          "Should be able to commit to 2 hours weekly for personalized mentorship.",
+          "Experienced individuals with a strong background in technology integration and a passion for supporting quality education in Africa.",
         ],
       },
+    ],
+  },
+  applicationDetails: {
+    title: "About this program",
+    steps: [
+      {
+        step: "Step 1: Apply",
+        description:
+          "Our online application is in two separate tracks: Mentor and Mentee. In your application, we'll ask you what you want out of the program, your skills and interests, and your availability.",
+      },
+      {
+        step: "Step 2: Match",
+        description:
+          "Based on information that you provide in your application, our team will try to find you a mentor/mentee match based on what you want out of the program, your skills and interests, and your availability. \n You'll be paired with a dedicated mentor, who will provide guidance and support throughout your program journey.",
+      },
+      {
+        step: "Step 3: Launch",
+        description:
+          "Once the project resumes, learning will go on for a duration of six weeks. During that period, we'll use our (optional) Slack group to provide interactive support along the way, and a mix of Slack and email to contact you. \n You will be added to the mentor or mentee channel so that you can meet and support one another.",
+      },
+    ],
+  },
+  eligibility: {
+    title: "Eligibility Criteria",
+    criteria: [
+      {
+        role: "As a mentee",
+        requirements: [
+          "Be proficient in written and spoken English.",
+          "Be elementary school teachers and leaders passionate about integrating technology into their classrooms.",
+          "Have a demonstrated track record of teaching or tutoring kids or teenagers",
+          "Preferably, we are targeting candidates from schools in rural areas across Africa",
+          "Access to a Smartphone or laptop device to participate",
+          "Demonstrate a willingness to participate in the educator program",
+          "This is a self-paced learning program that requires the availability of 10 hours a month for eight weeks. ",
+        ],
+      },
+      {
+        role: "As a mentor",
+        requirements: [
+          "Be proficient in written and spoken English.",
+          "Possess skills and experiences with a strong background in technology ",
+          "Be familiar with emerging technologies and their potential application in education.",
+          "Be passionate about educating others on technological concepts through discussions and one-on-one sessions. ",
+          "Possess excellent interpersonal skills and be able to work well with people from diverse backgrounds, cultures, and personality types.",
+          "Be able to listen, communicate, and teach with empathy; we ask that you make an effort to understand your mentee's perspective and position",
+          "Have the ability to foster a growth mindset in mentees and encourage them to experiment with new technologies.",
+          "Able to devote 2 hours weekly of their time to personalized one-on-one learning.",
+        ],
+      },
+    ],
+  },
+  benefits: {
+    title: "Program Benefits",
+    items: [
+      `<span>Participants will acquire digital literacy skills related to technology</span>`,
+      `<span>Participants will learn foundational tech skills.</span>`,
+      `<span>Participants will gain open-source training on Git & GitHub </span>`,
+      `<span>Participants will develop the skills to educate children in the non-coding aspects of technology.</span>`,
+      `<span>Be recognized as an 
+  <a href="https://openkids.africa/ambassadors" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline">
+  OpenKids Africa  Ambassador.
+  </a>
+  </span>`,
+      `<span>Ambassadors will receive training resources to help them educate students.</span>`,
+      `<span>Receive a certification for the experience.</span>`,
     ],
   },
   programTimeline: {
@@ -76,38 +211,38 @@ const programsContent = ref({
       {
         date: "April 5-30, 2024",
         description: "Application Period",
+        activities: [
+          `Applicants will fill out our 
+            <a href="https://forms.gle/hatWEecV94sZ3vgj6" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline">
+            application form 
+            </a>
+            `,
+        ],
       },
       {
         date: "May 6-8, 2024",
         description: "Notification of Acceptance",
+        activities: [
+          `Accepted applicants will be notified after the final decision, and we'll introduce their mentor/mentee for the duration of the program.`,
+          `Otherwise, we'll let you know that we were unable to match you this year.`,
+        ],
       },
       {
         date: "May 11 - June 22, 2024",
         description: "Mentorship Period",
+        activities: [
+          `Invitation to the general program onboarding `,
+          `Continuous learning based on mentor/mentee schedule`,
+          `Weekly progress report`,
+        ],
       },
       {
         date: "July 7, 2024",
-        description: "Graduation and Selection as OpenKids Tech Ambassadors",
-      },
-    ],
-  },
-  applicationDetails: {
-    title: "Application Process",
-    steps: [
-      {
-        step: "Apply",
-        description:
-          "Complete the online application form detailing your skills, interests, and availability.",
-      },
-      {
-        step: "Match",
-        description:
-          "We will pair you with a mentor or mentee based on the information provided in your application.",
-      },
-      {
-        step: "Launch",
-        description:
-          "Begin the program with six weeks of learning, supported by interactions in Slack and email.",
+        description: "Graduation",
+        activities: [
+          `Successful participants will be selected as OpenKids Tech Ambassadors`,
+          `Participants are to submit the final project, an evaluation report, and fill out the feedback form`,
+        ],
       },
     ],
   },
@@ -115,14 +250,15 @@ const programsContent = ref({
     title: "Frequently Asked Questions",
     questions: [
       {
-        question: "Can I sponsor this program?",
-        answer:
-          "Yes, OpenKids Africa welcomes sponsorships from individuals and companies to provide resources like e-learning courses, books, and software. For more details, visit our partnership page.",
+        topic: "Can I sponsor this program?",
+        content: `OpenKids Africa has pledged to support our mentees and mentors with all the resources needed to make this learning experience informative and with their time. As a non-profit organization, we rely on individual and company donations to fund programs like this Educators Program. With your sponsorship, we can offer program participants resources like e-learning courses, books, software, and swags to aid in their mentorship journey. \n If you represent a company or entity that is interested in supporting this initiative, apply on 
+          <a href="https://www.openkidsafrica.org/contact" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline">
+          our partnership page</a>. We'd love to feature you as a sponsor on this page and elsewhere in our community!`,
       },
       {
-        question:
+        topic:
           "I am an aspiring educator but have not taught in school, can I apply?",
-        answer:
+        content:
           "Yes, aspiring educators are encouraged to apply and gain experience through our program.",
       },
     ],
@@ -179,20 +315,122 @@ useHead({
       </div>
     </div>
   </header>
-  <section class="site-section why-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ programsContent.programDetails.sections[1].title }}
-        </h2>
-      </header>
+  <section class="site-section actions-section bg-slate-50">
+    <div class="wrapper flex flex-col gap-6">
       <p
-        v-for="(text, index) in programsContent.programDetails.sections[1].text"
+        v-for="(text, index) in programsContent.actionsSection.text"
         :key="index"
         class="site-section__text"
       >
         {{ text }}
       </p>
+      <ul class="actions flex flex-col gap-2 lg:grid lg:grid-cols-3 lg:gap-4">
+        <li
+          v-for="action in programsContent.actionsSection.actions"
+          :key="action.id"
+          class="action flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="doings-card__icon-cont">
+            <GraduationCapIcon
+              class="icon doings-card__icon"
+              v-if="action.id == 'register'"
+            />
+            <HelpingHandIcon
+              class="icon doings-card__icon"
+              v-else-if="action.id == 'volunteer'"
+            />
+            <BanknoteIcon
+              class="icon doings-card__icon"
+              v-else-if="action.id == 'sponsor'"
+            />
+          </div>
+
+          <p class="text-3xl">
+            {{ action.text }}
+          </p>
+
+          <a
+            :href="action.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--primary"
+          >
+            Apply Now
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="site-section how-it-works-section">
+    <div
+      class="wrapper flex !max-w-7xl flex-col items-center gap-6 lg:grid lg:grid-cols-2 lg:gap-12"
+    >
+      <header
+        class="site-section__header site-section__header--left col-start-2"
+      >
+        <h2 class="site-section__caption">
+          {{ programsContent.howItWorksSection.caption }}
+        </h2>
+        <p
+          v-for="(text, index) in programsContent.howItWorksSection.text"
+          :key="index"
+          class="max-w-2xl"
+        >
+          {{ text }}
+        </p>
+      </header>
+      <div class="col-span-1 col-start-1 row-start-1">
+        <SiteHeroImagesGrid
+          class="images-grid programs-header__media-cont how-it-works__media-cont"
+          :images="programsContent.howItWorksSection.images || []"
+        />
+      </div>
+    </div>
+  </section>
+  <section class="site-section why-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption text-center">
+          {{ programsContent.whyParticipateSection.caption }}
+        </h2>
+      </header>
+      <ul
+        class="why-section__details flex flex-col gap-4 lg:grid lg:grid-cols-2"
+      >
+        <li
+          v-for="(detail, index) in programsContent.whyParticipateSection
+            .details"
+          :key="index"
+          class="why-participate flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3 class="font-heading text-2xl font-bold">{{ detail.title }}</h3>
+          <p>{{ detail.text }}</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="site-section who-can-apply-section bg-slate-50">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.whoCanApplySection.title }}
+        </h2>
+      </header>
+      <ul class="flex flex-col gap-4 lg:grid lg:grid-cols-2">
+        <li
+          v-for="(criteria, role) in programsContent.whoCanApplySection
+            .criteria"
+          :key="role"
+          class="who-can-apply-criteria rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3 class="font-heading text-2xl font-bold">{{ criteria.role }}</h3>
+          <ul>
+            <li v-for="requirement in criteria.requirements" :key="requirement">
+              {{ requirement }}
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </section>
   <section class="site-section eligibility-section">
@@ -202,18 +440,44 @@ useHead({
           {{ programsContent.eligibility.title }}
         </h2>
       </header>
-      <div
-        v-for="(criteria, role) in programsContent.eligibility.criteria"
-        :key="role"
-        class="eligibility-criteria"
-      >
-        <h3>{{ criteria.role }}</h3>
-        <ul>
-          <li v-for="requirement in criteria.requirements" :key="requirement">
-            {{ requirement }}
-          </li>
-        </ul>
-      </div>
+      <ul class="flex flex-col gap-4 lg:grid lg:grid-cols-2">
+        <li
+          v-for="(criteria, role) in programsContent.eligibility.criteria"
+          :key="role"
+          class="eligibility-criteria rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3 class="mb-3 font-heading text-2xl font-bold">
+            {{ criteria.role }}
+          </h3>
+          <ul>
+            <li
+              v-for="requirement in criteria.requirements"
+              :key="requirement"
+              class="list-inside list-decimal"
+            >
+              {{ requirement }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="site-section benefits-section bg-orange-50 text-orange-800">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.benefits.title }}
+        </h2>
+      </header>
+      <ul class="flex flex-col gap-4 lg:grid lg:grid-cols-2">
+        <li
+          v-for="benefit in programsContent.benefits.items"
+          :key="benefit"
+          class="benefit rounded-2xl border border-orange-100 bg-white p-4 dark:border-orange-800 dark:bg-orange-900"
+        >
+          <p class="text-xl" v-html="benefit"></p>
+        </li>
+      </ul>
     </div>
   </section>
   <section class="site-section timeline-section">
@@ -223,13 +487,24 @@ useHead({
           {{ programsContent.programTimeline.title }}
         </h2>
       </header>
-      <ul>
+      <ul class="timeline-events flex flex-col gap-4">
         <li
           v-for="event in programsContent.programTimeline.events"
           :key="event.date"
-          class="timeline-event"
+          class="timeline-event rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
         >
-          <strong>{{ event.date }}:</strong> {{ event.description }}
+          <h4>
+            <strong>{{ event.date }}:</strong> {{ event.description }}
+          </h4>
+          <ul>
+            <li
+              v-for="activity in event.activities"
+              :key="activity"
+              class="list-inside list-disc"
+            >
+              <span v-html="activity"></span>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -241,16 +516,14 @@ useHead({
           {{ programsContent.FAQ.title }}
         </h2>
       </header>
-      <dl>
-        <div
-          v-for="item in programsContent.FAQ.questions"
-          :key="item.question"
-          class="faq-item"
+      <ul class="faq-list flex flex-col gap-4">
+        <li
+          v-for="(faq, index) in programsContent.FAQ.questions"
+          class="faq-list__item"
         >
-          <dt>{{ item.question }}</dt>
-          <dd>{{ item.answer }}</dd>
-        </div>
-      </dl>
+          <FAQItem :faq="faq" :index="index" />
+        </li>
+      </ul>
     </div>
   </section>
   <section class="site-section sponsorship-section">
@@ -281,6 +554,10 @@ useHead({
 
 .programs-header__media-cont {
   /* @apply relative lg:w-[150%]; */
+}
+
+.how-it-works__media-cont:deep(.img-cont) {
+  @apply lg:h-[20rem];
 }
 
 .why-section {
