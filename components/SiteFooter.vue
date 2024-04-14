@@ -93,7 +93,7 @@ const { links, socialLinks } = useSiteNav();
 }
 
 .site-footer__section:first-of-type {
-  @apply bg-slate-50 dark:bg-slate-900;
+  @apply bg-slate-900 text-slate-200 dark:bg-slate-900;
 }
 
 .site-footer__section:nth-of-type(2) {
@@ -106,5 +106,9 @@ const { links, socialLinks } = useSiteNav();
 .site-links,
 .social-links {
   @apply flex flex-row flex-wrap items-center justify-center gap-4 gap-y-2;
+}
+
+:deep(.site-logo__text) {
+  @apply text-slate-100;
 }
 </style>

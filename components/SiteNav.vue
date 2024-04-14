@@ -16,11 +16,11 @@ router.afterEach(() => {
 <template>
   <nav class="site-nav" :class="`${navActive ? 'site-nav--active' : ''}`">
     <div class="wrapper">
-      <ul class="site-nav__links">
+      <ul class="site-nav__links !justify-start pt-[20vh]">
         <li
           v-for="link in links"
           :key="link.name"
-          :class="`site-nav__link group  relative flex justify-center ${
+          :class="`site-nav__link group relative flex  flex-col justify-center max-lg:items-center ${
             router.currentRoute.value.fullPath.includes(link.path)
               ? 'active'
               : ''
@@ -40,7 +40,7 @@ router.afterEach(() => {
 
           <div
             v-if="link.subLinks"
-            class="site-nav__dropdown !absolute !top-full !hidden min-w-64 rounded-xl bg-white shadow-lg shadow-slate-600/[.05] transition group-hover:!flex dark:border-b-slate-800 dark:border-t-slate-800 dark:bg-slate-800 dark:shadow-slate-900/[.05]"
+            class="site-nav__dropdown pointer-events-none max-h-0 min-w-64 rounded-xl border-slate-100 bg-white shadow-lg shadow-slate-600/[.05] transition-all duration-300 group-hover:pointer-events-auto group-hover:max-h-56 group-hover:border dark:border-b-slate-800 dark:border-t-slate-800 dark:bg-slate-800 dark:shadow-slate-900/[.05] lg:!absolute lg:!top-full lg:!hidden lg:max-h-[999px] lg:group-hover:!flex"
           >
             <ul class="site-nav__dropdown__links w-full">
               <!-- <li
@@ -55,10 +55,10 @@ router.afterEach(() => {
               <li
                 v-for="sublink in link.subLinks"
                 :key="sublink.name"
-                class="site-nav__dropdown__link border-b border-slate-100 text-left last-of-type:border-b-0 dark:border-slate-800"
+                class="site-nav__dropdown__link border-b border-slate-100 last-of-type:border-b-0 dark:border-slate-800 lg:text-left"
               >
                 <NuxtLink
-                  class="flex w-full p-2 px-4 !text-slate-600"
+                  class="flex w-full justify-center p-2 px-4 text-center !text-slate-600 lg:justify-start lg:text-left"
                   :to="sublink.path"
                   >{{ sublink.name }}</NuxtLink
                 >
