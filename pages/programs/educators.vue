@@ -544,7 +544,7 @@ useHead({
       </ul>
     </div>
   </section>
-  <section class="site-section benefits-section bg-orange-50 text-orange-800">
+  <section class="site-section benefits-section bg-slate-100 text-slate-800">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
@@ -555,7 +555,7 @@ useHead({
         <li
           v-for="benefit in programsContent.benefits.items"
           :key="benefit"
-          class="benefit rounded-2xl border border-orange-100 bg-white p-4 dark:border-orange-800 dark:bg-orange-900"
+          class="benefit rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
         >
           <p class="text-xl" v-html="benefit"></p>
         </li>

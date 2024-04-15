@@ -15,7 +15,7 @@ const { lightText, sticky, scrolled } = useSiteHeader();
 const content = ref({
   heroSection: {
     caption:
-      "Connecting every African child to a digital future through free tech lessons",
+      "Connecting every African child to a digital future through the delivery of free tech lessons in rural schools",
     subtext: "Welcome to OpenKids Africa",
     // subcaption:
     //   "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country. Therefore, we leverage open educational resources to provide quality information technology education and materials for kids and schools in rural communities in Africa.",
