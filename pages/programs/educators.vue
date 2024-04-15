@@ -9,7 +9,7 @@ const programsContent = ref({
   heroSection: {
     caption: "OpenKids Africa Educator Program",
     subtext:
-      "Join the OpenKids Africa Educator Program and become a catalyst for change in secondary education!",
+      "Join the OpenKids Africa Educator Program and become a catalyst for change in primary and secondary education!",
     images: [
       {
         src: "/assets/images/photos/photo-1.jpeg",
@@ -74,14 +74,14 @@ const programsContent = ref({
         src: "/assets/images/photos/photo-24.jpg",
         alt: "Students using computers",
       },
-      {
-        src: "/assets/images/photos/photo-8.jpg",
-        alt: "Classroom technology session",
-      },
-      {
-        type: "block",
-        color: "purple",
-      },
+      // {
+      //   src: "/assets/images/photos/photo-8.jpg",
+      //   alt: "Classroom technology session",
+      // },
+      // {
+      //   type: "block",
+      //   color: "purple",
+      // },
     ],
   },
   whyParticipateSection: {
@@ -196,10 +196,7 @@ const programsContent = ref({
       `<span>Participants will learn foundational tech skills.</span>`,
       `<span>Participants will gain open-source training on Git & GitHub </span>`,
       `<span>Participants will develop the skills to educate children in the non-coding aspects of technology.</span>`,
-      `<span>Be recognized as an 
-  <a href="https://openkids.africa/ambassadors" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline">
-  OpenKids Africa  Ambassador.
-  </a>
+      `<span>Be recognized as an OpenKids Africa  Ambassador.
   </span>`,
       `<span>Ambassadors will receive training resources to help them educate students.</span>`,
       `<span>Receive a certification for the experience.</span>`,
@@ -209,7 +206,7 @@ const programsContent = ref({
     title: "Program Timeline",
     events: [
       {
-        date: "April 5-30, 2024",
+        date: "June 15 - July 7, 2024",
         description: "Application Period",
         activities: [
           `Applicants will fill out our 
@@ -220,15 +217,15 @@ const programsContent = ref({
         ],
       },
       {
-        date: "May 6-8, 2024",
-        description: "Notification of Acceptance",
+        date: "July 12 - 14, 2024",
+        description: "Accepted applicants are notified",
         activities: [
           `Accepted applicants will be notified after the final decision, and we'll introduce their mentor/mentee for the duration of the program.`,
           `Otherwise, we'll let you know that we were unable to match you this year.`,
         ],
       },
       {
-        date: "May 11 - June 22, 2024",
+        date: "July 20th -  August 24th, 2024",
         description: "Mentorship Period",
         activities: [
           `Invitation to the general program onboarding `,
@@ -237,7 +234,7 @@ const programsContent = ref({
         ],
       },
       {
-        date: "July 7, 2024",
+        date: "August 7, 2024",
         description: "Graduation",
         activities: [
           `Successful participants will be selected as OpenKids Tech Ambassadors`,
@@ -251,7 +248,17 @@ const programsContent = ref({
     text: [
       "A committee will review all applications and select participants based on their qualifications, experience, and commitment to the program's goals. Shortlisted candidates may be contacted for an interview.",
     ],
-    deadline: " 30th April 2024",
+    deadline: "July 7th, 2024",
+  },
+  joinSection: {
+    title: "Join Us",
+    text: [
+      "The OpenKids Africa Educators program empowers teachers with the necessary skills to adapt to the changing digital economy, making a positive impact on the lives of future leaders.",
+    ],
+    actionLink: {
+      text: "Support Us",
+      url: "/donate",
+    },
   },
   FAQ: {
     title: "Frequently Asked Questions",
@@ -606,6 +613,35 @@ useHead({
       </p>
     </div>
   </section>
+  <section class="site-section join-section bg-orange-100 text-orange-800">
+    <div class="wrapper text-center">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.joinSection.title }}
+        </h2>
+      </header>
+      <p
+        v-for="(text, index) in programsContent.joinSection.text"
+        :key="index"
+        class="site-section__text"
+      >
+        {{ text }}
+      </p>
+      <div class="action-cont py-8">
+        <a
+          :href="programsContent.joinSection.actionLink.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn"
+        >
+          <HelpingHandIcon class="icon" />
+          <span class="text">
+            {{ programsContent.joinSection.actionLink.text }}
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
   <section class="site-section faq-section">
     <div class="wrapper">
       <header class="site-section__header">
@@ -623,7 +659,7 @@ useHead({
       </ul>
     </div>
   </section>
-  <section class="site-section sponsorship-section bg-slate-100">
+  <!-- <section class="site-section sponsorship-section bg-slate-100">
     <div class="wrapper">
       <header class="site-section__header !mb-20">
         <h2 class="site-section__caption">
@@ -666,7 +702,7 @@ useHead({
         </li>
       </ul>
     </div>
-  </section>
+  </section> -->
 </template>
 
 <style scoped>

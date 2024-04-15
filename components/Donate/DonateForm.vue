@@ -54,7 +54,7 @@ watch(
   >
     <div class="wrapper">
       <div class="donate__options btn-group">
-        <button
+        <!-- <button
           type="button"
           @click="() => changeMode('once')"
           :class="`btn btn--alt ${
@@ -62,11 +62,11 @@ watch(
           }`"
         >
           Give Once
-        </button>
+        </button> -->
         <button
           type="button"
           @click="() => changeMode('monthly')"
-          :class="`btn btn--alt ${
+          :class="`btn btn--alt !rounded-xl ${
             donateOptions.mode == 'monthly' ? 'btn--active' : ''
           }`"
         >
