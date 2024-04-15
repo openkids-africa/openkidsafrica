@@ -196,8 +196,8 @@ useHead({
           class="btn btn--primary !w-fit"
           :aria-label="`Email OpenKids Africa`"
         >
-          <MailIcon class="icon" />
-          <span class="text"> Email Us </span>
+          <!-- <MailIcon class="icon" /> -->
+          <span class="text"> Scroll Down </span>
         </a>
       </div>
       <!-- <div class="page-header__media-cont">
