@@ -7,7 +7,7 @@ const isLoading = ref(false);
 
 const donateOptions = ref<DonateOptions>({
   mode: "monthly",
-  onceAmounts: [50, 100, 200, 500, 1000, "custom"],
+  onceAmounts: [25, 50, 100, 200, 500, 1000, "custom"],
   monthlyAmounts: [50, 100, 150, 500, "custom"],
   // onceAmounts: ["custom"],
   // monthlyAmounts: ["custom"],
@@ -54,7 +54,7 @@ watch(
   >
     <div class="wrapper">
       <div class="donate__options btn-group">
-        <!-- <button
+        <button
           type="button"
           @click="() => changeMode('once')"
           :class="`btn btn--alt ${
@@ -62,11 +62,11 @@ watch(
           }`"
         >
           Give Once
-        </button> -->
+        </button>
         <button
           type="button"
           @click="() => changeMode('monthly')"
-          :class="`btn btn--alt !rounded-xl ${
+          :class="`btn btn--alt  ${
             donateOptions.mode == 'monthly' ? 'btn--active' : ''
           }`"
         >
