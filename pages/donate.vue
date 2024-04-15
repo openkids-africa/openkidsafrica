@@ -192,7 +192,7 @@ useHead({
           {{ donateContent.heroSection.subtext }}
         </p>
         <a
-          href="mailto:openkidsafrica@gmail.com"
+          href="#video-section"
           class="btn btn--primary !w-fit"
           :aria-label="`Email OpenKids Africa`"
         >
@@ -216,7 +216,7 @@ useHead({
       </div>
     </div>
   </header>
-  <section class="site-section video-section">
+  <section id="video-section" class="site-section video-section scroll-mt-14">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
