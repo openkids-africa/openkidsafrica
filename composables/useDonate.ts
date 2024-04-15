@@ -17,6 +17,24 @@ const _500_STATEMENT =
 const _CUSTOM_STATEMENT =
   "Your custom donation empowers children in rural African schools with essential tech lessons and resources, shaping their educational journey and future opportunities.";
 
+// statement =
+// `Because of your ${formatCurrency(amount)} ${
+//   mode === "monthly" ? "monthly " : ""
+// }donation,` +
+// `${
+//   laptopsDeployed > 0
+//     ? ` we can make a tangible difference by deploying ${formatNumber(
+//         laptopsDeployed,
+//       )} additional laptops. This means that `
+//     : ""
+// }` +
+// `we can enable ${formatNumber(
+//   childrenEnabled,
+// )} more children in rural schools` +
+// `${
+//   mode === "monthly" ? " every year," : ","
+// } opening up new possibilities and opportunities for their education and future.`;
+
 export const useDonate = () => {
   const calculateDonationImpact = (
     amount: number,
@@ -26,13 +44,7 @@ export const useDonate = () => {
     let laptopsDeployed = 0;
     let statement = "";
 
-    if (mode === "once") {
-      childrenEnabled = amount < 4 && amount > 0 ? 1 : Math.floor(amount / 4);
-
-      if (amount >= 100) {
-        laptopsDeployed = Math.floor(amount / 50) * 2;
-      }
-    } else if (mode === "monthly") {
+    if (mode === "monthly") {
       childrenEnabled = Math.floor(amount / 2.5) * 12;
 
       if (amount >= 25) {
@@ -54,11 +66,15 @@ export const useDonate = () => {
       if (amount > 500) {
         statement = _CUSTOM_STATEMENT;
       }
-    } else {
+    } else if (mode === "once") {
+      childrenEnabled = amount < 4 && amount > 0 ? 1 : Math.floor(amount / 4);
+
+      if (amount >= 100) {
+        laptopsDeployed = Math.floor(amount / 50) * 2;
+      }
+
       statement =
-        `Because of your ${formatCurrency(amount)} ${
-          mode === "monthly" ? "monthly " : ""
-        }donation,` +
+        `Because of your ${formatCurrency(amount)} donation,` +
         `${
           laptopsDeployed > 0
             ? ` we can make a tangible difference by deploying ${formatNumber(
@@ -69,9 +85,7 @@ export const useDonate = () => {
         `we can enable ${formatNumber(
           childrenEnabled,
         )} more children in rural schools` +
-        `${
-          mode === "monthly" ? " every year," : ","
-        } opening up new possibilities and opportunities for their education and future.`;
+        `, opening up new possibilities and opportunities for their education and future.`;
     }
 
     return { childrenEnabled, laptopsDeployed, statement };
