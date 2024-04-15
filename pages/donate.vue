@@ -197,7 +197,7 @@ useHead({
           :aria-label="`Email OpenKids Africa`"
         >
           <!-- <MailIcon class="icon" /> -->
-          <span class="text"> Scroll Down </span>
+          <span class="text"> Explore more </span>
         </a>
       </div>
       <!-- <div class="page-header__media-cont">
