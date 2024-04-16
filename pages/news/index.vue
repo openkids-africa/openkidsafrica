@@ -96,6 +96,16 @@ if (data.value) {
   lastPublishedAt.value = getLastItem(data.value).publishedAt;
   lastId.value = getLastItem(data.value)._id;
 }
+
+useHead({
+  script: [
+    {
+      src: "https://platform.twitter.com/widgets.js",
+      async: true,
+      defer: true,
+    },
+  ],
+});
 </script>
 <template>
   <header class="page-header site-section">
@@ -154,6 +164,21 @@ if (data.value) {
           <span v-else class="text"> Load More </span>
         </button>
       </div>
+    </div>
+  </section>
+  <section class="site-section tweets-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">Tweets</h2>
+        <p class="site-section__subtext">
+          Follow us on Twitter to get the latest updates and news.
+        </p>
+      </header>
+      <a
+        class="twitter-timeline flex justify-center text-center"
+        href="https://twitter.com/openkidsafrica?ref_src=twsrc%5Etfw"
+        >Tweets by openkidsafrica</a
+      >
     </div>
   </section>
 </template>

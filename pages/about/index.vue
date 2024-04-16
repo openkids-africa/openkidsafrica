@@ -303,7 +303,7 @@ useHead({
           class="infographic-list__item"
         >
           <article
-            :class="`infographic ${i % 2 ? 'lg:!flex-row-reverse' : ''}`"
+            :class="`infographic !gap-24 ${i % 2 ? 'lg:!flex-row-reverse' : ''}`"
           >
             <header class="infographic__header">
               <h2 class="infographic__title">

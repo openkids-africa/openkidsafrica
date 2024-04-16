@@ -100,7 +100,7 @@ const teamContent = ref<TeamPageContent>({
     title: "Join Us as an OpenKids Africa Educational Champion!",
     description: [
       "OpenKids Africa Education Champions are passionate volunteers dedicated to delivering tech lessons to children in rural schools using our combined free digital resources.",
-      "Our free digital educational resources are designed for use by everyone, so you don't need any specialist knowledge to be able to deliver the tech lessons to students.",
+      "Our free digital educational resources are designed for use by everyone, so you don't need any specialist knowledge to be able to deliver the tech lessons to students. However, some of our partners may require that you first register as a STEM Ambassador before delivering any content to students (this is a free process and a requirement for all our volunteers). Registering as a STEM Ambassador provides you with:",
     ],
     additionalInfo: [
       {
@@ -277,11 +277,11 @@ useHead({
         </p>
       </header>
       <div class="py-8">
-        <h3
+        <!-- <h3
           class="mb-4 font-heading text-xl font-bold leading-tight lg:text-3xl"
         >
           {{ teamContent.educationChampionsSection.additionalInfo[0].title }}
-        </h3>
+        </h3> -->
         <ul
           v-if="teamContent.educationChampionsSection.additionalInfo[0].list"
           class="flex flex-wrap gap-4 lg:grid lg:grid-cols-2"

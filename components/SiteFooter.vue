@@ -24,9 +24,6 @@ const { links, socialLinks } = useSiteNav();
               Connecting every African child to a digital future through the
               delivery of free tech lessons.
             </p>
-            <p class="text-base">
-              © 2024 Openkids Africa. Registered charity number 8025460588
-            </p>
           </div>
 
           <ul class="site-links">
@@ -77,13 +74,13 @@ const { links, socialLinks } = useSiteNav();
           </ul>
         </div>
       </section>
-      <!-- <section class="site-section site-footer__section">
-        <div class="wrapper">
-          <p>
+      <section class="site-section site-footer__section bg-slate-800">
+        <div class="wrapper text-center">
+          <p class="w-full text-base text-slate-100">
             © 2024 Openkids Africa. Registered charity number 8025460588
           </p>
         </div>
-      </section> -->
+      </section>
     </div>
   </footer>
 </template>
@@ -93,7 +90,7 @@ const { links, socialLinks } = useSiteNav();
 }
 
 .site-footer__section:first-of-type {
-  @apply bg-slate-50 dark:bg-slate-900;
+  @apply bg-slate-900 text-slate-200 dark:bg-slate-900;
 }
 
 .site-footer__section:nth-of-type(2) {
@@ -106,5 +103,9 @@ const { links, socialLinks } = useSiteNav();
 .site-links,
 .social-links {
   @apply flex flex-row flex-wrap items-center justify-center gap-4 gap-y-2;
+}
+
+:deep(.site-logo__text) {
+  @apply text-slate-100;
 }
 </style>

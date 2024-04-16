@@ -192,12 +192,12 @@ useHead({
           {{ donateContent.heroSection.subtext }}
         </p>
         <a
-          href="mailto:openkidsafrica@gmail.com"
+          href="#video-section"
           class="btn btn--primary !w-fit"
           :aria-label="`Email OpenKids Africa`"
         >
-          <MailIcon class="icon" />
-          <span class="text"> Email Us </span>
+          <!-- <MailIcon class="icon" /> -->
+          <span class="text"> Explore more </span>
         </a>
       </div>
       <!-- <div class="page-header__media-cont">
@@ -216,7 +216,7 @@ useHead({
       </div>
     </div>
   </header>
-  <section class="site-section video-section">
+  <section id="video-section" class="site-section video-section scroll-mt-14">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
@@ -238,7 +238,7 @@ useHead({
       </div>
     </div>
   </section>
-  <section class="site-section bg-orange-100 text-orange-800">
+  <!-- <section class="site-section bg-orange-100 text-orange-800">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
         <h2 class="site-section__caption">About OpenKids Africa</h2>
@@ -254,7 +254,7 @@ useHead({
         </p>
       </div>
     </div>
-  </section>
+  </section> -->
   <section class="site-section bg-slate-100 text-slate-950">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
@@ -278,7 +278,7 @@ useHead({
 
   <!-- donation options -->
 
-  <section class="site-section">
+  <!-- <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">Donate Monthly</h2>
@@ -311,7 +311,7 @@ useHead({
         </article>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- <section class="site-section">
     <div class="wrapper">
