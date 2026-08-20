@@ -386,12 +386,6 @@ useHead({
       content: programsContent.value.heroSection.subtext,
     },
   ],
-  link: [
-    {
-      rel: "canonical",
-      href: "https://www.openkidsafrica.org/programs/educators",
-    },
-  ],
 });
 </script>
 <template>

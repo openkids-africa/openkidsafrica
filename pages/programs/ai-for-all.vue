@@ -174,7 +174,6 @@ useHead({
       content: `${SITE_URL}/assets/images/photos/photo-1.jpeg`,
     },
   ],
-  link: [{ rel: "canonical", href: `${SITE_URL}${PAGE_PATH}` }],
   script: [
     {
       type: "application/ld+json",

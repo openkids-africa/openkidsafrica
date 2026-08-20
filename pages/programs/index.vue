@@ -77,7 +77,6 @@ useHead({
       content: description,
     },
   ],
-  link: [{ rel: "canonical", href: "https://www.openkidsafrica.org/programs" }],
 });
 </script>
 <template>
