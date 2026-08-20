@@ -6,6 +6,12 @@ import {
   HelpingHandIcon,
 } from "lucide-vue-next";
 const programsContent = ref({
+  cohortClosed: {
+    title: "Applications for this cohort are closed",
+    text: "The mentorship round described on this page ran in 2024. A date for the next round has not been announced yet.",
+    linkText: "See AI for All, our current teacher training",
+    linkUrl: "/programs/ai-for-all",
+  },
   heroSection: {
     caption: "OpenKids Africa Educator Program",
     subtext:
@@ -203,7 +209,7 @@ const programsContent = ref({
     ],
   },
   programTimeline: {
-    title: "Program Timeline",
+    title: "2024 Program Timeline",
     events: [
       {
         date: "June 15 - July 7, 2024",
@@ -248,7 +254,7 @@ const programsContent = ref({
     text: [
       "A committee will review all applications and select participants based on their qualifications, experience, and commitment to the program's goals. Shortlisted candidates may be contacted for an interview.",
     ],
-    deadline: "July 7th, 2024",
+    deadline: "Applications for the 2024 cohort closed on 7 July 2024.",
   },
   joinSection: {
     title: "Join Us",
@@ -352,7 +358,7 @@ const programsContent = ref({
 });
 
 useHead({
-  title: "Programs",
+  title: "Educators Program",
   meta: [
     {
       name: "description",
@@ -360,20 +366,30 @@ useHead({
       key: "description",
     },
     {
+      key: "og-title",
       property: "og:title",
-      content: "Contact Us",
+      content: "Educators Program",
     },
     {
+      key: "og-description",
       property: "og:description",
       content: programsContent.value.heroSection.subtext,
     },
     {
-      property: "twitter:title",
-      content: "Contact Us",
+      key: "twitter-title",
+      name: "twitter:title",
+      content: "Educators Program",
     },
     {
-      property: "twitter:description",
+      key: "twitter-description",
+      name: "twitter:description",
       content: programsContent.value.heroSection.subtext,
+    },
+  ],
+  link: [
+    {
+      rel: "canonical",
+      href: "https://www.openkidsafrica.org/programs/educators",
     },
   ],
 });
@@ -397,6 +413,19 @@ useHead({
       </div>
     </div>
   </header>
+  <aside class="cohort-closed">
+    <div class="wrapper">
+      <div class="cohort-closed__text">
+        <p class="cohort-closed__title">
+          {{ programsContent.cohortClosed.title }}
+        </p>
+        <p>{{ programsContent.cohortClosed.text }}</p>
+      </div>
+      <NuxtLink :to="programsContent.cohortClosed.linkUrl" class="btn">
+        {{ programsContent.cohortClosed.linkText }}
+      </NuxtLink>
+    </div>
+  </aside>
   <section class="site-section actions-section bg-slate-50">
     <div class="wrapper flex flex-col gap-6">
       <p
@@ -431,14 +460,9 @@ useHead({
             {{ action.text }}
           </p>
 
-          <a
-            :href="action.link"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn"
-          >
-            Apply Now
-          </a>
+          <span class="btn" aria-disabled="true" role="note">
+            Applications closed
+          </span>
         </li>
       </ul>
     </div>
@@ -606,9 +630,8 @@ useHead({
         {{ text }}
       </p>
       <p
-        class="site-section__text mt-12 w-full rounded-2xl bg-slate-100 p-24 text-center text-2xl"
+        class="site-section__text mx-auto mt-12 max-w-3xl rounded-card border border-slate-200 bg-white p-10 text-center text-xl"
       >
-        <strong>Application Deadline:</strong>
         {{ programsContent.selection.deadline }}
       </p>
     </div>
@@ -706,6 +729,24 @@ useHead({
 </template>
 
 <style scoped>
+/* COHORT CLOSED NOTICE */
+.cohort-closed {
+  @apply border-y border-brand-200 bg-brand-50 px-4 py-6;
+}
+
+.cohort-closed > .wrapper {
+  @apply m-auto flex w-full max-w-6xl flex-col items-start gap-4 md:flex-row md:items-center md:justify-between;
+}
+
+.cohort-closed__text {
+  @apply flex max-w-measure flex-col gap-1;
+}
+
+.cohort-closed__title {
+  @apply font-heading text-lg font-bold text-slate-900;
+}
+/* END COHORT CLOSED NOTICE */
+
 .programs-header {
 }
 /* .programs-header > .wrapper {

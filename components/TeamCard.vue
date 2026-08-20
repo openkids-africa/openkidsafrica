@@ -38,7 +38,13 @@ defineProps<{
           i % 4 === 0 ? 1 : (i % 4) + 1
         }).svg');`"
       >
-        <NuxtImg :src="member.image" :alt="member.name" />
+        <NuxtImg
+          format="webp"
+          sizes="sm:50vw md:33vw lg:25vw"
+          loading="lazy"
+          :src="member.image"
+          :alt="member.name"
+        />
       </div>
     </header>
     <ul class="team-card__socials">

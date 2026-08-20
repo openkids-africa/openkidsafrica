@@ -16,6 +16,11 @@ const toggleDropdown = (name: string) => {
   openDropdown.value = openDropdown.value === name ? null : name;
 };
 
+const closeAll = () => {
+  openDropdown.value = null;
+  navActive.value = false;
+};
+
 /* "/" is a prefix of every route, so the previous includes() test marked Home
    active everywhere. Home needs an exact match; the rest match by prefix. */
 const isActive = (path: string) =>
@@ -31,6 +36,7 @@ router.afterEach(() => {
     class="site-nav"
     :class="{ 'site-nav--active': navActive }"
     aria-label="Main"
+    @keydown.esc="closeAll"
   >
     <div class="wrapper">
       <ul class="site-nav__links">

@@ -29,6 +29,7 @@ defineProps<{
           :src="article.imageUrl + '?h=200&w=400&fit=crop'"
           width="400"
           height="200"
+          loading="lazy"
           alt=""
         />
       </figure>

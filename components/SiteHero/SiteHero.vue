@@ -41,6 +41,11 @@ defineProps<HeroProps>();
         <NuxtImg
           width="100%"
           height="832px"
+          format="webp"
+          sizes="100vw"
+          loading="eager"
+          fetchpriority="high"
+          preload
           :src="images[0].src"
           :alt="images[0].alt"
         />

@@ -21,7 +21,14 @@ defineProps({
       :key="i"
       class="site-hero__img-cont img-cont"
     >
-      <NuxtImg v-if="image.src" :src="image.src" :alt="image.alt" />
+      <NuxtImg
+        v-if="image.src"
+        format="webp"
+        sizes="sm:100vw md:50vw lg:33vw"
+        loading="lazy"
+        :src="image.src"
+        :alt="image.alt"
+      />
       <div v-else :class="`${image.color} ${image.type}`"></div>
     </div>
   </div>
