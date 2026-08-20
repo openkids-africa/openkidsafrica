@@ -15,6 +15,14 @@ li {
   @apply list-none;
 }
 
+/* Nothing in the site had a visible focus state before. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  @apply rounded-md outline outline-2 outline-offset-2 outline-brand-600;
+}
+
 @layer components {
   /* ICON */
   .icon {
@@ -290,3 +298,59 @@ li {
   @apply h-10 w-10 text-orange-500;
 }
 /* END DOINGS ICON */
+
+/* SECTION EYEBROW */
+.site-section__eyebrow {
+  @apply font-heading text-xs font-bold uppercase tracking-[0.14em] text-brand-600;
+}
+/* END SECTION EYEBROW */
+
+/* MEASURE — keeps running text near 68 characters */
+.measure {
+  @apply max-w-measure;
+}
+/* END MEASURE */
+
+/* CARD — one definition, replacing the string that was copy-pasted
+   across the programme, about and team pages */
+.card {
+  @apply flex h-full flex-col gap-3 rounded-card border border-slate-200 bg-white p-6 shadow-card transition-shadow duration-300;
+}
+
+.card:hover {
+  @apply shadow-card-hover;
+}
+
+.card__title {
+  @apply font-heading text-xl font-bold text-slate-900;
+}
+
+.card__text {
+  @apply text-slate-600;
+}
+/* END CARD */
+
+/* ICON BADGE */
+.icon-badge {
+  @apply flex w-fit items-center justify-center rounded-2xl border border-brand-200 bg-brand-50 p-3 text-brand-600;
+}
+/* END ICON BADGE */
+
+/* CHECKLIST — for lists of things you receive, rather than
+   equally-weighted pillars */
+.checklist {
+  @apply flex flex-col gap-3;
+}
+
+.checklist__item {
+  @apply flex items-start gap-4 rounded-card border border-slate-200 bg-white p-5 shadow-card;
+}
+
+.checklist__icon-cont {
+  @apply mt-0.5 flex shrink-0 items-center justify-center rounded-xl bg-brand-50 p-2 text-brand-600;
+}
+
+.checklist__icon-cont > .icon {
+  @apply h-5 w-5;
+}
+/* END CHECKLIST */
