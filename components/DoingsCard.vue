@@ -69,7 +69,7 @@ defineProps<{
 </template>
 <style scoped>
 .doings-card {
-  @apply h-full rounded-3xl border  border-slate-100 p-8 dark:border-slate-800 dark:bg-slate-900;
+  @apply h-full rounded-3xl border  border-slate-100 p-8;
 }
 
 .doings-card > .wrapper {

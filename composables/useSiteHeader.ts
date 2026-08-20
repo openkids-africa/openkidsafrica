@@ -21,17 +21,14 @@ export const useSiteHeader = () => {
       }
     };
     onMounted(() => {
-      console.log("mounted");
       window.addEventListener("scroll", handleScroll);
     });
     onUnmounted(() => {
-      console.log("unmounted");
       window.removeEventListener("scroll", handleScroll);
     });
   };
 
   const resetHeaderState = (path: string) => {
-    console.log(path);
     if (path == "/") return;
     sticky.value = true;
     lightText.value = false;

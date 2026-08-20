@@ -72,7 +72,7 @@ defineProps<HeroProps>();
 }
 
 .site-hero__caption {
-  @apply font-heading text-5xl font-black text-slate-100 dark:text-slate-100  lg:text-7xl;
+  @apply font-heading text-5xl font-black text-slate-100  lg:text-7xl;
 }
 
 .site-hero__caption--md {
@@ -80,11 +80,11 @@ defineProps<HeroProps>();
 }
 
 .site-hero__subcaption {
-  @apply text-xl text-slate-50 dark:text-slate-200;
+  @apply text-xl text-slate-50;
 }
 
 .site-hero__subtext {
-  @apply text-xl text-slate-50 dark:text-slate-200;
+  @apply text-xl text-slate-50;
 }
 
 .site-hero__img-cont {

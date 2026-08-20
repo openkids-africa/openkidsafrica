@@ -9,7 +9,6 @@ const toggleActive = () => {
 };
 
 router.afterEach(() => {
-  console.log("routed");
   navActive.value = false;
 });
 </script>
@@ -41,11 +40,11 @@ router.afterEach(() => {
 
           <div
             v-if="link.subLinks"
-            class="site-nav__dropdown pointer-events-none max-h-0 min-w-64 rounded-xl border-slate-100 bg-white shadow-lg shadow-slate-600/[.05] transition-all duration-300 group-hover:pointer-events-auto group-hover:max-h-56 group-hover:border dark:border-b-slate-800 dark:border-t-slate-800 dark:bg-slate-800 dark:shadow-slate-900/[.05] lg:!absolute lg:!top-full lg:!hidden lg:max-h-[999px] lg:group-hover:!flex"
+            class="site-nav__dropdown pointer-events-none max-h-0 min-w-64 rounded-xl border-slate-100 bg-white shadow-lg shadow-slate-600/[.05] transition-all duration-300 group-hover:pointer-events-auto group-hover:max-h-56 group-hover:border lg:!absolute lg:!top-full lg:!hidden lg:max-h-[999px] lg:group-hover:!flex"
           >
             <ul class="site-nav__dropdown__links w-full">
               <!-- <li
-                class="site-nav__dropdown__link border-b border-slate-100 text-left dark:border-slate-800"
+                class="site-nav__dropdown__link border-b border-slate-100 text-left"
               >
                 <NuxtLink
                   :to="link.path"
@@ -56,7 +55,7 @@ router.afterEach(() => {
               <li
                 v-for="sublink in link.subLinks"
                 :key="sublink.name"
-                class="site-nav__dropdown__link border-b border-slate-100 last-of-type:border-b-0 dark:border-slate-800 lg:text-left"
+                class="site-nav__dropdown__link border-b border-slate-100 last-of-type:border-b-0 lg:text-left"
               >
                 <NuxtLink
                   class="flex w-full justify-center p-2 px-4 text-center !text-slate-600 lg:justify-start lg:text-left"
@@ -83,7 +82,7 @@ router.afterEach(() => {
 </template>
 <style scoped>
 .site-nav {
-  @apply fixed left-0 top-0 z-10 h-full w-full bg-white dark:bg-slate-800 lg:relative lg:w-fit lg:!bg-transparent;
+  @apply fixed left-0 top-0 z-10 h-full w-full bg-white lg:relative lg:w-fit lg:!bg-transparent;
   @apply pointer-events-none invisible opacity-0 lg:pointer-events-auto lg:visible lg:opacity-100;
   @apply transition-all duration-300;
 }
@@ -98,11 +97,11 @@ router.afterEach(() => {
 
 .site-nav__links {
   @apply flex h-full flex-col justify-center gap-4 lg:flex-row lg:items-center lg:gap-6;
-  @apply text-4xl font-bold lg:text-base lg:text-slate-700 dark:lg:!text-slate-100;
+  @apply text-4xl font-bold lg:text-base lg:text-slate-700;
 }
 
 .site-nav__link {
-  @apply py-1 hover:text-slate-500 dark:hover:text-slate-100 lg:!overflow-y-visible;
+  @apply py-1 hover:text-slate-500 lg:!overflow-y-visible;
 }
 
 .site-nav__link,

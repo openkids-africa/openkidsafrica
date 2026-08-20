@@ -8,7 +8,7 @@
 }
 
 body {
-  @apply bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 lg:text-lg;
+  @apply bg-white text-slate-800 lg:text-lg;
 }
 
 li {
@@ -23,11 +23,11 @@ li {
 
   /* BUTTON */
   .btn {
-    @apply flex justify-center rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700 dark:border-orange-200 dark:bg-orange-200 dark:text-orange-600 dark:shadow-white dark:active:shadow-orange-400;
+    @apply flex justify-center rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700;
   }
 
   .btn--secondary {
-    @apply border border-slate-700 bg-slate-600  text-slate-100 shadow-inner shadow-slate-400  active:shadow-slate-700 dark:border-slate-200 dark:bg-slate-200 dark:text-slate-600 dark:shadow-slate-50 dark:active:shadow-slate-400;
+    @apply border border-slate-700 bg-slate-600  text-slate-100 shadow-inner shadow-slate-400  active:shadow-slate-700;
   }
 
   .btn--alt {
@@ -217,13 +217,13 @@ li {
 }
 
 .form-label {
-  @apply font-semibold text-slate-700 dark:text-slate-300;
+  @apply font-semibold text-slate-700;
 }
 
 .form-input,
 .form-select,
 .form-textarea {
-  @apply rounded-xl border border-slate-200 bg-slate-100 p-5 py-2 text-slate-800 shadow-inner shadow-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:shadow-slate-700 dark:placeholder:text-slate-400;
+  @apply rounded-xl border border-slate-200 bg-slate-100 p-5 py-2 text-slate-800 shadow-inner shadow-white;
 }
 
 .form-textarea {
@@ -283,10 +283,10 @@ li {
 
 /* DOINGS ICON */
 .doings-card__icon-cont {
-  @apply flex w-fit items-center justify-center rounded-2xl border border-orange-200  bg-orange-100 p-4 shadow-inner shadow-orange-50 dark:border-orange-600 dark:bg-orange-800 dark:shadow-orange-700;
+  @apply flex w-fit items-center justify-center rounded-2xl border border-orange-200  bg-orange-100 p-4 shadow-inner shadow-orange-50;
 }
 
 .doings-card__icon {
-  @apply h-10 w-10 text-orange-500 dark:text-orange-300;
+  @apply h-10 w-10 text-orange-500;
 }
 /* END DOINGS ICON */

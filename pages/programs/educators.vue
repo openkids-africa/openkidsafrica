@@ -410,7 +410,7 @@ useHead({
         <li
           v-for="action in programsContent.actionsSection.actions"
           :key="action.id"
-          class="action flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+          class="action flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4"
         >
           <div class="doings-card__icon-cont">
             <GraduationCapIcon
@@ -483,7 +483,7 @@ useHead({
           v-for="(detail, index) in programsContent.whyParticipateSection
             .details"
           :key="index"
-          class="why-participate flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+          class="why-participate flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4"
         >
           <h3 class="font-heading text-2xl font-bold">{{ detail.title }}</h3>
           <p>{{ detail.text }}</p>
@@ -503,7 +503,7 @@ useHead({
           v-for="(criteria, role) in programsContent.whoCanApplySection
             .criteria"
           :key="role"
-          class="who-can-apply-criteria rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+          class="who-can-apply-criteria rounded-2xl border border-slate-100 bg-white p-4"
         >
           <h3 class="font-heading text-2xl font-bold">{{ criteria.role }}</h3>
           <ul>
@@ -526,7 +526,7 @@ useHead({
         <li
           v-for="(criteria, role) in programsContent.eligibility.criteria"
           :key="role"
-          class="eligibility-criteria rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+          class="eligibility-criteria rounded-2xl border border-slate-100 bg-white p-4"
         >
           <h3 class="mb-3 font-heading text-2xl font-bold">
             {{ criteria.role }}
@@ -555,7 +555,7 @@ useHead({
         <li
           v-for="benefit in programsContent.benefits.items"
           :key="benefit"
-          class="benefit rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+          class="benefit rounded-2xl border border-slate-100 bg-white p-4"
         >
           <p class="text-xl" v-html="benefit"></p>
         </li>
@@ -573,7 +573,7 @@ useHead({
         <li
           v-for="event in programsContent.programTimeline.events"
           :key="event.date"
-          class="timeline-event rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+          class="timeline-event rounded-2xl border border-slate-100 bg-white p-4"
         >
           <h4>
             <strong>{{ event.date }}:</strong> {{ event.description }}
@@ -691,7 +691,7 @@ useHead({
             <li
               v-for="(item, index) in section.items"
               :key="index"
-              class="sponsorship-section__item rounded-2xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+              class="sponsorship-section__item rounded-2xl border border-slate-100 bg-white p-4"
             >
               <h4 class="font-heading text-xl font-bold">{{ item.title }}</h4>
               <p v-for="(text, index) in item.text" :key="index">

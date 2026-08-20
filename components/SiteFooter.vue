@@ -90,7 +90,7 @@ const { links, socialLinks } = useSiteNav();
 }
 
 .site-footer__section:first-of-type {
-  @apply bg-slate-900 text-slate-200 dark:bg-slate-900;
+  @apply bg-slate-900 text-slate-200;
 }
 
 .site-footer__section:nth-of-type(2) {
