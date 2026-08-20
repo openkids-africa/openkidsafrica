@@ -13,7 +13,6 @@ const submitted = ref(false);
 const error = ref("");
 const submitForm = () => {
   isLoading.value = true;
-  console.log(formData.value);
   try {
     useFetch("/api/send-email", {
       method: "POST",
@@ -23,7 +22,6 @@ const submitForm = () => {
       body: JSON.stringify(formData.value),
     })
       .then((res) => {
-        console.log(res);
         if (res.data) {
           submitted.value = true;
         }
@@ -35,11 +33,11 @@ const submitForm = () => {
         resetForm();
       })
       .catch((err) => {
-        console.log(err);
+        console.error("Contact form submission failed", err);
         isLoading.value = false;
       });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.error("Contact form submission failed", err);
     isLoading.value = false;
   }
 };
@@ -114,7 +112,7 @@ const resetForm = () => {
         <button
           :disabled="isLoading || (submitted && !error)"
           type="submit"
-          class="btn btn--primary"
+          class="btn"
         >
           <LoaderIcon v-if="isLoading" class="icon animate-spin" />
           <SendIcon v-else class="icon" />

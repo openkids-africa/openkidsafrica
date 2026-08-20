@@ -27,8 +27,12 @@ defineProps<{
             :key="index"
             class="partners__item"
           >
-            <div class="img-cont h-40 w-40">
-              <NuxtImg :src="partner.logo" :alt="partner.name" />
+            <div class="partners__logo-cont">
+              <NuxtImg
+                :src="partner.logo"
+                :alt="partner.name"
+                class="partners__logo"
+              />
             </div>
           </li>
         </ul>
@@ -69,3 +73,12 @@ defineProps<{
     </div>
   </section>
 </template>
+<style scoped>
+.partners__logo-cont {
+  @apply flex h-28 w-52 items-center justify-center;
+}
+
+.partners__logo {
+  @apply max-h-full max-w-full object-contain;
+}
+</style>

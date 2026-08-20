@@ -8,6 +8,7 @@ import {
   InstagramIcon,
 } from "lucide-vue-next";
 const { links, socialLinks } = useSiteNav();
+const year = new Date().getFullYear();
 </script>
 <template>
   <footer class="site-footer">
@@ -77,7 +78,7 @@ const { links, socialLinks } = useSiteNav();
       <section class="site-section site-footer__section bg-slate-800">
         <div class="wrapper text-center">
           <p class="w-full text-base text-slate-100">
-            © 2024 Openkids Africa. Registered charity number 8025460588
+            © {{ year }} Openkids Africa. Registered charity number 8025460588
           </p>
         </div>
       </section>
@@ -90,7 +91,7 @@ const { links, socialLinks } = useSiteNav();
 }
 
 .site-footer__section:first-of-type {
-  @apply bg-slate-900 text-slate-200 dark:bg-slate-900;
+  @apply bg-slate-900 text-slate-200;
 }
 
 .site-footer__section:nth-of-type(2) {

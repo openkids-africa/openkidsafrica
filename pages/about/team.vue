@@ -2,8 +2,6 @@
 import gsap from "gsap";
 import { HelpingHandIcon, MailIcon } from "lucide-vue-next";
 
-const { lightText, sticky } = useSiteHeader();
-
 // const main = ref();
 // let tl: gsap.core.Timeline;
 // let ctx: gsap.Context;
@@ -11,7 +9,6 @@ const { lightText, sticky } = useSiteHeader();
 // const toggleTimeline = () => {
 //   tl.reversed(!tl.reversed());
 // };
-// onMounted(() => {
 //   ctx = gsap.context((self) => {
 //     if (!self.selector) return;
 //     const boxes = self.selector(".box");
@@ -22,12 +19,8 @@ const { lightText, sticky } = useSiteHeader();
 //       .to(boxes[2], { y: -166 })
 //       .reverse();
 //   }, main.value); // <- Scope!
-// });
-
 // onUnmounted(() => {
 //   ctx.revert(); // <- Easy Cleanup!
-// });
-
 const teamContent = ref<TeamPageContent>({
   teamSection: {
     title: "Our Team",
@@ -136,11 +129,6 @@ const teamContent = ref<TeamPageContent>({
     ],
     hidePartners: true,
   },
-});
-
-onMounted(() => {
-  sticky.value = true;
-  lightText.value = false;
 });
 
 useHead({
@@ -263,7 +251,7 @@ useHead({
   </section>
 
   <!-- New Section for Educational Champions -->
-  <section class="site-section bg-orange-200 p-12 text-orange-800">
+  <section class="site-section bg-brand-50 p-12">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
         <h2 class="site-section__caption">

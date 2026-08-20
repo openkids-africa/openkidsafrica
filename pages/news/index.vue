@@ -80,8 +80,6 @@ const fetchNextPage = async () => {
 
 const handleFetchNextPage = async () => {
   const result = await fetchNextPage();
-  console.log("articles", articles.value, "articlessss", articles);
-  console.log("result", result);
 
   articles.value = [...(articles.value || []), ...result.value];
 };

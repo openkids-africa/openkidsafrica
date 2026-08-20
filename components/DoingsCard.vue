@@ -21,7 +21,7 @@ defineProps<{
 }>();
 </script>
 <template>
-  <article class="doings-card">
+  <article class="doings-card card">
     <div class="wrapper">
       <header class="doings-card__header">
         <h3 class="doings-card__title">{{ cardContent.title }}</h3>
@@ -68,10 +68,6 @@ defineProps<{
   </article>
 </template>
 <style scoped>
-.doings-card {
-  @apply h-full rounded-3xl border  border-slate-100 p-8 dark:border-slate-800 dark:bg-slate-900;
-}
-
 .doings-card > .wrapper {
   @apply flex flex-col-reverse gap-4;
 }

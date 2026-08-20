@@ -2,8 +2,6 @@
 import gsap from "gsap";
 import { HelpingHandIcon, MailIcon } from "lucide-vue-next";
 
-const { lightText, sticky } = useSiteHeader();
-
 // const main = ref();
 // let tl: gsap.core.Timeline;
 // let ctx: gsap.Context;
@@ -11,7 +9,6 @@ const { lightText, sticky } = useSiteHeader();
 // const toggleTimeline = () => {
 //   tl.reversed(!tl.reversed());
 // };
-// onMounted(() => {
 //   ctx = gsap.context((self) => {
 //     if (!self.selector) return;
 //     const boxes = self.selector(".box");
@@ -22,12 +19,8 @@ const { lightText, sticky } = useSiteHeader();
 //       .to(boxes[2], { y: -166 })
 //       .reverse();
 //   }, main.value); // <- Scope!
-// });
-
 // onUnmounted(() => {
 //   ctx.revert(); // <- Easy Cleanup!
-// });
-
 const aboutContent = ref<AboutPageContent>({
   heroSection: {
     title: "About Us",
@@ -167,7 +160,7 @@ const aboutContent = ref<AboutPageContent>({
           },
         ],
       },
-      
+
       // {
       //   name: "Ibigbari",
       //   role: "PROGRAM COORDINATOR, OpenKids Africa ",
@@ -202,11 +195,6 @@ const aboutContent = ref<AboutPageContent>({
     ],
     hidePartners: true,
   },
-});
-
-onMounted(() => {
-  sticky.value = true;
-  lightText.value = false;
 });
 
 useHead({

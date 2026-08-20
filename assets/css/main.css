@@ -8,11 +8,19 @@
 }
 
 body {
-  @apply bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 lg:text-lg;
+  @apply bg-white text-slate-800 lg:text-lg;
 }
 
 li {
   @apply list-none;
+}
+
+/* Nothing in the site had a visible focus state before. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  @apply rounded-md outline outline-2 outline-offset-2 outline-brand-600;
 }
 
 @layer components {
@@ -23,27 +31,32 @@ li {
 
   /* BUTTON */
   .btn {
-    @apply flex justify-center rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700 dark:border-orange-200 dark:bg-orange-200 dark:text-orange-600 dark:shadow-white dark:active:shadow-orange-400;
+    @apply inline-flex items-center justify-center rounded-xl border border-transparent bg-brand-600 px-5 py-2.5 font-heading font-bold text-white transition-colors duration-200 hover:bg-brand-700 active:bg-brand-800;
   }
 
   .btn--secondary {
-    @apply border border-slate-700 bg-slate-600  text-slate-100 shadow-inner shadow-slate-400  active:shadow-slate-700 dark:border-slate-200 dark:bg-slate-200 dark:text-slate-600 dark:shadow-slate-50 dark:active:shadow-slate-400;
+    @apply bg-slate-800 text-white hover:bg-slate-900 active:bg-slate-950;
   }
 
   .btn--alt {
-    @apply border-orange-200 bg-orange-100 text-orange-600 shadow-orange-50 active:shadow-orange-200;
+    @apply border-brand-200 bg-brand-50 text-brand-700 hover:bg-brand-100 active:bg-brand-200;
   }
 
   .btn--alt.btn--active {
-    @apply border-orange-700  bg-orange-600 text-orange-100 shadow-orange-400 active:shadow-orange-700;
+    @apply border-transparent bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800;
   }
 
   .btn--ghost {
-    @apply border-none bg-transparent text-orange-600 shadow-none shadow-orange-50 hover:bg-orange-100 active:shadow-inner active:shadow-orange-200;
+    @apply bg-transparent text-brand-700 hover:bg-brand-50 active:bg-brand-100;
   }
 
   .btn:disabled {
     @apply pointer-events-none cursor-not-allowed opacity-60 grayscale;
+  }
+
+  /* A label that states something is unavailable must not look pressable. */
+  .btn[aria-disabled="true"] {
+    @apply pointer-events-none border-slate-200 bg-slate-100 text-slate-500;
   }
 
   .btn:has(> .icon) {
@@ -97,8 +110,12 @@ li {
   @apply font-heading text-3xl font-extrabold lg:text-5xl;
 }
 
-.site-section__subtext {
-  /* @apply text-lg lg:text-xl; */
+.site-section__header > p {
+  @apply max-w-measure;
+}
+
+.site-section__header:not(.site-section__header--left) > p {
+  @apply mx-auto;
 }
 
 .site-section__text-cont {
@@ -113,13 +130,13 @@ li {
 
 /* ACTION CONT */
 .action-cont {
-  @apply flex  flex-wrap justify-center gap-4;
+  @apply flex flex-wrap justify-center gap-4;
 }
 /* END ACTION CONT */
 
 /* PAGE HEADER */
 .page-header {
-  @apply relative  overflow-x-clip;
+  @apply relative overflow-x-clip;
 }
 .page-header > .wrapper {
   @apply flex h-full items-center justify-between gap-4;
@@ -138,7 +155,7 @@ li {
 }
 
 .page-header__subtext {
-  /* @apply text-lg lg:text-xl; */
+  @apply max-w-measure;
 }
 
 .page-header__media-cont {
@@ -175,7 +192,7 @@ li {
 
 /* ABSTRACT ILLUSTRATION */
 .abstract-illustration {
-  @apply h-96 w-full lg:absolute lg:-right-[3.85%] lg:top-1/2 lg:m-0 lg:h-[115%]  lg:w-1/2 lg:-translate-y-[43.5%] 2xl:left-[52.5%] 2xl:w-auto;
+  @apply h-96 w-full lg:absolute lg:-right-[3.85%] lg:top-1/2 lg:m-0 lg:h-[115%] lg:w-1/2 lg:-translate-y-[43.5%] 2xl:left-[52.5%] 2xl:w-auto;
 }
 /* END ABSTRACT ILLUSTRATION */
 
@@ -205,7 +222,13 @@ li {
 }
 
 .form-control--radio .form-input {
-  @apply border-none bg-transparent p-0 text-orange-100 shadow-none outline-none ring-0 placeholder:text-orange-300;
+  @apply border-none bg-transparent p-0 text-brand-800 shadow-none outline-none ring-0 placeholder:text-brand-400;
+}
+
+/* The custom-amount field inherited pale orange text on a pale orange
+   ground, so it was unreadable until its option was selected. */
+.form-control--radio:has(.form-radio:checked) .form-input {
+  @apply text-white placeholder:text-brand-100;
 }
 
 .form-group {
@@ -217,13 +240,13 @@ li {
 }
 
 .form-label {
-  @apply font-semibold text-slate-700 dark:text-slate-300;
+  @apply font-semibold text-slate-700;
 }
 
 .form-input,
 .form-select,
 .form-textarea {
-  @apply rounded-xl border border-slate-200 bg-slate-100 p-5 py-2 text-slate-800 shadow-inner shadow-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:shadow-slate-700 dark:placeholder:text-slate-400;
+  @apply rounded-xl border border-slate-200 bg-slate-100 p-5 py-2 text-slate-800 shadow-inner shadow-white;
 }
 
 .form-textarea {
@@ -237,7 +260,8 @@ li {
 }
 
 .donate-form__amount-group > .form-control {
-  @apply min-w-[18rem];
+  /* The flat 18rem minimum overflowed the viewport at 320px. */
+  @apply min-w-0 sm:min-w-[18rem];
 }
 /* END DONATE FORM */
 
@@ -283,10 +307,66 @@ li {
 
 /* DOINGS ICON */
 .doings-card__icon-cont {
-  @apply flex w-fit items-center justify-center rounded-2xl border border-orange-200  bg-orange-100 p-4 shadow-inner shadow-orange-50 dark:border-orange-600 dark:bg-orange-800 dark:shadow-orange-700;
+  @apply flex w-fit items-center justify-center rounded-2xl border border-orange-200 bg-orange-100 p-4 shadow-inner shadow-orange-50;
 }
 
 .doings-card__icon {
-  @apply h-10 w-10 text-orange-500 dark:text-orange-300;
+  @apply h-10 w-10 text-orange-500;
 }
 /* END DOINGS ICON */
+
+/* SECTION EYEBROW */
+.site-section__eyebrow {
+  @apply font-heading text-xs font-bold uppercase tracking-[0.14em] text-brand-600;
+}
+/* END SECTION EYEBROW */
+
+/* MEASURE — keeps running text near 68 characters */
+.measure {
+  @apply max-w-measure;
+}
+/* END MEASURE */
+
+/* CARD — one definition, replacing the string that was copy-pasted
+   across the programme, about and team pages */
+.card {
+  @apply flex h-full flex-col gap-3 rounded-card border border-slate-200 bg-white p-6 shadow-card transition-shadow duration-300;
+}
+
+.card:hover {
+  @apply shadow-card-hover;
+}
+
+.card__title {
+  @apply font-heading text-xl font-bold text-slate-900;
+}
+
+.card__text {
+  @apply text-slate-600;
+}
+/* END CARD */
+
+/* ICON BADGE */
+.icon-badge {
+  @apply flex w-fit items-center justify-center rounded-2xl border border-brand-200 bg-brand-50 p-3 text-brand-600;
+}
+/* END ICON BADGE */
+
+/* CHECKLIST — for lists of things you receive, rather than
+   equally-weighted pillars */
+.checklist {
+  @apply flex flex-col gap-3;
+}
+
+.checklist__item {
+  @apply flex items-start gap-4 rounded-card border border-slate-200 bg-white p-5 shadow-card;
+}
+
+.checklist__icon-cont {
+  @apply mt-0.5 flex shrink-0 items-center justify-center rounded-xl bg-brand-50 p-2 text-brand-600;
+}
+
+.checklist__icon-cont > .icon {
+  @apply h-5 w-5;
+}
+/* END CHECKLIST */

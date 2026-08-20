@@ -31,8 +31,6 @@ const handleSubmit = () => {
     isLoading.value = false;
     window.open("http://paypal.me/openkidsafrica", "__blank");
   }, 2000);
-
-  console.log(formData.value);
 };
 
 watch(

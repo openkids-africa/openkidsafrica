@@ -21,7 +21,14 @@ defineProps({
       :key="i"
       class="site-hero__img-cont img-cont"
     >
-      <NuxtImg v-if="image.src" :src="image.src" :alt="image.alt" />
+      <NuxtImg
+        v-if="image.src"
+        format="webp"
+        sizes="sm:100vw md:50vw lg:33vw"
+        loading="lazy"
+        :src="image.src"
+        :alt="image.alt"
+      />
       <div v-else :class="`${image.color} ${image.type}`"></div>
     </div>
   </div>
@@ -62,10 +69,10 @@ defineProps({
 /* .site-hero__img-cont:has(> .block):nth-of-type(1) .block {
 } */
 .site-hero__img-cont .block.purple {
-  @apply border border-slate-800 bg-slate-700 shadow-inner shadow-slate-400 dark:bg-slate-100;
+  @apply border border-slate-800 bg-slate-700 shadow-inner shadow-slate-400;
 }
 
 .site-hero__img-cont .block.orange {
-  @apply border border-orange-800 bg-orange-600 shadow-inner shadow-orange-400 dark:bg-orange-100;
+  @apply border border-orange-800 bg-orange-600 shadow-inner shadow-orange-400;
 }
 </style>

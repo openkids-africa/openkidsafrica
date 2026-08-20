@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { MailIcon } from "lucide-vue-next";
 
-const { lightText, sticky } = useSiteHeader();
 const contactContent = ref({
   heroSection: {
     caption: "Get in touch",
@@ -38,10 +37,6 @@ const contactContent = ref({
       },
     ],
   },
-});
-onMounted(() => {
-  sticky.value = true;
-  lightText.value = false;
 });
 useHead({
   title: "Contact Us",
@@ -82,7 +77,7 @@ useHead({
         </p>
         <a
           href="mailto:openkidsafrica@gmail.com"
-          class="btn btn--primary !w-fit"
+          class="btn !w-fit"
           :aria-label="`Email OpenKids Africa`"
         >
           <MailIcon class="icon" />
@@ -117,6 +112,6 @@ useHead({
 } */
 
 .abstract-illustration {
-  @apply absolute right-[0] top-1/2  h-[130%] w-2/3 -translate-y-[45.5%] max-sm:-right-[30%] md:w-1/2 lg:h-[110%] 2xl:w-auto;
+  @apply absolute right-[0] top-1/2 h-[130%] w-2/3 -translate-y-[45.5%] max-sm:-right-[30%] md:w-1/2 lg:h-[110%] 2xl:w-auto;
 }
 </style>
