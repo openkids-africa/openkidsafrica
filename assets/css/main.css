@@ -260,7 +260,8 @@ summary:focus-visible,
 }
 
 .donate-form__amount-group > .form-control {
-  @apply min-w-[18rem];
+  /* The flat 18rem minimum overflowed the viewport at 320px. */
+  @apply min-w-0 sm:min-w-[18rem];
 }
 /* END DONATE FORM */
 
