@@ -37,7 +37,7 @@ defineProps<{
 </template>
 <style scoped>
 .article-card {
-  @apply w-full rounded-2xl border border-slate-100 p-6  hover:bg-slate-50 hover:text-slate-800;
+  @apply w-full rounded-2xl border border-slate-100 p-6 hover:bg-slate-50 hover:text-slate-800;
 }
 
 .article-card > .wrapper {

@@ -80,7 +80,7 @@ defineProps<{
 }
 
 .team-card__header {
-  @apply flex  flex-col-reverse gap-4;
+  @apply flex flex-col-reverse gap-4;
 }
 
 .team-card__title {
@@ -88,7 +88,7 @@ defineProps<{
 }
 
 .team-card__img-cont {
-  @apply mt-20 flex h-72 items-end  rounded-3xl  bg-slate-950 bg-cover lg:h-56;
+  @apply mt-20 flex h-72 items-end rounded-3xl bg-slate-950 bg-cover lg:h-56;
 }
 
 .team-card__img-cont > img {

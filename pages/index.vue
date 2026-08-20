@@ -14,8 +14,6 @@ import {
   HeartHandshakeIcon,
 } from "lucide-vue-next";
 
-const { lightText, sticky, scrolled } = useSiteHeader();
-
 const content = ref({
   heroSection: {
     caption:
@@ -116,11 +114,6 @@ const content = ref({
   },
 });
 
-// onMounted(() => {
-lightText.value = true;
-sticky.value = false;
-// });
-
 useHead({
   title: "Home",
 });
@@ -220,6 +213,6 @@ useHead({
 }
 
 .welcome-section {
-  @apply bg-slate-200 text-slate-900;
+  @apply bg-slate-50;
 }
 </style>

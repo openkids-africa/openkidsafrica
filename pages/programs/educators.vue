@@ -410,7 +410,7 @@ useHead({
         <li
           v-for="action in programsContent.actionsSection.actions"
           :key="action.id"
-          class="action flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4"
+          class="action card"
         >
           <div class="doings-card__icon-cont">
             <GraduationCapIcon
@@ -435,7 +435,7 @@ useHead({
             :href="action.link"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn--primary"
+            class="btn"
           >
             Apply Now
           </a>
@@ -483,7 +483,7 @@ useHead({
           v-for="(detail, index) in programsContent.whyParticipateSection
             .details"
           :key="index"
-          class="why-participate flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-4"
+          class="why-participate card"
         >
           <h3 class="font-heading text-2xl font-bold">{{ detail.title }}</h3>
           <p>{{ detail.text }}</p>
@@ -503,7 +503,7 @@ useHead({
           v-for="(criteria, role) in programsContent.whoCanApplySection
             .criteria"
           :key="role"
-          class="who-can-apply-criteria rounded-2xl border border-slate-100 bg-white p-4"
+          class="who-can-apply-criteria card"
         >
           <h3 class="font-heading text-2xl font-bold">{{ criteria.role }}</h3>
           <ul>
@@ -526,7 +526,7 @@ useHead({
         <li
           v-for="(criteria, role) in programsContent.eligibility.criteria"
           :key="role"
-          class="eligibility-criteria rounded-2xl border border-slate-100 bg-white p-4"
+          class="eligibility-criteria card"
         >
           <h3 class="mb-3 font-heading text-2xl font-bold">
             {{ criteria.role }}
@@ -544,7 +544,7 @@ useHead({
       </ul>
     </div>
   </section>
-  <section class="site-section benefits-section bg-slate-100 text-slate-800">
+  <section class="site-section benefits-section bg-slate-50">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
@@ -555,7 +555,7 @@ useHead({
         <li
           v-for="benefit in programsContent.benefits.items"
           :key="benefit"
-          class="benefit rounded-2xl border border-slate-100 bg-white p-4"
+          class="benefit card"
         >
           <p class="text-xl" v-html="benefit"></p>
         </li>
@@ -573,7 +573,7 @@ useHead({
         <li
           v-for="event in programsContent.programTimeline.events"
           :key="event.date"
-          class="timeline-event rounded-2xl border border-slate-100 bg-white p-4"
+          class="timeline-event card"
         >
           <h4>
             <strong>{{ event.date }}:</strong> {{ event.description }}
@@ -613,7 +613,7 @@ useHead({
       </p>
     </div>
   </section>
-  <section class="site-section join-section bg-orange-100 text-orange-800">
+  <section class="site-section join-section bg-brand-50">
     <div class="wrapper text-center">
       <header class="site-section__header">
         <h2 class="site-section__caption">
@@ -691,7 +691,7 @@ useHead({
             <li
               v-for="(item, index) in section.items"
               :key="index"
-              class="sponsorship-section__item rounded-2xl border border-slate-100 bg-white p-4"
+              class="sponsorship-section__item card"
             >
               <h4 class="font-heading text-xl font-bold">{{ item.title }}</h4>
               <p v-for="(text, index) in item.text" :key="index">

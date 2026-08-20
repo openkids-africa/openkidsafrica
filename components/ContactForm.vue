@@ -112,7 +112,7 @@ const resetForm = () => {
         <button
           :disabled="isLoading || (submitted && !error)"
           type="submit"
-          class="btn btn--primary"
+          class="btn"
         >
           <LoaderIcon v-if="isLoading" class="icon animate-spin" />
           <SendIcon v-else class="icon" />

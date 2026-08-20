@@ -205,7 +205,7 @@ useHead({
       </div>
     </div>
   </section>
-  <section class="site-section join-section bg-orange-100 text-orange-800">
+  <section class="site-section join-section bg-brand-50">
     <div class="wrapper text-center">
       <header class="site-section__header">
         <h2 class="site-section__caption">

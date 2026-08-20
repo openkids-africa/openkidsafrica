@@ -80,7 +80,7 @@ const { data, refresh } = useSanityQuery(query, {
 }
 
 .article__cover {
-  @apply relative  w-full py-8;
+  @apply relative w-full py-8;
 }
 
 .article__picture :deep(img) {

@@ -2,7 +2,6 @@
 import { HelpingHandIcon } from "lucide-vue-next";
 import { MailIcon } from "lucide-vue-next";
 
-const { lightText, sticky } = useSiteHeader();
 const donateContent = ref({
   heroSection: {
     caption: "Donate to Openkids Africa",
@@ -146,10 +145,6 @@ const donateContent = ref({
     ],
   },
 });
-onMounted(() => {
-  sticky.value = true;
-  lightText.value = false;
-});
 useHead({
   title: donateContent.value.heroSection.caption,
   meta: [
@@ -193,7 +188,7 @@ useHead({
         </p>
         <a
           href="#video-section"
-          class="btn btn--primary !w-fit"
+          class="btn !w-fit"
           :aria-label="`Email OpenKids Africa`"
         >
           <!-- <MailIcon class="icon" /> -->
@@ -255,7 +250,7 @@ useHead({
       </div>
     </div>
   </section> -->
-  <section class="site-section bg-slate-100 text-slate-950">
+  <section class="site-section bg-slate-50">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
         <h2 class="site-section__caption">Your impact</h2>
@@ -302,7 +297,7 @@ useHead({
           <p>{{ option.description }}</p>
           <a
             href="#contact"
-            class="btn btn--primary mt-auto !w-fit"
+            class="btn mt-auto !w-fit"
             :aria-label="`Contact OpenKids Africa`"
           >
             <MailIcon class="icon" />
@@ -340,9 +335,7 @@ useHead({
       </header>
 
       <div class="options flex flex-wrap gap-4">
-        <article
-          class="flex flex-1 flex-col gap-4 rounded-xl border border-slate-200 p-4"
-        >
+        <article class="card flex-1">
           <h3 class="font-heading text-3xl font-semibold">Donate via PayPal</h3>
           <p>
             Donating via PayPal is very simple. <br />
@@ -350,16 +343,14 @@ useHead({
           </p>
           <a
             href="http://paypal.me/openkidsafrica"
-            class="btn btn--primary mt-auto !w-fit"
+            class="btn mt-auto !w-fit"
             :aria-label="`Donate to OpenKids Africa`"
           >
             <HelpingHandIcon class="icon" />
             <span class="text"> Donate via PayPal </span>
           </a>
         </article>
-        <article
-          class="flex flex-1 flex-col gap-4 rounded-xl border border-slate-200 p-4"
-        >
+        <article class="card flex-1">
           <h3 class="font-heading text-3xl font-semibold">
             Donate Educational Resources
           </h3>
@@ -383,16 +374,14 @@ useHead({
 
           <a
             href="mailto:openkidsafrica@gmail.com"
-            class="btn btn--primary mt-auto !w-fit"
+            class="btn mt-auto !w-fit"
             :aria-label="`Email OpenKids Africa`"
           >
             <MailIcon class="icon" />
             <span class="text"> Email Us </span>
           </a>
         </article>
-        <article
-          class="flex flex-1 flex-col gap-4 rounded-xl border border-slate-200 p-4"
-        >
+        <article class="card flex-1">
           <h3 class="font-heading text-3xl font-semibold">Donate via Check</h3>
           <p>
             If you prefer to donate via check, kindly send an email to
@@ -403,7 +392,7 @@ useHead({
           </p>
           <a
             href="mailto:openkidsafrica@gmail.com"
-            class="btn btn--primary mt-auto !w-fit"
+            class="btn mt-auto !w-fit"
             :aria-label="`Email OpenKids Africa`"
           >
             <MailIcon class="icon" />
@@ -482,6 +471,6 @@ useHead({
 } */
 
 .abstract-illustration {
-  @apply absolute right-[0] top-1/2  h-[130%] w-2/3 -translate-y-[45.5%] max-sm:-right-[30%] md:w-1/2 lg:h-[110%] 2xl:w-auto;
+  @apply absolute right-[0] top-1/2 h-[130%] w-2/3 -translate-y-[45.5%] max-sm:-right-[30%] md:w-1/2 lg:h-[110%] 2xl:w-auto;
 }
 </style>

@@ -52,11 +52,11 @@ defineProps<HeroProps>();
 <style scoped>
 /* SITE HERO */
 .site-hero {
-  /* @apply relative flex h-[calc(100vh-(5.125rem*2))] max-h-[72rem] min-h-fit  flex-col items-center py-[10rem] lg:pb-[24rem]; */
+  /* @apply relative flex h-[calc(100vh-(5.125rem*2))] max-h-[72rem] min-h-fit flex-col items-center py-[10rem] lg:pb-[24rem]; */
   @apply relative flex max-h-[72rem] min-h-[24rem] flex-col items-center py-32 lg:py-64;
 }
 .site-hero > .wrapper {
-  @apply grid  items-center gap-8 lg:grid-cols-7;
+  @apply grid items-center gap-8 lg:grid-cols-7;
 }
 
 .site-hero__text-cont {
@@ -72,7 +72,7 @@ defineProps<HeroProps>();
 }
 
 .site-hero__caption {
-  @apply font-heading text-5xl font-black text-slate-100  lg:text-7xl;
+  @apply font-heading text-5xl font-black text-slate-100 lg:text-7xl;
 }
 
 .site-hero__caption--md {

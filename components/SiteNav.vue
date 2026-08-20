@@ -1,90 +1,108 @@
-<script setup>
+<script setup lang="ts">
 import { XMarkIcon, Bars2Icon, ChevronDownIcon } from "@heroicons/vue/24/solid";
+
+const route = useRoute();
 const router = useRouter();
 const { links } = useSiteNav();
+
 const navActive = ref(false);
+const openDropdown = ref<string | null>(null);
 
 const toggleActive = () => {
   navActive.value = !navActive.value;
 };
 
+const toggleDropdown = (name: string) => {
+  openDropdown.value = openDropdown.value === name ? null : name;
+};
+
+/* "/" is a prefix of every route, so the previous includes() test marked Home
+   active everywhere. Home needs an exact match; the rest match by prefix. */
+const isActive = (path: string) =>
+  path === "/" ? route.path === "/" : route.path.startsWith(path);
+
 router.afterEach(() => {
   navActive.value = false;
+  openDropdown.value = null;
 });
 </script>
 <template>
-  <nav class="site-nav" :class="`${navActive ? 'site-nav--active' : ''}`">
+  <nav
+    class="site-nav"
+    :class="{ 'site-nav--active': navActive }"
+    aria-label="Main"
+  >
     <div class="wrapper">
-      <ul class="site-nav__links !justify-start pt-[20vh] lg:pt-0">
+      <ul class="site-nav__links">
         <li
-          tabindex="0"
           v-for="link in links"
           :key="link.name"
-          :class="`site-nav__link group relative flex  flex-col justify-center max-lg:items-center ${
-            router.currentRoute.value.fullPath.includes(link.path)
-              ? 'active'
-              : ''
-          }`"
+          class="site-nav__link"
+          :class="{ active: isActive(link.path) }"
         >
           <NuxtLink
             v-if="!link.subLinks"
-            :class="` ${link.name.toLowerCase() == 'donate' ? 'btn' : ''}`"
             :to="link.path"
+            :class="link.name.toLowerCase() === 'donate' ? 'btn' : ''"
+            :aria-current="isActive(link.path) ? 'page' : undefined"
           >
             {{ link.name }}
           </NuxtLink>
-          <div v-else class="!flex cursor-pointer items-center gap-1">
-            {{ link.name }}
-            <ChevronDownIcon class="icon h-5 w-5" v-if="link.subLinks" />
-          </div>
 
-          <div
-            v-if="link.subLinks"
-            class="site-nav__dropdown pointer-events-none max-h-0 min-w-64 rounded-xl border-slate-100 bg-white shadow-lg shadow-slate-600/[.05] transition-all duration-300 group-hover:pointer-events-auto group-hover:max-h-56 group-hover:border lg:!absolute lg:!top-full lg:!hidden lg:max-h-[999px] lg:group-hover:!flex"
-          >
-            <ul class="site-nav__dropdown__links w-full">
-              <!-- <li
-                class="site-nav__dropdown__link border-b border-slate-100 text-left"
-              >
-                <NuxtLink
-                  :to="link.path"
-                  class="flex w-full p-2 px-4 !text-slate-600"
-                  >{{ link.name }}</NuxtLink
+          <template v-else>
+            <button
+              type="button"
+              class="site-nav__trigger"
+              :aria-expanded="openDropdown === link.name"
+              @click="toggleDropdown(link.name)"
+            >
+              {{ link.name }}
+              <ChevronDownIcon class="icon h-5 w-5" />
+            </button>
+
+            <div
+              class="site-nav__dropdown"
+              :class="{
+                'site-nav__dropdown--open': openDropdown === link.name,
+              }"
+            >
+              <ul class="site-nav__dropdown__links">
+                <li
+                  v-for="sublink in link.subLinks"
+                  :key="sublink.name"
+                  class="site-nav__dropdown__link"
                 >
-              </li> -->
-              <li
-                v-for="sublink in link.subLinks"
-                :key="sublink.name"
-                class="site-nav__dropdown__link border-b border-slate-100 last-of-type:border-b-0 lg:text-left"
-              >
-                <NuxtLink
-                  class="flex w-full justify-center p-2 px-4 text-center !text-slate-600 lg:justify-start lg:text-left"
-                  :to="sublink.path"
-                  >{{ sublink.name }}</NuxtLink
-                >
-              </li>
-            </ul>
-          </div>
+                  <NuxtLink
+                    :to="sublink.path"
+                    :aria-current="isActive(sublink.path) ? 'page' : undefined"
+                  >
+                    {{ sublink.name }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </template>
         </li>
       </ul>
     </div>
   </nav>
-  <button @click="toggleActive" class="site-nav-btn btn">
-    <XMarkIcon
-      class="icon site-nav-btn__icon"
-      :class="`${navActive ? 'site-nav-btn__icon--active' : ''}`"
-    />
-    <Bars2Icon
-      class="icon site-nav-btn__icon"
-      :class="`${!navActive ? 'site-nav-btn__icon--active' : ''}`"
-    />
+
+  <button
+    type="button"
+    class="site-nav-btn btn"
+    :aria-expanded="navActive"
+    :aria-label="navActive ? 'Close menu' : 'Open menu'"
+    @click="toggleActive"
+  >
+    <XMarkIcon v-if="navActive" class="icon" />
+    <Bars2Icon v-else class="icon" />
   </button>
 </template>
 <style scoped>
 .site-nav {
-  @apply fixed left-0 top-0 z-10 h-full w-full bg-white lg:relative lg:w-fit lg:!bg-transparent;
+  @apply fixed left-0 top-0 z-10 h-full w-full overflow-y-auto bg-slate-900 lg:relative lg:h-auto lg:w-fit lg:overflow-visible lg:!bg-transparent;
   @apply pointer-events-none invisible opacity-0 lg:pointer-events-auto lg:visible lg:opacity-100;
-  @apply transition-all duration-300;
+  @apply transition-opacity duration-300;
 }
 
 .site-nav--active {
@@ -92,47 +110,65 @@ router.afterEach(() => {
 }
 
 .site-nav > .wrapper {
-  @apply ml-auto h-full max-w-6xl p-4 px-8 text-right lg:p-0;
+  @apply ml-auto flex min-h-full max-w-6xl items-center justify-center p-8 lg:block lg:p-0;
 }
 
 .site-nav__links {
-  @apply flex h-full flex-col justify-center gap-4 lg:flex-row lg:items-center lg:gap-6;
-  @apply text-4xl font-bold lg:text-base lg:text-slate-700;
+  @apply flex w-full flex-col items-center gap-6 lg:w-auto lg:flex-row lg:gap-6;
+  @apply text-3xl font-bold lg:text-base;
 }
 
 .site-nav__link {
-  @apply py-1 hover:text-slate-500 lg:!overflow-y-visible;
+  @apply relative flex flex-col items-center lg:items-start;
 }
 
-.site-nav__link,
+.site-nav__link > a:hover,
+.site-nav__trigger:hover {
+  @apply text-brand-300;
+}
+
+.site-nav__link > a.btn:hover {
+  @apply text-white;
+}
+
+/* The current page is marked with an underline rather than colour alone. */
+.site-nav__link.active > a:not(.btn),
+.site-nav__link.active > .site-nav__trigger {
+  @apply underline decoration-brand-400 decoration-2 underline-offset-8;
+}
+
+.site-nav__trigger {
+  @apply flex cursor-pointer items-center gap-1 font-bold;
+}
+
+/* DROPDOWN
+   Below lg the submenu sits open beneath its parent, so nothing has to be
+   operated to reach it. From lg up it becomes a real dropdown that opens on
+   hover, on keyboard focus, and on click — the previous hover-only version on
+   a non-focusable div was unreachable by keyboard and touch. */
+.site-nav__dropdown {
+  @apply mt-3 w-full lg:invisible lg:absolute lg:left-0 lg:top-full lg:mt-2 lg:w-64 lg:rounded-xl lg:border lg:border-slate-100 lg:bg-white lg:opacity-0 lg:shadow-lg lg:transition-all lg:duration-200;
+}
+
+.site-nav__link:hover > .site-nav__dropdown,
+.site-nav__link:focus-within > .site-nav__dropdown,
+.site-nav__dropdown--open {
+  @apply lg:visible lg:opacity-100;
+}
+
+.site-nav__dropdown__links {
+  @apply flex w-full flex-col;
+}
+
+.site-nav__dropdown__link {
+  @apply border-slate-100 text-center text-xl lg:border-b lg:text-left lg:text-base lg:last-of-type:border-b-0;
+}
+
+.site-nav__dropdown__link > a {
+  @apply flex w-full justify-center p-2 text-slate-300 hover:text-brand-300 lg:justify-start lg:px-4 lg:text-slate-600 lg:hover:bg-slate-50 lg:hover:text-brand-700;
+}
+
 .site-nav-btn {
-  @apply relative overflow-y-clip;
-}
-
-.site-nav__link > *,
-.site-nav-btn__icon {
-  @apply relative top-0 block translate-y-full transform lg:lg:translate-y-0;
-  @apply transition-transform duration-300 ease-in-out;
-}
-
-.site-nav--active .site-nav__link > *,
-.site-nav-btn__icon--active {
-  @apply translate-y-0;
-}
-
-.site-nav-btn {
-  @apply fixed bottom-0 right-0 z-20 mb-6 mr-6 block lg:hidden;
-}
-
-.site-nav-btn__icon {
-  @apply h-0;
-}
-
-.site-nav-btn__icon--active {
-  @apply h-6 translate-y-0;
-}
-
-.router-link-active {
-  @apply text-slate-100;
+  @apply fixed bottom-0 right-0 z-20 mb-6 mr-6 block p-3 lg:hidden;
 }
 </style>

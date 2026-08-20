@@ -31,23 +31,23 @@ summary:focus-visible,
 
   /* BUTTON */
   .btn {
-    @apply flex justify-center rounded-xl border border-orange-700 bg-orange-600 p-5 py-2 font-bold text-orange-100 shadow-inner shadow-orange-400  active:shadow-orange-700;
+    @apply inline-flex items-center justify-center rounded-xl border border-transparent bg-brand-600 px-5 py-2.5 font-heading font-bold text-white transition-colors duration-200 hover:bg-brand-700 active:bg-brand-800;
   }
 
   .btn--secondary {
-    @apply border border-slate-700 bg-slate-600  text-slate-100 shadow-inner shadow-slate-400  active:shadow-slate-700;
+    @apply bg-slate-800 text-white hover:bg-slate-900 active:bg-slate-950;
   }
 
   .btn--alt {
-    @apply border-orange-200 bg-orange-100 text-orange-600 shadow-orange-50 active:shadow-orange-200;
+    @apply border-brand-200 bg-brand-50 text-brand-700 hover:bg-brand-100 active:bg-brand-200;
   }
 
   .btn--alt.btn--active {
-    @apply border-orange-700  bg-orange-600 text-orange-100 shadow-orange-400 active:shadow-orange-700;
+    @apply border-transparent bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800;
   }
 
   .btn--ghost {
-    @apply border-none bg-transparent text-orange-600 shadow-none shadow-orange-50 hover:bg-orange-100 active:shadow-inner active:shadow-orange-200;
+    @apply bg-transparent text-brand-700 hover:bg-brand-50 active:bg-brand-100;
   }
 
   .btn:disabled {
@@ -105,8 +105,12 @@ summary:focus-visible,
   @apply font-heading text-3xl font-extrabold lg:text-5xl;
 }
 
-.site-section__subtext {
-  /* @apply text-lg lg:text-xl; */
+.site-section__header > p {
+  @apply max-w-measure;
+}
+
+.site-section__header:not(.site-section__header--left) > p {
+  @apply mx-auto;
 }
 
 .site-section__text-cont {
@@ -121,13 +125,13 @@ summary:focus-visible,
 
 /* ACTION CONT */
 .action-cont {
-  @apply flex  flex-wrap justify-center gap-4;
+  @apply flex flex-wrap justify-center gap-4;
 }
 /* END ACTION CONT */
 
 /* PAGE HEADER */
 .page-header {
-  @apply relative  overflow-x-clip;
+  @apply relative overflow-x-clip;
 }
 .page-header > .wrapper {
   @apply flex h-full items-center justify-between gap-4;
@@ -146,7 +150,7 @@ summary:focus-visible,
 }
 
 .page-header__subtext {
-  /* @apply text-lg lg:text-xl; */
+  @apply max-w-measure;
 }
 
 .page-header__media-cont {
@@ -183,7 +187,7 @@ summary:focus-visible,
 
 /* ABSTRACT ILLUSTRATION */
 .abstract-illustration {
-  @apply h-96 w-full lg:absolute lg:-right-[3.85%] lg:top-1/2 lg:m-0 lg:h-[115%]  lg:w-1/2 lg:-translate-y-[43.5%] 2xl:left-[52.5%] 2xl:w-auto;
+  @apply h-96 w-full lg:absolute lg:-right-[3.85%] lg:top-1/2 lg:m-0 lg:h-[115%] lg:w-1/2 lg:-translate-y-[43.5%] 2xl:left-[52.5%] 2xl:w-auto;
 }
 /* END ABSTRACT ILLUSTRATION */
 
@@ -213,7 +217,13 @@ summary:focus-visible,
 }
 
 .form-control--radio .form-input {
-  @apply border-none bg-transparent p-0 text-orange-100 shadow-none outline-none ring-0 placeholder:text-orange-300;
+  @apply border-none bg-transparent p-0 text-brand-800 shadow-none outline-none ring-0 placeholder:text-brand-400;
+}
+
+/* The custom-amount field inherited pale orange text on a pale orange
+   ground, so it was unreadable until its option was selected. */
+.form-control--radio:has(.form-radio:checked) .form-input {
+  @apply text-white placeholder:text-brand-100;
 }
 
 .form-group {
@@ -291,7 +301,7 @@ summary:focus-visible,
 
 /* DOINGS ICON */
 .doings-card__icon-cont {
-  @apply flex w-fit items-center justify-center rounded-2xl border border-orange-200  bg-orange-100 p-4 shadow-inner shadow-orange-50;
+  @apply flex w-fit items-center justify-center rounded-2xl border border-orange-200 bg-orange-100 p-4 shadow-inner shadow-orange-50;
 }
 
 .doings-card__icon {
