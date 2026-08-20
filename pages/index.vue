@@ -8,7 +8,11 @@ import {
   UserGroupIcon,
   UserIcon,
 } from "@heroicons/vue/24/solid";
-import { HelpingHandIcon, HeartHandshakeIcon } from "lucide-vue-next";
+import {
+  ArrowRightIcon,
+  HelpingHandIcon,
+  HeartHandshakeIcon,
+} from "lucide-vue-next";
 
 const { lightText, sticky, scrolled } = useSiteHeader();
 
@@ -104,6 +108,10 @@ const content = ref({
         name: "Tech She Can",
         logo: "/assets/images/partners/tech-she-can-logo.svg",
       },
+      {
+        name: "Microsoft",
+        logo: "/assets/images/partners/microsoft-logo.svg",
+      },
     ],
   },
 });
@@ -123,6 +131,21 @@ useHead({
     :subtext="content.heroSection.subtext"
     :images="content.heroSection.images"
   />
+  <aside class="announce">
+    <div class="wrapper">
+      <p class="announce__text">
+        <span class="announce__tag">New</span>
+        <span>
+          <strong>AI for All</strong> — internationally accredited AI training
+          for Nigerian teachers, with Tech She Can and Microsoft.
+        </span>
+      </p>
+      <NuxtLink to="/programs/ai-for-all" class="announce__link">
+        See the program
+        <ArrowRightIcon class="icon h-4 w-4" />
+      </NuxtLink>
+    </div>
+  </aside>
   <section class="site-section welcome-section">
     <div class="wrapper">
       <header class="site-section__header site-section__header--left">
@@ -170,6 +193,28 @@ useHead({
   </PartnersSection>
 </template>
 <style scoped>
+/* ANNOUNCEMENT BAND */
+.announce {
+  @apply border-b border-brand-100 bg-brand-50 px-4 py-3;
+}
+
+.announce > .wrapper {
+  @apply m-auto flex w-full max-w-6xl flex-col items-center gap-x-6 gap-y-2 text-center md:flex-row md:justify-between md:text-left;
+}
+
+.announce__text {
+  @apply flex flex-wrap items-center justify-center gap-2 text-base text-slate-700;
+}
+
+.announce__tag {
+  @apply rounded-md bg-brand-600 px-2 py-0.5 font-heading text-xs font-bold uppercase tracking-wider text-white;
+}
+
+.announce__link {
+  @apply flex shrink-0 items-center gap-1 font-semibold text-brand-700 underline-offset-4 hover:underline;
+}
+/* END ANNOUNCEMENT BAND */
+
 .card-list {
   @apply grid gap-8 lg:grid-cols-2;
 }

@@ -23,6 +23,10 @@ export const useSiteNav = () => {
       path: "/programs",
       subLinks: [
         {
+          name: "AI for All",
+          path: "/programs/ai-for-all",
+        },
+        {
           name: "Kids Program",
           path: "/programs/kids",
         },
