@@ -30,6 +30,17 @@ router.afterEach(() => {
   navActive.value = false;
   openDropdown.value = null;
 });
+
+/* The page behind a full-screen overlay should not scroll with it. */
+watch(navActive, (open) => {
+  if (import.meta.client) {
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+});
+
+onUnmounted(() => {
+  if (import.meta.client) document.body.style.overflow = "";
+});
 </script>
 <template>
   <nav
@@ -56,6 +67,9 @@ router.afterEach(() => {
           </NuxtLink>
 
           <template v-else>
+            <span class="site-nav__group-label">
+              {{ link.name }}
+            </span>
             <button
               type="button"
               class="site-nav__trigger"
@@ -106,7 +120,7 @@ router.afterEach(() => {
 </template>
 <style scoped>
 .site-nav {
-  @apply fixed left-0 top-0 z-10 h-full w-full overflow-y-auto bg-slate-900 lg:relative lg:h-auto lg:w-fit lg:overflow-visible lg:!bg-transparent;
+  @apply fixed left-0 top-0 z-30 h-[100dvh] w-full overflow-y-auto bg-slate-900 lg:relative lg:z-auto lg:h-auto lg:w-fit lg:overflow-visible lg:!bg-transparent;
   @apply pointer-events-none invisible opacity-0 lg:pointer-events-auto lg:visible lg:opacity-100;
   @apply transition-opacity duration-300;
 }
@@ -139,12 +153,17 @@ router.afterEach(() => {
 
 /* The current page is marked with an underline rather than colour alone. */
 .site-nav__link.active > a:not(.btn),
+.site-nav__link.active > .site-nav__group-label,
 .site-nav__link.active > .site-nav__trigger {
   @apply underline decoration-brand-400 decoration-2 underline-offset-8;
 }
 
 .site-nav__trigger {
-  @apply flex cursor-pointer items-center gap-1 font-bold;
+  @apply hidden cursor-pointer items-center gap-1 font-bold lg:flex;
+}
+
+.site-nav__group-label {
+  @apply block font-bold lg:hidden;
 }
 
 /* DROPDOWN
@@ -175,6 +194,6 @@ router.afterEach(() => {
 }
 
 .site-nav-btn {
-  @apply fixed bottom-0 right-0 z-20 mb-6 mr-6 block p-3 lg:hidden;
+  @apply fixed bottom-0 right-0 z-40 mb-6 mr-6 block p-3 shadow-card lg:hidden;
 }
 </style>

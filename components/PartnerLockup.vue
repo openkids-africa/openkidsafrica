@@ -5,9 +5,6 @@ interface LockupPartner {
   /* Logos come at different aspect ratios, so each one carries the height
      that makes it read at the same optical weight as its neighbours. */
   heightClass?: string;
-  /* Set where the asset is a mark on its own and needs the name beside it
-     to hold its place next to the other partners' full wordmarks. */
-  wordmark?: string;
 }
 
 defineProps<{
@@ -27,16 +24,11 @@ defineProps<{
         <span v-if="index > 0" aria-hidden="true" class="partner-lockup__x">
           &times;
         </span>
-        <span class="partner-lockup__brand">
-          <NuxtImg
-            :src="partner.logo"
-            :alt="partner.wordmark ? '' : partner.name"
-            :class="`partner-lockup__logo ${partner.heightClass || 'h-10'}`"
-          />
-          <span v-if="partner.wordmark" class="partner-lockup__wordmark">
-            {{ partner.wordmark }}
-          </span>
-        </span>
+        <NuxtImg
+          :src="partner.logo"
+          :alt="partner.name"
+          :class="`partner-lockup__logo ${partner.heightClass || 'h-10'}`"
+        />
       </li>
     </ul>
   </div>
@@ -58,19 +50,11 @@ defineProps<{
   @apply flex items-center gap-x-5;
 }
 
-.partner-lockup__brand {
-  @apply flex items-center gap-2;
-}
-
 .partner-lockup__x {
   @apply font-heading text-xl font-medium text-slate-300;
 }
 
 .partner-lockup__logo {
   @apply w-auto object-contain;
-}
-
-.partner-lockup__wordmark {
-  @apply font-heading text-lg font-black leading-none text-slate-800;
 }
 </style>

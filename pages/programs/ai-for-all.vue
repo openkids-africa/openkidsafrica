@@ -56,8 +56,7 @@ const content = ref({
     {
       name: "Open Kids Africa",
       logo: "/android-chrome-512x512.png",
-      heightClass: "h-9",
-      wordmark: "Open Kids Africa",
+      heightClass: "h-12",
     },
     {
       name: "Tech She Can",
@@ -174,7 +173,6 @@ useHead({
       content: `${SITE_URL}/assets/images/photos/photo-1.jpeg`,
     },
   ],
-  link: [{ rel: "canonical", href: `${SITE_URL}${PAGE_PATH}` }],
   script: [
     {
       type: "application/ld+json",
