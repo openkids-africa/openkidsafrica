@@ -138,12 +138,14 @@ const slideImages = ref(
       </div>
       <button
         @click="scrollPrev"
+        aria-label="Previous slide"
         class="embla__button btn btn--ghost embla__prev"
       >
         <ChevronLeftIcon class="icon" />
       </button>
       <button
         @click="scrollNext"
+        aria-label="Next slide"
         class="embla__button btn btn--ghost embla__next"
       >
         <ChevronRightIcon class="icon" />
@@ -153,6 +155,8 @@ const slideImages = ref(
           <button
             class="embla__dot btn btn--alt"
             :class="{ 'btn--active': index === activeSlide }"
+            :aria-label="`Go to slide ${index + 1}`"
+            :aria-current="index === activeSlide ? 'true' : undefined"
             @click="emblaAPI?.scrollTo(index)"
           ></button>
         </li>
@@ -194,7 +198,12 @@ const slideImages = ref(
 }
 
 .embla__dot {
-  @apply h-3 w-3 rounded-full p-0 lg:h-5 lg:w-5;
+  @apply relative h-3 w-3 rounded-full p-0 lg:h-5 lg:w-5;
+}
+
+.embla__dot::after {
+  content: "";
+  @apply absolute left-1/2 top-1/2 h-11 w-5 -translate-x-1/2 -translate-y-1/2 lg:hidden;
 }
 
 .embla__img {
