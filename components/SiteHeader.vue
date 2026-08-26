@@ -11,9 +11,14 @@
 <style scoped>
 /* One solid, sticky treatment on every page. The transparent-to-solid
    behaviour this replaces depended on a scroll handler that was never
-   called, so .scrolled was hardcoded and the transition never ran. */
+   called, so .scrolled was hardcoded and the transition never ran.
+
+   No backdrop-filter here, deliberately: it makes the header a containing
+   block for position:fixed descendants, which collapsed the mobile menu
+   overlay and its toggle button to the size of the header. The background
+   is opaque, so there was nothing to blur anyway. */
 .site-header {
-  @apply sticky top-0 z-20 w-full bg-slate-900/95 p-4 shadow-header backdrop-blur-md;
+  @apply sticky top-0 z-20 w-full bg-slate-900 p-4 shadow-header;
 }
 
 .site-header > .wrapper {
