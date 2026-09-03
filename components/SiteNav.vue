@@ -44,6 +44,7 @@ onUnmounted(() => {
 </script>
 <template>
   <nav
+    id="site-nav"
     class="site-nav"
     :class="{ 'site-nav--active': navActive }"
     aria-label="Main"
@@ -109,7 +110,8 @@ onUnmounted(() => {
 
   <button
     type="button"
-    class="site-nav-btn btn"
+    class="site-nav-btn"
+    aria-controls="site-nav"
     :aria-expanded="navActive"
     :aria-label="navActive ? 'Close menu' : 'Open menu'"
     @click="toggleActive"
@@ -119,10 +121,18 @@ onUnmounted(() => {
   </button>
 </template>
 <style scoped>
+/* MOBILE PANEL
+   The nav lives inside the sticky header, which is its containing block, so
+   an absolute panel at top:100% hangs from the header's bottom edge. Its
+   height is the viewport minus the header (the 100% here is the header's
+   height), so the header stays in view above it with the close button in
+   the same place the open button was. */
 .site-nav {
-  @apply fixed left-0 top-0 z-30 h-[100dvh] w-full overflow-y-auto bg-slate-900 lg:relative lg:z-auto lg:h-auto lg:w-fit lg:overflow-visible lg:!bg-transparent;
+  @apply absolute left-0 right-0 top-full z-10 overflow-y-auto bg-slate-900 lg:relative lg:z-auto lg:h-auto lg:w-fit lg:overflow-visible lg:!bg-transparent;
   @apply pointer-events-none invisible opacity-0 lg:pointer-events-auto lg:visible lg:opacity-100;
-  @apply transition-opacity duration-300;
+  @apply transition-opacity duration-200;
+  height: calc(100vh - 100%);
+  height: calc(100dvh - 100%);
 }
 
 .site-nav--active {
@@ -130,11 +140,13 @@ onUnmounted(() => {
 }
 
 .site-nav > .wrapper {
-  @apply ml-auto flex min-h-full max-w-6xl items-center justify-center p-8 lg:block lg:p-0;
+  @apply flex min-h-full flex-col px-6 py-8 lg:block lg:p-0;
 }
 
+/* Auto margins centre the list when it fits and fall back to top-aligned
+   scrolling when it does not; flex centring alone would clip the top. */
 .site-nav__links {
-  @apply flex w-full flex-col items-center gap-6 lg:w-auto lg:flex-row lg:gap-6;
+  @apply my-auto flex w-full flex-col items-center gap-6 lg:my-0 lg:w-auto lg:flex-row lg:gap-6;
   @apply text-3xl font-bold lg:text-base;
 }
 
@@ -193,7 +205,15 @@ onUnmounted(() => {
   @apply flex w-full justify-center p-2 text-slate-300 hover:text-brand-300 lg:justify-start lg:px-4 lg:text-slate-600 lg:hover:bg-slate-50 lg:hover:text-brand-700;
 }
 
+/* TOGGLE
+   Sits in the header bar at the right, sized to a comfortable touch target.
+   relative + z-20 keeps it above the panel within the header's stacking
+   context, so it stays clickable as the close button once the menu is open. */
 .site-nav-btn {
-  @apply fixed bottom-0 right-0 z-40 mb-6 mr-6 block p-3 shadow-card lg:hidden;
+  @apply relative z-20 flex h-11 w-11 items-center justify-center rounded-lg text-slate-100 transition-colors hover:bg-white/10 active:bg-white/15 lg:hidden;
+}
+
+.site-nav-btn > .icon {
+  @apply h-6 w-6;
 }
 </style>

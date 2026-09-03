@@ -21,8 +21,11 @@
   @apply sticky top-0 z-20 w-full bg-slate-900 p-4 shadow-header;
 }
 
+/* Not positioned, deliberately: the mobile nav panel is absolutely
+   positioned and must resolve against the header's full box, not this
+   padded inner row. The sticky header is the nearest positioned ancestor. */
 .site-header > .wrapper {
-  @apply relative m-auto flex max-w-6xl items-center justify-between;
+  @apply m-auto flex max-w-6xl items-center justify-between;
 }
 
 :deep(.site-logo__text) {
