@@ -1,26 +1,6 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { HelpingHandIcon, MailIcon } from "lucide-vue-next";
+import { ArrowUpRightIcon } from "lucide-vue-next";
 
-// const main = ref();
-// let tl: gsap.core.Timeline;
-// let ctx: gsap.Context;
-
-// const toggleTimeline = () => {
-//   tl.reversed(!tl.reversed());
-// };
-//   ctx = gsap.context((self) => {
-//     if (!self.selector) return;
-//     const boxes = self.selector(".box");
-//     tl = gsap
-//       .timeline()
-//       .to(boxes[0], { x: 120, rotation: 360 })
-//       .to(boxes[1], { x: -120, rotation: -360 }, "<")
-//       .to(boxes[2], { y: -166 })
-//       .reverse();
-//   }, main.value); // <- Scope!
-// onUnmounted(() => {
-//   ctx.revert(); // <- Easy Cleanup!
 const aboutContent = ref<AboutPageContent>({
   heroSection: {
     title: "About Us",
@@ -160,19 +140,6 @@ const aboutContent = ref<AboutPageContent>({
           },
         ],
       },
-
-      // {
-      //   name: "Ibigbari",
-      //   role: "PROGRAM COORDINATOR, OpenKids Africa ",
-      //   image: "/assets/images/team/Ibigbari.png",
-      //   socials: [],
-      // },
-      // {
-      //   name: "Uboho Essien",
-      //   role: "WEB DESIGNER, OpenKids Africa ",
-      //   image: "/assets/images/team/Uboho Essien.png",
-      //   socials: [],
-      // },
     ],
   },
   partnersSection: {
@@ -202,193 +169,208 @@ useHead({
 });
 </script>
 <template>
-  <header class="page-header site-section">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ aboutContent.heroSection.title }}
-        </h1>
-        <p
-          v-for="(text, i) in aboutContent.heroSection.text"
-          :key="i"
-          class="page-header__subtext"
-        >
-          {{ text }}
+  <PageIntro
+    :caption="aboutContent.heroSection.title"
+    :text="aboutContent.heroSection.text"
+    :images="aboutContent.heroSection.images"
+  />
+
+  <!-- BELIEF -->
+  <section class="site-section site-section--tight">
+    <div class="wrapper">
+      <div class="tile tile--tint belief">
+        <p class="belief__quote">
+          {{ aboutContent.believeSection.text[0] }}
         </p>
       </div>
-      <div class="page-header__media-cont img-cont">
-        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont"
-          :images="aboutContent.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
-  <!-- <section class="site-section bg-orange-100 text-orange-950">
-    <div class="wrapper">
-      <header class="site-section__header site-section__header--left">
-        <h2 class="site-section__caption">
-          {{ aboutContent.journeySection.title }}
-        </h2>
-      </header>
-      <div class="site-section__text-cont">
-        <p
-          v-for="(text, i) in aboutContent.journeySection.text"
-          :key="i"
-          class="site-section__subtext"
-        >
-          {{ text }}
-        </p>
-      </div>
-    </div>
-  </section> -->
-  <section class="site-section bg-slate-800 text-slate-100">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <q
-          v-for="(text, i) in aboutContent.believeSection.text"
-          :key="i"
-          class="font-heading text-lg font-medium leading-tight lg:text-2xl"
-        >
-          {{ text }}
-        </q>
-      </header>
     </div>
   </section>
 
-  <section class="site-section bg-slate-950 text-slate-100">
+  <!-- JOURNEY -->
+  <section class="site-section">
+    <div class="wrapper">
+      <div class="split">
+        <header class="site-section__header site-section__header--left !mb-0">
+          <p class="site-section__eyebrow">Our story</p>
+          <h2 class="site-section__caption">
+            {{ aboutContent.journeySection.title }}
+          </h2>
+        </header>
+        <div class="site-section__text-cont">
+          <p v-for="(text, i) in aboutContent.journeySection.text" :key="i">
+            {{ text }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
           {{ aboutContent.valuesSection.title }}
         </h2>
       </header>
-      <ul class="value-list">
+      <ul class="values">
         <li
           v-for="(item, index) in aboutContent.valuesSection.items"
           :key="index"
-          class="card-list__item"
         >
-          <article class="value-card">
-            <h3 class="value-card__title">{{ item }}</h3>
-            <div class="value-card__img-cont img-cont">
-              <img
-                :src="`/assets/images/svg/frame (${index + 1}).svg`"
-                alt=""
-              />
-            </div>
+          <article class="tile tile--outline value-card">
+            <span class="value-card__num">0{{ index + 1 }}</span>
+            <p class="value-card__text">{{ item }}</p>
           </article>
         </li>
       </ul>
     </div>
   </section>
+
+  <!-- THE GAP -->
   <section class="site-section">
     <div class="wrapper">
-      <ul class="infographic-list">
-        <li
-          v-for="(item, i) in aboutContent.infographicSection.items"
-          :key="i"
-          class="infographic-list__item"
-        >
-          <article
-            :class="`infographic !gap-24 ${i % 2 ? 'lg:!flex-row-reverse' : ''}`"
-          >
-            <header class="infographic__header">
-              <h2 class="infographic__title">
-                {{ item.title }}
-              </h2>
-              <div class="img-cont">
-                <img :src="item.image" :alt="item.title" />
-              </div>
-            </header>
-            <div class="infographic__text-cont">
-              <p v-for="text in item.text">
-                {{ text }}
-              </p>
+      <header class="site-section__header">
+        <p class="site-section__eyebrow">The gap we work to close</p>
+        <h2 class="site-section__caption">Why access matters</h2>
+      </header>
+      <ul class="infographics">
+        <li v-for="(item, i) in aboutContent.infographicSection.items" :key="i">
+          <article class="infographic" :class="{ 'infographic--flip': i % 2 }">
+            <figure class="tile tile--tint infographic__figure">
+              <img :src="item.image" :alt="item.title" />
+            </figure>
+            <div class="infographic__body">
+              <h3 class="infographic__title">{{ item.title }}</h3>
+              <p v-for="(text, n) in item.text" :key="n">{{ text }}</p>
+              <a
+                :href="item.link.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn--outline btn--sm w-fit"
+              >
+                {{ item.link.text }}
+                <ArrowUpRightIcon class="icon" />
+              </a>
             </div>
           </article>
         </li>
       </ul>
     </div>
   </section>
-  <section class="site-section contact-section">
+
+  <!-- TEAM -->
+  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ aboutContent.teamSection.title }}
+        </h2>
+      </header>
+      <ul class="team">
+        <li
+          v-for="(member, i) in aboutContent.teamSection.team"
+          :key="member.name"
+        >
+          <TeamCard :member="member" :i="i" />
+        </li>
+      </ul>
+      <div class="action-cont mt-10">
+        <NuxtLink to="/about/team" class="btn btn--outline">
+          Meet the whole team
+          <ArrowUpRightIcon class="icon" />
+        </NuxtLink>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">Get in touch with us</h2>
-        <p class="site-section__subtext">
+        <p>
           We are constantly seeking volunteers, including teachers and
           technology enthusiasts. Please contact us below, and we will get back
           to you
         </p>
       </header>
-
-      <ContactForm />
+      <div class="mx-auto max-w-3xl">
+        <ContactForm />
+      </div>
     </div>
   </section>
+
   <PartnersSection :section-data="aboutContent.partnersSection">
     <template #illustration>
-      <SiteSlideshow class="m-auto max-w-7xl" />
+      <div class="mt-16"><SiteSlideshow /></div>
     </template>
   </PartnersSection>
-
-  <!-- <section class="boxes-container" ref="main">
-    <h1>Use the button to toggle a Timeline</h1>
-    <div>
-      <button @click="toggleTimeline">Toggle Timeline</button>
-    </div>
-    <div class="box">Box 1</div>
-    <div class="box">Box 2</div>
-    <div class="box">Box 3</div>
-  </section> -->
 </template>
 <style scoped>
-.value-list {
-  @apply grid gap-6 md:grid-cols-2;
+.belief {
+  @apply px-8 py-12 text-center lg:px-20 lg:py-16;
+}
+
+.belief__quote {
+  @apply mx-auto max-w-3xl font-heading text-2xl font-medium leading-snug text-slate-900 lg:text-3xl;
+  text-wrap: balance;
+}
+
+.split {
+  @apply flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16;
+}
+
+.split .site-section__caption {
+  @apply lg:text-4xl;
+}
+
+.values {
+  @apply grid gap-4 md:grid-cols-2;
 }
 
 .value-card {
-  @apply flex h-full flex-col justify-between gap-4 overflow-clip rounded-3xl border border-slate-600;
+  @apply flex gap-5;
 }
 
-.value-card__title {
-  @apply p-6 font-heading text-lg font-medium leading-tight lg:text-2xl;
+.value-card__num {
+  @apply font-heading text-sm font-semibold text-brand-600;
 }
 
-.value-card__img-cont {
-  @apply h-24 w-full bg-slate-900;
+.value-card__text {
+  @apply font-heading text-lg font-medium leading-snug text-slate-900;
 }
 
-.value-card__img-cont > img {
-  @apply h-full w-full object-cover object-top;
-}
-
-.infographic-list {
-  @apply flex flex-col gap-12;
+.infographics {
+  @apply flex flex-col gap-6;
 }
 
 .infographic {
-  @apply flex flex-col items-center gap-6 lg:flex-row;
+  @apply grid items-center gap-6 lg:grid-cols-2 lg:gap-12;
 }
 
-.infographic__header {
-  @apply flex flex-1 flex-col-reverse gap-2 text-center;
+.infographic--flip > .infographic__figure {
+  @apply lg:order-2;
+}
+
+.infographic__figure {
+  @apply flex items-center justify-center p-8;
+}
+
+.infographic__figure > img {
+  @apply max-h-64 w-auto;
+}
+
+.infographic__body {
+  @apply flex flex-col gap-4 text-base text-slate-600 lg:text-lg;
 }
 
 .infographic__title {
-  @apply font-heading text-2xl font-bold;
+  @apply font-heading text-2xl font-semibold leading-snug text-slate-900;
+  text-wrap: balance;
 }
 
-.infographic__text-cont {
-  @apply flex flex-1 flex-col gap-2;
-}
-
-.team-list {
-  @apply grid gap-12 sm:grid-cols-2 lg:grid-cols-3;
-  /* @apply flex flex-wrap justify-center gap-6; */
-}
-
-.team-list__item {
-  @apply min-w-[12rem] max-w-lg;
+.team {
+  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
 }
 </style>

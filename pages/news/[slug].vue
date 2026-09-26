@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ClockIcon, UserIcon } from "@heroicons/vue/24/solid";
+import { ClockIcon } from "lucide-vue-next";
 const route = useRoute();
 const slug = route.params.slug;
 const query = groq`
@@ -16,82 +16,67 @@ const query = groq`
 const { data, refresh } = useSanityQuery(query, {
   slug,
 });
+
+useHead({
+  title: data.value?.title || "News",
+});
 </script>
 <template>
   <article class="article">
-    <header class="article__header site-section">
+    <header class="page-intro">
       <div class="wrapper">
-        <h1 class="site-section__caption">{{ data.title }}</h1>
-        <p class="site-section__subtext">
-          {{ data.description }}
-        </p>
-
-        <div class="article__meta">
-          <figure class="meta__item">
-            <NuxtImg
-              class="meta__item-img"
-              :src="data.author.imageUrl"
-              width="32"
-              height="32"
-              :alt="data.author.name"
-            />
-            <figcaption>By {{ data.author.name }}</figcaption>
-          </figure>
-          <div class="meta__item">
-            <ClockIcon class="icon !h-8 !w-8" />
-            <time class="meta__item-value" :datetime="data.publishedAt">
-              {{ new Date(data.publishedAt).toDateString() }}
-            </time>
+        <div class="page-intro__text">
+          <p class="site-section__eyebrow">News</p>
+          <h1 class="page-intro__caption">{{ data.title }}</h1>
+          <p class="page-intro__subtext">{{ data.description }}</p>
+          <div class="action-cont pt-2">
+            <span class="chip">
+              <span class="chip__icon">
+                <NuxtImg
+                  class="h-7 w-7 rounded-full object-cover"
+                  :src="data.author.imageUrl"
+                  width="28"
+                  height="28"
+                  :alt="data.author.name"
+                />
+              </span>
+              By {{ data.author.name }}
+            </span>
+            <span class="chip">
+              <span class="chip__icon"><ClockIcon class="icon" /></span>
+              <time :datetime="data.publishedAt">
+                {{ new Date(data.publishedAt).toDateString() }}
+              </time>
+            </span>
           </div>
         </div>
+        <figure class="article__cover">
+          <NuxtPicture
+            :src="data.imageUrl"
+            width="1280"
+            height="720"
+            sizes="xs:400px md:800px lg:1152px"
+          />
+        </figure>
       </div>
-      <figure class="article__cover w-full">
-        <NuxtPicture
-          class="article__picture img-cont"
-          :src="data.imageUrl"
-          width="1280"
-          height="824"
-          sizes="xs:200px md:500px lg:1024"
-        />
-      </figure>
     </header>
-    <section class="article__body site-section">
-      <div class="wrapper prose">
+    <section class="site-section pt-4">
+      <div class="wrapper prose prose-lg">
         <SanityContent :blocks="data.body" />
       </div>
     </section>
   </article>
 </template>
 <style scoped>
-.article__header {
-  @apply relative mx-auto flex max-w-7xl flex-col-reverse items-center py-0;
-}
-
-.article__header > .wrapper {
-  @apply flex max-w-4xl flex-col gap-2 text-left;
-}
-
-.article__meta {
-  @apply flex gap-2;
-}
-
-.meta__item {
-  @apply inline-flex items-center gap-2 rounded-full bg-slate-50 p-2 font-heading font-semibold text-slate-600;
-}
-
 .article__cover {
-  @apply relative w-full py-8;
+  @apply w-full overflow-hidden rounded-tile bg-brand-100;
 }
 
-.article__picture :deep(img) {
-  @apply h-[32rem] w-full rounded-2xl object-cover;
+.article__cover :deep(img) {
+  @apply aspect-[16/9] h-auto w-full object-cover;
 }
 
-.article__body {
-  @apply py-8;
-}
-
-.article__body > .wrapper {
-  @apply max-w-4xl;
+.prose {
+  @apply mx-auto max-w-3xl;
 }
 </style>

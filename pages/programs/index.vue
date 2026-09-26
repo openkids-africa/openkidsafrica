@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  ArrowRightIcon,
+  ArrowUpRightIcon,
   BookOpenIcon,
   BrainCircuitIcon,
   GraduationCapIcon,
@@ -80,31 +80,19 @@ useHead({
 });
 </script>
 <template>
-  <header class="page-header site-section programs-header">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont !min-h-0 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ content.heroSection.caption }}
-        </h1>
-        <p class="page-header__subtext measure">
-          {{ content.heroSection.subtext }}
-        </p>
-      </div>
-      <div class="page-header__media-cont img-cont">
-        <SiteHeroImagesGrid
-          class="images-grid"
-          :images="content.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
+  <PageIntro
+    :caption="content.heroSection.caption"
+    :text="[content.heroSection.subtext]"
+    :images="content.heroSection.images"
+  />
+
   <section class="site-section">
     <div class="wrapper">
       <ul class="program-list">
         <li v-for="program in content.programs" :key="program.id">
-          <NuxtLink :to="program.path" class="program-card card">
+          <NuxtLink :to="program.path" class="tile tile--tint program-card">
             <div class="program-card__top">
-              <span class="icon-badge">
+              <span class="icon-badge !bg-white">
                 <BrainCircuitIcon
                   v-if="program.id === 'ai-for-all'"
                   class="icon"
@@ -119,11 +107,11 @@ useHead({
                 {{ program.badge }}
               </span>
             </div>
-            <h2 class="card__title">{{ program.title }}</h2>
-            <p class="card__text">{{ program.text }}</p>
+            <h2 class="tile__title">{{ program.title }}</h2>
+            <p class="tile__text">{{ program.text }}</p>
             <span class="program-card__more">
               Read more
-              <ArrowRightIcon class="icon h-4 w-4" />
+              <ArrowUpRightIcon class="icon h-4 w-4" />
             </span>
           </NuxtLink>
         </li>
@@ -132,17 +120,8 @@ useHead({
   </section>
 </template>
 <style scoped>
-.programs-header .page-header__text-cont {
-  @apply lg:max-w-xl xl:ml-16;
-}
-
-.programs-header .page-header__text-cont,
-.programs-header .images-grid {
-  @apply lg:flex-1;
-}
-
 .program-list {
-  @apply grid gap-6 lg:grid-cols-3;
+  @apply grid gap-4 lg:grid-cols-3;
 }
 
 .program-list > li {
@@ -150,7 +129,7 @@ useHead({
 }
 
 .program-card {
-  @apply transition-shadow;
+  @apply flex h-full flex-col gap-3 transition-colors hover:bg-brand-200/70;
 }
 
 .program-card__top {
@@ -158,14 +137,10 @@ useHead({
 }
 
 .program-card__badge {
-  @apply rounded-md bg-brand-600 px-2 py-0.5 font-heading text-xs font-bold uppercase tracking-wider text-white;
+  @apply rounded-full bg-brand-600 px-3 py-1 font-heading text-xs font-semibold uppercase tracking-wider text-white;
 }
 
 .program-card__more {
-  @apply mt-auto flex items-center gap-1 pt-2 font-semibold text-brand-700;
-}
-
-.program-card:hover .program-card__more {
-  @apply underline underline-offset-4;
+  @apply mt-auto flex items-center gap-1 pt-3 text-sm font-semibold text-slate-900;
 }
 </style>

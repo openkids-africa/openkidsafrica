@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { AcademicCapIcon, BanknotesIcon } from "@heroicons/vue/24/solid";
 import {
+  ArrowUpRightIcon,
   BanknoteIcon,
   GraduationCapIcon,
   HelpingHandIcon,
@@ -389,424 +389,308 @@ useHead({
 });
 </script>
 <template>
-  <header class="page-header site-section programs-header">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ programsContent.heroSection.caption }}
-        </h1>
-        <p class="page-header__subtext">
-          {{ programsContent.heroSection.subtext }}
-        </p>
-      </div>
-      <div class="page-header__media-cont img-cont">
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont"
-          :images="programsContent.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
-  <aside class="cohort-closed">
+  <PageIntro
+    :caption="programsContent.heroSection.caption"
+    :text="[programsContent.heroSection.subtext]"
+    :images="programsContent.heroSection.images"
+  >
+    <template #eyebrow>Educators Program</template>
+  </PageIntro>
+
+  <!-- COHORT CLOSED -->
+  <section class="site-section site-section--tight">
     <div class="wrapper">
-      <div class="cohort-closed__text">
-        <p class="cohort-closed__title">
-          {{ programsContent.cohortClosed.title }}
-        </p>
-        <p>{{ programsContent.cohortClosed.text }}</p>
-      </div>
-      <NuxtLink :to="programsContent.cohortClosed.linkUrl" class="btn">
-        {{ programsContent.cohortClosed.linkText }}
-      </NuxtLink>
-    </div>
-  </aside>
-  <section class="site-section actions-section bg-slate-50">
-    <div class="wrapper flex flex-col gap-6">
-      <p
-        v-for="(text, index) in programsContent.actionsSection.text"
-        :key="index"
-        class="site-section__text"
-      >
-        {{ text }}
-      </p>
-      <ul class="actions flex flex-col gap-2 lg:grid lg:grid-cols-3 lg:gap-4">
-        <li
-          v-for="action in programsContent.actionsSection.actions"
-          :key="action.id"
-          class="action card"
+      <aside class="tile tile--tint cohort-closed">
+        <div>
+          <p class="tile__title">{{ programsContent.cohortClosed.title }}</p>
+          <p class="tile__text">{{ programsContent.cohortClosed.text }}</p>
+        </div>
+        <NuxtLink
+          :to="programsContent.cohortClosed.linkUrl"
+          class="btn shrink-0"
         >
-          <div class="doings-card__icon-cont">
-            <GraduationCapIcon
-              class="icon doings-card__icon"
-              v-if="action.id == 'register'"
-            />
-            <HelpingHandIcon
-              class="icon doings-card__icon"
-              v-else-if="action.id == 'volunteer'"
-            />
-            <BanknoteIcon
-              class="icon doings-card__icon"
-              v-else-if="action.id == 'sponsor'"
-            />
-          </div>
-
-          <p class="text-3xl">
-            {{ action.text }}
-          </p>
-
-          <span class="btn" aria-disabled="true" role="note">
-            Applications closed
-          </span>
-        </li>
-      </ul>
+          {{ programsContent.cohortClosed.linkText }}
+          <ArrowUpRightIcon class="icon" />
+        </NuxtLink>
+      </aside>
     </div>
   </section>
-  <section class="site-section how-it-works-section">
-    <div
-      class="wrapper flex !max-w-7xl flex-col items-center gap-6 lg:grid lg:grid-cols-2 lg:gap-12"
-    >
-      <header
-        class="site-section__header site-section__header--left col-start-2"
-      >
-        <h2 class="site-section__caption">
-          {{ programsContent.howItWorksSection.caption }}
-        </h2>
+
+  <!-- TRACKS -->
+  <section class="site-section">
+    <div class="wrapper">
+      <header class="site-section__header">
         <p
-          v-for="(text, index) in programsContent.howItWorksSection.text"
+          v-for="(text, index) in programsContent.actionsSection.text"
           :key="index"
-          class="max-w-2xl"
         >
           {{ text }}
         </p>
       </header>
-      <div class="col-span-1 col-start-1 row-start-1">
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont how-it-works__media-cont"
-          :images="programsContent.howItWorksSection.images || []"
-        />
-      </div>
-    </div>
-  </section>
-  <section class="site-section why-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption text-center">
-          {{ programsContent.whyParticipateSection.caption }}
-        </h2>
-      </header>
-      <ul
-        class="why-section__details flex flex-col gap-4 lg:grid lg:grid-cols-2"
-      >
+      <ul class="tracks">
         <li
-          v-for="(detail, index) in programsContent.whyParticipateSection
-            .details"
-          :key="index"
-          class="why-participate card"
+          v-for="action in programsContent.actionsSection.actions"
+          :key="action.id"
         >
-          <h3 class="font-heading text-2xl font-bold">{{ detail.title }}</h3>
-          <p>{{ detail.text }}</p>
+          <article class="tile tile--outline track">
+            <span class="icon-badge">
+              <GraduationCapIcon v-if="action.id == 'register'" class="icon" />
+              <HelpingHandIcon
+                v-else-if="action.id == 'volunteer'"
+                class="icon"
+              />
+              <BanknoteIcon v-else-if="action.id == 'sponsor'" class="icon" />
+            </span>
+            <h2 class="tile__title">{{ action.text }}</h2>
+            <span
+              class="btn btn--sm mt-auto w-fit"
+              aria-disabled="true"
+              role="note"
+            >
+              Applications closed
+            </span>
+          </article>
         </li>
       </ul>
     </div>
   </section>
-  <section class="site-section who-can-apply-section bg-slate-50">
+
+  <!-- HOW IT WORKS -->
+  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+    <div class="wrapper">
+      <div class="how">
+        <SiteHeroImagesGrid
+          :images="programsContent.howItWorksSection.images || []"
+        />
+        <header class="site-section__header site-section__header--left !mb-0">
+          <h2 class="site-section__caption">
+            {{ programsContent.howItWorksSection.caption }}
+          </h2>
+          <p
+            v-for="(text, index) in programsContent.howItWorksSection.text"
+            :key="index"
+          >
+            {{ text }}
+          </p>
+        </header>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PARTICIPATE -->
+  <section class="site-section">
+    <div class="wrapper">
+      <header class="site-section__header">
+        <h2 class="site-section__caption">
+          {{ programsContent.whyParticipateSection.caption }}
+        </h2>
+      </header>
+      <ul class="grid-2">
+        <li
+          v-for="(detail, index) in programsContent.whyParticipateSection
+            .details"
+          :key="index"
+        >
+          <DoingsCard
+            :card-content="{
+              id: String(index),
+              title: detail.title,
+              text: detail.text,
+            }"
+          />
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHO CAN APPLY + ELIGIBILITY -->
+  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
           {{ programsContent.whoCanApplySection.title }}
         </h2>
       </header>
-      <ul class="flex flex-col gap-4 lg:grid lg:grid-cols-2">
+      <ul class="grid-2">
         <li
           v-for="(criteria, role) in programsContent.whoCanApplySection
             .criteria"
           :key="role"
-          class="who-can-apply-criteria card"
         >
-          <h3 class="font-heading text-2xl font-bold">{{ criteria.role }}</h3>
-          <ul>
-            <li v-for="requirement in criteria.requirements" :key="requirement">
+          <article class="tile tile--outline h-full">
+            <h3 class="tile__title mb-2">{{ criteria.role }}</h3>
+            <p
+              v-for="requirement in criteria.requirements"
+              :key="requirement"
+              class="tile__text"
+            >
               {{ requirement }}
-            </li>
-          </ul>
+            </p>
+          </article>
         </li>
       </ul>
-    </div>
-  </section>
-  <section class="site-section eligibility-section">
-    <div class="wrapper">
-      <header class="site-section__header">
+
+      <header class="site-section__header mt-16">
         <h2 class="site-section__caption">
           {{ programsContent.eligibility.title }}
         </h2>
       </header>
-      <ul class="flex flex-col gap-4 lg:grid lg:grid-cols-2">
+      <ul class="grid-2">
         <li
           v-for="(criteria, role) in programsContent.eligibility.criteria"
           :key="role"
-          class="eligibility-criteria card"
         >
-          <h3 class="mb-3 font-heading text-2xl font-bold">
-            {{ criteria.role }}
-          </h3>
-          <ul>
-            <li
-              v-for="requirement in criteria.requirements"
-              :key="requirement"
-              class="list-inside list-decimal"
-            >
-              {{ requirement }}
-            </li>
-          </ul>
+          <article class="tile tile--outline h-full">
+            <h3 class="tile__title mb-3">{{ criteria.role }}</h3>
+            <ol class="numbered">
+              <li
+                v-for="requirement in criteria.requirements"
+                :key="requirement"
+              >
+                {{ requirement }}
+              </li>
+            </ol>
+          </article>
         </li>
       </ul>
     </div>
   </section>
-  <section class="site-section benefits-section bg-slate-50">
+
+  <!-- BENEFITS -->
+  <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
           {{ programsContent.benefits.title }}
         </h2>
       </header>
-      <ul class="flex flex-col gap-4 lg:grid lg:grid-cols-2">
+      <ul class="checklist mx-auto max-w-3xl">
         <li
           v-for="benefit in programsContent.benefits.items"
           :key="benefit"
-          class="benefit card"
+          class="checklist__item"
         >
-          <p class="text-xl" v-html="benefit"></p>
+          <span class="checklist__icon-cont"
+            ><ArrowUpRightIcon class="icon"
+          /></span>
+          <p v-html="benefit"></p>
         </li>
       </ul>
     </div>
   </section>
-  <section class="site-section timeline-section">
+
+  <!-- TIMELINE + SELECTION -->
+  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">
           {{ programsContent.programTimeline.title }}
         </h2>
       </header>
-      <ul class="timeline-events flex flex-col gap-4">
+      <ol class="timeline">
         <li
           v-for="event in programsContent.programTimeline.events"
           :key="event.date"
-          class="timeline-event card"
+          class="tile tile--outline timeline__event"
         >
-          <h4>
-            <strong>{{ event.date }}:</strong> {{ event.description }}
-          </h4>
-          <ul>
-            <li
-              v-for="activity in event.activities"
-              :key="activity"
-              class="list-inside list-disc"
-            >
+          <p class="timeline__date">{{ event.date }}</p>
+          <h3 class="tile__title">{{ event.description }}</h3>
+          <ul class="timeline__activities">
+            <li v-for="activity in event.activities" :key="activity">
               <span v-html="activity"></span>
             </li>
           </ul>
         </li>
-      </ul>
-    </div>
-  </section>
-  <section class="site-section selection-section bg-slate-50">
-    <div class="wrapper">
-      <header class="site-section__header">
+      </ol>
+
+      <header class="site-section__header mt-16">
         <h2 class="site-section__caption">
           {{ programsContent.selection.title }}
         </h2>
+        <p v-for="(text, index) in programsContent.selection.text" :key="index">
+          {{ text }}
+        </p>
       </header>
       <p
-        v-for="(text, index) in programsContent.selection.text"
-        :key="index"
-        class="site-section__text mx-auto max-w-3xl text-center"
-      >
-        {{ text }}
-      </p>
-      <p
-        class="site-section__text mx-auto mt-12 max-w-3xl rounded-card border border-slate-200 bg-white p-10 text-center text-xl"
+        class="tile tile--tint mx-auto max-w-3xl text-center font-heading text-lg font-medium text-slate-900"
       >
         {{ programsContent.selection.deadline }}
       </p>
     </div>
   </section>
-  <section class="site-section join-section bg-brand-50">
-    <div class="wrapper text-center">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ programsContent.joinSection.title }}
-        </h2>
-      </header>
-      <p
-        v-for="(text, index) in programsContent.joinSection.text"
-        :key="index"
-        class="site-section__text"
-      >
-        {{ text }}
-      </p>
-      <div class="action-cont py-8">
-        <a
-          :href="programsContent.joinSection.actionLink.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn"
-        >
-          <HelpingHandIcon class="icon" />
-          <span class="text">
-            {{ programsContent.joinSection.actionLink.text }}
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
-  <section class="site-section faq-section">
+
+  <!-- FAQ -->
+  <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ programsContent.FAQ.title }}
-        </h2>
+        <h2 class="site-section__caption">{{ programsContent.FAQ.title }}</h2>
       </header>
-      <ul class="faq-list flex flex-col gap-4">
-        <li
-          v-for="(faq, index) in programsContent.FAQ.questions"
-          class="faq-list__item"
-        >
+      <ul class="mx-auto flex max-w-3xl flex-col gap-3">
+        <li v-for="(faq, index) in programsContent.FAQ.questions" :key="index">
           <FAQItem :faq="faq" :index="index" />
         </li>
       </ul>
     </div>
   </section>
-  <!-- <section class="site-section sponsorship-section bg-slate-100">
-    <div class="wrapper">
-      <header class="site-section__header !mb-20">
-        <h2 class="site-section__caption">
-          {{ programsContent.sponsorship.title }}
-        </h2>
-        <p class="site-section__subtext mx-auto max-w-3xl">
-          {{ programsContent.sponsorship.text }}
-        </p>
-      </header>
 
-      <ul class="sponsorship-section__details flex flex-col gap-24">
-        <li
-          v-for="(section, index) in programsContent.sponsorship.sections"
-          :key="index"
-          class="sponsorship-section__section"
-        >
-          <header class="site-section__header !mb-8">
-            <h3 class="font-heading text-3xl font-bold">{{ section.title }}</h3>
-            <p
-              v-for="(text, index) in section.text"
-              :key="index"
-              class="mx-auto max-w-2xl"
-              v-html="text"
-            ></p>
-          </header>
-          <ul
-            class="sponsorship-section__items flex flex-col gap-4 lg:grid lg:grid-cols-3"
-          >
-            <li
-              v-for="(item, index) in section.items"
-              :key="index"
-              class="sponsorship-section__item card"
-            >
-              <h4 class="font-heading text-xl font-bold">{{ item.title }}</h4>
-              <p v-for="(text, index) in item.text" :key="index">
-                {{ text }}
-              </p>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </section> -->
+  <CtaBand
+    :title="programsContent.joinSection.title"
+    :text="programsContent.joinSection.text[0]"
+    :action-text="programsContent.joinSection.actionLink.text"
+    :action-to="programsContent.joinSection.actionLink.url"
+  />
 </template>
 
 <style scoped>
-/* COHORT CLOSED NOTICE */
 .cohort-closed {
-  @apply border-y border-brand-200 bg-brand-50 px-4 py-6;
+  @apply flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between;
 }
 
-.cohort-closed > .wrapper {
-  @apply m-auto flex w-full max-w-6xl flex-col items-start gap-4 md:flex-row md:items-center md:justify-between;
+.tracks {
+  @apply grid gap-4 lg:grid-cols-3;
 }
 
-.cohort-closed__text {
-  @apply flex max-w-measure flex-col gap-1;
+.track {
+  @apply flex h-full flex-col gap-4;
 }
 
-.cohort-closed__title {
-  @apply font-heading text-lg font-bold text-slate-900;
-}
-/* END COHORT CLOSED NOTICE */
-
-.programs-header {
-}
-/* .programs-header > .wrapper {
-  @apply max-w-7xl flex-col-reverse gap-8 lg:flex-row;
-} */
-.page-header__text-cont {
-  @apply lg:max-w-xl xl:ml-16;
-}
-.page-header__text-cont,
-.programs-header__media-cont {
-  @apply lg:flex-1;
+.how {
+  @apply grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16;
 }
 
-.programs-header__media-cont {
-  /* @apply relative lg:w-[150%]; */
+.how .site-section__caption {
+  @apply lg:text-4xl;
 }
 
-.how-it-works__media-cont:deep(.img-cont) {
-  @apply lg:h-[20rem];
-}
-
-.why-section {
-  @apply relative px-[calc(100%/7)];
-}
-
-.why-section::before,
-.why-section::after {
-  content: "";
-  @apply absolute left-0 top-0 h-full max-h-96 w-[calc(100%/7)] bg-cover bg-center bg-no-repeat lg:max-h-full xl:bg-contain;
-}
-
-.why-section::before {
-  @apply bg-right xl:bg-left;
-  background-image: url("/assets/images/svg/LeftIllustrationabstract.svg");
-}
-.why-section::after {
-  @apply left-auto right-0 bg-left xl:bg-right;
-  background-image: url("/assets/images/svg/RightIllustrationabstract.svg");
-}
-.why-section > .wrapper {
-  @apply flex flex-col gap-4;
-}
-
-.why-section .site-section__header,
-.objectives-section .site-section__header {
-  @apply text-left;
-}
-
-.objectives-section > .wrapper {
-  @apply flex flex-col gap-4 lg:flex-row;
-}
-
-.objectives-section__text-cont,
-.objectives-section__media-cont {
-  @apply flex-1;
-}
-
-.objectives {
+.grid-2 {
   @apply grid gap-4 md:grid-cols-2;
 }
 
-.objectives-section__media-cont {
-  @apply flex flex-col items-center justify-center gap-4;
+.numbered {
+  @apply flex list-inside list-decimal flex-col gap-2 text-base text-slate-600;
 }
 
-.objectives-section__illustration {
-  @apply lg:h-[30rem];
+.numbered > li {
+  @apply list-item;
+}
+
+.timeline {
+  @apply grid gap-4 md:grid-cols-2;
+}
+
+.timeline__event {
+  @apply flex flex-col gap-2;
+}
+
+.timeline__date {
+  @apply font-heading text-sm font-semibold text-brand-600;
+}
+
+.timeline__activities {
+  @apply flex list-inside list-disc flex-col gap-1 text-base text-slate-600;
+}
+
+.timeline__activities > li {
+  @apply list-item;
 }
 </style>

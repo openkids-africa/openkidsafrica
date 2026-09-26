@@ -15,12 +15,6 @@ const newsContent = ref<{
     text: [
       "Grab all the latest news for campaigns, donations, fund-raising or new projects from OpenKids Africa.",
     ],
-    // images: [
-    //   {
-    //     src: "/assets/images/svg/updates.svg",
-    //     alt: "Blog Hero",
-    //   },
-    // ],
     images: [
       {
         src: "/assets/images/photos/photo-17.jpg",
@@ -96,6 +90,7 @@ if (data.value) {
 }
 
 useHead({
+  title: "News",
   script: [
     {
       src: "https://platform.twitter.com/widgets.js",
@@ -106,85 +101,56 @@ useHead({
 });
 </script>
 <template>
-  <header class="page-header site-section">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ newsContent.heroSection.title }}
-        </h1>
-        <p
-          v-for="text in newsContent.heroSection.text"
-          class="page-header__subtext"
-        >
-          {{ text }}
-        </p>
-      </div>
-      <!-- <div class="page-header__media-cont">
-        <NuxtImg
-          v-if="newsContent.heroSection?.images"
-          :src="newsContent.heroSection?.images[0].src"
-          :alt="newsContent.heroSection?.images[0].alt"
-          class="abstract-illustration"
-        />
-      </div> -->
-      <div class="page-header__media-cont img-cont">
-        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont"
-          :images="newsContent.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
+  <PageIntro
+    :caption="newsContent.heroSection.title"
+    :text="newsContent.heroSection.text"
+    :images="newsContent.heroSection.images"
+  />
+
   <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">Latest News</h2>
       </header>
-      <ul class="flex flex-col gap-8 lg:gap-12">
+      <ul class="news-grid">
         <li v-for="article in articles || data" :key="article._id">
-          <NuxtLink
-            :to="`/news/${article.slug.current}`"
-            :aria-current-value="article.title"
-          >
+          <NuxtLink :to="`/news/${article.slug.current}`" class="block h-full">
             <ArticleCard :article="article" />
           </NuxtLink>
         </li>
       </ul>
-      <div class="flex justify-center py-12">
+      <div class="action-cont pt-10">
         <button
           :aria-label="isLoading ? 'Loading...' : 'Load More'"
           v-if="lastId !== null"
-          class="btn"
+          class="btn btn--outline"
           @click="handleFetchNextPage"
         >
           <Loader class="icon animate-spin" v-if="isLoading" />
-          <span v-else class="text"> Load More </span>
+          <span v-else>Load More</span>
         </button>
       </div>
     </div>
   </section>
-  <section class="site-section tweets-section">
+
+  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">Tweets</h2>
-        <p class="site-section__subtext">
-          Follow us on Twitter to get the latest updates and news.
-        </p>
+        <p>Follow us on Twitter to get the latest updates and news.</p>
       </header>
-      <a
-        class="twitter-timeline flex justify-center text-center"
-        href="https://twitter.com/openkidsafrica?ref_src=twsrc%5Etfw"
-        >Tweets by openkidsafrica</a
-      >
+      <div class="mx-auto max-w-2xl overflow-hidden rounded-tile">
+        <a
+          class="twitter-timeline flex justify-center text-center"
+          href="https://twitter.com/openkidsafrica?ref_src=twsrc%5Etfw"
+          >Tweets by openkidsafrica</a
+        >
+      </div>
     </div>
   </section>
 </template>
 <style scoped>
-.page-header {
-  /* @apply py-0; */
-}
-.page-header__text-cont {
-  /* @apply min-h-[20rem]; */
+.news-grid {
+  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
 }
 </style>

@@ -1,26 +1,6 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { HelpingHandIcon, MailIcon } from "lucide-vue-next";
+import { CheckIcon, ArrowUpRightIcon } from "lucide-vue-next";
 
-// const main = ref();
-// let tl: gsap.core.Timeline;
-// let ctx: gsap.Context;
-
-// const toggleTimeline = () => {
-//   tl.reversed(!tl.reversed());
-// };
-//   ctx = gsap.context((self) => {
-//     if (!self.selector) return;
-//     const boxes = self.selector(".box");
-//     tl = gsap
-//       .timeline()
-//       .to(boxes[0], { x: 120, rotation: 360 })
-//       .to(boxes[1], { x: -120, rotation: -360 }, "<")
-//       .to(boxes[2], { y: -166 })
-//       .reverse();
-//   }, main.value); // <- Scope!
-// onUnmounted(() => {
-//   ctx.revert(); // <- Easy Cleanup!
 const teamContent = ref<TeamPageContent>({
   teamSection: {
     title: "Our Team",
@@ -75,18 +55,6 @@ const teamContent = ref<TeamPageContent>({
           },
         ],
       },
-      // {
-      //   name: "Ibigbari",
-      //   role: "PROGRAM COORDINATOR, OpenKids Africa ",
-      //   image: "/assets/images/team/Ibigbari.png",
-      //   socials: [],
-      // },
-      // {
-      //   name: "Uboho Essien",
-      //   role: "WEB DESIGNER, OpenKids Africa ",
-      //   image: "/assets/images/team/Uboho Essien.png",
-      //   socials: [],
-      // },
     ],
   },
   educationChampionsSection: {
@@ -132,47 +100,21 @@ const teamContent = ref<TeamPageContent>({
 });
 
 useHead({
-  title: "About Us",
+  title: "Our Team",
 });
 </script>
 <template>
-  <!-- <header class="page-header site-section">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ teamContent.heroSection.title }}
-        </h1>
-        <p
-          v-for="(text, i) in teamContent.heroSection.text"
-          :key="i"
-          class="page-header__subtext"
-        >
-          {{ text }}
-        </p>
-      </div>
-      <div class="page-header__media-cont img-cont">
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont"
-          :images="teamContent.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header> -->
+  <PageIntro
+    :caption="teamContent.teamSection.title"
+    :text="[
+      'The people behind OpenKids Africa, and the volunteers who deliver our tech lessons in rural schools.',
+    ]"
+  />
 
-  <section class="site-section">
+  <section class="site-section pt-0">
     <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ teamContent.teamSection.title }}
-        </h2>
-      </header>
-
-      <ul class="team-list">
-        <li
-          v-for="(item, i) in teamContent.teamSection.team"
-          :key="i"
-          class="team-list__item"
-        >
+      <ul class="team">
+        <li v-for="(item, i) in teamContent.teamSection.team" :key="i">
           <TeamCard :member="item" :i="i">
             <template v-if="item.name == 'Regina Nkenchor'">
               <p>
@@ -193,15 +135,6 @@ useHead({
                 future leaders in technology, business, or even in the field of
                 medicine.
               </p>
-              <!-- <p>
-                Our work at OpenKids Africa have been recognized and supported
-                by our partners at
-                <a
-                  class="text-orange-600 underline"
-                  href="https://techshecan.org/"
-                  >Tech She Can</a
-                >.
-              </p> -->
             </template>
             <template v-else-if="item.name == 'Adebola Temitayo Ogunyemi'">
               <p>
@@ -250,123 +183,95 @@ useHead({
     </div>
   </section>
 
-  <!-- New Section for Educational Champions -->
-  <section class="site-section bg-brand-50 p-12">
+  <!-- CHAMPIONS -->
+  <section
+    id="champions"
+    class="site-section scroll-mt-24 bg-slate-50 lg:rounded-[3rem]"
+  >
     <div class="wrapper">
-      <header class="site-section__header site-section__header--left">
-        <h2 class="site-section__caption">
-          {{ teamContent.educationChampionsSection.title }}
-        </h2>
-        <p
-          v-for="(text, i) in teamContent.educationChampionsSection.description"
-          class="site-section__subtext"
-        >
-          {{ text }}
-        </p>
-      </header>
-      <div class="py-8">
-        <!-- <h3
-          class="mb-4 font-heading text-xl font-bold leading-tight lg:text-3xl"
-        >
-          {{ teamContent.educationChampionsSection.additionalInfo[0].title }}
-        </h3> -->
-        <ul
-          v-if="teamContent.educationChampionsSection.additionalInfo[0].list"
-          class="flex flex-wrap gap-4 lg:grid lg:grid-cols-2"
-        >
-          <li
-            v-for="(item, index) in teamContent.educationChampionsSection
-              .additionalInfo[0].list"
-            :key="index"
-            class="grow rounded-3xl bg-orange-100 p-6 text-2xl font-medium text-orange-800"
+      <div class="champions">
+        <header class="site-section__header site-section__header--left !mb-0">
+          <p class="site-section__eyebrow">Volunteer</p>
+          <h2 class="site-section__caption">
+            {{ teamContent.educationChampionsSection.title }}
+          </h2>
+          <p
+            v-for="(text, i) in teamContent.educationChampionsSection
+              .description"
+            :key="i"
           >
-            {{ item }}
-          </li>
-        </ul>
+            {{ text }}
+          </p>
+        </header>
+        <div class="champions__side">
+          <div class="tile tile--tint">
+            <h3 class="tile__title mb-4">
+              {{
+                teamContent.educationChampionsSection.additionalInfo[0].title
+              }}
+            </h3>
+            <ul class="checklist">
+              <li
+                v-for="(item, index) in teamContent.educationChampionsSection
+                  .additionalInfo[0].list"
+                :key="index"
+                class="checklist__item !bg-white"
+              >
+                <span class="checklist__icon-cont"
+                  ><CheckIcon class="icon"
+                /></span>
+                <p>{{ item }}</p>
+              </li>
+            </ul>
+          </div>
+          <p class="text-base text-slate-600">
+            {{ teamContent.educationChampionsSection.mentoringInfo }}
+          </p>
+          <NuxtLink to="/contact" class="btn w-fit">
+            Become a champion
+            <ArrowUpRightIcon class="icon" />
+          </NuxtLink>
+        </div>
       </div>
-      <p class="py-8">
-        {{ teamContent.educationChampionsSection.mentoringInfo }}
-      </p>
     </div>
   </section>
 
-  <section class="site-section contact-section">
+  <section class="site-section">
     <div class="wrapper">
       <header class="site-section__header">
         <h2 class="site-section__caption">Get in touch with us</h2>
-        <p class="site-section__subtext">
+        <p>
           We are constantly seeking volunteers, including teachers and
           technology enthusiasts. Please contact us below, and we will get back
           to you
         </p>
       </header>
-
-      <ContactForm />
+      <div class="mx-auto max-w-3xl">
+        <ContactForm />
+      </div>
     </div>
   </section>
+
   <PartnersSection :section-data="teamContent.partnersSection">
     <template #illustration>
-      <SiteSlideshow class="m-auto max-w-7xl" />
+      <div class="mt-16"><SiteSlideshow /></div>
     </template>
   </PartnersSection>
-
-  <!-- <section class="boxes-container" ref="main">
-    <h1>Use the button to toggle a Timeline</h1>
-    <div>
-      <button @click="toggleTimeline">Toggle Timeline</button>
-    </div>
-    <div class="box">Box 1</div>
-    <div class="box">Box 2</div>
-    <div class="box">Box 3</div>
-  </section> -->
 </template>
 <style scoped>
-.value-list {
-  @apply grid gap-6 md:grid-cols-2;
+.team {
+  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
 }
 
-.value-card {
-  @apply flex h-full flex-col justify-between gap-4 overflow-clip rounded-3xl border border-slate-600;
+.champions {
+  @apply grid gap-8 lg:grid-cols-2 lg:gap-16;
 }
 
-.value-card__title {
-  @apply p-6 font-heading text-lg font-medium leading-tight lg:text-2xl;
+.champions .site-section__caption {
+  @apply lg:text-4xl;
 }
 
-.value-card__img-cont {
-  @apply h-24 w-full bg-slate-900;
-}
-
-.value-card__img-cont > img {
-  @apply h-full w-full object-cover object-top;
-}
-
-.infographic-list {
-  @apply flex flex-col gap-12;
-}
-
-.infographic {
-  @apply flex flex-col items-center gap-6 lg:flex-row;
-}
-
-.infographic__header {
-  @apply flex flex-1 flex-col-reverse gap-2 text-center;
-}
-
-.infographic__title {
-  @apply font-heading text-2xl font-bold;
-}
-
-.infographic__text-cont {
-  @apply flex flex-1 flex-col gap-2;
-}
-
-.team-list {
-  @apply grid gap-12 sm:grid-cols-2 lg:grid-cols-3;
-  /* @apply flex flex-wrap justify-center gap-6; */
-}
-
-.team-list__item {
-  @apply min-w-[12rem] max-w-lg;
+.champions__side {
+  @apply flex flex-col gap-6;
 }
 </style>

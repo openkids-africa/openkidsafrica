@@ -207,45 +207,37 @@ useHead({
 });
 </script>
 <template>
-  <header class="page-header site-section ai-header">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption text-balance">
-          {{ content.heroSection.caption }}
-        </h1>
-        <p class="page-header__subtext measure">
-          {{ content.heroSection.subtext }}
-        </p>
-        <div class="action-cont !justify-start pt-2">
-          <a :href="content.ctaSection.actionUrl" class="btn">
-            <MailIcon class="icon" />
-            <span class="text">Bring AI for All to your school</span>
-          </a>
-        </div>
-      </div>
-      <div class="page-header__media-cont img-cont">
-        <SiteHeroImagesGrid
-          class="images-grid"
-          :images="content.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
+  <PageIntro
+    :caption="content.heroSection.caption"
+    :text="[content.heroSection.subtext]"
+    :images="content.heroSection.images"
+  >
+    <template #eyebrow>Open Kids Africa × Tech She Can × Microsoft</template>
+    <template #actions>
+      <a :href="content.ctaSection.actionUrl" class="btn">
+        Bring AI for All to your school
+        <MailIcon class="icon" />
+      </a>
+    </template>
+  </PageIntro>
 
-  <section class="site-section partner-bar">
+  <section class="site-section site-section--tight">
     <div class="wrapper">
-      <PartnerLockup :partners="content.partners" />
+      <div class="tile tile--outline partner-bar">
+        <PartnerLockup :partners="content.partners" />
+      </div>
     </div>
   </section>
 
-  <section class="site-section about-section">
+  <!-- ABOUT -->
+  <section class="site-section">
     <div class="wrapper">
       <div class="split">
         <header class="site-section__header site-section__header--left !mb-0">
           <p class="site-section__eyebrow">
             {{ content.aboutSection.eyebrow }}
           </p>
-          <h2 class="site-section__caption text-balance">
+          <h2 class="site-section__caption">
             {{ content.aboutSection.caption }}
           </h2>
         </header>
@@ -265,8 +257,8 @@ useHead({
             v-for="outcome in content.aboutSection.outcomes.items"
             :key="outcome.id"
           >
-            <article class="card">
-              <div class="icon-badge">
+            <article class="tile tile--tint outcome">
+              <span class="icon-badge !bg-white">
                 <BrainCircuitIcon
                   v-if="outcome.id === 'understanding'"
                   class="icon"
@@ -277,9 +269,9 @@ useHead({
                   class="icon"
                 />
                 <CompassIcon v-else class="icon" />
-              </div>
-              <h4 class="card__title">{{ outcome.title }}</h4>
-              <p class="card__text">{{ outcome.text }}</p>
+              </span>
+              <h4 class="tile__title">{{ outcome.title }}</h4>
+              <p class="tile__text">{{ outcome.text }}</p>
             </article>
           </li>
         </ul>
@@ -287,21 +279,22 @@ useHead({
     </div>
   </section>
 
-  <section class="site-section gain-section bg-slate-50">
+  <!-- GAIN -->
+  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
       <div class="split">
         <header class="site-section__header site-section__header--left !mb-0">
           <p class="site-section__eyebrow">{{ content.gainSection.eyebrow }}</p>
-          <h2 class="site-section__caption text-balance">
+          <h2 class="site-section__caption">
             {{ content.gainSection.caption }}
           </h2>
           <p>{{ content.gainSection.text }}</p>
         </header>
-        <ul class="checklist gain-section__list">
+        <ul class="checklist">
           <li
             v-for="item in content.gainSection.items"
             :key="item.id"
-            class="checklist__item"
+            class="checklist__item !bg-white"
           >
             <span class="checklist__icon-cont">
               <MessageSquareIcon v-if="item.id === 'prompts'" class="icon" />
@@ -316,90 +309,57 @@ useHead({
     </div>
   </section>
 
-  <section class="site-section cta-section">
+  <!-- CTA -->
+  <section class="site-section site-section--tight">
     <div class="wrapper">
-      <header class="site-section__header">
-        <p class="site-section__eyebrow">{{ content.ctaSection.eyebrow }}</p>
-        <h2 class="site-section__caption text-balance">
-          {{ content.ctaSection.caption }}
-        </h2>
-        <p class="measure mx-auto">{{ content.ctaSection.text }}</p>
-      </header>
-      <div class="cta-section__actions">
-        <a :href="content.ctaSection.actionUrl" class="btn">
-          <MailIcon class="icon" />
-          <span class="text">{{ content.ctaSection.actionText }}</span>
-        </a>
-        <p class="cta-section__site">
-          Website: <span>{{ content.ctaSection.website }}</span>
-        </p>
+      <div class="cta-band">
+        <div class="wrapper">
+          <p class="site-section__eyebrow">{{ content.ctaSection.eyebrow }}</p>
+          <h2 class="cta-band__title">{{ content.ctaSection.caption }}</h2>
+          <p class="cta-band__text">{{ content.ctaSection.text }}</p>
+          <div class="action-cont !justify-start">
+            <a :href="content.ctaSection.actionUrl" class="btn">
+              {{ content.ctaSection.actionText }}
+              <MailIcon class="icon" />
+            </a>
+          </div>
+          <p class="text-sm text-slate-600">
+            Website:
+            <strong class="text-slate-900">{{
+              content.ctaSection.website
+            }}</strong>
+          </p>
+        </div>
       </div>
     </div>
   </section>
 </template>
 <style scoped>
-.ai-header .page-header__text-cont {
-  @apply lg:max-w-xl xl:ml-16;
+.partner-bar {
+  @apply py-8;
 }
 
-.ai-header .page-header__text-cont,
-.ai-header .images-grid {
-  @apply lg:flex-1;
-}
-
-/* SPLIT — section header beside its body copy on desktop */
 .split {
-  @apply flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,23rem)_minmax(0,1fr)] lg:gap-14;
+  @apply flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16;
 }
 
-/* A heading in a column this narrow wants a step down from the
-   full-width section size. */
 .split .site-section__caption {
   @apply lg:text-4xl;
 }
-/* END SPLIT */
 
-/* PARTNER BAR */
-.partner-bar {
-  @apply border-y border-slate-200 bg-white !py-8;
-}
-/* END PARTNER BAR */
-
-/* OUTCOMES */
 .outcomes {
   @apply mt-16 flex flex-col gap-6;
 }
 
 .outcomes__title {
-  @apply font-heading text-2xl font-bold text-slate-900;
+  @apply font-heading text-2xl font-semibold text-slate-900;
 }
 
 .outcomes__list {
   @apply grid gap-4 md:grid-cols-2;
 }
-/* END OUTCOMES */
 
-/* GAIN */
-.gain-section__list {
-  @apply w-full;
+.outcome {
+  @apply flex h-full flex-col gap-3;
 }
-/* END GAIN */
-
-/* CTA */
-.cta-section {
-  @apply bg-brand-50;
-}
-
-.cta-section__actions {
-  @apply mt-8 flex flex-col items-center gap-4;
-}
-
-.cta-section__site {
-  @apply text-base text-slate-600;
-}
-
-.cta-section__site > span {
-  @apply font-semibold text-slate-800;
-}
-/* END CTA */
 </style>
