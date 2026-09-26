@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/vue/24/solid";
+import { PlusIcon } from "lucide-vue-next";
 
 interface FAQProps {
   faq: FAQ;
@@ -12,10 +12,9 @@ defineProps<FAQProps>();
     <summary class="faq__summary">
       <div class="wrapper">
         <h3 class="faq__topic">{{ faq.topic }}</h3>
-
-        <div class="faq__icon-cont">
-          <ChevronDownIcon class="icon" />
-        </div>
+        <span class="faq__icon-cont" aria-hidden="true">
+          <PlusIcon class="icon" />
+        </span>
       </div>
     </summary>
     <p class="faq__content" v-html="faq.content"></p>

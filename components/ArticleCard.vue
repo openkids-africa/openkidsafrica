@@ -1,67 +1,67 @@
 <script setup lang="ts">
+import { ArrowUpRightIcon } from "lucide-vue-next";
+
 defineProps<{
   article: ArticleCard;
 }>();
 </script>
 <template>
   <article class="article-card">
-    <div class="wrapper">
-      <header class="article-card__header">
-        <h1 class="article-card__title">
-          {{ article.title }}
-        </h1>
-        <p class="article-card__text">
-          {{ article.description }}
-        </p>
-        <div class="article-card__meta">
-          <span>
-            Published on:
-            <time>
-              {{ new Date(article.publishedAt).toLocaleDateString() }}
-            </time>
-          </span>
-
-          <span>{{ article.author.name }}</span>
-        </div>
-      </header>
-      <figure class="article-card__img-cont img-cont">
-        <NuxtImg
-          :src="article.imageUrl + '?h=200&w=400&fit=crop'"
-          width="400"
-          height="200"
-          loading="lazy"
-          alt=""
-        />
-      </figure>
+    <figure class="article-card__img-cont">
+      <NuxtImg
+        :src="article.imageUrl + '?h=480&w=800&fit=crop'"
+        width="800"
+        height="480"
+        loading="lazy"
+        alt=""
+      />
+    </figure>
+    <div class="article-card__body">
+      <div class="article-card__meta">
+        <time>{{ new Date(article.publishedAt).toLocaleDateString() }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ article.author.name }}</span>
+      </div>
+      <h2 class="article-card__title">{{ article.title }}</h2>
+      <p class="article-card__text">{{ article.description }}</p>
+      <span class="article-card__more">
+        Read more
+        <ArrowUpRightIcon class="icon h-4 w-4" />
+      </span>
     </div>
   </article>
 </template>
 <style scoped>
 .article-card {
-  @apply w-full rounded-2xl border border-slate-100 p-6 hover:bg-slate-50 hover:text-slate-800;
-}
-
-.article-card > .wrapper {
-  @apply flex flex-col gap-8 md:flex-row-reverse;
-}
-
-.article-card__header {
-  @apply flex grow flex-col;
-}
-
-.article-card__title {
-  @apply font-heading text-3xl font-bold lg:text-4xl;
-}
-
-.article-card__text {
-  @apply lg:text-lg;
+  @apply flex h-full flex-col gap-4 rounded-tile border border-slate-200 bg-white p-4 transition-colors hover:bg-brand-50;
 }
 
 .article-card__img-cont {
-  @apply h-[250px] w-full shrink-0 overflow-hidden rounded-xl lg:w-[400px];
+  @apply aspect-[5/3] w-full overflow-hidden rounded-2xl bg-brand-100;
+}
+
+.article-card__img-cont > img {
+  @apply h-full w-full object-cover;
+}
+
+.article-card__body {
+  @apply flex grow flex-col gap-2 px-1 pb-1;
 }
 
 .article-card__meta {
-  @apply mt-auto flex flex-col gap-1;
+  @apply flex flex-wrap items-center gap-2 text-xs text-slate-500;
+}
+
+.article-card__title {
+  @apply font-heading text-xl font-semibold text-slate-900;
+  text-wrap: balance;
+}
+
+.article-card__text {
+  @apply text-base text-slate-600;
+}
+
+.article-card__more {
+  @apply mt-auto flex items-center gap-1 pt-2 text-sm font-semibold text-brand-700;
 }
 </style>

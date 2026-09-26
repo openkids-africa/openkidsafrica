@@ -166,51 +166,56 @@ const slideImages = ref(
 </template>
 <style scoped>
 .embla {
-  @apply w-full py-24;
+  @apply w-full;
 }
 
 .embla__viewport {
-  @apply relative overflow-hidden rounded-2xl;
+  @apply relative overflow-hidden rounded-tile;
 }
 
 .embla__container {
   @apply flex;
 }
+
 .embla__slide {
   flex: 0 0 100%;
-  @apply mx-4 max-h-[42rem] min-w-0 max-w-full;
+  @apply min-w-0 max-w-full;
+}
+
+.embla__slide .img-cont {
+  @apply aspect-[16/9] w-full lg:aspect-[21/9];
+}
+
+.embla__img {
+  @apply h-full w-full object-cover;
 }
 
 .embla__button {
-  @apply absolute top-1/2 z-10 -translate-y-1/2 text-white hover:text-orange-600;
+  @apply absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/60 bg-white/90 p-0 text-slate-900 hover:bg-white;
 }
 
 .embla__prev {
-  @apply left-3;
+  @apply left-4;
 }
 
 .embla__next {
-  @apply right-3;
+  @apply right-4;
 }
 
 .embla__dots {
-  @apply absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2;
+  @apply absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5 rounded-full bg-white/80 px-3 py-2;
 }
 
 .embla__dot {
-  @apply relative h-3 w-3 rounded-full p-0 lg:h-5 lg:w-5;
+  @apply relative h-2.5 w-2.5 rounded-full border-transparent bg-slate-300 p-0 hover:bg-slate-400;
+}
+
+.embla__dot.btn--active {
+  @apply bg-brand-600;
 }
 
 .embla__dot::after {
   content: "";
-  @apply absolute left-1/2 top-1/2 h-11 w-5 -translate-x-1/2 -translate-y-1/2 lg:hidden;
-}
-
-.embla__img {
-  @apply rounded-3xl;
-}
-
-.img-cont {
-  @apply h-full;
+  @apply absolute left-1/2 top-1/2 h-11 w-4 -translate-x-1/2 -translate-y-1/2 lg:hidden;
 }
 </style>

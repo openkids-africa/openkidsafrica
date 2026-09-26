@@ -15,11 +15,16 @@ defineProps({
 </script>
 
 <template>
-  <div class="site-hero__media-cont">
+  <div class="images-grid">
     <div
       v-for="(image, i) in images"
       :key="i"
-      class="site-hero__img-cont img-cont"
+      class="images-grid__cell"
+      :class="
+        image.src
+          ? 'images-grid__cell--photo'
+          : `images-grid__cell--${image.color}`
+      "
     >
       <NuxtImg
         v-if="image.src"
@@ -29,50 +34,41 @@ defineProps({
         :src="image.src"
         :alt="image.alt"
       />
-      <div v-else :class="`${image.color} ${image.type}`"></div>
     </div>
   </div>
 </template>
 <style scoped>
-.site-hero__media-cont {
-  @apply grid grid-cols-6 gap-3 lg:col-span-3;
+/* Six cells on a 6-column bento, tinted blocks standing in for the
+   reference's colour panels. */
+.images-grid {
+  @apply grid w-full grid-cols-6 gap-3;
 }
 
-.site-hero__img-cont {
-  @apply h-44;
+.images-grid__cell {
+  @apply h-36 overflow-hidden rounded-tile lg:h-44;
 }
 
-.site-hero__img-cont:nth-child(1) {
+.images-grid__cell:nth-child(1),
+.images-grid__cell:nth-child(4),
+.images-grid__cell:nth-child(5) {
   @apply col-span-4;
 }
-.site-hero__img-cont:nth-child(2) {
-  @apply col-span-2;
-}
-.site-hero__img-cont:nth-child(3) {
-  @apply col-span-2;
-}
-.site-hero__img-cont:nth-child(4) {
-  @apply col-span-4;
-}
-.site-hero__img-cont:nth-child(5) {
-  @apply col-span-4;
-}
-.site-hero__img-cont:nth-child(6) {
+
+.images-grid__cell:nth-child(2),
+.images-grid__cell:nth-child(3),
+.images-grid__cell:nth-child(6) {
   @apply col-span-2;
 }
 
-.site-hero__img-cont img,
-.site-hero__img-cont .block {
-  @apply h-full w-full rounded-xl object-cover;
+.images-grid__cell > img {
+  @apply h-full w-full object-cover;
 }
 
-/* .site-hero__img-cont:has(> .block):nth-of-type(1) .block {
-} */
-.site-hero__img-cont .block.purple {
-  @apply border border-slate-800 bg-slate-700 shadow-inner shadow-slate-400;
+.images-grid__cell--orange {
+  @apply bg-brand-100;
 }
 
-.site-hero__img-cont .block.orange {
-  @apply border border-orange-800 bg-orange-600 shadow-inner shadow-orange-400;
+.images-grid__cell--purple {
+  @apply bg-slate-900;
 }
 </style>
