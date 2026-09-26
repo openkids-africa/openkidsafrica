@@ -1,7 +1,11 @@
 <template>
   <header class="site-header">
-    <div class="wrapper">
-      <NuxtLink to="/" aria-label="OpenKids Africa home">
+    <div class="site-header__bar">
+      <NuxtLink
+        to="/"
+        class="site-header__brand"
+        aria-label="OpenKids Africa home"
+      >
         <SiteLogo />
       </NuxtLink>
       <SiteNav />
@@ -9,30 +13,19 @@
   </header>
 </template>
 <style scoped>
-/* One solid, sticky treatment on every page. The transparent-to-solid
-   behaviour this replaces depended on a scroll handler that was never
-   called, so .scrolled was hardcoded and the transition never ran.
-
-   No backdrop-filter here, deliberately: it makes the header a containing
-   block for position:fixed descendants, which collapsed the mobile menu
-   overlay and its toggle button to the size of the header. The background
-   is opaque, so there was nothing to blur anyway. */
+/* A floating pill bar, as the reference design frames its navigation.
+   Sticky with an inset so the pill hovers over the page; no
+   backdrop-filter, which would make the header the containing block for
+   the mobile panel and collapse it to the bar's height. */
 .site-header {
-  @apply sticky top-0 z-20 w-full bg-slate-900 p-4 shadow-header;
+  @apply sticky top-0 z-30 px-3 pt-3 lg:px-4 lg:pt-4;
 }
 
-/* Not positioned, deliberately: the mobile nav panel is absolutely
-   positioned and must resolve against the header's full box, not this
-   padded inner row. The sticky header is the nearest positioned ancestor. */
-.site-header > .wrapper {
-  @apply m-auto flex max-w-6xl items-center justify-between;
+.site-header__bar {
+  @apply relative mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-full border border-slate-200 bg-white/95 py-2 pl-2 pr-2 shadow-pill;
 }
 
-:deep(.site-logo__text) {
-  @apply text-slate-100;
-}
-
-:deep(.site-nav__links) {
-  @apply text-slate-100;
+.site-header__brand {
+  @apply flex items-center;
 }
 </style>
