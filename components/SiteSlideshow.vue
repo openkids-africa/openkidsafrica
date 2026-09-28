@@ -44,79 +44,48 @@ watch(
   },
 );
 
+/* Ten photographs that appear nowhere else on the site. */
 const slideImages = ref(
   images || [
     {
+      src: "/assets/images/photos/photo-12.jpg",
+      alt: "Pupils crowding in for a photo during a school visit",
+    },
+    {
       src: "/assets/images/photos/photo-1.jpg",
-      alt: "Kids Image 1",
+      alt: "Children in yellow and blue uniforms raising their hands",
     },
     {
-      src: "/assets/images/photos/photo-1.jpeg",
-      alt: "Kids Image 1",
+      src: "/assets/images/photos/photo-3.jpg",
+      alt: "Pupils with their hands up to answer a question",
     },
     {
-      src: "/assets/images/photos/photo-2.jpeg",
-      alt: "Kids Image 2",
+      src: "/assets/images/photos/photo-5.jpg",
+      alt: "A pupil speaking into a microphone",
+    },
+    {
+      src: "/assets/images/photos/photo-19.jpg",
+      alt: "Pupils in blue uniforms gathered on the school playground",
+    },
+    {
+      src: "/assets/images/photos/photo-22.jpg",
+      alt: "Pupils and a volunteer holding up what they made",
     },
     {
       src: "/assets/images/photos/photo-29.jpeg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-30.jpg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-31.jpg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-32.jpeg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-33.jpeg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-34.jpg",
-      alt: "Kids Image 3",
+      alt: "A class at their desks with hands raised",
     },
     {
       src: "/assets/images/photos/photo-35.jpg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-36.jpg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-37.jpg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-38.jpg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-39.jpg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-40.jpeg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-41.jpg",
-      alt: "Kids Image 3",
-    },
-    {
-      src: "/assets/images/photos/photo-42.jpg",
-      alt: "Kids Image 3",
+      alt: "A pupil presenting beside classroom artwork",
     },
     {
       src: "/assets/images/photos/photo-43.jpg",
-      alt: "Kids Image 3",
+      alt: "Pupils and teachers at a school assembly",
+    },
+    {
+      src: "/assets/images/photos/photo-46.jpg",
+      alt: "A pupil filling in a worksheet",
     },
   ],
 );

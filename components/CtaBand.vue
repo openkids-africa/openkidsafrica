@@ -14,7 +14,7 @@ defineProps<{
         <div class="wrapper">
           <h2 class="cta-band__title">{{ title }}</h2>
           <p v-if="text" class="cta-band__text">{{ text }}</p>
-          <div class="action-cont !justify-start">
+          <div class="action-cont">
             <a
               v-if="external"
               :href="actionTo"

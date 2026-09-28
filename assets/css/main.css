@@ -130,27 +130,39 @@ summary:focus-visible,
   @apply flex flex-wrap items-center justify-center gap-3;
 }
 
-/* PAGE INTRO — the inner-page hero: centred title, copy, actions, then a
-   row of rounded photo tiles. */
+/* PAGE INTRO — the inner-page hero: title, copy and actions on the left,
+   the page's photograph on the right. */
 .page-intro {
   @apply px-4 pb-8 pt-10 lg:pb-12 lg:pt-16;
 }
 
 .page-intro > .wrapper {
-  @apply m-auto flex w-full max-w-6xl flex-col items-center gap-8;
+  @apply m-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-14;
+}
+
+.page-intro--plain > .wrapper {
+  @apply lg:grid-cols-1;
 }
 
 .page-intro__text {
-  @apply flex max-w-3xl flex-col items-center gap-4 text-center;
+  @apply flex flex-col items-start gap-4;
+}
+
+.page-intro--plain .page-intro__text {
+  @apply mx-auto max-w-3xl items-center text-center;
 }
 
 .page-intro__caption {
-  @apply font-heading text-4xl font-semibold tracking-tight text-slate-900 lg:text-6xl lg:leading-[1.05];
+  @apply font-heading text-4xl font-semibold tracking-tight text-slate-900 lg:text-[3.4rem] lg:leading-[1.06];
   text-wrap: balance;
 }
 
 .page-intro__subtext {
-  @apply max-w-2xl text-base text-slate-600 lg:text-lg;
+  @apply text-base text-slate-600 lg:text-lg;
+}
+
+.page-intro__photo {
+  @apply aspect-[4/3] w-full lg:aspect-[5/4];
 }
 
 /* TILES — the rounded panels the reference builds everything from. */
@@ -384,34 +396,64 @@ a.mini-card:hover,
   @apply flex flex-row flex-wrap gap-2;
 }
 
-/* CTA BAND */
+/* CTA BAND — solid accent, centred, dashed corners. */
 .cta-band {
-  @apply relative overflow-hidden rounded-tile bg-brand-100 px-6 py-12 lg:px-14 lg:py-16;
+  @apply relative overflow-hidden rounded-tile bg-brand-500 px-6 py-14 text-center lg:px-14 lg:py-20;
+}
+
+.cta-band::before,
+.cta-band::after {
+  content: "";
+  @apply pointer-events-none absolute bottom-0 h-40 w-56 opacity-60;
+  background-image: repeating-linear-gradient(
+    -50deg,
+    rgb(255 255 255 / 0.55) 0 5px,
+    transparent 5px 18px
+  );
+  mask-image: repeating-linear-gradient(
+    40deg,
+    black 0 16px,
+    transparent 16px 26px
+  );
+  -webkit-mask-image: repeating-linear-gradient(
+    40deg,
+    black 0 16px,
+    transparent 16px 26px
+  );
+}
+
+.cta-band::before {
+  @apply -left-6;
+  transform: scaleX(-1);
 }
 
 .cta-band::after {
-  content: "";
-  @apply pointer-events-none absolute -right-10 bottom-0 top-0 hidden w-2/5 lg:block;
-  background-image: repeating-linear-gradient(
-    -55deg,
-    rgb(228 97 12 / 0.16) 0 6px,
-    transparent 6px 22px
-  );
-  mask-image: linear-gradient(to left, black, transparent);
-  -webkit-mask-image: linear-gradient(to left, black, transparent);
+  @apply -right-6;
 }
 
 .cta-band > .wrapper {
-  @apply relative z-10 flex max-w-xl flex-col items-start gap-5;
+  @apply relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5;
 }
 
 .cta-band__title {
-  @apply font-heading text-3xl font-semibold tracking-tight text-slate-900 lg:text-4xl;
+  @apply font-heading text-3xl font-semibold tracking-tight text-slate-950 lg:text-4xl;
   text-wrap: balance;
 }
 
 .cta-band__text {
-  @apply text-base text-slate-700 lg:text-lg;
+  @apply text-base text-slate-900 lg:text-lg;
+}
+
+.cta-band .btn {
+  @apply bg-slate-950 text-white hover:bg-slate-800;
+}
+
+.cta-band .btn--outline {
+  @apply border-transparent bg-white text-slate-950 hover:bg-brand-50;
+}
+
+.cta-band .site-section__eyebrow {
+  @apply text-slate-900;
 }
 
 /* IMAGE STRIP — a row of rounded photos. */
@@ -486,39 +528,195 @@ html.js .js-reveal:not(.is-armed) {
   opacity: 0;
 }
 
-/* PHOTO COMPOSITION — one to three photos set as an editorial group. */
-.photo-comp {
-  @apply grid w-full gap-3;
-}
-
-.photo-comp > figure {
+/* PHOTO TILE — a photograph in a rounded frame, full colour. */
+.photo-tile {
   @apply relative overflow-hidden rounded-tile bg-brand-100;
 }
 
-.photo-comp > figure > img {
-  @apply h-full w-full object-cover;
+.photo-tile > img {
+  @apply h-full w-full object-cover transition-transform duration-700;
 }
 
-.photo-comp--1 > figure {
-  @apply aspect-[16/10] lg:aspect-[21/9];
+.photo-tile:hover > img {
+  @apply scale-[1.04];
 }
 
-.photo-comp--2 {
-  @apply lg:grid-cols-[3fr_2fr];
+/* A short run of dashes, the reference's small decoration on photo tiles. */
+.photo-tile--dashes::before {
+  content: "";
+  @apply pointer-events-none absolute left-1/2 top-0 z-10 h-20 w-20 -translate-x-1/2;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(255 255 255 / 0.85) 0 4px,
+    transparent 4px 13px
+  );
+  mask-image: repeating-linear-gradient(
+    180deg,
+    black 0 12px,
+    transparent 12px 20px
+  );
+  -webkit-mask-image: repeating-linear-gradient(
+    180deg,
+    black 0 12px,
+    transparent 12px 20px
+  );
 }
 
-.photo-comp--2 > figure {
-  @apply aspect-[16/10] lg:aspect-auto lg:h-[26rem];
+/* PANEL — the soft rounded container cards and lists sit in. */
+.panel {
+  @apply rounded-tile bg-slate-50 p-4 lg:p-6;
 }
 
-.photo-comp--3 {
-  @apply grid-cols-2 lg:grid-cols-3 lg:grid-rows-2;
+.panel__head {
+  @apply mb-4 flex items-center justify-between gap-3 px-2;
 }
 
-.photo-comp--3 > figure:first-child {
-  @apply col-span-2 aspect-[16/10] lg:row-span-2 lg:aspect-auto lg:h-full;
+.panel__title {
+  @apply font-heading text-xl font-semibold text-slate-900;
 }
 
-.photo-comp--3 > figure:not(:first-child) {
-  @apply aspect-[4/3] lg:aspect-auto lg:h-52;
+.panel__body {
+  @apply flex flex-col gap-3 rounded-2xl bg-white p-5 text-base text-slate-600 lg:p-6;
+}
+
+/* NUMBERED LIST — 01, 02, 03 in a white card inside a panel. */
+.numbered-list {
+  @apply flex flex-col rounded-2xl bg-white px-5;
+}
+
+.numbered-list > li {
+  @apply flex items-start gap-4 border-b border-slate-100 py-4 last:border-b-0;
+}
+
+.numbered-list__num {
+  @apply mt-0.5 flex h-7 w-9 shrink-0 items-center justify-center rounded-full bg-brand-100 font-heading text-xs font-semibold text-brand-800;
+}
+
+.numbered-list__body {
+  @apply text-base text-slate-600;
+}
+
+.numbered-list__body > strong {
+  @apply block font-heading font-semibold text-slate-900;
+}
+
+/* ZIG-ZAG — a photo tile beside a panel, mirrored on alternate rows. */
+.zigzag {
+  @apply grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:items-stretch;
+}
+
+.zigzag--flip {
+  @apply lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)];
+}
+
+.zigzag--flip > .zigzag__photo {
+  @apply lg:order-2;
+}
+
+.zigzag__photo {
+  @apply aspect-[4/3] lg:aspect-auto lg:min-h-[24rem];
+}
+
+/* SPLIT — copy on one side, its photograph on the other. Never stacked
+   with the photo underneath on large screens. */
+.split-feature {
+  @apply grid items-center gap-6 lg:grid-cols-2 lg:gap-12;
+}
+
+.split-feature--flip > .split-feature__photo {
+  @apply lg:order-first;
+}
+
+.split-feature__text {
+  @apply flex flex-col items-start gap-4;
+}
+
+.split-feature__title {
+  @apply font-heading text-3xl font-semibold tracking-tight text-slate-900 lg:text-5xl lg:leading-[1.08];
+  text-wrap: balance;
+}
+
+.split-feature__text > p {
+  @apply text-base text-slate-600 lg:text-lg;
+}
+
+.split-feature__photo {
+  @apply aspect-[4/3] w-full;
+}
+
+.card-row {
+  @apply grid gap-3 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.panel .mini-card {
+  @apply bg-white;
+}
+
+.panel a.mini-card:hover {
+  @apply bg-brand-50;
+}
+
+/* GIVE — the donation block: the case for giving beside the form. */
+.give {
+  @apply grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-stretch lg:gap-8;
+}
+
+.give__case {
+  @apply flex flex-col gap-5;
+}
+
+.give__photo {
+  @apply aspect-[16/10] w-full grow lg:aspect-auto lg:min-h-[16rem];
+}
+
+.donate-form {
+  @apply flex h-full flex-col rounded-tile border border-slate-200 bg-white p-5 shadow-card lg:p-8;
+}
+
+.donate-form > .wrapper {
+  @apply flex grow flex-col gap-6;
+}
+
+.donate-form__modes {
+  @apply grid grid-cols-2 rounded-full bg-slate-100 p-1;
+}
+
+.donate-form__mode {
+  @apply rounded-full px-4 py-2.5 font-heading text-sm font-semibold text-slate-600 transition-colors;
+}
+
+.donate-form__mode--active {
+  @apply bg-white text-slate-900 shadow-pill;
+}
+
+.donate-form__label {
+  @apply font-heading text-sm font-semibold uppercase tracking-[0.12em] text-slate-500;
+}
+
+.donate-form__amount-group {
+  @apply grid grid-cols-2 gap-2 sm:grid-cols-3;
+}
+
+.donate-form__amount-group > .form-control--radio {
+  @apply min-w-0 justify-center rounded-2xl border-slate-200 bg-white px-3 py-4 text-slate-900 hover:border-brand-300 hover:bg-brand-50;
+}
+
+.donate-form__amount-group > .form-control--radio:has(.form-radio:checked) {
+  @apply border-brand-600 bg-brand-600 text-white;
+}
+
+.donate-form__impact {
+  @apply flex flex-col gap-2 rounded-2xl bg-brand-100 p-5;
+}
+
+.donate-form__impact-label {
+  @apply font-heading text-xs font-semibold uppercase tracking-[0.14em] text-brand-800;
+}
+
+.donate-form__impact-text {
+  @apply text-base text-slate-800;
+}
+
+.donate-form__note {
+  @apply text-center text-sm text-slate-500;
 }

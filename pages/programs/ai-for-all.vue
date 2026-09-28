@@ -26,28 +26,8 @@ const content = ref({
       "Open Kids Africa, in partnership with Tech She Can and Microsoft is bringing an internationally accredited AI training program to teachers across Nigeria, helping educators confidently understand, use, and teach AI concepts in their classrooms and beyond.",
     images: [
       {
-        src: "/assets/images/photos/photo-1.jpeg",
-        alt: "An educator working through a lesson with her students",
-      },
-      {
         src: "/assets/images/photos/photo-24.jpg",
-        alt: "Students at a shared computer during a technology session",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-8.jpg",
-        alt: "A classroom technology session in progress",
-      },
-      {
-        src: "/assets/images/photos/photo-16.jpg",
-        alt: "A mentor teaching a group of pupils",
-      },
-      {
-        type: "block",
-        color: "purple",
+        alt: "A facilitator presenting to a class",
       },
     ],
   },
@@ -206,130 +186,139 @@ useHead({
 });
 </script>
 <template>
-  <PageIntro
-    :caption="content.heroSection.caption"
-    :text="[content.heroSection.subtext]"
-    :images="content.heroSection.images"
-  >
-    <template #eyebrow>Open Kids Africa × Tech She Can × Microsoft</template>
-    <template #actions>
-      <a :href="content.ctaSection.actionUrl" class="btn">
-        Bring AI for All to your school
-      </a>
-    </template>
-  </PageIntro>
+  <div class="page">
+    <PageIntro
+      :caption="content.heroSection.caption"
+      :text="[content.heroSection.subtext]"
+      :images="content.heroSection.images"
+    >
+      <template #eyebrow>Open Kids Africa × Tech She Can × Microsoft</template>
+      <template #actions>
+        <a :href="content.ctaSection.actionUrl" class="btn">
+          Bring AI for All to your school
+        </a>
+      </template>
+    </PageIntro>
 
-  <section class="site-section site-section--tight">
-    <div class="wrapper">
-      <div class="tile tile--outline partner-bar js-reveal" v-reveal>
-        <PartnerLockup :partners="content.partners" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="site-section">
-    <div class="wrapper">
-      <div class="split js-reveal" v-reveal.stagger>
-        <header class="site-section__header site-section__header--left !mb-0">
-          <p class="site-section__eyebrow">
-            {{ content.aboutSection.eyebrow }}
-          </p>
-          <h2 class="site-section__caption">
-            {{ content.aboutSection.caption }}
-          </h2>
-        </header>
-        <div class="site-section__text-cont">
-          <p v-for="(text, i) in content.aboutSection.text" :key="i">
-            {{ text }}
-          </p>
+    <section class="site-section site-section--tight">
+      <div class="wrapper">
+        <div class="tile tile--outline partner-bar js-reveal" v-reveal>
+          <PartnerLockup :partners="content.partners" />
         </div>
       </div>
+    </section>
 
-      <div class="outcomes">
-        <h3 class="outcomes__title js-reveal" v-reveal>
-          {{ content.aboutSection.outcomes.title }}
-        </h3>
-        <ul class="outcomes__list js-reveal" v-reveal.stagger>
-          <li
-            v-for="outcome in content.aboutSection.outcomes.items"
-            :key="outcome.id"
-          >
-            <article class="tile tile--tint outcome">
-              <span class="icon-badge !bg-white">
-                <BrainCircuitIcon
-                  v-if="outcome.id === 'understanding'"
-                  class="icon"
-                />
-                <SparklesIcon v-else-if="outcome.id === 'using'" class="icon" />
-                <SearchCheckIcon
-                  v-else-if="outcome.id === 'critical'"
-                  class="icon"
-                />
-                <CompassIcon v-else class="icon" />
-              </span>
-              <h4 class="tile__title">{{ outcome.title }}</h4>
-              <p class="tile__text">{{ outcome.text }}</p>
-            </article>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- GAIN -->
-  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
-    <div class="wrapper">
-      <div class="split js-reveal" v-reveal.stagger>
-        <header class="site-section__header site-section__header--left !mb-0">
-          <p class="site-section__eyebrow">{{ content.gainSection.eyebrow }}</p>
-          <h2 class="site-section__caption">
-            {{ content.gainSection.caption }}
-          </h2>
-          <p>{{ content.gainSection.text }}</p>
-        </header>
-        <ul class="checklist">
-          <li
-            v-for="item in content.gainSection.items"
-            :key="item.id"
-            class="checklist__item !bg-white"
-          >
-            <span class="checklist__icon-cont">
-              <MessageSquareIcon v-if="item.id === 'prompts'" class="icon" />
-              <ImageIcon v-else-if="item.id === 'posters'" class="icon" />
-              <RouteIcon v-else-if="item.id === 'pathways'" class="icon" />
-              <AwardIcon v-else class="icon" />
-            </span>
-            <p>{{ item.text }}</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="site-section site-section--tight">
-    <div class="wrapper">
-      <div class="cta-band js-reveal" v-reveal>
-        <div class="wrapper">
-          <p class="site-section__eyebrow">{{ content.ctaSection.eyebrow }}</p>
-          <h2 class="cta-band__title">{{ content.ctaSection.caption }}</h2>
-          <p class="cta-band__text">{{ content.ctaSection.text }}</p>
-          <div class="action-cont !justify-start">
-            <a :href="content.ctaSection.actionUrl" class="btn">
-              {{ content.ctaSection.actionText }}
-            </a>
+    <!-- ABOUT -->
+    <section class="site-section">
+      <div class="wrapper">
+        <div class="split js-reveal" v-reveal.stagger>
+          <header class="site-section__header site-section__header--left !mb-0">
+            <p class="site-section__eyebrow">
+              {{ content.aboutSection.eyebrow }}
+            </p>
+            <h2 class="site-section__caption">
+              {{ content.aboutSection.caption }}
+            </h2>
+          </header>
+          <div class="site-section__text-cont">
+            <p v-for="(text, i) in content.aboutSection.text" :key="i">
+              {{ text }}
+            </p>
           </div>
-          <p class="text-sm text-slate-600">
-            Website:
-            <strong class="text-slate-900">{{
-              content.ctaSection.website
-            }}</strong>
-          </p>
+        </div>
+
+        <div class="outcomes">
+          <h3 class="outcomes__title js-reveal" v-reveal>
+            {{ content.aboutSection.outcomes.title }}
+          </h3>
+          <ul class="outcomes__list js-reveal" v-reveal.stagger>
+            <li
+              v-for="outcome in content.aboutSection.outcomes.items"
+              :key="outcome.id"
+            >
+              <article class="tile tile--tint outcome">
+                <span class="icon-badge !bg-white">
+                  <BrainCircuitIcon
+                    v-if="outcome.id === 'understanding'"
+                    class="icon"
+                  />
+                  <SparklesIcon
+                    v-else-if="outcome.id === 'using'"
+                    class="icon"
+                  />
+                  <SearchCheckIcon
+                    v-else-if="outcome.id === 'critical'"
+                    class="icon"
+                  />
+                  <CompassIcon v-else class="icon" />
+                </span>
+                <h4 class="tile__title">{{ outcome.title }}</h4>
+                <p class="tile__text">{{ outcome.text }}</p>
+              </article>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- GAIN -->
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+      <div class="wrapper">
+        <div class="split js-reveal" v-reveal.stagger>
+          <header class="site-section__header site-section__header--left !mb-0">
+            <p class="site-section__eyebrow">
+              {{ content.gainSection.eyebrow }}
+            </p>
+            <h2 class="site-section__caption">
+              {{ content.gainSection.caption }}
+            </h2>
+            <p>{{ content.gainSection.text }}</p>
+          </header>
+          <ul class="checklist">
+            <li
+              v-for="item in content.gainSection.items"
+              :key="item.id"
+              class="checklist__item !bg-white"
+            >
+              <span class="checklist__icon-cont">
+                <MessageSquareIcon v-if="item.id === 'prompts'" class="icon" />
+                <ImageIcon v-else-if="item.id === 'posters'" class="icon" />
+                <RouteIcon v-else-if="item.id === 'pathways'" class="icon" />
+                <AwardIcon v-else class="icon" />
+              </span>
+              <p>{{ item.text }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="site-section site-section--tight">
+      <div class="wrapper">
+        <div class="cta-band js-reveal" v-reveal>
+          <div class="wrapper">
+            <p class="site-section__eyebrow">
+              {{ content.ctaSection.eyebrow }}
+            </p>
+            <h2 class="cta-band__title">{{ content.ctaSection.caption }}</h2>
+            <p class="cta-band__text">{{ content.ctaSection.text }}</p>
+            <div class="action-cont !justify-start">
+              <a :href="content.ctaSection.actionUrl" class="btn">
+                {{ content.ctaSection.actionText }}
+              </a>
+            </div>
+            <p class="text-sm text-slate-600">
+              Website:
+              <strong class="text-slate-900">{{
+                content.ctaSection.website
+              }}</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 <style scoped>
 .partner-bar {

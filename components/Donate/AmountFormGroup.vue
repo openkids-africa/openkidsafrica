@@ -10,7 +10,7 @@ defineProps<AmountFormGroupProps>();
 defineEmits(["update:formData"]);
 </script>
 <template>
-  <div class="form-group donate-form__amount-group">
+  <div class="donate-form__amount-group">
     <label
       :for="`amount-${amount}`"
       v-for="amount in amounts.filter(

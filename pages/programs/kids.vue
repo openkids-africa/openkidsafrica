@@ -6,28 +6,8 @@ const programsContent = ref({
       "In a world where thousands of children lack access to quality education, the OpenKids Africa Kids Program stands as a beacon of hope. We believe that every child, regardless of their background or circumstances, deserves the opportunity to thrive in today's digital age",
     images: [
       {
-        src: "/assets/images/photos/photo-33.jpeg",
-        alt: "Hero Image 1",
-      },
-      {
-        src: "/assets/images/photos/photo-34.jpg",
-        alt: "Hero Image 2",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-35.jpg",
-        alt: "Hero Image 3",
-      },
-      {
-        src: "/assets/images/photos/photo-36.jpg",
-        alt: "Hero Image 4",
-      },
-      {
-        type: "block",
-        color: "purple",
+        src: "/assets/images/photos/photo-2.jpg",
+        alt: "A pupil speaking up during a class session",
       },
     ],
   },
@@ -43,32 +23,6 @@ const programsContent = ref({
     text: [
       "The heart of the Kids Program lies in its delivery of tech lessons to children in rural schools. Through interactive lessons and hands-on activities, we engage children in the learning process, igniting their curiosity and passion for technology. From coding and robotics to digital literacy and beyond, our curriculum is designed to be inclusive and accessible to all.",
       "But our impact doesn't stop there. We also work closely with schools to ensure they have the tools and resources they need to support their students' learning journeys. From providing access to free digital resources to supplying refurbished computers, we empower schools to create environments where every child can succeed.",
-    ],
-    images: [
-      {
-        src: "/assets/images/photos/photo-12.jpg",
-        alt: "Approach Image 1",
-      },
-      {
-        src: "/assets/images/photos/photo-13.jpg",
-        alt: "Approach Image 2",
-      },
-      {
-        src: "/assets/images/photos/photo-14.jpg",
-        alt: "Approach Image 3",
-      },
-      {
-        src: "/assets/images/photos/photo-15.jpg",
-        alt: "Approach Image 4",
-      },
-      {
-        src: "/assets/images/photos/photo-16.jpg",
-        alt: "Approach Image 3",
-      },
-      {
-        src: "/assets/images/photos/photo-17.jpg",
-        alt: "Approach Image 4",
-      },
     ],
   },
   joinSection: {
@@ -132,106 +86,98 @@ useHead({
 });
 </script>
 <template>
-  <PageIntro
-    :caption="programsContent.heroSection.caption"
-    :text="[programsContent.heroSection.subtext]"
-    :images="programsContent.heroSection.images"
-  >
-    <template #eyebrow>Kids Program</template>
-    <template #actions>
-      <NuxtLink :to="programsContent.joinSection.actionLink.url" class="btn">
-        {{ programsContent.joinSection.actionLink.text }}
-      </NuxtLink>
-    </template>
-  </PageIntro>
+  <div class="page">
+    <PageIntro
+      :caption="programsContent.heroSection.caption"
+      :text="[programsContent.heroSection.subtext]"
+      :images="programsContent.heroSection.images"
+    >
+      <template #eyebrow>Kids Program</template>
+      <template #actions>
+        <NuxtLink :to="programsContent.joinSection.actionLink.url" class="btn">
+          {{ programsContent.joinSection.actionLink.text }}
+        </NuxtLink>
+      </template>
+    </PageIntro>
 
-  <!-- WHY -->
-  <section class="site-section">
-    <div class="wrapper">
-      <div class="split js-reveal" v-reveal.stagger>
-        <header class="site-section__header site-section__header--left !mb-0">
-          <h2 class="site-section__caption">
-            {{ programsContent.whySection.title }}
-          </h2>
-        </header>
-        <div class="site-section__text-cont">
-          <p
-            v-for="(text, index) in programsContent.whySection.text"
-            :key="index"
-          >
-            {{ text }}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- APPROACH: copy beside a photo group, not a grid of six -->
-  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
-    <div class="wrapper">
-      <div class="approach js-reveal" v-reveal.stagger>
-        <div>
-          <PhotoComposition
-            :images="programsContent.approachSection.images"
-            :max="3"
+    <!-- WHY + APPROACH: photo beside a panel, then mirrored -->
+    <section class="site-section">
+      <div class="wrapper flex flex-col gap-4">
+        <div class="zigzag js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            src="/assets/images/photos/photo-15.jpg"
+            alt="A child being helped into a virtual-reality headset"
+            dashes
           />
+          <div class="panel flex h-full flex-col">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                {{ programsContent.whySection.title }}
+              </h2>
+            </div>
+            <div class="panel__body grow">
+              <p
+                v-for="(text, index) in programsContent.whySection.text"
+                :key="index"
+              >
+                {{ text }}
+              </p>
+            </div>
+          </div>
         </div>
-        <header class="site-section__header site-section__header--left !mb-0">
-          <h2 class="site-section__caption">
-            {{ programsContent.approachSection.title }}
-          </h2>
-          <p
-            v-for="(text, index) in programsContent.approachSection.text"
-            :key="index"
-          >
-            {{ text }}
-          </p>
-        </header>
+        <div class="zigzag zigzag--flip js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            src="/assets/images/photos/photo-39.jpg"
+            alt="Pupils watching a lesson on screen"
+            dashes
+          />
+          <div class="panel flex h-full flex-col">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                {{ programsContent.approachSection.title }}
+              </h2>
+            </div>
+            <div class="panel__body grow">
+              <p
+                v-for="(text, index) in programsContent.approachSection.text"
+                :key="index"
+              >
+                {{ text }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- OBJECTIVES -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">
-          {{ programsContent.objectiveSection.title }}
-        </h2>
-      </header>
-      <ul class="objectives js-reveal" v-reveal.stagger>
-        <li
-          v-for="objective in programsContent.objectiveSection.objectives"
-          :key="objective.id"
+    <!-- OBJECTIVES: copy beside its photo, then arrow cards -->
+    <section class="site-section pt-0">
+      <div class="wrapper">
+        <SplitFeature
+          src="/assets/images/photos/photo-9.jpg"
+          alt="A pupil presenting to her class"
+          :title="programsContent.objectiveSection.title"
+          :text="programsContent.joinSection.text[0]"
         >
-          <DoingsCard :card-content="objective" />
-        </li>
-      </ul>
-    </div>
-  </section>
+          <ul class="card-row md:!grid-cols-2 lg:!grid-cols-2">
+            <li
+              v-for="objective in programsContent.objectiveSection.objectives"
+              :key="objective.id"
+            >
+              <DoingsCard :card-content="objective" />
+            </li>
+          </ul>
+        </SplitFeature>
+      </div>
+    </section>
 
-  <CtaBand
-    :title="programsContent.joinSection.title"
-    :text="programsContent.joinSection.text[0]"
-    :action-text="programsContent.joinSection.actionLink.text"
-    :action-to="programsContent.joinSection.actionLink.url"
-  />
+    <CtaBand
+      :title="programsContent.joinSection.title"
+      :text="programsContent.joinSection.text[0]"
+      :action-text="programsContent.joinSection.actionLink.text"
+      :action-to="programsContent.joinSection.actionLink.url"
+    />
+  </div>
 </template>
-<style scoped>
-.split {
-  @apply flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16;
-}
-
-.split .site-section__caption,
-.approach .site-section__caption {
-  @apply lg:text-4xl;
-}
-
-.approach {
-  @apply grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-14;
-}
-
-.objectives {
-  @apply grid gap-4 md:grid-cols-2;
-}
-</style>

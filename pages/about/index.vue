@@ -9,28 +9,8 @@ const aboutContent = ref<AboutPageContent>({
     ],
     images: [
       {
-        src: "/assets/images/photos/photo-29.jpeg",
-        alt: "Hero Image 1",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-14.jpg",
-        alt: "Hero Image 2",
-      },
-      {
-        src: "/assets/images/photos/photo-30.jpg",
-        alt: "Hero Image 3",
-      },
-      {
-        src: "/assets/images/photos/photo-31.jpg",
-        alt: "Hero Image 4",
-      },
-      {
-        type: "block",
-        color: "purple",
+        src: "/assets/images/photos/photo-33.jpeg",
+        alt: "Pupils and volunteers gathered outside a school after a visit",
       },
     ],
   },
@@ -167,156 +147,143 @@ useHead({
 });
 </script>
 <template>
-  <PageIntro
-    :caption="aboutContent.heroSection.title"
-    :text="aboutContent.heroSection.text"
-    :images="aboutContent.heroSection.images"
-  />
+  <div class="page">
+    <PageIntro
+      :caption="aboutContent.heroSection.title"
+      :text="aboutContent.heroSection.text"
+      :images="aboutContent.heroSection.images"
+    />
 
-  <!-- BELIEF -->
-  <section class="site-section site-section--tight">
-    <div class="wrapper">
-      <div class="tile tile--tint belief js-reveal" v-reveal>
-        <p class="belief__quote">{{ aboutContent.believeSection.text[0] }}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- JOURNEY -->
-  <section class="site-section">
-    <div class="wrapper">
-      <div class="split" v-reveal.stagger>
-        <header
-          class="site-section__header site-section__header--left js-reveal !mb-0"
-        >
-          <p class="site-section__eyebrow">Our story</p>
-          <h2 class="site-section__caption">
-            {{ aboutContent.journeySection.title }}
-          </h2>
-        </header>
-        <div class="site-section__text-cont js-reveal">
-          <p v-for="(text, i) in aboutContent.journeySection.text" :key="i">
-            {{ text }}
-          </p>
+    <!-- BELIEF -->
+    <section class="site-section site-section--tight">
+      <div class="wrapper">
+        <div class="tile tile--tint belief js-reveal" v-reveal>
+          <p class="belief__quote">{{ aboutContent.believeSection.text[0] }}</p>
         </div>
       </div>
-      <div class="js-reveal mt-12" v-reveal>
-        <PhotoComposition
-          :images="[
-            aboutContent.heroSection.images[3],
-            aboutContent.heroSection.images[4],
-            aboutContent.heroSection.images[2],
-          ]"
-        />
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- VALUES -->
-  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">
-          {{ aboutContent.valuesSection.title }}
-        </h2>
-      </header>
-      <ul class="values" v-reveal.stagger>
-        <li
-          v-for="(item, index) in aboutContent.valuesSection.items"
-          :key="index"
-          class="js-reveal"
-        >
-          <article class="tile tile--outline value-card">
-            <span class="value-card__num">0{{ index + 1 }}</span>
-            <p class="value-card__text">{{ item }}</p>
-          </article>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- THE GAP -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <p class="site-section__eyebrow">The gap we work to close</p>
-        <h2 class="site-section__caption">Why access matters</h2>
-      </header>
-      <ul class="infographics">
-        <li v-for="(item, i) in aboutContent.infographicSection.items" :key="i">
-          <article
-            class="infographic"
-            :class="{ 'infographic--flip': i % 2 }"
-            v-reveal.stagger
-          >
-            <figure class="tile tile--tint infographic__figure js-reveal">
-              <img :src="item.image" :alt="item.title" />
-            </figure>
-            <div class="infographic__body js-reveal">
-              <h3 class="infographic__title">{{ item.title }}</h3>
-              <p v-for="(text, n) in item.text" :key="n">{{ text }}</p>
-              <a
-                :href="item.link.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn--outline btn--sm w-fit"
-              >
-                {{ item.link.text }}
-              </a>
+    <!-- JOURNEY + VALUES: photo beside a panel, then mirrored -->
+    <section class="site-section">
+      <div class="wrapper flex flex-col gap-4">
+        <div class="zigzag js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            src="/assets/images/photos/photo-4.jpg"
+            alt="A volunteer teaching a hall full of pupils"
+            dashes
+          />
+          <div class="panel flex h-full flex-col">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                {{ aboutContent.journeySection.title }}
+              </h2>
             </div>
-          </article>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">
-          {{ aboutContent.teamSection.title }}
-        </h2>
-      </header>
-      <ul class="team" v-reveal.stagger>
-        <li
-          v-for="(member, i) in aboutContent.teamSection.team"
-          :key="member.name"
-          class="js-reveal"
-        >
-          <TeamCard :member="member" :i="i" />
-        </li>
-      </ul>
-      <div class="action-cont mt-10">
-        <NuxtLink to="/about/team" class="btn btn--outline"
-          >Meet the whole team</NuxtLink
-        >
+            <div class="panel__body grow">
+              <p v-for="(text, i) in aboutContent.journeySection.text" :key="i">
+                {{ text }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="zigzag zigzag--flip js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            src="/assets/images/photos/photo-25.jpg"
+            alt="A pupil standing to answer in class"
+            dashes
+          />
+          <NumberedPanel
+            :title="aboutContent.valuesSection.title"
+            :items="aboutContent.valuesSection.items"
+          />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">Get in touch with us</h2>
-        <p>
-          We are constantly seeking volunteers, including teachers and
-          technology enthusiasts. Please contact us below, and we will get back
-          to you
-        </p>
-      </header>
-      <div class="js-reveal mx-auto max-w-3xl" v-reveal>
-        <ContactForm />
+    <!-- THE GAP -->
+    <section class="site-section pt-0">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <p class="site-section__eyebrow">The gap we work to close</p>
+          <h2 class="site-section__caption">Why access matters</h2>
+        </header>
+        <ul class="infographics">
+          <li
+            v-for="(item, i) in aboutContent.infographicSection.items"
+            :key="i"
+          >
+            <article
+              class="zigzag js-reveal"
+              :class="{ 'zigzag--flip': i % 2 }"
+              v-reveal.stagger
+            >
+              <figure class="tile tile--tint zigzag__photo infographic__figure">
+                <img :src="item.image" :alt="item.title" />
+              </figure>
+              <div class="panel flex h-full flex-col">
+                <div class="panel__body grow justify-center">
+                  <h3 class="infographic__title">{{ item.title }}</h3>
+                  <p v-for="(text, n) in item.text" :key="n">{{ text }}</p>
+                  <a
+                    :href="item.link.link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn--outline btn--sm w-fit"
+                  >
+                    {{ item.link.text }}
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <PartnersSection :section-data="aboutContent.partnersSection">
-    <template #illustration>
-      <div class="js-reveal mt-16" v-reveal><SiteSlideshow /></div>
-    </template>
-  </PartnersSection>
+    <!-- TEAM -->
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">
+            {{ aboutContent.teamSection.title }}
+          </h2>
+        </header>
+        <ul class="team js-reveal" v-reveal.stagger>
+          <li
+            v-for="(member, i) in aboutContent.teamSection.team"
+            :key="member.name"
+          >
+            <TeamCard :member="member" :i="i" />
+          </li>
+        </ul>
+        <div class="action-cont mt-10">
+          <NuxtLink to="/about/team" class="btn btn--outline"
+            >Meet the whole team</NuxtLink
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">Get in touch with us</h2>
+          <p>
+            We are constantly seeking volunteers, including teachers and
+            technology enthusiasts. Please contact us below, and we will get
+            back to you
+          </p>
+        </header>
+        <div class="js-reveal mx-auto max-w-3xl" v-reveal>
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+
+    <PartnersSection :section-data="aboutContent.partnersSection" />
+  </div>
 </template>
 <style scoped>
 .belief {
@@ -328,40 +295,8 @@ useHead({
   text-wrap: balance;
 }
 
-.split {
-  @apply flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16;
-}
-
-.split .site-section__caption {
-  @apply lg:text-4xl;
-}
-
-.values {
-  @apply grid gap-4 md:grid-cols-2;
-}
-
-.value-card {
-  @apply flex gap-5;
-}
-
-.value-card__num {
-  @apply font-heading text-sm font-semibold text-brand-600;
-}
-
-.value-card__text {
-  @apply font-heading text-lg font-medium leading-snug text-slate-900;
-}
-
 .infographics {
-  @apply flex flex-col gap-6;
-}
-
-.infographic {
-  @apply grid items-center gap-6 lg:grid-cols-2 lg:gap-12;
-}
-
-.infographic--flip > .infographic__figure {
-  @apply lg:order-2;
+  @apply flex flex-col gap-4;
 }
 
 .infographic__figure {
@@ -370,10 +305,6 @@ useHead({
 
 .infographic__figure > img {
   @apply max-h-64 w-auto;
-}
-
-.infographic__body {
-  @apply flex flex-col gap-4 text-base text-slate-600 lg:text-lg;
 }
 
 .infographic__title {

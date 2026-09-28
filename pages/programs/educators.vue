@@ -18,28 +18,8 @@ const programsContent = ref({
       "Join the OpenKids Africa Educator Program and become a catalyst for change in primary and secondary education!",
     images: [
       {
-        src: "/assets/images/photos/photo-1.jpeg",
-        alt: "Educator interacting with students",
-      },
-      {
-        src: "/assets/images/photos/photo-24.jpg",
-        alt: "Students using computers",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-8.jpg",
-        alt: "Classroom technology session",
-      },
-      {
         src: "/assets/images/photos/photo-16.jpg",
-        alt: "Mentor teaching technology",
-      },
-      {
-        type: "block",
-        color: "purple",
+        alt: "A volunteer teaching at the front of a classroom",
       },
     ],
   },
@@ -70,24 +50,6 @@ const programsContent = ref({
     text: [
       "The OpenKids Africa Educator Program is a transformative initiative that aims to attract, educate and empower educators across other countries in Africa on technology.",
       "Through comprehensive digital exposure and awareness, we strive to bridge the knowledge gap and equip educators with the tools and expertise they need to prepare students for the digital age",
-    ],
-    images: [
-      {
-        src: "/assets/images/photos/photo-1.jpeg",
-        alt: "Educator interacting with students",
-      },
-      {
-        src: "/assets/images/photos/photo-24.jpg",
-        alt: "Students using computers",
-      },
-      // {
-      //   src: "/assets/images/photos/photo-8.jpg",
-      //   alt: "Classroom technology session",
-      // },
-      // {
-      //   type: "block",
-      //   color: "purple",
-      // },
     ],
   },
   whyParticipateSection: {
@@ -389,262 +351,277 @@ useHead({
 });
 </script>
 <template>
-  <PageIntro
-    :caption="programsContent.heroSection.caption"
-    :text="[programsContent.heroSection.subtext]"
-    :images="programsContent.heroSection.images"
-  >
-    <template #eyebrow>Educators Program</template>
-  </PageIntro>
+  <div class="page">
+    <PageIntro
+      :caption="programsContent.heroSection.caption"
+      :text="[programsContent.heroSection.subtext]"
+      :images="programsContent.heroSection.images"
+    >
+      <template #eyebrow>Educators Program</template>
+    </PageIntro>
 
-  <!-- COHORT CLOSED -->
-  <section class="site-section site-section--tight">
-    <div class="wrapper">
-      <aside class="tile tile--tint cohort-closed js-reveal" v-reveal>
-        <div>
-          <p class="tile__title">{{ programsContent.cohortClosed.title }}</p>
-          <p class="tile__text">{{ programsContent.cohortClosed.text }}</p>
-        </div>
-        <NuxtLink
-          :to="programsContent.cohortClosed.linkUrl"
-          class="btn shrink-0"
-        >
-          {{ programsContent.cohortClosed.linkText }}
-        </NuxtLink>
-      </aside>
-    </div>
-  </section>
+    <!-- COHORT CLOSED -->
+    <section class="site-section site-section--tight">
+      <div class="wrapper">
+        <aside class="tile tile--tint cohort-closed js-reveal" v-reveal>
+          <div>
+            <p class="tile__title">{{ programsContent.cohortClosed.title }}</p>
+            <p class="tile__text">{{ programsContent.cohortClosed.text }}</p>
+          </div>
+          <NuxtLink
+            :to="programsContent.cohortClosed.linkUrl"
+            class="btn shrink-0"
+          >
+            {{ programsContent.cohortClosed.linkText }}
+          </NuxtLink>
+        </aside>
+      </div>
+    </section>
 
-  <!-- TRACKS -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <p
-          v-for="(text, index) in programsContent.actionsSection.text"
-          :key="index"
-        >
-          {{ text }}
-        </p>
-      </header>
-      <ul class="tracks js-reveal" v-reveal.stagger>
-        <li
-          v-for="action in programsContent.actionsSection.actions"
-          :key="action.id"
-        >
-          <article class="tile tile--outline track">
-            <span class="icon-badge">
-              <GraduationCapIcon v-if="action.id == 'register'" class="icon" />
-              <HelpingHandIcon
-                v-else-if="action.id == 'volunteer'"
-                class="icon"
-              />
-              <BanknoteIcon v-else-if="action.id == 'sponsor'" class="icon" />
-            </span>
-            <h2 class="tile__title">{{ action.text }}</h2>
-            <span
-              class="btn btn--sm mt-auto w-fit"
-              aria-disabled="true"
-              role="note"
-            >
-              Applications closed
-            </span>
-          </article>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
-    <div class="wrapper">
-      <div class="how js-reveal" v-reveal.stagger>
-        <div>
-          <PhotoComposition
-            :images="programsContent.howItWorksSection.images || []"
-            :max="2"
-          />
-        </div>
-        <header class="site-section__header site-section__header--left !mb-0">
-          <h2 class="site-section__caption">
-            {{ programsContent.howItWorksSection.caption }}
-          </h2>
+    <!-- TRACKS -->
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
           <p
-            v-for="(text, index) in programsContent.howItWorksSection.text"
+            v-for="(text, index) in programsContent.actionsSection.text"
             :key="index"
           >
             {{ text }}
           </p>
         </header>
+        <ul class="tracks js-reveal" v-reveal.stagger>
+          <li
+            v-for="action in programsContent.actionsSection.actions"
+            :key="action.id"
+          >
+            <article class="tile tile--outline track">
+              <span class="icon-badge">
+                <GraduationCapIcon
+                  v-if="action.id == 'register'"
+                  class="icon"
+                />
+                <HelpingHandIcon
+                  v-else-if="action.id == 'volunteer'"
+                  class="icon"
+                />
+                <BanknoteIcon v-else-if="action.id == 'sponsor'" class="icon" />
+              </span>
+              <h2 class="tile__title">{{ action.text }}</h2>
+              <span
+                class="btn btn--sm mt-auto w-fit"
+                aria-disabled="true"
+                role="note"
+              >
+                Applications closed
+              </span>
+            </article>
+          </li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHY PARTICIPATE -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">
-          {{ programsContent.whyParticipateSection.caption }}
-        </h2>
-      </header>
-      <ul class="grid-2 js-reveal" v-reveal.stagger>
-        <li
-          v-for="(detail, index) in programsContent.whyParticipateSection
-            .details"
-          :key="index"
-        >
-          <DoingsCard
-            :card-content="{
-              id: String(index),
-              title: detail.title,
-              text: detail.text,
-            }"
+    <!-- HOW IT WORKS: photo beside a panel -->
+    <section class="site-section pt-0">
+      <div class="wrapper">
+        <div class="zigzag js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            src="/assets/images/photos/photo-8.jpg"
+            alt="An educator leading a lesson, seen from behind"
+            dashes
           />
-        </li>
-      </ul>
-    </div>
-  </section>
+          <div class="panel flex h-full flex-col">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                {{ programsContent.howItWorksSection.caption }}
+              </h2>
+            </div>
+            <div class="panel__body grow">
+              <p
+                v-for="(text, index) in programsContent.howItWorksSection.text"
+                :key="index"
+              >
+                {{ text }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- WHO CAN APPLY + ELIGIBILITY -->
-  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">
-          {{ programsContent.whoCanApplySection.title }}
-        </h2>
-      </header>
-      <ul class="grid-2 js-reveal" v-reveal.stagger>
-        <li
-          v-for="(criteria, role) in programsContent.whoCanApplySection
-            .criteria"
-          :key="role"
-        >
-          <article class="tile tile--outline h-full">
-            <h3 class="tile__title mb-2">{{ criteria.role }}</h3>
-            <p
-              v-for="requirement in criteria.requirements"
-              :key="requirement"
-              class="tile__text"
-            >
-              {{ requirement }}
-            </p>
-          </article>
-        </li>
-      </ul>
+    <!-- WHY PARTICIPATE -->
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">
+            {{ programsContent.whyParticipateSection.caption }}
+          </h2>
+        </header>
+        <ul class="grid-2 js-reveal" v-reveal.stagger>
+          <li
+            v-for="(detail, index) in programsContent.whyParticipateSection
+              .details"
+            :key="index"
+          >
+            <DoingsCard
+              :card-content="{
+                id: String(index),
+                title: detail.title,
+                text: detail.text,
+              }"
+            />
+          </li>
+        </ul>
+      </div>
+    </section>
 
-      <header class="site-section__header js-reveal mt-16" v-reveal>
-        <h2 class="site-section__caption">
-          {{ programsContent.eligibility.title }}
-        </h2>
-      </header>
-      <ul class="grid-2 js-reveal" v-reveal.stagger>
-        <li
-          v-for="(criteria, role) in programsContent.eligibility.criteria"
-          :key="role"
-        >
-          <article class="tile tile--outline h-full">
-            <h3 class="tile__title mb-3">{{ criteria.role }}</h3>
-            <ol class="numbered">
-              <li
+    <!-- WHO CAN APPLY + ELIGIBILITY -->
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">
+            {{ programsContent.whoCanApplySection.title }}
+          </h2>
+        </header>
+        <ul class="grid-2 js-reveal" v-reveal.stagger>
+          <li
+            v-for="(criteria, role) in programsContent.whoCanApplySection
+              .criteria"
+            :key="role"
+          >
+            <article class="tile tile--outline h-full">
+              <h3 class="tile__title mb-2">{{ criteria.role }}</h3>
+              <p
                 v-for="requirement in criteria.requirements"
                 :key="requirement"
+                class="tile__text"
               >
                 {{ requirement }}
+              </p>
+            </article>
+          </li>
+        </ul>
+
+        <header class="site-section__header js-reveal mt-16" v-reveal>
+          <h2 class="site-section__caption">
+            {{ programsContent.eligibility.title }}
+          </h2>
+        </header>
+        <ul class="grid-2 js-reveal" v-reveal.stagger>
+          <li
+            v-for="(criteria, role) in programsContent.eligibility.criteria"
+            :key="role"
+          >
+            <article class="tile tile--outline h-full">
+              <h3 class="tile__title mb-3">{{ criteria.role }}</h3>
+              <ol class="numbered">
+                <li
+                  v-for="requirement in criteria.requirements"
+                  :key="requirement"
+                >
+                  {{ requirement }}
+                </li>
+              </ol>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">
+            {{ programsContent.benefits.title }}
+          </h2>
+        </header>
+        <ul class="checklist js-reveal mx-auto max-w-3xl" v-reveal.stagger>
+          <li
+            v-for="benefit in programsContent.benefits.items"
+            :key="benefit"
+            class="checklist__item"
+          >
+            <span class="checklist__icon-cont"
+              ><ArrowUpRightIcon class="icon"
+            /></span>
+            <p v-html="benefit"></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TIMELINE + SELECTION -->
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">
+            {{ programsContent.programTimeline.title }}
+          </h2>
+        </header>
+        <ol class="timeline js-reveal" v-reveal.stagger>
+          <li
+            v-for="event in programsContent.programTimeline.events"
+            :key="event.date"
+            class="tile tile--outline timeline__event"
+          >
+            <p class="timeline__date">{{ event.date }}</p>
+            <h3 class="tile__title">{{ event.description }}</h3>
+            <ul class="timeline__activities">
+              <li v-for="activity in event.activities" :key="activity">
+                <span v-html="activity"></span>
               </li>
-            </ol>
-          </article>
-        </li>
-      </ul>
-    </div>
-  </section>
+            </ul>
+          </li>
+        </ol>
 
-  <!-- BENEFITS -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">
-          {{ programsContent.benefits.title }}
-        </h2>
-      </header>
-      <ul class="checklist js-reveal mx-auto max-w-3xl" v-reveal.stagger>
-        <li
-          v-for="benefit in programsContent.benefits.items"
-          :key="benefit"
-          class="checklist__item"
+        <header class="site-section__header js-reveal mt-16" v-reveal>
+          <h2 class="site-section__caption">
+            {{ programsContent.selection.title }}
+          </h2>
+          <p
+            v-for="(text, index) in programsContent.selection.text"
+            :key="index"
+          >
+            {{ text }}
+          </p>
+        </header>
+        <p
+          class="tile tile--tint js-reveal mx-auto max-w-3xl text-center font-heading text-lg font-medium text-slate-900"
+          v-reveal
         >
-          <span class="checklist__icon-cont"
-            ><ArrowUpRightIcon class="icon"
-          /></span>
-          <p v-html="benefit"></p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- TIMELINE + SELECTION -->
-  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">
-          {{ programsContent.programTimeline.title }}
-        </h2>
-      </header>
-      <ol class="timeline js-reveal" v-reveal.stagger>
-        <li
-          v-for="event in programsContent.programTimeline.events"
-          :key="event.date"
-          class="tile tile--outline timeline__event"
-        >
-          <p class="timeline__date">{{ event.date }}</p>
-          <h3 class="tile__title">{{ event.description }}</h3>
-          <ul class="timeline__activities">
-            <li v-for="activity in event.activities" :key="activity">
-              <span v-html="activity"></span>
-            </li>
-          </ul>
-        </li>
-      </ol>
-
-      <header class="site-section__header js-reveal mt-16" v-reveal>
-        <h2 class="site-section__caption">
-          {{ programsContent.selection.title }}
-        </h2>
-        <p v-for="(text, index) in programsContent.selection.text" :key="index">
-          {{ text }}
+          {{ programsContent.selection.deadline }}
         </p>
-      </header>
-      <p
-        class="tile tile--tint js-reveal mx-auto max-w-3xl text-center font-heading text-lg font-medium text-slate-900"
-        v-reveal
-      >
-        {{ programsContent.selection.deadline }}
-      </p>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- FAQ -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">{{ programsContent.FAQ.title }}</h2>
-      </header>
-      <ul
-        class="js-reveal mx-auto flex max-w-3xl flex-col gap-3"
-        v-reveal.stagger
-      >
-        <li v-for="(faq, index) in programsContent.FAQ.questions" :key="index">
-          <FAQItem :faq="faq" :index="index" />
-        </li>
-      </ul>
-    </div>
-  </section>
+    <!-- FAQ -->
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">{{ programsContent.FAQ.title }}</h2>
+        </header>
+        <ul
+          class="panel js-reveal mx-auto flex max-w-4xl flex-col gap-3"
+          v-reveal.stagger
+        >
+          <li
+            v-for="(faq, index) in programsContent.FAQ.questions"
+            :key="index"
+          >
+            <FAQItem :faq="faq" :index="index" />
+          </li>
+        </ul>
+      </div>
+    </section>
 
-  <CtaBand
-    :title="programsContent.joinSection.title"
-    :text="programsContent.joinSection.text[0]"
-    :action-text="programsContent.joinSection.actionLink.text"
-    :action-to="programsContent.joinSection.actionLink.url"
-  />
+    <CtaBand
+      :title="programsContent.joinSection.title"
+      :text="programsContent.joinSection.text[0]"
+      :action-text="programsContent.joinSection.actionLink.text"
+      :action-to="programsContent.joinSection.actionLink.url"
+    />
+  </div>
 </template>
 
 <style scoped>
@@ -658,14 +635,6 @@ useHead({
 
 .track {
   @apply flex h-full flex-col gap-4;
-}
-
-.how {
-  @apply grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-16;
-}
-
-.how .site-section__caption {
-  @apply lg:text-4xl;
 }
 
 .grid-2 {

@@ -1,38 +1,38 @@
 <script setup lang="ts">
-/* Inner-page hero: centred title and copy, optional actions, then the
-   page's photos set as a composition beneath. */
-defineProps<{
+/* Inner-page hero: title, copy and actions on the left, the page's
+   photograph on the right. Without a photo it centres. */
+const props = defineProps<{
   caption: string;
   text?: string[];
   images?: { src?: string; alt?: string; type?: string; color?: string }[];
-  photos?: number;
 }>();
+
+const photo = computed(() => props.images?.find((i) => i.src));
 </script>
 <template>
-  <header class="page-intro">
+  <header class="page-intro" :class="{ 'page-intro--plain': !photo }">
     <div class="wrapper">
-      <div class="page-intro__text" v-reveal.stagger>
-        <p v-if="$slots.eyebrow" class="site-section__eyebrow js-reveal">
+      <div class="page-intro__text js-reveal" v-reveal.stagger>
+        <p v-if="$slots.eyebrow" class="site-section__eyebrow">
           <slot name="eyebrow" />
         </p>
-        <h1 class="page-intro__caption js-reveal">{{ caption }}</h1>
-        <p
-          v-for="(t, i) in text"
-          :key="i"
-          class="page-intro__subtext js-reveal"
-        >
+        <h1 class="page-intro__caption">{{ caption }}</h1>
+        <p v-for="(t, i) in text" :key="i" class="page-intro__subtext">
           {{ t }}
         </p>
-        <div v-if="$slots.actions" class="action-cont js-reveal pt-2">
+        <div v-if="$slots.actions" class="action-cont !justify-start pt-1">
           <slot name="actions" />
         </div>
       </div>
-      <div
-        v-if="images && images.length"
-        class="js-reveal w-full"
-        v-reveal="0.15"
-      >
-        <PhotoComposition :images="images" :max="photos ?? 2" eager />
+      <div v-if="photo" class="js-reveal" v-reveal="0.15">
+        <PhotoTile
+          class="page-intro__photo"
+          :src="photo.src!"
+          :alt="photo.alt"
+          sizes="sm:100vw lg:50vw"
+          eager
+          dashes
+        />
       </div>
       <slot />
     </div>

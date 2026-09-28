@@ -16,28 +16,8 @@ const content = ref({
       "We offer a variety of programs to help children in underserved and underdeveloped communities in Africa.",
     images: [
       {
-        src: "/assets/images/photos/photo-16.jpg",
-        alt: "A mentor teaching a group of pupils",
-      },
-      {
-        src: "/assets/images/photos/photo-34.jpg",
-        alt: "Children in a classroom session",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-24.jpg",
-        alt: "Students at a shared computer",
-      },
-      {
-        src: "/assets/images/photos/photo-12.jpg",
-        alt: "Pupils taking part in a tech lesson",
-      },
-      {
-        type: "block",
-        color: "purple",
+        src: "/assets/images/photos/photo-20.jpg",
+        alt: "Pupils posing on their school playground",
       },
     ],
   },
@@ -80,49 +60,50 @@ useHead({
 });
 </script>
 <template>
-  <PageIntro
-    :caption="content.heroSection.caption"
-    :text="[content.heroSection.subtext]"
-    :images="content.heroSection.images"
-    :photos="3"
-  />
+  <div class="page">
+    <PageIntro
+      :caption="content.heroSection.caption"
+      :text="[content.heroSection.subtext]"
+      :images="content.heroSection.images"
+    />
 
-  <section class="site-section">
-    <div class="wrapper">
-      <ul class="program-list" v-reveal.stagger>
-        <li
-          v-for="program in content.programs"
-          :key="program.id"
-          class="js-reveal"
-        >
-          <NuxtLink :to="program.path" class="tile tile--tint program-card">
-            <div class="program-card__top">
-              <span class="icon-badge !bg-white">
-                <BrainCircuitIcon
-                  v-if="program.id === 'ai-for-all'"
-                  class="icon"
-                />
-                <GraduationCapIcon
-                  v-else-if="program.id === 'educators'"
-                  class="icon"
-                />
-                <BookOpenIcon v-else class="icon" />
+    <section class="site-section">
+      <div class="wrapper">
+        <ul class="program-list" v-reveal.stagger>
+          <li
+            v-for="program in content.programs"
+            :key="program.id"
+            class="js-reveal"
+          >
+            <NuxtLink :to="program.path" class="tile tile--tint program-card">
+              <div class="program-card__top">
+                <span class="icon-badge !bg-white">
+                  <BrainCircuitIcon
+                    v-if="program.id === 'ai-for-all'"
+                    class="icon"
+                  />
+                  <GraduationCapIcon
+                    v-else-if="program.id === 'educators'"
+                    class="icon"
+                  />
+                  <BookOpenIcon v-else class="icon" />
+                </span>
+                <span v-if="program.badge" class="program-card__badge">
+                  {{ program.badge }}
+                </span>
+              </div>
+              <h2 class="tile__title">{{ program.title }}</h2>
+              <p class="tile__text">{{ program.text }}</p>
+              <span class="program-card__more">
+                Read more
+                <ArrowUpRightIcon class="icon h-4 w-4" />
               </span>
-              <span v-if="program.badge" class="program-card__badge">
-                {{ program.badge }}
-              </span>
-            </div>
-            <h2 class="tile__title">{{ program.title }}</h2>
-            <p class="tile__text">{{ program.text }}</p>
-            <span class="program-card__more">
-              Read more
-              <ArrowUpRightIcon class="icon h-4 w-4" />
-            </span>
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
-  </section>
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
 </template>
 <style scoped>
 .program-list {

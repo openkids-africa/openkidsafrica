@@ -19,27 +19,7 @@ const newsContent = ref<{
     images: [
       {
         src: "/assets/images/photos/photo-17.jpg",
-        alt: "Hero Image 1",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-18.jpg",
-        alt: "Hero Image 2",
-      },
-      {
-        src: "/assets/images/photos/photo-19.jpg",
-        alt: "Hero Image 3",
-      },
-      {
-        src: "/assets/images/photos/photo-20.jpg",
-        alt: "Hero Image 4",
-      },
-      {
-        type: "block",
-        color: "purple",
+        alt: "The OpenKids Africa and Tech She Can volunteers on a school visit",
       },
     ],
   },
@@ -102,65 +82,70 @@ useHead({
 });
 </script>
 <template>
-  <PageIntro
-    :caption="newsContent.heroSection.title"
-    :text="newsContent.heroSection.text"
-    :images="newsContent.heroSection.images"
-  />
+  <div class="page">
+    <PageIntro
+      :caption="newsContent.heroSection.title"
+      :text="newsContent.heroSection.text"
+      :images="newsContent.heroSection.images"
+    />
 
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">Latest News</h2>
-      </header>
-      <ul class="news-grid" v-reveal.stagger>
-        <li
-          v-for="article in articles || data"
-          :key="article._id"
-          class="js-reveal"
-        >
-          <NuxtLink :to="`/news/${article.slug.current}`" class="block h-full">
-            <ArticleCard :article="article" />
-          </NuxtLink>
-        </li>
-      </ul>
-      <div v-if="hasMore" class="action-cont pt-10">
-        <button
-          :aria-label="isLoading ? 'Loading...' : 'Load More'"
-          class="btn btn--outline"
-          @click="handleFetchNextPage"
-        >
-          <Loader class="icon animate-spin" v-if="isLoading" />
-          <span v-else>Load More</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section class="site-section bg-slate-50 lg:rounded-[3rem]">
-    <div class="wrapper">
-      <header class="site-section__header js-reveal" v-reveal>
-        <h2 class="site-section__caption">Follow along</h2>
-        <p>
-          Day-to-day updates from our school visits and programs are on our
-          social channels.
-        </p>
-      </header>
-      <ul class="follow" v-reveal.stagger>
-        <li v-for="link in socialLinks" :key="link.name" class="js-reveal">
-          <a
-            :href="link.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="chip"
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">Latest News</h2>
+        </header>
+        <ul class="news-grid" v-reveal.stagger>
+          <li
+            v-for="article in articles || data"
+            :key="article._id"
+            class="js-reveal"
           >
-            <span class="chip__icon"><ExternalLinkIcon class="icon" /></span>
-            {{ link.name }}
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
+            <NuxtLink
+              :to="`/news/${article.slug.current}`"
+              class="block h-full"
+            >
+              <ArticleCard :article="article" />
+            </NuxtLink>
+          </li>
+        </ul>
+        <div v-if="hasMore" class="action-cont pt-10">
+          <button
+            :aria-label="isLoading ? 'Loading...' : 'Load More'"
+            class="btn btn--outline"
+            @click="handleFetchNextPage"
+          >
+            <Loader class="icon animate-spin" v-if="isLoading" />
+            <span v-else>Load More</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">Follow along</h2>
+          <p>
+            Day-to-day updates from our school visits and programs are on our
+            social channels.
+          </p>
+        </header>
+        <ul class="follow" v-reveal.stagger>
+          <li v-for="link in socialLinks" :key="link.name" class="js-reveal">
+            <a
+              :href="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="chip"
+            >
+              <span class="chip__icon"><ExternalLinkIcon class="icon" /></span>
+              {{ link.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
 </template>
 <style scoped>
 .news-grid {
