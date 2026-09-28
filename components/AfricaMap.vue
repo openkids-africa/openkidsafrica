@@ -117,7 +117,6 @@ onUnmounted(() => {
       <span class="africa__float africa__dot africa__dot--a"></span>
       <span class="africa__float africa__dot africa__dot--b"></span>
       <span class="africa__float africa__dot africa__dot--c"></span>
-      <span class="africa__float africa__dot africa__dot--d"></span>
     </div>
 
     <div v-if="bubbles && bubbles.length" class="africa__layer" data-depth="42">
@@ -189,11 +188,7 @@ onUnmounted(() => {
 }
 
 .africa__dot--c {
-  @apply bottom-[30%] left-[2%] h-3 w-3 bg-sky-500;
-}
-
-.africa__dot--d {
-  @apply bottom-[12%] right-[22%] h-5 w-5 bg-brand-300;
+  @apply bottom-[6%] left-[16%] h-3 w-3 bg-sky-500;
 }
 
 .africa__bubble {
