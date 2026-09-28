@@ -26,10 +26,20 @@ const content = ref({
       "Open Kids Africa, in partnership with Tech She Can and Microsoft is bringing an internationally accredited AI training program to teachers across Nigeria, helping educators confidently understand, use, and teach AI concepts in their classrooms and beyond.",
     images: [
       {
-        src: "/assets/images/photos/photo-24.jpg",
-        alt: "A facilitator presenting to a class",
+        src: "/assets/images/photos/photo-26.jpg",
+        alt: "A pupil exploring a lesson through a virtual-reality headset",
       },
     ],
+  },
+  photos: {
+    about: {
+      src: "/assets/images/photos/photo-36.jpg",
+      alt: "A teacher leading a full classroom",
+    },
+    gain: {
+      src: "/assets/images/photos/photo-45.jpg",
+      alt: "Pupils following a lesson on the classroom screen",
+    },
   },
   partners: [
     {
@@ -138,7 +148,7 @@ useHead({
     {
       key: "og-image",
       property: "og:image",
-      content: `${SITE_URL}/assets/images/photos/photo-1.jpeg`,
+      content: `${SITE_URL}/assets/images/photos/photo-26.jpg`,
     },
     { key: "twitter-title", name: "twitter:title", content: pageTitle },
     {
@@ -149,7 +159,7 @@ useHead({
     {
       key: "twitter-image",
       name: "twitter:image",
-      content: `${SITE_URL}/assets/images/photos/photo-1.jpeg`,
+      content: `${SITE_URL}/assets/images/photos/photo-26.jpg`,
     },
   ],
   script: [
@@ -208,22 +218,26 @@ useHead({
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ABOUT: classroom photo beside the programme copy -->
     <section class="site-section">
       <div class="wrapper">
-        <div class="split js-reveal" v-reveal.stagger>
-          <header class="site-section__header site-section__header--left !mb-0">
-            <p class="site-section__eyebrow">
-              {{ content.aboutSection.eyebrow }}
-            </p>
-            <h2 class="site-section__caption">
-              {{ content.aboutSection.caption }}
-            </h2>
-          </header>
-          <div class="site-section__text-cont">
-            <p v-for="(text, i) in content.aboutSection.text" :key="i">
-              {{ text }}
-            </p>
+        <div class="zigzag js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            :src="content.photos.about.src"
+            :alt="content.photos.about.alt"
+            dashes
+          />
+          <div class="panel flex h-full flex-col">
+            <div class="panel__body grow justify-center">
+              <p class="site-section__eyebrow">
+                {{ content.aboutSection.eyebrow }}
+              </p>
+              <h2 class="panel-heading">{{ content.aboutSection.caption }}</h2>
+              <p v-for="(text, i) in content.aboutSection.text" :key="i">
+                {{ text }}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -261,34 +275,46 @@ useHead({
       </div>
     </section>
 
-    <!-- GAIN -->
-    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+    <!-- GAIN: the toolkit beside a photo of a lesson in progress -->
+    <section class="site-section pt-0">
       <div class="wrapper">
-        <div class="split js-reveal" v-reveal.stagger>
-          <header class="site-section__header site-section__header--left !mb-0">
-            <p class="site-section__eyebrow">
-              {{ content.gainSection.eyebrow }}
-            </p>
-            <h2 class="site-section__caption">
-              {{ content.gainSection.caption }}
-            </h2>
-            <p>{{ content.gainSection.text }}</p>
-          </header>
-          <ul class="checklist">
-            <li
-              v-for="item in content.gainSection.items"
-              :key="item.id"
-              class="checklist__item !bg-white"
-            >
-              <span class="checklist__icon-cont">
-                <MessageSquareIcon v-if="item.id === 'prompts'" class="icon" />
-                <ImageIcon v-else-if="item.id === 'posters'" class="icon" />
-                <RouteIcon v-else-if="item.id === 'pathways'" class="icon" />
-                <AwardIcon v-else class="icon" />
-              </span>
-              <p>{{ item.text }}</p>
-            </li>
-          </ul>
+        <div class="zigzag zigzag--flip js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            :src="content.photos.gain.src"
+            :alt="content.photos.gain.alt"
+            dashes
+          />
+          <div class="panel flex h-full flex-col">
+            <div class="panel__body grow">
+              <p class="site-section__eyebrow">
+                {{ content.gainSection.eyebrow }}
+              </p>
+              <h2 class="panel-heading">{{ content.gainSection.caption }}</h2>
+              <p>{{ content.gainSection.text }}</p>
+              <ul class="checklist">
+                <li
+                  v-for="item in content.gainSection.items"
+                  :key="item.id"
+                  class="checklist__item"
+                >
+                  <span class="checklist__icon-cont">
+                    <MessageSquareIcon
+                      v-if="item.id === 'prompts'"
+                      class="icon"
+                    />
+                    <ImageIcon v-else-if="item.id === 'posters'" class="icon" />
+                    <RouteIcon
+                      v-else-if="item.id === 'pathways'"
+                      class="icon"
+                    />
+                    <AwardIcon v-else class="icon" />
+                  </span>
+                  <p>{{ item.text }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -303,7 +329,7 @@ useHead({
             </p>
             <h2 class="cta-band__title">{{ content.ctaSection.caption }}</h2>
             <p class="cta-band__text">{{ content.ctaSection.text }}</p>
-            <div class="action-cont !justify-start">
+            <div class="action-cont">
               <a :href="content.ctaSection.actionUrl" class="btn">
                 {{ content.ctaSection.actionText }}
               </a>
@@ -325,16 +351,13 @@ useHead({
   @apply py-8;
 }
 
-.split {
-  @apply flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16;
-}
-
-.split .site-section__caption {
-  @apply lg:text-4xl;
+.panel-heading {
+  @apply font-heading text-2xl font-semibold tracking-tight text-slate-900 lg:text-3xl;
+  text-wrap: balance;
 }
 
 .outcomes {
-  @apply mt-16 flex flex-col gap-6;
+  @apply mt-12 flex flex-col gap-6;
 }
 
 .outcomes__title {

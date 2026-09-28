@@ -43,7 +43,10 @@ const actionLabel = computed(() => {
     : `${verb} ${suffix}`;
 });
 
+const hasAmount = computed(() => Number(formData.value.amount) > 0);
+
 const handleSubmit = () => {
+  if (!hasAmount.value) return;
   isLoading.value = true;
 
   setTimeout(() => {
@@ -110,7 +113,11 @@ watch(
       </div>
 
       <div class="mt-auto flex flex-col gap-3">
-        <button :disabled="isLoading" type="submit" class="btn w-full !py-4">
+        <button
+          :disabled="isLoading || !hasAmount"
+          type="submit"
+          class="btn w-full !py-4"
+        >
           <LoaderIcon v-if="isLoading" class="icon animate-spin" />
           <span class="text">{{ actionLabel }}</span>
         </button>
