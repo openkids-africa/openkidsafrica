@@ -8,7 +8,6 @@ import {
   MegaphoneIcon,
   RecycleIcon,
   ScaleIcon,
-  SparklesIcon,
   UsersIcon,
 } from "lucide-vue-next";
 import { gsap } from "gsap";
@@ -352,7 +351,6 @@ useHead({
             <span
               class="chip africa__chip africa__float hero__chip hero__chip--free"
             >
-              <span class="chip__icon"><SparklesIcon class="icon" /></span>
               Free tech lessons in rural schools
             </span>
           </AfricaMap>

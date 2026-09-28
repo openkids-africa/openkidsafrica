@@ -1,13 +1,12 @@
 <script setup lang="ts">
 /* Three round photographs set as a cluster: one large, two smaller ones
-   overlapping its edge, on a dotted field. */
+   overlapping its edge. */
 defineProps<{
   photos: { src: string; alt: string }[];
 }>();
 </script>
 <template>
   <div class="cluster">
-    <span class="cluster__field" aria-hidden="true"></span>
     <span class="cluster__dot cluster__dot--a" aria-hidden="true"></span>
     <span class="cluster__dot cluster__dot--b" aria-hidden="true"></span>
     <figure
@@ -30,16 +29,6 @@ defineProps<{
 <style scoped>
 .cluster {
   @apply relative mx-auto aspect-square w-full max-w-[30rem];
-}
-
-.cluster__field {
-  @apply absolute left-0 top-[8%] h-[55%] w-[55%] rounded-3xl;
-  background-image: radial-gradient(
-    circle,
-    rgb(253 186 116) 1.6px,
-    transparent 1.8px
-  );
-  background-size: 12px 12px;
 }
 
 .cluster__photo {

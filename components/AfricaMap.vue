@@ -1,8 +1,8 @@
 <script setup lang="ts">
 /* The hero visual: photographs cut to the outline of Africa, cross-fading
-   in turn, over a dotted echo of the same outline. Small round photographs,
-   coloured dots and whatever the page slots in float around it, and the
-   layers drift apart slightly as the pointer moves. */
+   in turn. Small round photographs, coloured dots and whatever the page
+   slots in float around it, and the layers drift apart slightly as the
+   pointer moves. */
 import { gsap } from "gsap";
 
 interface Photo {
@@ -38,17 +38,6 @@ onMounted(() => {
       ".africa__shape",
       { autoAlpha: 0, scale: 0.9, rotate: -5 },
       { autoAlpha: 1, scale: 1, rotate: 0, duration: 1.3, ease: "power3.out" },
-    );
-    gsap.fromTo(
-      ".africa__dots",
-      { autoAlpha: 0, scale: 0.94 },
-      {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 1.4,
-        delay: 0.15,
-        ease: "power3.out",
-      },
     );
     gsap.fromTo(
       ".africa__float",
@@ -108,10 +97,6 @@ onUnmounted(() => {
 </script>
 <template>
   <div ref="root" class="africa">
-    <div class="africa__layer" data-depth="-14">
-      <div class="africa__dots africa__mask" aria-hidden="true"></div>
-    </div>
-
     <div class="africa__layer" data-depth="18">
       <div class="africa__shape africa__mask">
         <NuxtImg
@@ -172,18 +157,6 @@ onUnmounted(() => {
   -webkit-mask: url("/assets/images/svg/africa-map.svg") center / contain
     no-repeat;
   mask: url("/assets/images/svg/africa-map.svg") center / contain no-repeat;
-}
-
-/* A dotted echo of the outline, set slightly off the photograph. */
-.africa__dots {
-  @apply absolute inset-0;
-  transform: translate(-5%, 4%) scale(1.07);
-  background-image: radial-gradient(
-    circle,
-    rgb(253 186 116) 1.7px,
-    transparent 1.9px
-  );
-  background-size: 11px 11px;
 }
 
 .africa__shape {

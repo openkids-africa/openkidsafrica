@@ -4,10 +4,10 @@ import {
   BrainCircuitIcon,
   CompassIcon,
   ImageIcon,
+  LaptopIcon,
   MessageSquareIcon,
   RouteIcon,
   SearchCheckIcon,
-  SparklesIcon,
 } from "lucide-vue-next";
 
 const SITE_URL = "https://www.openkidsafrica.org";
@@ -255,10 +255,7 @@ useHead({
                     v-if="outcome.id === 'understanding'"
                     class="icon"
                   />
-                  <SparklesIcon
-                    v-else-if="outcome.id === 'using'"
-                    class="icon"
-                  />
+                  <LaptopIcon v-else-if="outcome.id === 'using'" class="icon" />
                   <SearchCheckIcon
                     v-else-if="outcome.id === 'critical'"
                     class="icon"
