@@ -4,6 +4,7 @@ import { ArrowUpRightIcon } from "lucide-vue-next";
 defineProps<{
   article: ArticleCard;
 }>();
+const { formatDate } = useFormat();
 </script>
 <template>
   <article class="article-card">
@@ -18,7 +19,9 @@ defineProps<{
     </figure>
     <div class="article-card__body">
       <div class="article-card__meta">
-        <time>{{ new Date(article.publishedAt).toLocaleDateString() }}</time>
+        <time :datetime="article.publishedAt">{{
+          formatDate(article.publishedAt)
+        }}</time>
         <span aria-hidden="true">·</span>
         <span>{{ article.author.name }}</span>
       </div>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ArrowUpRightIcon, MailIcon } from "lucide-vue-next";
-
 const donateContent = ref({
   heroSection: {
     caption: "Donate to Openkids Africa",
@@ -178,10 +176,7 @@ useHead({
     :images="donateContent.heroSection.images"
   >
     <template #actions>
-      <a href="#give" class="btn">
-        Give now
-        <ArrowUpRightIcon class="icon" />
-      </a>
+      <a href="#give" class="btn"> Give now </a>
       <a href="#video-section" class="btn btn--outline">Watch our video</a>
     </template>
   </PageIntro>
@@ -189,7 +184,7 @@ useHead({
   <!-- IMPACT + VIDEO -->
   <section id="video-section" class="site-section scroll-mt-24">
     <div class="wrapper">
-      <div class="impact">
+      <div class="impact js-reveal" v-reveal.stagger>
         <div class="tile tile--tint impact__text">
           <h2 class="site-section__caption !text-3xl lg:!text-4xl">
             {{ donateContent.impactSection.title }}
@@ -226,10 +221,10 @@ useHead({
   <!-- WHAT YOUR GIFT DOES -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">What your monthly gift does</h2>
       </header>
-      <ul class="tiers">
+      <ul class="tiers js-reveal" v-reveal.stagger>
         <li
           v-for="(option, index) in donateContent.donateSection.donateOptions"
           :key="index"
@@ -246,13 +241,13 @@ useHead({
   <!-- GIVE -->
   <section id="give" class="site-section scroll-mt-24">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           Donate to Empower Children in Rural Schools in Africa
         </h2>
       </header>
       <div class="mx-auto max-w-3xl">
-        <DonateForm />
+        <div class="js-reveal" v-reveal><DonateForm /></div>
       </div>
     </div>
   </section>
@@ -260,13 +255,13 @@ useHead({
   <!-- WAYS -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ donateContent.waysSection.title }}
         </h2>
         <p>{{ donateContent.waysSection.text }}</p>
       </header>
-      <div class="ways">
+      <div class="ways js-reveal" v-reveal.stagger>
         <article class="tile tile--outline way">
           <h3 class="tile__title">Donate via PayPal</h3>
           <p class="tile__text">
@@ -280,7 +275,6 @@ useHead({
             class="btn mt-auto w-fit"
           >
             Donate via PayPal
-            <ArrowUpRightIcon class="icon" />
           </a>
         </article>
         <article class="tile tile--outline way">
@@ -307,7 +301,6 @@ useHead({
             class="btn btn--outline mt-auto w-fit"
           >
             Email Us
-            <MailIcon class="icon" />
           </a>
         </article>
         <article class="tile tile--outline way">
@@ -324,7 +317,6 @@ useHead({
             class="btn btn--outline mt-auto w-fit"
           >
             Email Us
-            <MailIcon class="icon" />
           </a>
         </article>
       </div>
@@ -334,13 +326,16 @@ useHead({
   <!-- FAQ -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ donateContent.faqSection.caption }}
         </h2>
         <p>{{ donateContent.faqSection.subtext }}</p>
       </header>
-      <ul class="mx-auto flex max-w-3xl flex-col gap-3">
+      <ul
+        class="js-reveal mx-auto flex max-w-3xl flex-col gap-3"
+        v-reveal.stagger
+      >
         <li v-for="(faq, index) in donateContent.faqSection.faqs" :key="index">
           <FAQItem :faq="faq" :index="index" />
         </li>
@@ -351,7 +346,9 @@ useHead({
   <PartnersSection :section-data="donateContent.partnersSection">
     <template #illustration>
       <div class="mt-16">
-        <SiteSlideshow :images="donateContent.partnersSection.images" />
+        <div class="js-reveal" v-reveal>
+          <SiteSlideshow :images="donateContent.partnersSection.images" />
+        </div>
       </div>
     </template>
   </PartnersSection>

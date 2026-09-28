@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ArrowUpRightIcon } from "lucide-vue-next";
 const programsContent = ref({
   heroSection: {
     caption: "Empowering Every Child: The OpenKids Africa Kids Program",
@@ -142,7 +141,6 @@ useHead({
     <template #actions>
       <NuxtLink :to="programsContent.joinSection.actionLink.url" class="btn">
         {{ programsContent.joinSection.actionLink.text }}
-        <ArrowUpRightIcon class="icon" />
       </NuxtLink>
     </template>
   </PageIntro>
@@ -150,7 +148,7 @@ useHead({
   <!-- WHY -->
   <section class="site-section">
     <div class="wrapper">
-      <div class="split">
+      <div class="split js-reveal" v-reveal.stagger>
         <header class="site-section__header site-section__header--left !mb-0">
           <h2 class="site-section__caption">
             {{ programsContent.whySection.title }}
@@ -168,33 +166,40 @@ useHead({
     </div>
   </section>
 
-  <!-- APPROACH -->
+  <!-- APPROACH: copy beside a photo group, not a grid of six -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ programsContent.approachSection.title }}
-        </h2>
-        <p
-          v-for="(text, index) in programsContent.approachSection.text"
-          :key="index"
-        >
-          {{ text }}
-        </p>
-      </header>
-      <SiteHeroImagesGrid :images="programsContent.approachSection.images" />
+      <div class="approach js-reveal" v-reveal.stagger>
+        <div>
+          <PhotoComposition
+            :images="programsContent.approachSection.images"
+            :max="3"
+          />
+        </div>
+        <header class="site-section__header site-section__header--left !mb-0">
+          <h2 class="site-section__caption">
+            {{ programsContent.approachSection.title }}
+          </h2>
+          <p
+            v-for="(text, index) in programsContent.approachSection.text"
+            :key="index"
+          >
+            {{ text }}
+          </p>
+        </header>
+      </div>
     </div>
   </section>
 
   <!-- OBJECTIVES -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ programsContent.objectiveSection.title }}
         </h2>
       </header>
-      <ul class="objectives">
+      <ul class="objectives js-reveal" v-reveal.stagger>
         <li
           v-for="objective in programsContent.objectiveSection.objectives"
           :key="objective.id"
@@ -217,8 +222,13 @@ useHead({
   @apply flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16;
 }
 
-.split .site-section__caption {
+.split .site-section__caption,
+.approach .site-section__caption {
   @apply lg:text-4xl;
+}
+
+.approach {
+  @apply grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-14;
 }
 
 .objectives {

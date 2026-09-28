@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
 const SITE_URL = "https://www.openkidsafrica.org";
 
 const route = useRoute();
@@ -138,6 +132,13 @@ useHead({
     },
   ],
   script: [
+    {
+      /* Marks the document as scripted before first paint, so reveal
+         targets start hidden only when the motion plugin will show them. */
+      key: "js-flag",
+      innerHTML: "document.documentElement.classList.add('js')",
+      tagPosition: "head",
+    },
     {
       type: "application/ld+json",
       innerHTML: JSON.stringify({

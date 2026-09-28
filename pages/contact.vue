@@ -64,17 +64,14 @@ useHead({
     :images="contactContent.heroSection.images"
   >
     <template #actions>
-      <a href="mailto:openkidsafrica@gmail.com" class="btn">
-        Email Us
-        <MailIcon class="icon" />
-      </a>
+      <a href="mailto:openkidsafrica@gmail.com" class="btn">Email Us</a>
     </template>
   </PageIntro>
 
   <section class="site-section">
     <div class="wrapper">
-      <div class="contact">
-        <aside class="tile tile--tint contact__aside">
+      <div class="contact" v-reveal.stagger>
+        <aside class="tile tile--tint contact__aside js-reveal">
           <h2 class="tile__title">Contact Us</h2>
           <p class="tile__text">
             Send us a message and we will get back to you.
@@ -84,7 +81,7 @@ useHead({
             openkidsafrica@gmail.com
           </a>
         </aside>
-        <ContactForm />
+        <div class="js-reveal"><ContactForm /></div>
       </div>
     </div>
   </section>

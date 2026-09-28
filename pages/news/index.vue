@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Loader } from "lucide-vue-next";
+import { Loader, ExternalLinkIcon } from "lucide-vue-next";
+const { socialLinks } = useSiteNav();
 const query = groq`
 *[_type == "post" && (
   publishedAt > $lastPublishedAt ||
@@ -53,8 +54,9 @@ const getLastItem = (value: string | any[]) => value[value.length - 1];
 
 const fetchNextPage = async () => {
   isLoading.value = true;
-  if (lastId === null) {
-    return [];
+  if (lastId.value === null) {
+    isLoading.value = false;
+    return ref([]);
   }
 
   const { data: result } = await useSanityQuery(query, {
@@ -84,20 +86,19 @@ const { data, refresh } = useSanityQuery(query, {
 });
 
 articles.value = data.value;
-if (data.value) {
+if (data.value?.length) {
   lastPublishedAt.value = getLastItem(data.value).publishedAt;
   lastId.value = getLastItem(data.value)._id;
 }
+/* Derived from the fetched data, so server and client agree on it during
+   hydration; a page shorter than three posts is the last one. */
+const hasMore = computed(() => {
+  const list = articles.value?.length ? articles.value : data.value;
+  return lastId.value !== null && (list?.length ?? 0) >= 3;
+});
 
 useHead({
   title: "News",
-  script: [
-    {
-      src: "https://platform.twitter.com/widgets.js",
-      async: true,
-      defer: true,
-    },
-  ],
 });
 </script>
 <template>
@@ -109,20 +110,23 @@ useHead({
 
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">Latest News</h2>
       </header>
-      <ul class="news-grid">
-        <li v-for="article in articles || data" :key="article._id">
+      <ul class="news-grid" v-reveal.stagger>
+        <li
+          v-for="article in articles || data"
+          :key="article._id"
+          class="js-reveal"
+        >
           <NuxtLink :to="`/news/${article.slug.current}`" class="block h-full">
             <ArticleCard :article="article" />
           </NuxtLink>
         </li>
       </ul>
-      <div class="action-cont pt-10">
+      <div v-if="hasMore" class="action-cont pt-10">
         <button
           :aria-label="isLoading ? 'Loading...' : 'Load More'"
-          v-if="lastId !== null"
           class="btn btn--outline"
           @click="handleFetchNextPage"
         >
@@ -135,22 +139,35 @@ useHead({
 
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">Tweets</h2>
-        <p>Follow us on Twitter to get the latest updates and news.</p>
+      <header class="site-section__header js-reveal" v-reveal>
+        <h2 class="site-section__caption">Follow along</h2>
+        <p>
+          Day-to-day updates from our school visits and programs are on our
+          social channels.
+        </p>
       </header>
-      <div class="mx-auto max-w-2xl overflow-hidden rounded-tile">
-        <a
-          class="twitter-timeline flex justify-center text-center"
-          href="https://twitter.com/openkidsafrica?ref_src=twsrc%5Etfw"
-          >Tweets by openkidsafrica</a
-        >
-      </div>
+      <ul class="follow" v-reveal.stagger>
+        <li v-for="link in socialLinks" :key="link.name" class="js-reveal">
+          <a
+            :href="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chip"
+          >
+            <span class="chip__icon"><ExternalLinkIcon class="icon" /></span>
+            {{ link.name }}
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 <style scoped>
 .news-grid {
   @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.follow {
+  @apply flex flex-wrap justify-center gap-3;
 }
 </style>

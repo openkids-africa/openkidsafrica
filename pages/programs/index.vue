@@ -84,12 +84,17 @@ useHead({
     :caption="content.heroSection.caption"
     :text="[content.heroSection.subtext]"
     :images="content.heroSection.images"
+    :photos="3"
   />
 
   <section class="site-section">
     <div class="wrapper">
-      <ul class="program-list">
-        <li v-for="program in content.programs" :key="program.id">
+      <ul class="program-list" v-reveal.stagger>
+        <li
+          v-for="program in content.programs"
+          :key="program.id"
+          class="js-reveal"
+        >
           <NuxtLink :to="program.path" class="tile tile--tint program-card">
             <div class="program-card__top">
               <span class="icon-badge !bg-white">

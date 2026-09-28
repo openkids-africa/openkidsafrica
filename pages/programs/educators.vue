@@ -400,7 +400,7 @@ useHead({
   <!-- COHORT CLOSED -->
   <section class="site-section site-section--tight">
     <div class="wrapper">
-      <aside class="tile tile--tint cohort-closed">
+      <aside class="tile tile--tint cohort-closed js-reveal" v-reveal>
         <div>
           <p class="tile__title">{{ programsContent.cohortClosed.title }}</p>
           <p class="tile__text">{{ programsContent.cohortClosed.text }}</p>
@@ -410,7 +410,6 @@ useHead({
           class="btn shrink-0"
         >
           {{ programsContent.cohortClosed.linkText }}
-          <ArrowUpRightIcon class="icon" />
         </NuxtLink>
       </aside>
     </div>
@@ -419,7 +418,7 @@ useHead({
   <!-- TRACKS -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <p
           v-for="(text, index) in programsContent.actionsSection.text"
           :key="index"
@@ -427,7 +426,7 @@ useHead({
           {{ text }}
         </p>
       </header>
-      <ul class="tracks">
+      <ul class="tracks js-reveal" v-reveal.stagger>
         <li
           v-for="action in programsContent.actionsSection.actions"
           :key="action.id"
@@ -458,10 +457,13 @@ useHead({
   <!-- HOW IT WORKS -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <div class="how">
-        <SiteHeroImagesGrid
-          :images="programsContent.howItWorksSection.images || []"
-        />
+      <div class="how js-reveal" v-reveal.stagger>
+        <div>
+          <PhotoComposition
+            :images="programsContent.howItWorksSection.images || []"
+            :max="2"
+          />
+        </div>
         <header class="site-section__header site-section__header--left !mb-0">
           <h2 class="site-section__caption">
             {{ programsContent.howItWorksSection.caption }}
@@ -480,12 +482,12 @@ useHead({
   <!-- WHY PARTICIPATE -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ programsContent.whyParticipateSection.caption }}
         </h2>
       </header>
-      <ul class="grid-2">
+      <ul class="grid-2 js-reveal" v-reveal.stagger>
         <li
           v-for="(detail, index) in programsContent.whyParticipateSection
             .details"
@@ -506,12 +508,12 @@ useHead({
   <!-- WHO CAN APPLY + ELIGIBILITY -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ programsContent.whoCanApplySection.title }}
         </h2>
       </header>
-      <ul class="grid-2">
+      <ul class="grid-2 js-reveal" v-reveal.stagger>
         <li
           v-for="(criteria, role) in programsContent.whoCanApplySection
             .criteria"
@@ -530,12 +532,12 @@ useHead({
         </li>
       </ul>
 
-      <header class="site-section__header mt-16">
+      <header class="site-section__header js-reveal mt-16" v-reveal>
         <h2 class="site-section__caption">
           {{ programsContent.eligibility.title }}
         </h2>
       </header>
-      <ul class="grid-2">
+      <ul class="grid-2 js-reveal" v-reveal.stagger>
         <li
           v-for="(criteria, role) in programsContent.eligibility.criteria"
           :key="role"
@@ -559,12 +561,12 @@ useHead({
   <!-- BENEFITS -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ programsContent.benefits.title }}
         </h2>
       </header>
-      <ul class="checklist mx-auto max-w-3xl">
+      <ul class="checklist js-reveal mx-auto max-w-3xl" v-reveal.stagger>
         <li
           v-for="benefit in programsContent.benefits.items"
           :key="benefit"
@@ -582,12 +584,12 @@ useHead({
   <!-- TIMELINE + SELECTION -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ programsContent.programTimeline.title }}
         </h2>
       </header>
-      <ol class="timeline">
+      <ol class="timeline js-reveal" v-reveal.stagger>
         <li
           v-for="event in programsContent.programTimeline.events"
           :key="event.date"
@@ -603,7 +605,7 @@ useHead({
         </li>
       </ol>
 
-      <header class="site-section__header mt-16">
+      <header class="site-section__header js-reveal mt-16" v-reveal>
         <h2 class="site-section__caption">
           {{ programsContent.selection.title }}
         </h2>
@@ -612,7 +614,8 @@ useHead({
         </p>
       </header>
       <p
-        class="tile tile--tint mx-auto max-w-3xl text-center font-heading text-lg font-medium text-slate-900"
+        class="tile tile--tint js-reveal mx-auto max-w-3xl text-center font-heading text-lg font-medium text-slate-900"
+        v-reveal
       >
         {{ programsContent.selection.deadline }}
       </p>
@@ -622,10 +625,13 @@ useHead({
   <!-- FAQ -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">{{ programsContent.FAQ.title }}</h2>
       </header>
-      <ul class="mx-auto flex max-w-3xl flex-col gap-3">
+      <ul
+        class="js-reveal mx-auto flex max-w-3xl flex-col gap-3"
+        v-reveal.stagger
+      >
         <li v-for="(faq, index) in programsContent.FAQ.questions" :key="index">
           <FAQItem :faq="faq" :index="index" />
         </li>
@@ -655,7 +661,7 @@ useHead({
 }
 
 .how {
-  @apply grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16;
+  @apply grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-center lg:gap-16;
 }
 
 .how .site-section__caption {

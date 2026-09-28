@@ -4,7 +4,6 @@ import {
   BrainCircuitIcon,
   CompassIcon,
   ImageIcon,
-  MailIcon,
   MessageSquareIcon,
   RouteIcon,
   SearchCheckIcon,
@@ -216,14 +215,13 @@ useHead({
     <template #actions>
       <a :href="content.ctaSection.actionUrl" class="btn">
         Bring AI for All to your school
-        <MailIcon class="icon" />
       </a>
     </template>
   </PageIntro>
 
   <section class="site-section site-section--tight">
     <div class="wrapper">
-      <div class="tile tile--outline partner-bar">
+      <div class="tile tile--outline partner-bar js-reveal" v-reveal>
         <PartnerLockup :partners="content.partners" />
       </div>
     </div>
@@ -232,7 +230,7 @@ useHead({
   <!-- ABOUT -->
   <section class="site-section">
     <div class="wrapper">
-      <div class="split">
+      <div class="split js-reveal" v-reveal.stagger>
         <header class="site-section__header site-section__header--left !mb-0">
           <p class="site-section__eyebrow">
             {{ content.aboutSection.eyebrow }}
@@ -249,10 +247,10 @@ useHead({
       </div>
 
       <div class="outcomes">
-        <h3 class="outcomes__title">
+        <h3 class="outcomes__title js-reveal" v-reveal>
           {{ content.aboutSection.outcomes.title }}
         </h3>
-        <ul class="outcomes__list">
+        <ul class="outcomes__list js-reveal" v-reveal.stagger>
           <li
             v-for="outcome in content.aboutSection.outcomes.items"
             :key="outcome.id"
@@ -282,7 +280,7 @@ useHead({
   <!-- GAIN -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <div class="split">
+      <div class="split js-reveal" v-reveal.stagger>
         <header class="site-section__header site-section__header--left !mb-0">
           <p class="site-section__eyebrow">{{ content.gainSection.eyebrow }}</p>
           <h2 class="site-section__caption">
@@ -312,7 +310,7 @@ useHead({
   <!-- CTA -->
   <section class="site-section site-section--tight">
     <div class="wrapper">
-      <div class="cta-band">
+      <div class="cta-band js-reveal" v-reveal>
         <div class="wrapper">
           <p class="site-section__eyebrow">{{ content.ctaSection.eyebrow }}</p>
           <h2 class="cta-band__title">{{ content.ctaSection.caption }}</h2>
@@ -320,7 +318,6 @@ useHead({
           <div class="action-cont !justify-start">
             <a :href="content.ctaSection.actionUrl" class="btn">
               {{ content.ctaSection.actionText }}
-              <MailIcon class="icon" />
             </a>
           </div>
           <p class="text-sm text-slate-600">

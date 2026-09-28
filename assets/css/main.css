@@ -29,7 +29,7 @@ summary:focus-visible,
 
   /* BUTTONS — every control is a pill. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-transparent bg-brand-600 px-6 py-3 font-heading text-base font-semibold text-white transition-colors duration-200 hover:bg-brand-700 active:bg-brand-800;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-transparent bg-brand-600 px-6 py-3 font-heading text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-pill active:translate-y-0 active:bg-brand-800;
   }
 
   .btn--secondary,
@@ -155,7 +155,11 @@ summary:focus-visible,
 
 /* TILES — the rounded panels the reference builds everything from. */
 .tile {
-  @apply relative overflow-hidden rounded-tile bg-slate-50 p-6;
+  @apply relative overflow-hidden rounded-tile bg-slate-50 p-6 transition-transform duration-300;
+}
+
+a.tile:hover {
+  @apply -translate-y-1;
 }
 
 .tile--tint {
@@ -415,6 +419,10 @@ a.mini-card:hover,
   @apply grid grid-cols-2 gap-3 md:grid-cols-4;
 }
 
+.photo-strip--3 {
+  @apply md:grid-cols-3;
+}
+
 .photo-strip > figure {
   @apply aspect-[4/3] overflow-hidden rounded-2xl bg-brand-100 md:aspect-[3/4];
 }
@@ -438,4 +446,79 @@ a.mini-card:hover,
 
 .prose :where(img) {
   @apply rounded-2xl;
+}
+
+/* MOTION
+   .js-reveal starts hidden only on a scripted document; the motion plugin
+   arms it and animates it in. Anything never armed (the plugin failed to
+   run) becomes visible on its own after a moment. */
+html.js .js-reveal:not(.is-armed) {
+  opacity: 0;
+  animation: reveal-fallback 0s 2.5s forwards;
+}
+
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .js-reveal {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-leave-to {
+  opacity: 0;
+}
+
+/* PHOTO COMPOSITION — one to three photos set as an editorial group. */
+.photo-comp {
+  @apply grid w-full gap-3;
+}
+
+.photo-comp > figure {
+  @apply relative overflow-hidden rounded-tile bg-brand-100;
+}
+
+.photo-comp > figure > img {
+  @apply h-full w-full object-cover;
+}
+
+.photo-comp--1 > figure {
+  @apply aspect-[16/10] lg:aspect-[21/9];
+}
+
+.photo-comp--2 {
+  @apply lg:grid-cols-[3fr_2fr];
+}
+
+.photo-comp--2 > figure {
+  @apply aspect-[16/10] lg:aspect-auto lg:h-[26rem];
+}
+
+.photo-comp--3 {
+  @apply grid-cols-2 lg:grid-cols-3 lg:grid-rows-2;
+}
+
+.photo-comp--3 > figure:first-child {
+  @apply col-span-2 aspect-[16/10] lg:row-span-2 lg:aspect-auto lg:h-full;
+}
+
+.photo-comp--3 > figure:not(:first-child) {
+  @apply aspect-[4/3] lg:aspect-auto lg:h-52;
 }

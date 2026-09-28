@@ -1,11 +1,36 @@
 <script setup lang="ts">
 import {
-  ArrowUpRightIcon,
   ArrowRightIcon,
   SparklesIcon,
   GraduationCapIcon,
-  HeartHandshakeIcon,
 } from "lucide-vue-next";
+import { gsap } from "gsap";
+
+/* Hero entrance: copy first, then the bento columns in sequence. */
+onMounted(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document
+      .querySelectorAll(".hero .js-reveal")
+      .forEach((el) => el.classList.add("is-armed"));
+    return;
+  }
+  const copy = gsap.utils.toArray<HTMLElement>(".hero__text > .js-reveal");
+  const cols = gsap.utils.toArray<HTMLElement>(".hero .bento__col");
+  [...copy, ...cols].forEach((el) => el.classList.add("is-armed"));
+  gsap
+    .timeline({ defaults: { ease: "power3.out" } })
+    .fromTo(
+      copy,
+      { autoAlpha: 0, y: 24 },
+      { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.09 },
+    )
+    .fromTo(
+      cols,
+      { autoAlpha: 0, y: 34, scale: 0.98 },
+      { autoAlpha: 1, y: 0, scale: 1, duration: 0.9, stagger: 0.1 },
+      "-=0.45",
+    );
+});
 
 const content = ref({
   heroSection: {
@@ -74,10 +99,6 @@ const content = ref({
       {
         src: "/assets/images/photos/photo-24.jpg",
         alt: "Students at a computer",
-      },
-      {
-        src: "/assets/images/photos/photo-16.jpg",
-        alt: "A mentor with pupils",
       },
       { src: "/assets/images/photos/photo-34.jpg", alt: "Children in class" },
     ],
@@ -161,14 +182,17 @@ useHead({
   <header class="hero">
     <div class="wrapper">
       <div class="hero__text">
-        <p class="site-section__eyebrow">{{ content.heroSection.subtext }}</p>
-        <h1 class="hero__caption">{{ content.heroSection.caption }}</h1>
-        <p class="hero__subtext">{{ content.welcomeSection.text[0] }}</p>
-        <div class="action-cont">
-          <NuxtLink to="/donate" class="btn">
-            Donate Now
-            <ArrowUpRightIcon class="icon" />
-          </NuxtLink>
+        <p class="site-section__eyebrow js-reveal">
+          {{ content.heroSection.subtext }}
+        </p>
+        <h1 class="hero__caption js-reveal">
+          {{ content.heroSection.caption }}
+        </h1>
+        <p class="hero__subtext js-reveal">
+          {{ content.welcomeSection.text[0] }}
+        </p>
+        <div class="action-cont js-reveal">
+          <NuxtLink to="/donate" class="btn">Donate Now</NuxtLink>
           <NuxtLink to="/programs/ai-for-all" class="chip hero__announce">
             <span class="hero__announce-tag">New</span>
             AI for All — teacher training with Tech She Can × Microsoft
@@ -179,9 +203,9 @@ useHead({
 
       <!-- Bento: photo · facts · pillar · volunteer -->
       <div class="bento">
-        <div class="bento__col">
+        <div class="bento__col js-reveal">
           <SparklesIcon class="bento__spark" aria-hidden="true" />
-          <figure class="tile tile--photo bento__photo">
+          <figure class="tile tile--photo bento__photo" v-parallax="10">
             <NuxtImg
               :src="content.heroSection.images[0].src"
               :alt="content.heroSection.images[0].alt"
@@ -197,7 +221,7 @@ useHead({
           </span>
         </div>
 
-        <div class="bento__col">
+        <div class="bento__col js-reveal">
           <span class="chip">Over 1,000 children reached so far</span>
           <div class="tile tile--tint bento__stat">
             <p class="tile__stat">{{ content.statsSection.stats[0].value }}</p>
@@ -205,7 +229,7 @@ useHead({
           </div>
         </div>
 
-        <div class="bento__col">
+        <div class="bento__col js-reveal">
           <div class="tile tile--tint bento__pillar">
             <span class="icon-badge"><GraduationCapIcon class="icon" /></span>
             <h2 class="tile__title">
@@ -215,19 +239,17 @@ useHead({
               {{ content.whatWeDoSection.cards[5].text }}
             </p>
           </div>
-          <NuxtLink to="/programs" class="btn btn--outline w-full">
-            See our programs
-            <ArrowUpRightIcon class="icon" />
-          </NuxtLink>
+          <NuxtLink to="/programs" class="btn btn--outline w-full"
+            >See our programs</NuxtLink
+          >
         </div>
 
-        <div class="bento__col">
+        <div class="bento__col js-reveal">
           <NuxtLink to="/about/team#champions" class="btn btn--outline w-full">
             Be an Education Champion
-            <ArrowUpRightIcon class="icon" />
           </NuxtLink>
           <div class="tile tile--tint bento__volunteer">
-            <figure class="bento__volunteer-photo">
+            <figure class="bento__volunteer-photo" v-parallax="8">
               <NuxtImg
                 :src="content.heroSection.images[1].src"
                 :alt="content.heroSection.images[1].alt"
@@ -247,7 +269,7 @@ useHead({
   <!-- NUMBERS -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">{{ content.statsSection.title }}</h2>
         <p>{{ content.welcomeSection.text[1] }}</p>
       </header>
@@ -258,25 +280,34 @@ useHead({
   <!-- WHAT WE DO -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <div class="photo-strip mb-12">
-        <figure v-for="p in content.whatWeDoSection.photos" :key="p.src">
+      <div class="photo-strip photo-strip--3 mb-12" v-reveal.stagger>
+        <figure
+          v-for="p in content.whatWeDoSection.photos"
+          :key="p.src"
+          class="js-reveal"
+          v-parallax="10"
+        >
           <NuxtImg
             :src="p.src"
             :alt="p.alt"
             format="webp"
-            sizes="sm:50vw md:25vw"
+            sizes="sm:50vw md:33vw"
             loading="lazy"
           />
         </figure>
       </div>
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ content.whatWeDoSection.title }}
         </h2>
         <p>{{ content.whatWeDoSection.text }}</p>
       </header>
-      <ul class="pillars">
-        <li v-for="card in content.whatWeDoSection.cards" :key="card.id">
+      <ul class="pillars" v-reveal.stagger>
+        <li
+          v-for="card in content.whatWeDoSection.cards"
+          :key="card.id"
+          class="js-reveal"
+        >
           <DoingsCard :card-content="card" />
         </li>
       </ul>
@@ -286,18 +317,17 @@ useHead({
   <!-- FOUNDER -->
   <section class="site-section">
     <div class="wrapper">
-      <div class="founder">
-        <div class="founder__text">
+      <div class="founder" v-reveal.stagger>
+        <div class="founder__text js-reveal">
           <p class="site-section__eyebrow">From our founder</p>
           <h2 class="site-section__caption">
             {{ content.founderSection.title }}
           </h2>
-          <NuxtLink to="/about/team" class="btn btn--outline">
-            Meet the team
-            <ArrowUpRightIcon class="icon" />
-          </NuxtLink>
+          <NuxtLink to="/about/team" class="btn btn--outline"
+            >Meet the team</NuxtLink
+          >
         </div>
-        <figure class="tile tile--outline founder__quote">
+        <figure class="tile tile--outline founder__quote js-reveal">
           <blockquote>
             <p>“{{ content.founderSection.quote }}”</p>
           </blockquote>
@@ -327,7 +357,7 @@ useHead({
   <!-- PARTNERS + GALLERY -->
   <PartnersSection :section-data="content.partnersSection">
     <template #illustration>
-      <div class="mt-16">
+      <div class="js-reveal mt-16" v-reveal>
         <header class="site-section__header !mb-8">
           <h2 class="site-section__caption !text-3xl lg:!text-4xl">
             From our classrooms
@@ -346,10 +376,9 @@ useHead({
     action-to="/donate"
   >
     <template #secondary>
-      <NuxtLink to="/contact" class="btn btn--outline">
-        Partner with us
-        <HeartHandshakeIcon class="icon" />
-      </NuxtLink>
+      <NuxtLink to="/contact" class="btn btn--outline"
+        >Partner with us</NuxtLink
+      >
     </template>
   </CtaBand>
 </template>

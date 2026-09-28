@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ArrowUpRightIcon } from "lucide-vue-next";
-
 defineProps<{
   title: string;
   text?: string;
@@ -12,7 +10,7 @@ defineProps<{
 <template>
   <section class="site-section site-section--tight">
     <div class="wrapper">
-      <div class="cta-band">
+      <div class="cta-band js-reveal" v-reveal>
         <div class="wrapper">
           <h2 class="cta-band__title">{{ title }}</h2>
           <p v-if="text" class="cta-band__text">{{ text }}</p>
@@ -25,12 +23,10 @@ defineProps<{
               class="btn"
             >
               {{ actionText }}
-              <ArrowUpRightIcon class="icon" />
             </a>
-            <NuxtLink v-else :to="actionTo" class="btn">
-              {{ actionText }}
-              <ArrowUpRightIcon class="icon" />
-            </NuxtLink>
+            <NuxtLink v-else :to="actionTo" class="btn">{{
+              actionText
+            }}</NuxtLink>
             <slot name="secondary" />
           </div>
         </div>

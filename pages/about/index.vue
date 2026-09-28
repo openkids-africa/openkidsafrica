@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ArrowUpRightIcon } from "lucide-vue-next";
-
 const aboutContent = ref<AboutPageContent>({
   heroSection: {
     title: "About Us",
@@ -178,10 +176,8 @@ useHead({
   <!-- BELIEF -->
   <section class="site-section site-section--tight">
     <div class="wrapper">
-      <div class="tile tile--tint belief">
-        <p class="belief__quote">
-          {{ aboutContent.believeSection.text[0] }}
-        </p>
+      <div class="tile tile--tint belief js-reveal" v-reveal>
+        <p class="belief__quote">{{ aboutContent.believeSection.text[0] }}</p>
       </div>
     </div>
   </section>
@@ -189,18 +185,29 @@ useHead({
   <!-- JOURNEY -->
   <section class="site-section">
     <div class="wrapper">
-      <div class="split">
-        <header class="site-section__header site-section__header--left !mb-0">
+      <div class="split" v-reveal.stagger>
+        <header
+          class="site-section__header site-section__header--left js-reveal !mb-0"
+        >
           <p class="site-section__eyebrow">Our story</p>
           <h2 class="site-section__caption">
             {{ aboutContent.journeySection.title }}
           </h2>
         </header>
-        <div class="site-section__text-cont">
+        <div class="site-section__text-cont js-reveal">
           <p v-for="(text, i) in aboutContent.journeySection.text" :key="i">
             {{ text }}
           </p>
         </div>
+      </div>
+      <div class="js-reveal mt-12" v-reveal>
+        <PhotoComposition
+          :images="[
+            aboutContent.heroSection.images[3],
+            aboutContent.heroSection.images[4],
+            aboutContent.heroSection.images[2],
+          ]"
+        />
       </div>
     </div>
   </section>
@@ -208,15 +215,16 @@ useHead({
   <!-- VALUES -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ aboutContent.valuesSection.title }}
         </h2>
       </header>
-      <ul class="values">
+      <ul class="values" v-reveal.stagger>
         <li
           v-for="(item, index) in aboutContent.valuesSection.items"
           :key="index"
+          class="js-reveal"
         >
           <article class="tile tile--outline value-card">
             <span class="value-card__num">0{{ index + 1 }}</span>
@@ -230,17 +238,21 @@ useHead({
   <!-- THE GAP -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <p class="site-section__eyebrow">The gap we work to close</p>
         <h2 class="site-section__caption">Why access matters</h2>
       </header>
       <ul class="infographics">
         <li v-for="(item, i) in aboutContent.infographicSection.items" :key="i">
-          <article class="infographic" :class="{ 'infographic--flip': i % 2 }">
-            <figure class="tile tile--tint infographic__figure">
+          <article
+            class="infographic"
+            :class="{ 'infographic--flip': i % 2 }"
+            v-reveal.stagger
+          >
+            <figure class="tile tile--tint infographic__figure js-reveal">
               <img :src="item.image" :alt="item.title" />
             </figure>
-            <div class="infographic__body">
+            <div class="infographic__body js-reveal">
               <h3 class="infographic__title">{{ item.title }}</h3>
               <p v-for="(text, n) in item.text" :key="n">{{ text }}</p>
               <a
@@ -250,7 +262,6 @@ useHead({
                 class="btn btn--outline btn--sm w-fit"
               >
                 {{ item.link.text }}
-                <ArrowUpRightIcon class="icon" />
               </a>
             </div>
           </article>
@@ -262,24 +273,24 @@ useHead({
   <!-- TEAM -->
   <section class="site-section bg-slate-50 lg:rounded-[3rem]">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">
           {{ aboutContent.teamSection.title }}
         </h2>
       </header>
-      <ul class="team">
+      <ul class="team" v-reveal.stagger>
         <li
           v-for="(member, i) in aboutContent.teamSection.team"
           :key="member.name"
+          class="js-reveal"
         >
           <TeamCard :member="member" :i="i" />
         </li>
       </ul>
       <div class="action-cont mt-10">
-        <NuxtLink to="/about/team" class="btn btn--outline">
-          Meet the whole team
-          <ArrowUpRightIcon class="icon" />
-        </NuxtLink>
+        <NuxtLink to="/about/team" class="btn btn--outline"
+          >Meet the whole team</NuxtLink
+        >
       </div>
     </div>
   </section>
@@ -287,7 +298,7 @@ useHead({
   <!-- CONTACT -->
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">Get in touch with us</h2>
         <p>
           We are constantly seeking volunteers, including teachers and
@@ -295,7 +306,7 @@ useHead({
           to you
         </p>
       </header>
-      <div class="mx-auto max-w-3xl">
+      <div class="js-reveal mx-auto max-w-3xl" v-reveal>
         <ContactForm />
       </div>
     </div>
@@ -303,7 +314,7 @@ useHead({
 
   <PartnersSection :section-data="aboutContent.partnersSection">
     <template #illustration>
-      <div class="mt-16"><SiteSlideshow /></div>
+      <div class="js-reveal mt-16" v-reveal><SiteSlideshow /></div>
     </template>
   </PartnersSection>
 </template>

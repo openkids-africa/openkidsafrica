@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ArrowUpRightIcon, MailIcon } from "lucide-vue-next";
-
 defineProps<{
   sectionData: PartnerSection;
 }>();
@@ -9,16 +7,16 @@ defineProps<{
 <template>
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">{{ sectionData.title }}</h2>
         <p v-if="sectionData.description">{{ sectionData.description }}</p>
       </header>
 
-      <ul v-if="!sectionData.hidePartners" class="partners">
+      <ul v-if="!sectionData.hidePartners" class="partners" v-reveal.stagger>
         <li
           v-for="(partner, index) in sectionData.partners"
           :key="index"
-          class="partners__item"
+          class="partners__item js-reveal"
         >
           <NuxtImg
             :src="partner.logo"
@@ -37,7 +35,6 @@ defineProps<{
           class="btn"
         >
           {{ sectionData.donateLink.text }}
-          <ArrowUpRightIcon class="icon" />
         </a>
         <NuxtLink
           v-if="sectionData.contactCTA"
@@ -45,7 +42,6 @@ defineProps<{
           class="btn btn--outline"
         >
           {{ sectionData.contactCTA.text }}
-          <MailIcon class="icon" />
         </NuxtLink>
       </div>
 

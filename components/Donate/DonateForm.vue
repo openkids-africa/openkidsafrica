@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { LoaderIcon } from "lucide-vue-next";
-import { HelpingHandIcon } from "lucide-vue-next";
 const { calculateDonationImpact } = useDonate();
 
 const isLoading = ref(false);
@@ -91,7 +90,6 @@ watch(
       <div>
         <button :disabled="isLoading" type="submit" class="btn w-full">
           <LoaderIcon v-if="isLoading" class="icon animate-spin" />
-          <HelpingHandIcon v-else class="icon" />
           <span class="text">
             {{ donateOptions.mode == "once" ? "Give Once" : "Give Monthly" }}
           </span>

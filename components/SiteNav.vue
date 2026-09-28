@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { XMarkIcon, Bars2Icon, ChevronDownIcon } from "@heroicons/vue/24/solid";
-import { MailIcon } from "lucide-vue-next";
 
 const route = useRoute();
 const router = useRouter();
@@ -104,10 +103,7 @@ onUnmounted(() => {
       </li>
     </ul>
 
-    <NuxtLink to="/contact" class="btn site-nav__cta">
-      <span>Contact Us</span>
-      <MailIcon class="icon" />
-    </NuxtLink>
+    <NuxtLink to="/contact" class="btn site-nav__cta">Contact Us</NuxtLink>
   </nav>
 
   <button

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CheckIcon, ArrowUpRightIcon } from "lucide-vue-next";
+import { CheckIcon } from "lucide-vue-next";
 
 const teamContent = ref<TeamPageContent>({
   teamSection: {
@@ -113,8 +113,12 @@ useHead({
 
   <section class="site-section pt-0">
     <div class="wrapper">
-      <ul class="team">
-        <li v-for="(item, i) in teamContent.teamSection.team" :key="i">
+      <ul class="team" v-reveal.stagger>
+        <li
+          v-for="(item, i) in teamContent.teamSection.team"
+          :key="i"
+          class="js-reveal"
+        >
           <TeamCard :member="item" :i="i">
             <template v-if="item.name == 'Regina Nkenchor'">
               <p>
@@ -189,8 +193,10 @@ useHead({
     class="site-section scroll-mt-24 bg-slate-50 lg:rounded-[3rem]"
   >
     <div class="wrapper">
-      <div class="champions">
-        <header class="site-section__header site-section__header--left !mb-0">
+      <div class="champions" v-reveal.stagger>
+        <header
+          class="site-section__header site-section__header--left js-reveal !mb-0"
+        >
           <p class="site-section__eyebrow">Volunteer</p>
           <h2 class="site-section__caption">
             {{ teamContent.educationChampionsSection.title }}
@@ -203,7 +209,7 @@ useHead({
             {{ text }}
           </p>
         </header>
-        <div class="champions__side">
+        <div class="champions__side js-reveal">
           <div class="tile tile--tint">
             <h3 class="tile__title mb-4">
               {{
@@ -227,10 +233,7 @@ useHead({
           <p class="text-base text-slate-600">
             {{ teamContent.educationChampionsSection.mentoringInfo }}
           </p>
-          <NuxtLink to="/contact" class="btn w-fit">
-            Become a champion
-            <ArrowUpRightIcon class="icon" />
-          </NuxtLink>
+          <NuxtLink to="/contact" class="btn w-fit">Become a champion</NuxtLink>
         </div>
       </div>
     </div>
@@ -238,7 +241,7 @@ useHead({
 
   <section class="site-section">
     <div class="wrapper">
-      <header class="site-section__header">
+      <header class="site-section__header js-reveal" v-reveal>
         <h2 class="site-section__caption">Get in touch with us</h2>
         <p>
           We are constantly seeking volunteers, including teachers and
@@ -246,7 +249,7 @@ useHead({
           to you
         </p>
       </header>
-      <div class="mx-auto max-w-3xl">
+      <div class="js-reveal mx-auto max-w-3xl" v-reveal>
         <ContactForm />
       </div>
     </div>
@@ -254,7 +257,7 @@ useHead({
 
   <PartnersSection :section-data="teamContent.partnersSection">
     <template #illustration>
-      <div class="mt-16"><SiteSlideshow /></div>
+      <div class="js-reveal mt-16" v-reveal><SiteSlideshow /></div>
     </template>
   </PartnersSection>
 </template>

@@ -16,6 +16,7 @@ const query = groq`
 const { data, refresh } = useSanityQuery(query, {
   slug,
 });
+const { formatDate } = useFormat();
 
 useHead({
   title: data.value?.title || "News",
@@ -25,11 +26,11 @@ useHead({
   <article class="article">
     <header class="page-intro">
       <div class="wrapper">
-        <div class="page-intro__text">
-          <p class="site-section__eyebrow">News</p>
-          <h1 class="page-intro__caption">{{ data.title }}</h1>
-          <p class="page-intro__subtext">{{ data.description }}</p>
-          <div class="action-cont pt-2">
+        <div class="page-intro__text" v-reveal.stagger>
+          <p class="site-section__eyebrow js-reveal">News</p>
+          <h1 class="page-intro__caption js-reveal">{{ data.title }}</h1>
+          <p class="page-intro__subtext js-reveal">{{ data.description }}</p>
+          <div class="action-cont js-reveal pt-2">
             <span class="chip">
               <span class="chip__icon">
                 <NuxtImg
@@ -45,12 +46,12 @@ useHead({
             <span class="chip">
               <span class="chip__icon"><ClockIcon class="icon" /></span>
               <time :datetime="data.publishedAt">
-                {{ new Date(data.publishedAt).toDateString() }}
+                {{ formatDate(data.publishedAt) }}
               </time>
             </span>
           </div>
         </div>
-        <figure class="article__cover">
+        <figure class="article__cover js-reveal" v-reveal="0.15">
           <NuxtPicture
             :src="data.imageUrl"
             width="1280"
