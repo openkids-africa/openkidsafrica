@@ -171,7 +171,6 @@ useHead({
             class="zigzag__photo"
             src="/assets/images/photos/photo-4.jpg"
             alt="A volunteer teaching a hall full of pupils"
-            dashes
           />
           <div class="panel flex h-full flex-col">
             <div class="panel__head">
@@ -191,7 +190,6 @@ useHead({
             class="zigzag__photo"
             src="/assets/images/photos/photo-25.jpg"
             alt="A pupil standing to answer in class"
-            dashes
           />
           <NumberedPanel
             :title="aboutContent.valuesSection.title"

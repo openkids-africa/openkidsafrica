@@ -529,27 +529,6 @@ html.js .js-reveal:not(.is-armed) {
   @apply scale-[1.04];
 }
 
-/* A short run of dashes, the reference's small decoration on photo tiles. */
-.photo-tile--dashes::before {
-  content: "";
-  @apply pointer-events-none absolute left-1/2 top-0 z-10 h-20 w-20 -translate-x-1/2;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgb(255 255 255 / 0.85) 0 4px,
-    transparent 4px 13px
-  );
-  mask-image: repeating-linear-gradient(
-    180deg,
-    black 0 12px,
-    transparent 12px 20px
-  );
-  -webkit-mask-image: repeating-linear-gradient(
-    180deg,
-    black 0 12px,
-    transparent 12px 20px
-  );
-}
-
 /* PANEL — the soft rounded container cards and lists sit in. */
 .panel {
   @apply rounded-tile bg-slate-50 p-4 lg:p-6;

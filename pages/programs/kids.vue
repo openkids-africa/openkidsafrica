@@ -28,7 +28,7 @@ const programsContent = ref({
   joinSection: {
     title: "Join Us",
     text: [
-      "The OpenKids Africa Kids Program is more than just a program—it's a movement for change. Together, we can break down barriers and build a brighter future for children everywhere.",
+      "The OpenKids Africa Kids Program is more than just a program. It's a movement for change. Together, we can break down barriers and build a brighter future for children everywhere.",
     ],
     actionLink: {
       text: "Support Us",
@@ -108,7 +108,6 @@ useHead({
             class="zigzag__photo"
             src="/assets/images/photos/photo-15.jpg"
             alt="A child being helped into a virtual-reality headset"
-            dashes
           />
           <div class="panel flex h-full flex-col">
             <div class="panel__head">
@@ -131,7 +130,6 @@ useHead({
             class="zigzag__photo"
             src="/assets/images/photos/photo-39.jpg"
             alt="Pupils watching a lesson on screen"
-            dashes
           />
           <div class="panel flex h-full flex-col">
             <div class="panel__head">

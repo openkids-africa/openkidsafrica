@@ -31,7 +31,6 @@ const photo = computed(() => props.images?.find((i) => i.src));
           :alt="photo.alt"
           sizes="sm:100vw lg:50vw"
           eager
-          dashes
         />
       </div>
       <slot />

@@ -160,7 +160,6 @@ useHead({
               class="give__photo"
               :src="donateContent.giveSection.photo.src"
               :alt="donateContent.giveSection.photo.alt"
-              dashes
             />
           </div>
           <DonateForm />

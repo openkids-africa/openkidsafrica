@@ -1,16 +1,14 @@
 <script setup lang="ts">
-/* One photograph in a rounded frame, with the reference's short dashed
-   decoration when asked for. */
+/* One photograph in a rounded frame. */
 defineProps<{
   src: string;
   alt?: string;
   eager?: boolean;
-  dashes?: boolean;
   sizes?: string;
 }>();
 </script>
 <template>
-  <figure class="photo-tile" :class="{ 'photo-tile--dashes': dashes }">
+  <figure class="photo-tile">
     <NuxtImg
       :src="src"
       :alt="alt || ''"

@@ -2,58 +2,58 @@
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
-  SparklesIcon,
+  CheckIcon,
   GraduationCapIcon,
+  HeartHandshakeIcon,
+  MegaphoneIcon,
+  RecycleIcon,
+  ScaleIcon,
+  SparklesIcon,
+  UsersIcon,
 } from "lucide-vue-next";
 import { gsap } from "gsap";
 
-/* Hero entrance: copy first, then the bento columns in sequence. */
-onMounted(() => {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document
-      .querySelectorAll(".hero .js-reveal")
-      .forEach((el) => el.classList.add("is-armed"));
-    return;
-  }
-  const copy = gsap.utils.toArray<HTMLElement>(".hero__text > .js-reveal");
-  const cols = gsap.utils.toArray<HTMLElement>(".hero .bento__col");
-  [...copy, ...cols].forEach((el) => el.classList.add("is-armed"));
-  gsap
-    .timeline({ defaults: { ease: "power3.out" } })
-    .fromTo(
-      copy,
-      { autoAlpha: 0, y: 24 },
-      { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.09 },
-    )
-    .fromTo(
-      cols,
-      { autoAlpha: 0, y: 34, scale: 0.98 },
-      { autoAlpha: 1, y: 0, scale: 1, duration: 0.9, stagger: 0.1 },
-      "-=0.45",
-    );
+/* Every photograph on this page is used here and nowhere else on the site. */
+const photo = (file: string, alt: string) => ({
+  src: `/assets/images/photos/${file}`,
+  alt,
 });
 
 const content = ref({
   heroSection: {
-    caption:
-      "Connecting every African child to a digital future through the delivery of free tech lessons in rural schools",
-    subtext: "Welcome to OpenKids Africa",
-    images: [
-      {
-        src: "/assets/images/photos/photo-14.jpg",
-        alt: "A pupil trying a virtual-reality headset during a tech lesson",
-      },
-      {
-        src: "/assets/images/photos/photo-40.jpeg",
-        alt: "A volunteer leading a hall of pupils with their arms raised",
-      },
+    eyebrow: "Welcome to OpenKids Africa",
+    captionParts: [
+      "Connecting every African child to a ",
+      "digital future",
+      " through the delivery of free tech lessons in rural schools",
     ],
+    map: [
+      photo(
+        "photo-18.jpg",
+        "Pupils in blue uniforms cheering outside their school",
+      ),
+      photo(
+        "photo-1.jpg",
+        "Children in yellow and blue uniforms raising their hands",
+      ),
+      photo("photo-3.jpg", "Pupils with their hands up to answer a question"),
+    ],
+    bubbles: [
+      photo("photo-13.jpg", "Two pupils laughing during a session"),
+      photo("photo-5.jpg", "A pupil speaking into a microphone"),
+    ],
+    reached: "Over 1,000 children reached so far",
   },
   welcomeSection: {
     title: "Welcome to Openkids Africa",
     text: [
       "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country.",
       "Therefore, we leverage free digital resources and open educational resources to provide quality information technology lessons and materials for kids and schools in rural communities in Africa.",
+    ],
+    photos: [
+      photo("photo-31.jpg", "A pupil standing to speak in class"),
+      photo("photo-34.jpg", "A pupil listening during a lesson"),
+      photo("photo-11.jpg", "Pupils gathered close during a school visit"),
     ],
   },
   /* Figures the About page already states, gathered for the numbers panel. */
@@ -79,24 +79,10 @@ const content = ref({
   whatWeDoSection: {
     title: "What We Do",
     text: "OpenKids Africa is a non-profit organization collaborating with government, schools, and industry to provide free, quality information technology lessons and resources for children in rural African communities.",
-    photos: {
-      values: {
-        src: "/assets/images/photos/photo-18.jpg",
-        alt: "Pupils in blue uniforms cheering outside their school",
-      },
-      objectives: {
-        src: "/assets/images/photos/photo-7.jpg",
-        alt: "Pupils holding up their certificates after a session",
-      },
-      whatWeDo: {
-        src: "/assets/images/photos/photo-23.jpg",
-        alt: "A tech lesson projected at the front of a classroom",
-      },
-      programs: {
-        src: "/assets/images/photos/photo-30.jpg",
-        alt: "A full classroom of pupils during a lesson",
-      },
-    },
+    photo: photo(
+      "photo-23.jpg",
+      "A tech lesson projected at the front of a classroom",
+    ),
     cards: [
       {
         id: "leadership",
@@ -130,39 +116,7 @@ const content = ref({
       },
     ],
   },
-  founderSection: {
-    title: "Changing what a child can imagine for themselves",
-    quote:
-      "To address the challenge in Africa, where children in rural schools lack digital skills and risk being left behind in the rapidly advancing digital space, and considering the scarcity of women in technology roles, I founded OpenKids Africa and currently serve as its executive director.",
-    name: "Regina Nkenchor",
-    role: "Founder & Executive Director",
-    image: "/assets/images/team/Regina Nkemchor.png",
-  },
-  championsSection: {
-    text: "OpenKids Africa Education Champions are passionate volunteers dedicated to delivering tech lessons to children in rural schools using our combined free digital resources.",
-  },
-  partnersSection: {
-    title: "Our Partners",
-    donateLink: {
-      text: "Donate to OpenKids Africa",
-      url: "http://paypal.me/openkidsafrica",
-    },
-    contactCTA: {
-      id: "partner",
-      text: "Partner with Us",
-    },
-    partners: [
-      {
-        name: "Tech She Can",
-        logo: "/assets/images/partners/tech-she-can-logo.svg",
-      },
-      {
-        name: "Microsoft",
-        logo: "/assets/images/partners/microsoft-logo.svg",
-      },
-    ],
-  },
-  /* The lists below repeat copy from the About, Kids, Programs, Donate and
+  /* The lists below repeat copy from the About, Programs, Donate and
      Educators pages, where each has its full treatment. */
   valuesSection: {
     title: "Our Values",
@@ -173,27 +127,6 @@ const content = ref({
       "We believe that parents and guardians have a role to play in inspiring children to learn digital skills and possibly explore a technology career in the future.",
     ],
   },
-  objectivesSection: {
-    title: "Our Objectives",
-    items: [
-      {
-        title: "Empowering Underserved Communities in Africa",
-        text: "We collaborate with organizations to provide tech lessons to schools in rural communities, fostering education and innovation.",
-      },
-      {
-        title: "Advocate",
-        text: "Advocate for the utilization of free digital resources and open educational technologies in rural schools across Africa",
-      },
-      {
-        title: "Changing The Ratio",
-        text: "Empowering women and girls to pursue careers in technology.",
-      },
-      {
-        title: "Collaborate",
-        text: "We collaborate directly with rural schools in educating, creating, and delivering our tech lessons to communities in rural areas.",
-      },
-    ],
-  },
   programsSection: {
     title: "Programs",
     text: "We offer a variety of programs to help children in underserved and underdeveloped communities in Africa.",
@@ -201,22 +134,75 @@ const content = ref({
       {
         id: "ai-for-all",
         title: "AI for All",
+        badge: "2026 pilot",
         text: "Internationally accredited AI training for Nigerian teachers, delivered with Tech She Can and Microsoft. Free, CPD-certified, and built for every subject.",
         path: "/programs/ai-for-all",
+        photo: photo(
+          "photo-32.jpeg",
+          "A facilitator presenting a lesson on screen",
+        ),
       },
       {
         id: "educators",
         title: "Educators Program",
+        badge: "",
         text: "We provide free tech lessons to educators in Africa to help them teach their students better.",
         path: "/programs/educators",
+        photo: photo(
+          "photo-24.jpg",
+          "An educator explaining a concept to her class",
+        ),
       },
       {
         id: "kids",
         title: "Kids Program",
+        badge: "",
         text: "We provide free tech lessons to kids in Africa to help them learn better.",
         path: "/programs/kids",
+        photo: photo(
+          "photo-12.jpg",
+          "Pupils crowding in for a photo during a school visit",
+        ),
       },
     ],
+  },
+  gallerySection: {
+    title: "From our classrooms",
+    text: "Moments from our visits to rural schools.",
+    rows: [
+      [
+        photo(
+          "photo-7.jpg",
+          "Pupils holding up their certificates after a session",
+        ),
+        photo(
+          "photo-19.jpg",
+          "Pupils in blue uniforms gathered on the school playground",
+        ),
+        photo(
+          "photo-22.jpg",
+          "Pupils and a volunteer holding up what they made",
+        ),
+        photo("photo-29.jpeg", "A class at their desks with hands raised"),
+        photo("photo-30.jpg", "A full classroom of pupils during a lesson"),
+        photo("photo-6.jpg", "A speaker addressing pupils at a school event"),
+      ],
+      [
+        photo("photo-35.jpg", "A pupil presenting beside classroom artwork"),
+        photo("photo-43.jpg", "Pupils and teachers at a school assembly"),
+        photo("photo-46.jpg", "A pupil filling in a worksheet"),
+        photo("photo-37.jpg", "A pupil standing to answer in class"),
+        photo("photo-41.jpg", "Pupils cheering outside their school"),
+        photo("photo-2.jpeg", "A lesson slide projected for a class"),
+      ],
+    ],
+  },
+  founderSection: {
+    title: "Changing what a child can imagine for themselves",
+    quote:
+      "To address the challenge in Africa, where children in rural schools lack digital skills and risk being left behind in the rapidly advancing digital space, and considering the scarcity of women in technology roles, I founded OpenKids Africa and currently serve as its executive director.",
+    name: "Regina Nkenchor",
+    role: "Founder & Executive Director",
   },
   teamSection: {
     avatars: [
@@ -229,6 +215,27 @@ const content = ref({
         image: "/assets/images/team/Adebola Ogunyemi.png",
       },
       { name: "Anita Ihuman", image: "/assets/images/team/Anita Ihuman.png" },
+    ],
+  },
+  championsSection: {
+    title: "Volunteer with us",
+    text: "OpenKids Africa Education Champions are passionate volunteers dedicated to delivering tech lessons to children in rural schools using our combined free digital resources.",
+    photo: photo(
+      "photo-40.jpeg",
+      "A volunteer leading a hall of pupils with their arms raised",
+    ),
+  },
+  partnersSection: {
+    title: "Our Partners",
+    partners: [
+      {
+        name: "Tech She Can",
+        logo: "/assets/images/partners/tech-she-can-logo.svg",
+      },
+      {
+        name: "Microsoft",
+        logo: "/assets/images/partners/microsoft-logo.svg",
+      },
     ],
   },
   faqSection: {
@@ -259,102 +266,114 @@ const content = ref({
   },
 });
 
+const pillarIcons: Record<string, unknown> = {
+  leadership: UsersIcon,
+  collaboration: HeartHandshakeIcon,
+  awareness: MegaphoneIcon,
+  equality: ScaleIcon,
+  sustainability: RecycleIcon,
+  education: GraduationCapIcon,
+};
+
+/* Hero copy enters as a sequence; the map animates itself. */
+onMounted(() => {
+  const copy = gsap.utils.toArray<HTMLElement>(".hero__text > .js-reveal");
+  copy.forEach((el) => el.classList.add("is-armed"));
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  gsap.fromTo(
+    copy,
+    { autoAlpha: 0, y: 26 },
+    { autoAlpha: 1, y: 0, duration: 0.85, stagger: 0.09, ease: "power3.out" },
+  );
+});
+
 useHead({
   title: "Home",
 });
 </script>
 <template>
   <div class="page">
-    <!-- HERO -->
+    <!-- HERO: copy beside photographs cut to the outline of Africa -->
     <header class="hero">
       <div class="wrapper">
         <div class="hero__text">
           <p class="site-section__eyebrow js-reveal">
-            {{ content.heroSection.subtext }}
+            {{ content.heroSection.eyebrow }}
           </p>
           <h1 class="hero__caption js-reveal">
-            {{ content.heroSection.caption }}
+            {{ content.heroSection.captionParts[0]
+            }}<span class="hero__accent">{{
+              content.heroSection.captionParts[1]
+            }}</span
+            >{{ content.heroSection.captionParts[2] }}
           </h1>
           <p class="hero__subtext js-reveal">
             {{ content.welcomeSection.text[0] }}
           </p>
-          <div class="action-cont js-reveal">
+          <div class="action-cont js-reveal !justify-start">
             <NuxtLink to="/donate" class="btn">Donate Now</NuxtLink>
-            <NuxtLink to="/programs/ai-for-all" class="chip hero__announce">
-              <span class="hero__announce-tag">New</span>
-              AI for All — teacher training with Tech She Can × Microsoft
-              <ArrowRightIcon class="icon h-4 w-4" />
+            <NuxtLink to="/programs" class="btn btn--outline">
+              Explore our programs
             </NuxtLink>
+          </div>
+          <div class="hero__proof js-reveal">
+            <ul class="hero__faces">
+              <li
+                v-for="person in content.teamSection.avatars"
+                :key="person.name"
+              >
+                <NuxtImg
+                  :src="person.image"
+                  :alt="person.name"
+                  format="webp"
+                  width="96"
+                  height="96"
+                  loading="lazy"
+                />
+              </li>
+            </ul>
+            <p>{{ content.heroSection.reached }}</p>
           </div>
         </div>
 
-        <!-- Bento: photo · facts · pillar · volunteer -->
-        <div class="bento">
-          <div class="bento__col js-reveal">
-            <SparklesIcon class="bento__spark" aria-hidden="true" />
-            <PhotoTile
-              class="bento__photo"
-              :src="content.heroSection.images[0].src"
-              :alt="content.heroSection.images[0].alt"
-              sizes="sm:100vw md:50vw lg:25vw"
-              eager
-            />
-            <span class="chip">
+        <div class="hero__visual">
+          <AfricaMap
+            :photos="content.heroSection.map"
+            :bubbles="content.heroSection.bubbles"
+          >
+            <NuxtLink
+              to="/programs/ai-for-all"
+              class="chip africa__chip africa__float hero__chip hero__chip--new"
+            >
+              <span class="hero__chip-tag">New</span>
+              AI for All
+              <ArrowRightIcon class="icon h-4 w-4" />
+            </NuxtLink>
+            <span
+              class="chip africa__chip africa__float hero__chip hero__chip--free"
+            >
               <span class="chip__icon"><SparklesIcon class="icon" /></span>
               Free tech lessons in rural schools
             </span>
-          </div>
-
-          <div class="bento__col js-reveal">
-            <span class="chip">Over 1,000 children reached so far</span>
-            <div class="tile tile--tint bento__stat">
-              <p class="tile__stat">
-                {{ content.statsSection.stats[0].value }}
-              </p>
-              <p class="tile__text">
-                {{ content.statsSection.stats[0].label }}
-              </p>
-            </div>
-          </div>
-
-          <div class="bento__col js-reveal">
-            <div class="tile tile--tint bento__pillar">
-              <span class="icon-badge !bg-white"
-                ><GraduationCapIcon class="icon"
-              /></span>
-              <h2 class="tile__title">
-                {{ content.whatWeDoSection.cards[5].title }}
-              </h2>
-              <p class="tile__text">
-                {{ content.whatWeDoSection.cards[5].text }}
-              </p>
-            </div>
-            <NuxtLink to="/programs" class="btn btn--outline w-full"
-              >See our programs</NuxtLink
-            >
-          </div>
-
-          <div class="bento__col js-reveal">
-            <NuxtLink
-              to="/about/team#champions"
-              class="btn btn--outline w-full"
-            >
-              Be an Education Champion
-            </NuxtLink>
-            <div class="tile tile--tint bento__volunteer">
-              <PhotoTile
-                class="bento__volunteer-photo !rounded-2xl"
-                :src="content.heroSection.images[1].src"
-                :alt="content.heroSection.images[1].alt"
-                sizes="sm:100vw md:50vw lg:25vw"
-              />
-              <h2 class="tile__title">Volunteer with us</h2>
-              <p class="tile__text">{{ content.championsSection.text }}</p>
-            </div>
-          </div>
+          </AfricaMap>
         </div>
       </div>
     </header>
+
+    <!-- PARTNERS -->
+    <section class="partners-strip js-reveal" v-reveal>
+      <div class="wrapper">
+        <p class="partners-strip__label">In partnership with</p>
+        <ul class="partners-strip__list">
+          <li
+            v-for="partner in content.partnersSection.partners"
+            :key="partner.name"
+          >
+            <NuxtImg :src="partner.logo" :alt="partner.name" />
+          </li>
+        </ul>
+      </div>
+    </section>
 
     <!-- NUMBERS -->
     <section class="site-section">
@@ -369,101 +388,110 @@ useHead({
       </div>
     </section>
 
-    <!-- WHO WE ARE: photo beside a numbered panel, then mirrored -->
+    <!-- WHO WE ARE: a cluster of round photographs beside the copy -->
     <section class="site-section pt-0">
       <div class="wrapper">
-        <header class="site-section__header js-reveal" v-reveal>
-          <h2 class="site-section__caption">
-            {{ content.welcomeSection.title }}
-          </h2>
-          <p>{{ content.whatWeDoSection.text }}</p>
-        </header>
-        <div class="flex flex-col gap-4">
-          <div class="zigzag js-reveal" v-reveal.stagger>
-            <PhotoTile
-              class="zigzag__photo"
-              :src="content.whatWeDoSection.photos.values.src"
-              :alt="content.whatWeDoSection.photos.values.alt"
-              dashes
-            />
-            <NumberedPanel
-              :title="content.valuesSection.title"
-              :items="content.valuesSection.items"
-              link-to="/about"
-            />
-          </div>
-          <div class="zigzag zigzag--flip js-reveal" v-reveal.stagger>
-            <PhotoTile
-              class="zigzag__photo"
-              :src="content.whatWeDoSection.photos.objectives.src"
-              :alt="content.whatWeDoSection.photos.objectives.alt"
-              dashes
-            />
-            <NumberedPanel
-              :title="content.objectivesSection.title"
-              :items="content.objectivesSection.items"
-              link-to="/programs/kids"
-            />
+        <div class="about js-reveal" v-reveal.stagger>
+          <PhotoCluster :photos="content.welcomeSection.photos" />
+          <div class="about__text">
+            <p class="site-section__eyebrow">About us</p>
+            <h2 class="split-feature__title">
+              {{ content.welcomeSection.title }}
+            </h2>
+            <p>{{ content.whatWeDoSection.text }}</p>
+            <ul class="about__values">
+              <li v-for="(item, i) in content.valuesSection.items" :key="i">
+                <span class="checklist__icon-cont"
+                  ><CheckIcon class="icon"
+                /></span>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+            <NuxtLink to="/about" class="btn">Learn more</NuxtLink>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHAT WE DO: copy beside its photo, then six arrow cards -->
-    <section class="site-section pt-0">
+    <!-- WHAT WE DO: copy beside its photo, then the six pillars -->
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
       <div class="wrapper">
         <SplitFeature
-          :src="content.whatWeDoSection.photos.whatWeDo.src"
-          :alt="content.whatWeDoSection.photos.whatWeDo.alt"
+          :src="content.whatWeDoSection.photo.src"
+          :alt="content.whatWeDoSection.photo.alt"
           :title="content.whatWeDoSection.title"
-          :text="content.welcomeSection.text[0]"
-        >
-          <ul class="card-row">
-            <li v-for="card in content.whatWeDoSection.cards" :key="card.id">
-              <DoingsCard :card-content="card" />
-            </li>
-          </ul>
-        </SplitFeature>
+          :text="content.welcomeSection.text[1]"
+          eyebrow="How we work"
+        />
+        <ul class="pillars js-reveal" v-reveal.stagger>
+          <li v-for="card in content.whatWeDoSection.cards" :key="card.id">
+            <article class="pillar">
+              <span class="icon-badge">
+                <component :is="pillarIcons[card.id]" class="icon" />
+              </span>
+              <h3 class="tile__title">{{ card.title }}</h3>
+              <p class="tile__text">{{ card.text }}</p>
+            </article>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- PROGRAMS: photo beside its copy, then three linked cards -->
-    <section class="site-section pt-0">
+    <!-- PROGRAMS: each with its own photograph -->
+    <section class="site-section">
       <div class="wrapper">
-        <SplitFeature
-          :src="content.whatWeDoSection.photos.programs.src"
-          :alt="content.whatWeDoSection.photos.programs.alt"
-          :title="content.programsSection.title"
-          :text="content.programsSection.text"
-          flip
-        >
-          <template #actions>
-            <NuxtLink to="/programs" class="btn btn--outline"
-              >All programs</NuxtLink
-            >
-          </template>
-          <ul class="card-row">
-            <li
-              v-for="program in content.programsSection.programs"
-              :key="program.id"
-            >
-              <NuxtLink :to="program.path" class="mini-card">
-                <span class="mini-card__head">
-                  <span class="mini-card__title">{{ program.title }}</span>
-                  <span class="mini-card__arrow" aria-hidden="true">
-                    <ArrowUpRightIcon class="icon" />
-                  </span>
+        <header class="site-section__header js-reveal" v-reveal>
+          <p class="site-section__eyebrow">Our programs</p>
+          <h2 class="site-section__caption">
+            {{ content.programsSection.title }}
+          </h2>
+          <p>{{ content.programsSection.text }}</p>
+        </header>
+        <ul class="programs js-reveal" v-reveal.stagger>
+          <li
+            v-for="program in content.programsSection.programs"
+            :key="program.id"
+          >
+            <NuxtLink :to="program.path" class="program">
+              <figure class="program__photo">
+                <NuxtImg
+                  :src="program.photo.src"
+                  :alt="program.photo.alt"
+                  format="webp"
+                  sizes="sm:100vw md:50vw lg:33vw"
+                  loading="lazy"
+                />
+                <span v-if="program.badge" class="program__badge">
+                  {{ program.badge }}
                 </span>
-                <span class="mini-card__text">{{ program.text }}</span>
-              </NuxtLink>
-            </li>
-          </ul>
-        </SplitFeature>
+              </figure>
+              <div class="program__body">
+                <h3 class="tile__title">{{ program.title }}</h3>
+                <p class="tile__text">{{ program.text }}</p>
+                <span class="program__more">
+                  Read more
+                  <ArrowUpRightIcon class="icon h-4 w-4" />
+                </span>
+              </div>
+            </NuxtLink>
+          </li>
+        </ul>
       </div>
+    </section>
+
+    <!-- GALLERY: two rows drifting in opposite directions -->
+    <section class="gallery">
+      <header class="site-section__header js-reveal px-4" v-reveal>
+        <h2 class="site-section__caption">
+          {{ content.gallerySection.title }}
+        </h2>
+        <p>{{ content.gallerySection.text }}</p>
+      </header>
+      <PhotoMarquee :rows="content.gallerySection.rows" />
     </section>
 
     <!-- FOUNDER -->
-    <section class="site-section pt-0">
+    <section class="site-section">
       <div class="wrapper">
         <header class="site-section__header js-reveal" v-reveal>
           <h2 class="site-section__caption">
@@ -491,29 +519,37 @@ useHead({
             <p>“{{ content.founderSection.quote }}”</p>
           </blockquote>
           <figcaption class="voice__who">
-            — {{ content.founderSection.name }},
-            {{ content.founderSection.role }}
+            {{ content.founderSection.name }}, {{ content.founderSection.role }}
           </figcaption>
-          <NuxtLink to="/about/team" class="btn btn--outline btn--sm"
-            >Meet the team</NuxtLink
-          >
+          <NuxtLink to="/about/team" class="btn btn--outline btn--sm">
+            Meet the team
+          </NuxtLink>
         </figure>
       </div>
     </section>
 
-    <!-- PARTNERS + GALLERY -->
-    <PartnersSection :section-data="content.partnersSection">
-      <template #illustration>
-        <div class="js-reveal mt-16" v-reveal>
-          <header class="site-section__header !mb-8">
-            <h2 class="site-section__caption !text-3xl lg:!text-4xl">
-              From our classrooms
+    <!-- VOLUNTEER: copy beside its photo, in a tinted band -->
+    <section class="site-section pt-0">
+      <div class="wrapper">
+        <div class="volunteer js-reveal" v-reveal.stagger>
+          <div class="volunteer__text">
+            <p class="site-section__eyebrow">Become a volunteer</p>
+            <h2 class="split-feature__title">
+              {{ content.championsSection.title }}
             </h2>
-          </header>
-          <SiteSlideshow />
+            <p>{{ content.championsSection.text }}</p>
+            <NuxtLink to="/about/team#champions" class="btn">
+              Be an Education Champion
+            </NuxtLink>
+          </div>
+          <PhotoTile
+            class="volunteer__photo"
+            :src="content.championsSection.photo.src"
+            :alt="content.championsSection.photo.alt"
+          />
         </div>
-      </template>
-    </PartnersSection>
+      </div>
+    </section>
 
     <!-- FAQ -->
     <section class="site-section pt-0">
@@ -548,66 +584,156 @@ useHead({
 <style scoped>
 /* HERO */
 .hero {
-  @apply px-4 pb-10 pt-14 lg:pb-16 lg:pt-24;
+  @apply overflow-x-clip px-4 pb-12 pt-10 lg:pb-20 lg:pt-16;
 }
 
 .hero > .wrapper {
-  @apply mx-auto flex w-full max-w-6xl flex-col items-center gap-12 lg:gap-16;
+  @apply mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,11fr)_minmax(0,10fr)] lg:gap-10;
 }
 
 .hero__text {
-  @apply flex max-w-4xl flex-col items-center gap-5 text-center;
+  @apply flex flex-col items-start gap-5;
 }
 
 .hero__caption {
-  @apply font-heading text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl lg:text-[3.6rem] lg:leading-[1.06];
+  @apply font-heading text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl lg:text-[3.35rem] lg:leading-[1.08];
   text-wrap: balance;
 }
 
+.hero__accent {
+  @apply text-brand-600;
+}
+
 .hero__subtext {
-  @apply max-w-2xl text-base text-slate-600 lg:text-lg;
+  @apply max-w-xl text-base text-slate-600 lg:text-lg;
 }
 
-.hero__announce {
-  @apply max-w-full text-left;
+.hero__proof {
+  @apply flex items-center gap-3 pt-2 text-sm font-medium text-slate-700;
 }
 
-.hero__announce-tag {
+.hero__faces {
+  @apply flex;
+}
+
+.hero__faces > li {
+  @apply -ml-3 h-11 w-11 overflow-hidden rounded-full border-2 border-white bg-brand-100 first:ml-0;
+}
+
+.hero__faces img {
+  @apply h-full w-full object-cover object-top;
+}
+
+.hero__visual {
+  @apply px-4 lg:px-0;
+}
+
+.hero__chip {
+  @apply whitespace-nowrap;
+}
+
+.hero__chip--new {
+  @apply right-[-2%] top-[6%] lg:right-[-4%];
+}
+
+.hero__chip--free {
+  @apply bottom-[16%] left-[-4%] hidden sm:inline-flex;
+}
+
+.hero__chip-tag {
   @apply rounded-full bg-brand-600 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-white;
 }
 
-/* BENTO */
-.bento {
-  @apply grid w-full gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-end;
+/* PARTNERS */
+.partners-strip {
+  @apply px-4;
 }
 
-.bento__col {
-  @apply relative flex flex-col gap-4;
+.partners-strip > .wrapper {
+  @apply mx-auto flex max-w-6xl flex-col items-center gap-5 rounded-tile border border-slate-200 px-6 py-6 sm:flex-row sm:justify-center sm:gap-12;
 }
 
-.bento__spark {
-  @apply absolute -left-2 -top-8 hidden h-8 w-8 text-slate-900 lg:block;
+.partners-strip__label {
+  @apply font-heading text-xs font-semibold uppercase tracking-[0.16em] text-slate-500;
 }
 
-.bento__photo {
-  @apply aspect-[4/3] w-full lg:aspect-square;
+.partners-strip__list {
+  @apply flex flex-wrap items-center justify-center gap-x-12 gap-y-4;
 }
 
-.bento__stat {
-  @apply flex flex-col gap-2 lg:pt-16;
+.partners-strip__list img {
+  @apply h-10 w-auto object-contain;
 }
 
-.bento__pillar,
-.bento__volunteer {
-  @apply flex flex-col gap-3;
+/* ABOUT */
+.about {
+  @apply grid items-center gap-10 lg:grid-cols-2 lg:gap-16;
 }
 
-.bento__volunteer-photo {
-  @apply aspect-[4/3] w-full;
+.about__text {
+  @apply flex flex-col items-start gap-4 text-base text-slate-600 lg:text-lg;
 }
 
-/* FOUNDER — the reference's testimonial panel, with the team as its row
-   of faces. */
+.about__values {
+  @apply flex flex-col gap-3 py-1;
+}
+
+.about__values > li {
+  @apply flex items-start gap-3 text-base text-slate-700;
+}
+
+/* PILLARS */
+.pillars {
+  @apply mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.pillar {
+  @apply flex h-full flex-col gap-3 rounded-tile bg-white p-6 transition-transform duration-300 hover:-translate-y-1;
+}
+
+/* PROGRAMS */
+.programs {
+  @apply grid gap-5 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.programs > li {
+  @apply h-full;
+}
+
+.program {
+  @apply flex h-full flex-col overflow-hidden rounded-tile border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover;
+}
+
+.program__photo {
+  @apply relative aspect-[4/3] overflow-hidden bg-brand-100;
+}
+
+.program__photo > img {
+  @apply h-full w-full object-cover transition-transform duration-700;
+}
+
+.program:hover .program__photo > img {
+  @apply scale-105;
+}
+
+.program__badge {
+  @apply absolute left-4 top-4 rounded-full bg-brand-600 px-3 py-1 font-heading text-xs font-semibold uppercase tracking-wider text-white;
+}
+
+.program__body {
+  @apply flex grow flex-col gap-2 p-6;
+}
+
+.program__more {
+  @apply mt-auto flex items-center gap-1 pt-3 text-sm font-semibold text-brand-700;
+}
+
+/* GALLERY */
+.gallery {
+  @apply py-8 lg:py-12;
+}
+
+/* FOUNDER */
 .voice {
   @apply relative flex flex-col items-center gap-6 overflow-hidden rounded-tile border border-brand-200 bg-white px-6 py-10 text-center lg:px-16 lg:py-14;
 }
@@ -668,6 +794,19 @@ useHead({
 
 .voice__who {
   @apply relative z-10 text-sm text-slate-600;
+}
+
+/* VOLUNTEER */
+.volunteer {
+  @apply grid items-center gap-8 overflow-hidden rounded-tile bg-brand-100 p-6 lg:grid-cols-2 lg:gap-12 lg:p-10;
+}
+
+.volunteer__text {
+  @apply flex flex-col items-start gap-4 text-base text-slate-700 lg:text-lg;
+}
+
+.volunteer__photo {
+  @apply aspect-[4/3] w-full;
 }
 
 .faq-list {

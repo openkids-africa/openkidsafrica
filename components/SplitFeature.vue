@@ -29,7 +29,7 @@ defineProps<{
           <slot name="actions" />
         </div>
       </div>
-      <PhotoTile class="split-feature__photo" :src="src" :alt="alt" dashes />
+      <PhotoTile class="split-feature__photo" :src="src" :alt="alt" />
     </div>
     <div v-if="$slots.default" class="panel js-reveal mt-8" v-reveal>
       <slot />

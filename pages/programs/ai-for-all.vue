@@ -15,19 +15,19 @@ const PAGE_PATH = "/programs/ai-for-all";
 const CONTACT_EMAIL = "info@openkidsafrica.org";
 
 const pageTitle =
-  "AI for All — Open Kids Africa × Tech She Can × Microsoft | Free AI training for Teacher CPD";
+  "AI for All: Open Kids Africa × Tech She Can × Microsoft | Free AI training for Teacher CPD";
 const pageDescription =
   "A free, internationally accredited AI training program for Nigerian teachers, delivered by Open Kids Africa in partnership with Tech She Can and Microsoft. Join the 2026 pilot across Nigeria.";
 
 const content = ref({
   heroSection: {
-    caption: "AI for All — Empowering Nigerian Teachers",
+    caption: "AI for All: Empowering Nigerian Teachers",
     subtext:
       "Open Kids Africa, in partnership with Tech She Can and Microsoft is bringing an internationally accredited AI training program to teachers across Nigeria, helping educators confidently understand, use, and teach AI concepts in their classrooms and beyond.",
     images: [
       {
-        src: "/assets/images/photos/photo-26.jpg",
-        alt: "A pupil exploring a lesson through a virtual-reality headset",
+        src: "/assets/images/photos/photo-14.jpg",
+        alt: "A pupil trying a virtual-reality headset during a tech lesson",
       },
     ],
   },
@@ -71,7 +71,7 @@ const content = ref({
         {
           id: "understanding",
           title: "Understanding AI",
-          text: "Teachers gain a clear, practical foundation on AI — no tech background required.",
+          text: "Teachers gain a clear, practical foundation on AI, no tech background required.",
         },
         {
           id: "using",
@@ -120,7 +120,7 @@ const content = ref({
     text: "Whether you are a school leader, education partner, or donor, we would love to hear from you. Get in touch to find out how your school can join the 2026 pilot.",
     actionText: `Reach out to us: ${CONTACT_EMAIL}`,
     actionUrl: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      "AI for All — school enquiry",
+      "AI for All: school enquiry",
     )}`,
     website: "www.openkidsafrica.org",
   },
@@ -148,7 +148,7 @@ useHead({
     {
       key: "og-image",
       property: "og:image",
-      content: `${SITE_URL}/assets/images/photos/photo-26.jpg`,
+      content: `${SITE_URL}/assets/images/photos/photo-14.jpg`,
     },
     { key: "twitter-title", name: "twitter:title", content: pageTitle },
     {
@@ -159,7 +159,7 @@ useHead({
     {
       key: "twitter-image",
       name: "twitter:image",
-      content: `${SITE_URL}/assets/images/photos/photo-26.jpg`,
+      content: `${SITE_URL}/assets/images/photos/photo-14.jpg`,
     },
   ],
   script: [
@@ -226,7 +226,6 @@ useHead({
             class="zigzag__photo"
             :src="content.photos.about.src"
             :alt="content.photos.about.alt"
-            dashes
           />
           <div class="panel flex h-full flex-col">
             <div class="panel__body grow justify-center">
@@ -283,7 +282,6 @@ useHead({
             class="zigzag__photo"
             :src="content.photos.gain.src"
             :alt="content.photos.gain.alt"
-            dashes
           />
           <div class="panel flex h-full flex-col">
             <div class="panel__body grow">

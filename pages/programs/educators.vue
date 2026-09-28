@@ -428,7 +428,6 @@ useHead({
             class="zigzag__photo"
             src="/assets/images/photos/photo-8.jpg"
             alt="An educator leading a lesson, seen from behind"
-            dashes
           />
           <div class="panel flex h-full flex-col">
             <div class="panel__head">
