@@ -8,6 +8,10 @@ import { gsap } from "gsap";
 interface Photo {
   src: string;
   alt: string;
+  /* Where to anchor the crop, as a CSS object-position value. */
+  position?: string;
+  /* How far to enlarge the photograph about that anchor. */
+  zoom?: number;
 }
 
 const props = defineProps<{
@@ -17,6 +21,17 @@ const props = defineProps<{
 
 const root = ref<HTMLElement | null>(null);
 const active = ref(0);
+
+/* Only the photograph on show and the one after it are in the page, so a
+   long rotation does not load every picture up front. */
+const ready = ref(1);
+const loaded = computed(() => props.photos.slice(0, ready.value + 1));
+
+const frame = (photo: Photo) => ({
+  objectPosition: photo.position,
+  transformOrigin: photo.position,
+  "--zoom": photo.zoom,
+});
 let timer: ReturnType<typeof setInterval> | undefined;
 let ctx: gsap.Context | undefined;
 let onMove: ((e: PointerEvent) => void) | undefined;
@@ -30,6 +45,7 @@ onMounted(() => {
   if (props.photos.length > 1) {
     timer = setInterval(() => {
       active.value = (active.value + 1) % props.photos.length;
+      ready.value = Math.max(ready.value, active.value + 1);
     }, 4800);
   }
 
@@ -100,11 +116,12 @@ onUnmounted(() => {
     <div class="africa__layer" data-depth="18">
       <div class="africa__shape africa__mask">
         <NuxtImg
-          v-for="(photo, i) in photos"
+          v-for="(photo, i) in loaded"
           :key="photo.src"
           :src="photo.src"
           :alt="i === active ? photo.alt : ''"
           :class="{ 'is-active': i === active }"
+          :style="frame(photo)"
           format="webp"
           sizes="sm:100vw lg:50vw"
           :loading="i === 0 ? 'eager' : 'lazy'"
@@ -164,7 +181,7 @@ onUnmounted(() => {
 
 .africa__shape > img {
   @apply absolute inset-0 h-full w-full object-cover opacity-0;
-  transform: scale(1.12);
+  transform: scale(calc(var(--zoom, 1) * 1.12));
   transition:
     opacity 1.4s ease,
     transform 6.5s ease-out;
@@ -172,7 +189,7 @@ onUnmounted(() => {
 
 .africa__shape > img.is-active {
   @apply opacity-100;
-  transform: scale(1);
+  transform: scale(var(--zoom, 1));
 }
 
 .africa__dot {

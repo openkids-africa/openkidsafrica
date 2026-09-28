@@ -12,10 +12,16 @@ import {
 } from "lucide-vue-next";
 import { gsap } from "gsap";
 
-/* Every photograph on this page is used here and nowhere else on the site. */
-const photo = (file: string, alt: string) => ({
+/* No photograph appears twice on this page. The rotation inside the map
+   also borrows group photographs from other pages. */
+const photo = (
+  file: string,
+  alt: string,
+  frame: { position?: string; zoom?: number } = {},
+) => ({
   src: `/assets/images/photos/${file}`,
   alt,
+  ...frame,
 });
 
 const content = ref({
@@ -32,10 +38,27 @@ const content = ref({
         "Pupils in blue uniforms cheering outside their school",
       ),
       photo(
-        "photo-1.jpg",
-        "Children in yellow and blue uniforms raising their hands",
+        "photo-33.jpeg",
+        "A class gathered for a photo outside their school",
+        { position: "50% 80%", zoom: 1.55 },
       ),
-      photo("photo-3.jpg", "Pupils with their hands up to answer a question"),
+      photo("photo-30.jpg", "A full classroom of pupils during a lesson", {
+        position: "30% 50%",
+      }),
+      photo("photo-41.jpg", "Pupils cheering on the school field"),
+      photo(
+        "photo-7.jpg",
+        "Pupils holding up their certificates after a session",
+        { position: "50% 40%" },
+      ),
+      photo("photo-44.jpg", "Pupils in white uniforms standing together", {
+        position: "50% 75%",
+      }),
+      photo("photo-20.jpg", "Pupils in blue uniforms posing on the field"),
+      photo("photo-36.jpg", "A class with hands raised during a lesson", {
+        position: "40% 80%",
+        zoom: 1.35,
+      }),
     ],
     bubbles: [
       photo("photo-13.jpg", "Two pupils laughing during a session"),
@@ -171,8 +194,8 @@ const content = ref({
     rows: [
       [
         photo(
-          "photo-7.jpg",
-          "Pupils holding up their certificates after a session",
+          "photo-1.jpg",
+          "Children in yellow and blue uniforms raising their hands",
         ),
         photo(
           "photo-19.jpg",
@@ -183,7 +206,7 @@ const content = ref({
           "Pupils and a volunteer holding up what they made",
         ),
         photo("photo-29.jpeg", "A class at their desks with hands raised"),
-        photo("photo-30.jpg", "A full classroom of pupils during a lesson"),
+        photo("photo-3.jpg", "Pupils with their hands up to answer a question"),
         photo("photo-6.jpg", "A speaker addressing pupils at a school event"),
       ],
       [
@@ -191,7 +214,7 @@ const content = ref({
         photo("photo-43.jpg", "Pupils and teachers at a school assembly"),
         photo("photo-46.jpg", "A pupil filling in a worksheet"),
         photo("photo-37.jpg", "A pupil standing to answer in class"),
-        photo("photo-41.jpg", "Pupils cheering outside their school"),
+        photo("photo-26.jpg", "A pupil trying a virtual reality headset"),
         photo("photo-2.jpeg", "A lesson slide projected for a class"),
       ],
     ],
