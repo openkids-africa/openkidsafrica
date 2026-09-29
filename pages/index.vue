@@ -222,7 +222,7 @@ const content = ref({
   founderSection: {
     title: "Changing what a child can imagine for themselves",
     quote:
-      "To address the challenge in Africa, where children in rural schools lack digital skills and risk being left behind in the rapidly advancing digital space, and considering the scarcity of women in technology roles, I founded OpenKids Africa and currently serve as its executive director.",
+      "I founded OpenKids Africa to help bridge the digital skills gap across Africa by giving children in underserved communities early exposure to technology, equipping them with the skills and awareness to explore future opportunities, while encouraging more girls to see themselves in technology.",
     name: "Regina Nkenchor",
     role: "Founder & Executive Director",
   },
