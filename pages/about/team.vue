@@ -123,11 +123,11 @@ useHead({
             <TeamCard :member="item" :i="i">
               <template v-if="item.name == 'Regina Nkenchor'">
                 <p>
-                  To address the challenge in Africa, where children in rural
-                  schools lack digital skills and risk being left behind in the
-                  rapidly advancing digital space, and considering the scarcity
-                  of women in technology roles, I founded OpenKids Africa and
-                  currently serve as its executive director.
+                  I founded OpenKids Africa to help bridge the digital skills
+                  gap across Africa by giving children in underserved
+                  communities early exposure to technology, equipping them with
+                  the skills and awareness to explore future opportunities,
+                  while encouraging more girls to see themselves in technology.
                 </p>
                 <p>
                   My vision is to ensure that all children have equal rights to
