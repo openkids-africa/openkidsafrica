@@ -1,26 +1,6 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { HelpingHandIcon, MailIcon } from "lucide-vue-next";
+import { CheckIcon } from "lucide-vue-next";
 
-// const main = ref();
-// let tl: gsap.core.Timeline;
-// let ctx: gsap.Context;
-
-// const toggleTimeline = () => {
-//   tl.reversed(!tl.reversed());
-// };
-//   ctx = gsap.context((self) => {
-//     if (!self.selector) return;
-//     const boxes = self.selector(".box");
-//     tl = gsap
-//       .timeline()
-//       .to(boxes[0], { x: 120, rotation: 360 })
-//       .to(boxes[1], { x: -120, rotation: -360 }, "<")
-//       .to(boxes[2], { y: -166 })
-//       .reverse();
-//   }, main.value); // <- Scope!
-// onUnmounted(() => {
-//   ctx.revert(); // <- Easy Cleanup!
 const teamContent = ref<TeamPageContent>({
   teamSection: {
     title: "Our Team",
@@ -75,18 +55,6 @@ const teamContent = ref<TeamPageContent>({
           },
         ],
       },
-      // {
-      //   name: "Ibigbari",
-      //   role: "PROGRAM COORDINATOR, OpenKids Africa ",
-      //   image: "/assets/images/team/Ibigbari.png",
-      //   socials: [],
-      // },
-      // {
-      //   name: "Uboho Essien",
-      //   role: "WEB DESIGNER, OpenKids Africa ",
-      //   image: "/assets/images/team/Uboho Essien.png",
-      //   socials: [],
-      // },
     ],
   },
   educationChampionsSection: {
@@ -132,241 +100,181 @@ const teamContent = ref<TeamPageContent>({
 });
 
 useHead({
-  title: "About Us",
+  title: "Our Team",
 });
 </script>
 <template>
-  <!-- <header class="page-header site-section">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ teamContent.heroSection.title }}
-        </h1>
-        <p
-          v-for="(text, i) in teamContent.heroSection.text"
-          :key="i"
-          class="page-header__subtext"
-        >
-          {{ text }}
-        </p>
-      </div>
-      <div class="page-header__media-cont img-cont">
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont"
-          :images="teamContent.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header> -->
+  <div class="page">
+    <PageIntro
+      :caption="teamContent.teamSection.title"
+      :text="[
+        'The people behind OpenKids Africa, and the volunteers who deliver our tech lessons in rural schools.',
+      ]"
+    />
 
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ teamContent.teamSection.title }}
-        </h2>
-      </header>
-
-      <ul class="team-list">
-        <li
-          v-for="(item, i) in teamContent.teamSection.team"
-          :key="i"
-          class="team-list__item"
-        >
-          <TeamCard :member="item" :i="i">
-            <template v-if="item.name == 'Regina Nkenchor'">
-              <p>
-                To address the challenge in Africa, where children in rural
-                schools lack digital skills and risk being left behind in the
-                rapidly advancing digital space, and considering the scarcity of
-                women in technology roles, I founded OpenKids Africa and
-                currently serve as its executive director.
-              </p>
-              <p>
-                My vision is to ensure that all children have equal rights to
-                quality education and exposure to digital skills, regardless of
-                their gender, race, or location.
-              </p>
-              <p>
-                Early exposure to digital skills empowers children to make
-                informed career choices, paving the way for them to become
-                future leaders in technology, business, or even in the field of
-                medicine.
-              </p>
-              <!-- <p>
-                Our work at OpenKids Africa have been recognized and supported
-                by our partners at
-                <a
-                  class="text-orange-600 underline"
-                  href="https://techshecan.org/"
-                  >Tech She Can</a
-                >.
-              </p> -->
-            </template>
-            <template v-else-if="item.name == 'Adebola Temitayo Ogunyemi'">
-              <p>
-                With a background in Computer Science and a Postgraduate degree
-                in Early Childhood and Educational Foundation, I am passionate
-                about fostering digital literacy in children.
-              </p>
-              <p>
-                Having joined OpenKids Africa in 2020 as an Early Childhood
-                Educator, my focus extends to reaching schools in low-tech and
-                rural communities. I am committed to bridging the digital gap
-                and firmly believe in nurturing the innovative potential of
-                today's children.
-              </p>
-              <p>
-                As part of OpenKids Africa, I take pride in igniting children's
-                interest in technology, especially among girls, and aspire to
-                contribute to the organization's future impact, connecting more
-                children to a digital future.
-              </p>
-            </template>
-            <template v-else-if="item.name == 'Anita Ihuman'">
-              <p>
-                As a program coordinator at Openkids Africa, I am in charge of
-                managing programs and ensuring that each project coincides with
-                our organizational goals and delivers exceptional results. I am
-                enthusiastic about topics that strongly resonate with values
-                promoting growth, inclusivity, and sustainability, all of which
-                contribute to shaping the future of technology.
-              </p>
-              <p>
-                I am passionate about empowering the next generation of
-                technologists through mentorships and onboarding.
-              </p>
-              <p>
-                With a background in technology and open source, I am uniquely
-                positioned to educate children on technology and how it can
-                translate to their career choices. In my role as a program
-                manager, I can play a part in introducing children to a digital
-                future, particularly those from marginalized groups.
-              </p>
-            </template>
-          </TeamCard>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- New Section for Educational Champions -->
-  <section class="site-section bg-brand-50 p-12">
-    <div class="wrapper">
-      <header class="site-section__header site-section__header--left">
-        <h2 class="site-section__caption">
-          {{ teamContent.educationChampionsSection.title }}
-        </h2>
-        <p
-          v-for="(text, i) in teamContent.educationChampionsSection.description"
-          class="site-section__subtext"
-        >
-          {{ text }}
-        </p>
-      </header>
-      <div class="py-8">
-        <!-- <h3
-          class="mb-4 font-heading text-xl font-bold leading-tight lg:text-3xl"
-        >
-          {{ teamContent.educationChampionsSection.additionalInfo[0].title }}
-        </h3> -->
-        <ul
-          v-if="teamContent.educationChampionsSection.additionalInfo[0].list"
-          class="flex flex-wrap gap-4 lg:grid lg:grid-cols-2"
-        >
+    <section class="site-section pt-0">
+      <div class="wrapper">
+        <ul class="team" v-reveal.stagger>
           <li
-            v-for="(item, index) in teamContent.educationChampionsSection
-              .additionalInfo[0].list"
-            :key="index"
-            class="grow rounded-3xl bg-orange-100 p-6 text-2xl font-medium text-orange-800"
+            v-for="(item, i) in teamContent.teamSection.team"
+            :key="i"
+            class="js-reveal"
           >
-            {{ item }}
+            <TeamCard :member="item" :i="i">
+              <template v-if="item.name == 'Regina Nkenchor'">
+                <p>
+                  To address the challenge in Africa, where children in rural
+                  schools lack digital skills and risk being left behind in the
+                  rapidly advancing digital space, and considering the scarcity
+                  of women in technology roles, I founded OpenKids Africa and
+                  currently serve as its executive director.
+                </p>
+                <p>
+                  My vision is to ensure that all children have equal rights to
+                  quality education and exposure to digital skills, regardless
+                  of their gender, race, or location.
+                </p>
+                <p>
+                  Early exposure to digital skills empowers children to make
+                  informed career choices, paving the way for them to become
+                  future leaders in technology, business, or even in the field
+                  of medicine.
+                </p>
+              </template>
+              <template v-else-if="item.name == 'Adebola Temitayo Ogunyemi'">
+                <p>
+                  With a background in Computer Science and a Postgraduate
+                  degree in Early Childhood and Educational Foundation, I am
+                  passionate about fostering digital literacy in children.
+                </p>
+                <p>
+                  Having joined OpenKids Africa in 2020 as an Early Childhood
+                  Educator, my focus extends to reaching schools in low-tech and
+                  rural communities. I am committed to bridging the digital gap
+                  and firmly believe in nurturing the innovative potential of
+                  today's children.
+                </p>
+                <p>
+                  As part of OpenKids Africa, I take pride in igniting
+                  children's interest in technology, especially among girls, and
+                  aspire to contribute to the organization's future impact,
+                  connecting more children to a digital future.
+                </p>
+              </template>
+              <template v-else-if="item.name == 'Anita Ihuman'">
+                <p>
+                  As a program coordinator at Openkids Africa, I am in charge of
+                  managing programs and ensuring that each project coincides
+                  with our organizational goals and delivers exceptional
+                  results. I am enthusiastic about topics that strongly resonate
+                  with values promoting growth, inclusivity, and sustainability,
+                  all of which contribute to shaping the future of technology.
+                </p>
+                <p>
+                  I am passionate about empowering the next generation of
+                  technologists through mentorships and onboarding.
+                </p>
+                <p>
+                  With a background in technology and open source, I am uniquely
+                  positioned to educate children on technology and how it can
+                  translate to their career choices. In my role as a program
+                  manager, I can play a part in introducing children to a
+                  digital future, particularly those from marginalized groups.
+                </p>
+              </template>
+            </TeamCard>
           </li>
         </ul>
       </div>
-      <p class="py-8">
-        {{ teamContent.educationChampionsSection.mentoringInfo }}
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <section class="site-section contact-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">Get in touch with us</h2>
-        <p class="site-section__subtext">
-          We are constantly seeking volunteers, including teachers and
-          technology enthusiasts. Please contact us below, and we will get back
-          to you
-        </p>
-      </header>
+    <!-- CHAMPIONS -->
+    <section
+      id="champions"
+      class="site-section scroll-mt-24 bg-slate-50 lg:rounded-[3rem]"
+    >
+      <div class="wrapper">
+        <div class="champions" v-reveal.stagger>
+          <header
+            class="site-section__header site-section__header--left js-reveal !mb-0"
+          >
+            <p class="site-section__eyebrow">Volunteer</p>
+            <h2 class="site-section__caption">
+              {{ teamContent.educationChampionsSection.title }}
+            </h2>
+            <p
+              v-for="(text, i) in teamContent.educationChampionsSection
+                .description"
+              :key="i"
+            >
+              {{ text }}
+            </p>
+          </header>
+          <div class="champions__side js-reveal">
+            <div class="tile tile--tint">
+              <h3 class="tile__title mb-4">
+                {{
+                  teamContent.educationChampionsSection.additionalInfo[0].title
+                }}
+              </h3>
+              <ul class="checklist">
+                <li
+                  v-for="(item, index) in teamContent.educationChampionsSection
+                    .additionalInfo[0].list"
+                  :key="index"
+                  class="checklist__item !bg-white"
+                >
+                  <span class="checklist__icon-cont"
+                    ><CheckIcon class="icon"
+                  /></span>
+                  <p>{{ item }}</p>
+                </li>
+              </ul>
+            </div>
+            <p class="text-base text-slate-600">
+              {{ teamContent.educationChampionsSection.mentoringInfo }}
+            </p>
+            <NuxtLink to="/contact" class="btn w-fit"
+              >Become a champion</NuxtLink
+            >
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <ContactForm />
-    </div>
-  </section>
-  <PartnersSection :section-data="teamContent.partnersSection">
-    <template #illustration>
-      <SiteSlideshow class="m-auto max-w-7xl" />
-    </template>
-  </PartnersSection>
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">Get in touch with us</h2>
+          <p>
+            We are constantly seeking volunteers, including teachers and
+            technology enthusiasts. Please contact us below, and we will get
+            back to you
+          </p>
+        </header>
+        <div class="js-reveal mx-auto max-w-3xl" v-reveal>
+          <ContactForm />
+        </div>
+      </div>
+    </section>
 
-  <!-- <section class="boxes-container" ref="main">
-    <h1>Use the button to toggle a Timeline</h1>
-    <div>
-      <button @click="toggleTimeline">Toggle Timeline</button>
-    </div>
-    <div class="box">Box 1</div>
-    <div class="box">Box 2</div>
-    <div class="box">Box 3</div>
-  </section> -->
+    <PartnersSection :section-data="teamContent.partnersSection" />
+  </div>
 </template>
 <style scoped>
-.value-list {
-  @apply grid gap-6 md:grid-cols-2;
+.team {
+  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
 }
 
-.value-card {
-  @apply flex h-full flex-col justify-between gap-4 overflow-clip rounded-3xl border border-slate-600;
+.champions {
+  @apply grid gap-8 lg:grid-cols-2 lg:gap-16;
 }
 
-.value-card__title {
-  @apply p-6 font-heading text-lg font-medium leading-tight lg:text-2xl;
+.champions .site-section__caption {
+  @apply lg:text-4xl;
 }
 
-.value-card__img-cont {
-  @apply h-24 w-full bg-slate-900;
-}
-
-.value-card__img-cont > img {
-  @apply h-full w-full object-cover object-top;
-}
-
-.infographic-list {
-  @apply flex flex-col gap-12;
-}
-
-.infographic {
-  @apply flex flex-col items-center gap-6 lg:flex-row;
-}
-
-.infographic__header {
-  @apply flex flex-1 flex-col-reverse gap-2 text-center;
-}
-
-.infographic__title {
-  @apply font-heading text-2xl font-bold;
-}
-
-.infographic__text-cont {
-  @apply flex flex-1 flex-col gap-2;
-}
-
-.team-list {
-  @apply grid gap-12 sm:grid-cols-2 lg:grid-cols-3;
-  /* @apply flex flex-wrap justify-center gap-6; */
-}
-
-.team-list__item {
-  @apply min-w-[12rem] max-w-lg;
+.champions__side {
+  @apply flex flex-col gap-6;
 }
 </style>

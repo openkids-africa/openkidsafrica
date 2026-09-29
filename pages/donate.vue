@@ -1,42 +1,13 @@
 <script setup lang="ts">
-import { HelpingHandIcon } from "lucide-vue-next";
-import { MailIcon } from "lucide-vue-next";
-
 const donateContent = ref({
   heroSection: {
     caption: "Donate to Openkids Africa",
     subtext:
       "Support the Future of Children in Rural African Schools: Donate Now",
-    // images: [
-    //   {
-    //     src: "/assets/images/svg/Donate.svg",
-    //     alt: "Donate Illustration",
-    //   },
-    // ],
     images: [
       {
-        src: "/assets/images/photos/photo-23.jpg",
-        alt: "Hero Image 1",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-24.jpg",
-        alt: "Hero Image 2",
-      },
-      {
-        src: "/assets/images/photos/photo-25.jpg",
-        alt: "Hero Image 3",
-      },
-      {
-        type: "block",
-        color: "purple",
-      },
-      {
-        src: "/assets/images/photos/photo-22.jpg",
-        alt: "Hero Image 4",
+        src: "/assets/images/photos/photo-10.jpg",
+        alt: "Pupils in class during an OpenKids Africa visit",
       },
     ],
   },
@@ -47,6 +18,13 @@ const donateContent = ref({
       src: "https://www.youtube.com/embed/_MtO_fHlkG4?si=m3fvsb9YxK9rXnNE",
       alt: "Video",
     },
+  },
+  impactSection: {
+    title: "Your impact",
+    text: [
+      "Every month, your contribution plays a pivotal role in shaping the future of African children by providing access to our free tech lessons. Through your donations, we ensure that children in underserved regions are not left behind in this rapidly evolving digital economy.",
+      "Your support directly funds our school outreach programs, providing essential resources and training for both children and educators in rural schools.",
+    ],
   },
   donateSection: {
     donateOptions: [
@@ -77,6 +55,18 @@ const donateContent = ref({
       },
     ],
   },
+  giveSection: {
+    title: "Donate to Empower Children in Rural Schools in Africa",
+    text: "Your support directly funds our school outreach programs, providing essential resources and training for both children and educators in rural schools.",
+    photo: {
+      src: "/assets/images/photos/photo-38.jpg",
+      alt: "Two pupils standing to answer during a lesson",
+    },
+  },
+  waysSection: {
+    title: "How to make Online Donations",
+    text: "You can easily contribute by choosing any of the options available in this page. We've also made it convenient for you to donate via PayPal by clicking the button below.",
+  },
   faqSection: {
     caption: "Donate FAQs",
     subtext: "Questions About Donating",
@@ -86,11 +76,6 @@ const donateContent = ref({
         content:
           "You can donate to us through our website by clicking the 'Donate' button on the top right corner of the page. Additionally, we offer the option to donate via PayPal for added convenience.",
       },
-      // {
-      //   topic: "What is the impact of my donation?",
-      //   content:
-      //     "Your donation will help us provide education, resources and shelter to children in need.",
-      // },
       {
         topic: "Can I donate via check?",
         content:
@@ -102,10 +87,6 @@ const donateContent = ref({
     title: "Partner with us",
     description:
       "At OpenKids Africa, we believe in the power of collaboration and partnership to make a lasting impact on the lives of African children. By partnering with us, you can contribute to the growth and development of young minds in underserved communities, empowering them with essential digital skills for a brighter future.",
-    // donateLink: {
-    //   text: "Donate",
-    //   url: "http://paypal.me/openkidsafrica",
-    // },
     contactCTA: {
       id: "contact",
       text: "Contact Us",
@@ -117,32 +98,6 @@ const donateContent = ref({
       },
     ],
     hidePartners: true,
-    images: [
-      {
-        src: "/assets/images/photos/photo-11.jpg",
-        alt: "Kids Image 1",
-      },
-      {
-        src: "/assets/images/photos/photo-12.jpg",
-        alt: "Kids Image 1",
-      },
-      {
-        src: "/assets/images/photos/photo-13.jpg",
-        alt: "Kids Image 2",
-      },
-      {
-        src: "/assets/images/photos/photo-10.jpg",
-        alt: "Kids Image 2",
-      },
-      {
-        src: "/assets/images/photos/photo-14.jpg",
-        alt: "Kids Image 3",
-      },
-      {
-        src: "/assets/images/photos/photo-15.jpg",
-        alt: "Kids Image 3",
-      },
-    ],
   },
 });
 useHead({
@@ -154,323 +109,246 @@ useHead({
       key: "description",
     },
     {
+      key: "og-title",
       property: "og:title",
       content: donateContent.value.heroSection.caption,
-      key: "og:title",
     },
     {
+      key: "og-description",
       property: "og:description",
       content: donateContent.value.heroSection.subtext,
-      key: "og:description",
     },
     {
-      property: "twitter:title",
+      key: "twitter-title",
+      name: "twitter:title",
       content: donateContent.value.heroSection.caption,
-      key: "twitter:title",
     },
     {
-      property: "twitter:description",
+      key: "twitter-description",
+      name: "twitter:description",
       content: donateContent.value.heroSection.subtext,
-      key: "twitter:description",
     },
   ],
 });
 </script>
 <template>
-  <header class="page-header site-section">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ donateContent.heroSection.caption }}
-        </h1>
-        <p class="page-header__subtext">
-          {{ donateContent.heroSection.subtext }}
-        </p>
-        <a
-          href="#video-section"
-          class="btn !w-fit"
-          :aria-label="`Email OpenKids Africa`"
-        >
-          <!-- <MailIcon class="icon" /> -->
-          <span class="text"> Explore more </span>
-        </a>
-      </div>
-      <!-- <div class="page-header__media-cont">
-        <img
-          :src="donateContent.heroSection.images[0].src"
-          :alt="donateContent.heroSection.images[0].alt"
-          class="abstract-illustration"
-        />
-      </div> -->
-      <div class="page-header__media-cont img-cont">
-        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont"
-          :images="donateContent.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
-  <section id="video-section" class="site-section video-section scroll-mt-14">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ donateContent.videoSection.title }}
-        </h2>
-        <p class="site-section__subtext">
-          {{ donateContent.videoSection.text }}
-        </p>
-      </header>
+  <div class="page">
+    <PageIntro
+      :caption="donateContent.heroSection.caption"
+      :text="[donateContent.heroSection.subtext]"
+      :images="donateContent.heroSection.images"
+    >
+      <template #actions>
+        <a href="#give" class="btn">Give now</a>
+        <a href="#video-section" class="btn btn--outline">Watch our video</a>
+      </template>
+    </PageIntro>
 
-      <div class="site-section__media-cont">
-        <iframe
-          :src="donateContent.videoSection.video.src"
-          :alt="donateContent.videoSection.video.alt"
-          class="video h-[500px] w-full"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+    <!-- GIVE: the case for giving beside the form -->
+    <section id="give" class="site-section scroll-mt-24">
+      <div class="wrapper">
+        <div class="give js-reveal" v-reveal.stagger>
+          <div class="give__case">
+            <p class="site-section__eyebrow">Make a gift</p>
+            <h2 class="site-section__caption !text-3xl lg:!text-4xl">
+              {{ donateContent.giveSection.title }}
+            </h2>
+            <p class="text-base text-slate-600 lg:text-lg">
+              {{ donateContent.giveSection.text }}
+            </p>
+            <PhotoTile
+              class="give__photo"
+              :src="donateContent.giveSection.photo.src"
+              :alt="donateContent.giveSection.photo.alt"
+            />
+          </div>
+          <DonateForm />
+        </div>
       </div>
-    </div>
-  </section>
-  <!-- <section class="site-section bg-orange-100 text-orange-800">
-    <div class="wrapper">
-      <header class="site-section__header site-section__header--left">
-        <h2 class="site-section__caption">About OpenKids Africa</h2>
-      </header>
-      <div class="site-section__text-cont">
-        <p class="site-section__subtext">
-          OpenKids Africa is a non-profit organization dedicated to transforming
-          the educational landscape in rural African communities.
-          <br />
-          We work in collaboration with government entities, schools, and
-          industry partners to provide free, quality information technology
-          education and resources for children in underserved regions.
-        </p>
-      </div>
-    </div>
-  </section> -->
-  <section class="site-section bg-slate-50">
-    <div class="wrapper">
-      <header class="site-section__header site-section__header--left">
-        <h2 class="site-section__caption">Your impact</h2>
-      </header>
-      <div class="site-section__text-cont">
-        <p class="site-section__subtext">
-          Every month, your contribution plays a pivotal role in shaping the
-          future of African children by providing access to our free tech
-          lessons. Through your donations, we ensure that children in
-          underserved regions are not left behind in this rapidly evolving
-          digital economy.
-          <br />
-          Your support directly funds our school outreach programs, providing
-          essential resources and training for both children and educators in
-          rural schools.
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- donation options -->
-
-  <!-- <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">Donate Monthly</h2>
-        <p class="site-section__subtext">
-          Choose a donation amount that suits you best.
-        </p>
-      </header>
-      <div class="donate-options flex flex-wrap gap-4 lg:grid lg:grid-cols-2">
-        <article
-          v-for="(option, index) in donateContent.donateSection.donateOptions"
-          :key="index"
-          :class="`donate-option flex flex-col gap-4 rounded-xl border border-slate-200 p-4 ${
-            index === donateContent.donateSection.donateOptions.length - 1
-              ? 'lg:col-span-2'
-              : ''
-          }`"
-        >
-          <h3 class="font-heading text-3xl font-semibold">
-            {{ option.title }}
-          </h3>
-          <p>{{ option.description }}</p>
-          <a
-            href="#contact"
-            class="btn mt-auto !w-fit"
-            :aria-label="`Contact OpenKids Africa`"
-          >
-            <MailIcon class="icon" />
-            <span class="text"> Contact Us </span>
-          </a>
-        </article>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">How to Make Donations</h2>
-      </header>
-      <p class="site-section__text">
-        Making a difference is just a click away!
-      </p>
-      <p class="site-section__text">
-        You can easily contribute by clicking the "Donate" button located in the
-        top right corner of this page. We've also made it convenient for you to
-        donate via PayPal by clicking the button below.
-      </p>
-    </div>
-  </section> -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">How to make Online Donations</h2>
-        <p class="site-section__subtext">
-          You can easily contribute by choosing any of the options available in
-          this page. We've also made it convenient for you to donate via PayPal
-          by clicking the button below.
-        </p>
-      </header>
-
-      <div class="options flex flex-wrap gap-4">
-        <article class="card flex-1">
-          <h3 class="font-heading text-3xl font-semibold">Donate via PayPal</h3>
-          <p>
-            Donating via PayPal is very simple. <br />
-            You can donate to us via PayPal by clicking the button below.
-          </p>
-          <a
-            href="http://paypal.me/openkidsafrica"
-            class="btn mt-auto !w-fit"
-            :aria-label="`Donate to OpenKids Africa`"
-          >
-            <HelpingHandIcon class="icon" />
-            <span class="text"> Donate via PayPal </span>
-          </a>
-        </article>
-        <article class="card flex-1">
-          <h3 class="font-heading text-3xl font-semibold">
-            Donate Educational Resources
-          </h3>
-          <p class="">
-            If you would like to contribute educational resources, such as
-            refurbished laptops or digital learning materials for children,
-            please send an email to
-            <a class="underline" href="mailto:openkidsafrica@gmail.com">
-              openkidsafrica@gmail.com</a
+    <!-- IMPACT + VIDEO -->
+    <section id="video-section" class="site-section scroll-mt-24 pt-0">
+      <div class="wrapper">
+        <div class="impact js-reveal" v-reveal.stagger>
+          <div class="tile tile--tint impact__text">
+            <h2 class="site-section__caption !text-3xl lg:!text-4xl">
+              {{ donateContent.impactSection.title }}
+            </h2>
+            <p
+              v-for="(text, i) in donateContent.impactSection.text"
+              :key="i"
+              class="tile__text"
             >
-          </p>
-          <p class="">
-            We will promptly provide you with the necessary details. Your
-            support is immensely appreciated, and we are committed to assisting
-            you throughout the entire process.
-          </p>
-          <p class="">
-            Thank you for making a difference in the lives of children through
-            education.
-          </p>
-
-          <a
-            href="mailto:openkidsafrica@gmail.com"
-            class="btn mt-auto !w-fit"
-            :aria-label="`Email OpenKids Africa`"
-          >
-            <MailIcon class="icon" />
-            <span class="text"> Email Us </span>
-          </a>
-        </article>
-        <article class="card flex-1">
-          <h3 class="font-heading text-3xl font-semibold">Donate via Check</h3>
-          <p>
-            If you prefer to donate via check, kindly send an email to
-            <a href="mailto:openkidsafrica@gmail.com">
-              openkidsafrica@gmail.com </a
-            >, and we'll provide you with the necessary details. Your support is
-            highly valued, and we are here to assist you every step of the way.
-          </p>
-          <a
-            href="mailto:openkidsafrica@gmail.com"
-            class="btn mt-auto !w-fit"
-            :aria-label="`Email OpenKids Africa`"
-          >
-            <MailIcon class="icon" />
-            <span class="text"> Email Us </span>
-          </a>
-        </article>
+              {{ text }}
+            </p>
+          </div>
+          <figure class="impact__video">
+            <iframe
+              :src="donateContent.videoSection.video.src"
+              :title="donateContent.videoSection.title"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+            <figcaption>{{ donateContent.videoSection.text }}</figcaption>
+          </figure>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          Donate to Empower Children in Rural Schools in Africa
-        </h2>
-      </header>
-      <DonateForm />
-    </div>
-  </section>
-  <!-- <section class="site-section bg-orange-200 text-orange-800">
-    <div class="wrapper">
-      <header class="site-section__header site-section__header--left">
-        <h2 class="site-section__caption">Donate Educational Resources</h2>
-        <p class="site-section__subtext">
-          If you would like to contribute educational resources, such as
-          refurbished laptops or digital learning materials for children, please
-          send an email to
-          <a class="underline" href="mailto:openkidsafrica@gmail.com">
-            openkidsafrica@gmail.com</a
+    </section>
+
+    <!-- WHAT YOUR GIFT DOES -->
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">What your monthly gift does</h2>
+        </header>
+        <ul class="tiers js-reveal" v-reveal.stagger>
+          <li
+            v-for="(option, index) in donateContent.donateSection.donateOptions"
+            :key="index"
           >
-        </p>
-        <p class="site-section__subtext">
-          We will promptly provide you with the necessary details. Your support
-          is immensely appreciated, and we are committed to assisting you
-          throughout the entire process.
-        </p>
-        <p class="site-section__subtext">
-          Thank you for making a difference in the lives of children through
-          education.
-        </p>
-      </header>
-    </div>
-  </section> -->
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ donateContent.faqSection.caption }}
-        </h2>
-        <p class="site-section__subcaption">
-          {{ donateContent.faqSection.subtext }}
-        </p>
-      </header>
-      <ul class="faq-list flex flex-col gap-4">
-        <li
-          v-for="(faq, index) in donateContent.faqSection.faqs"
-          class="faq-list__item"
+            <article class="tile tile--outline tier">
+              <h3 class="tier__title">{{ option.title }}</h3>
+              <p class="tile__text">{{ option.description }}</p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WAYS -->
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">
+            {{ donateContent.waysSection.title }}
+          </h2>
+          <p>{{ donateContent.waysSection.text }}</p>
+        </header>
+        <div class="ways js-reveal" v-reveal.stagger>
+          <article class="tile tile--outline way">
+            <h3 class="tile__title">Donate via PayPal</h3>
+            <p class="tile__text">
+              Donating via PayPal is very simple. You can donate to us via
+              PayPal by clicking the button below.
+            </p>
+            <a
+              href="http://paypal.me/openkidsafrica"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn mt-auto w-fit"
+            >
+              Donate via PayPal
+            </a>
+          </article>
+          <article class="tile tile--outline way">
+            <h3 class="tile__title">Donate Educational Resources</h3>
+            <p class="tile__text">
+              If you would like to contribute educational resources, such as
+              refurbished laptops or digital learning materials for children,
+              please send an email to
+              <a class="underline" href="mailto:openkidsafrica@gmail.com"
+                >openkidsafrica@gmail.com</a
+              >
+            </p>
+            <p class="tile__text">
+              We will promptly provide you with the necessary details. Your
+              support is immensely appreciated, and we are committed to
+              assisting you throughout the entire process.
+            </p>
+            <p class="tile__text">
+              Thank you for making a difference in the lives of children through
+              education.
+            </p>
+            <a
+              href="mailto:openkidsafrica@gmail.com"
+              class="btn btn--outline mt-auto w-fit"
+            >
+              Email Us
+            </a>
+          </article>
+          <article class="tile tile--outline way">
+            <h3 class="tile__title">Donate via Check</h3>
+            <p class="tile__text">
+              If you prefer to donate via check, kindly send an email to
+              <a class="underline" href="mailto:openkidsafrica@gmail.com"
+                >openkidsafrica@gmail.com</a
+              >, and we'll provide you with the necessary details. Your support
+              is highly valued, and we are here to assist you every step of the
+              way.
+            </p>
+            <a
+              href="mailto:openkidsafrica@gmail.com"
+              class="btn btn--outline mt-auto w-fit"
+            >
+              Email Us
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="site-section pt-0">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">
+            {{ donateContent.faqSection.caption }}
+          </h2>
+          <p>{{ donateContent.faqSection.subtext }}</p>
+        </header>
+        <ul
+          class="panel js-reveal mx-auto flex max-w-4xl flex-col gap-3"
+          v-reveal.stagger
         >
-          <FAQItem :faq="faq" :index="index" />
-        </li>
-      </ul>
-    </div>
-  </section>
-  <PartnersSection :section-data="donateContent.partnersSection">
-    <template #illustration>
-      <SiteSlideshow
-        :images="donateContent.partnersSection.images"
-        class="m-auto max-w-7xl"
-      />
-    </template>
-  </PartnersSection>
+          <li
+            v-for="(faq, index) in donateContent.faqSection.faqs"
+            :key="index"
+          >
+            <FAQItem :faq="faq" :index="index" />
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <PartnersSection :section-data="donateContent.partnersSection" />
+  </div>
 </template>
 <style scoped>
-/* .page-header > .wrapper {
-  @apply flex-row;
-} */
+.impact {
+  @apply grid gap-6 lg:grid-cols-2 lg:gap-8;
+}
 
-.abstract-illustration {
-  @apply absolute right-[0] top-1/2 h-[130%] w-2/3 -translate-y-[45.5%] max-sm:-right-[30%] md:w-1/2 lg:h-[110%] 2xl:w-auto;
+.impact__text {
+  @apply flex flex-col gap-4 p-8 lg:p-10;
+}
+
+.impact__video {
+  @apply flex flex-col gap-3;
+}
+
+.impact__video > iframe {
+  @apply aspect-video w-full rounded-tile bg-slate-900;
+}
+
+.impact__video > figcaption {
+  @apply text-sm text-slate-500;
+}
+
+.tiers {
+  @apply grid gap-4 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.tier__title {
+  @apply font-heading text-2xl font-semibold text-slate-900;
+}
+
+.ways {
+  @apply grid gap-4 lg:grid-cols-3;
+}
+
+.way {
+  @apply flex flex-col gap-3;
 }
 </style>

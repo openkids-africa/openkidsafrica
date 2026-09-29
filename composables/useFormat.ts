@@ -29,8 +29,19 @@ export const useFormat = () => {
     }
   };
 
+  /* Explicit locale and UTC so the server and the browser render the same
+     string; an implicit locale hydrates with a mismatch. */
+  const formatDate = (value: string | Date) =>
+    new Intl.DateTimeFormat("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      timeZone: "UTC",
+    }).format(new Date(value));
+
   return {
     formatCurrency,
     formatNumber,
+    formatDate,
   };
 };

@@ -1,81 +1,61 @@
 <script setup lang="ts">
-import { HelpingHandIcon, HeartHandshakeIcon, MailIcon } from "lucide-vue-next";
-
 defineProps<{
   sectionData: PartnerSection;
 }>();
 </script>
 
 <template>
-  <section class="site-section partner-section">
+  <section class="site-section">
     <div class="wrapper">
-      <div class="partner-section__text-cont">
-        <header class="site-section__header">
-          <h2 class="site-section__caption">
-            {{ sectionData.title }}
-          </h2>
-          <p v-if="sectionData.description" class="site-section__subtext">
-            {{ sectionData.description }}
-          </p>
-        </header>
-        <ul
-          v-if="!sectionData.hidePartners"
-          class="partners flex flex-wrap justify-around gap-12 py-8"
-        >
-          <li
-            v-for="(partner, index) in sectionData.partners"
-            :key="index"
-            class="partners__item"
-          >
-            <div class="partners__logo-cont">
-              <NuxtImg
-                :src="partner.logo"
-                :alt="partner.name"
-                class="partners__logo"
-              />
-            </div>
-          </li>
-        </ul>
-        <div class="action-cont">
-          <a
-            :aria-label="sectionData.donateLink?.text || 'Donate'"
-            v-if="sectionData.donateLink"
-            :href="sectionData.donateLink.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn"
-          >
-            <HelpingHandIcon class="icon" />
-            <span class="text">
-              {{ sectionData.donateLink.text }}
-            </span>
-          </a>
+      <header class="site-section__header js-reveal" v-reveal>
+        <h2 class="site-section__caption">{{ sectionData.title }}</h2>
+        <p v-if="sectionData.description">{{ sectionData.description }}</p>
+      </header>
 
-          <NuxtLink
-            v-if="sectionData.contactCTA"
-            to="/contact"
-            class="btn btn--secondary"
-            :aria-label="sectionData.contactCTA?.text || 'Contact Us'"
-          >
-            <HeartHandshakeIcon
-              v-if="sectionData.contactCTA?.id === 'partner'"
-              class="icon"
-            />
-            <MailIcon v-else class="icon" />
-            <span class="text"> {{ sectionData.contactCTA?.text }} </span>
-          </NuxtLink>
-        </div>
+      <ul v-if="!sectionData.hidePartners" class="partners" v-reveal.stagger>
+        <li
+          v-for="(partner, index) in sectionData.partners"
+          :key="index"
+          class="partners__item js-reveal"
+        >
+          <NuxtImg
+            :src="partner.logo"
+            :alt="partner.name"
+            class="partners__logo"
+          />
+        </li>
+      </ul>
+
+      <div class="action-cont">
+        <a
+          v-if="sectionData.donateLink"
+          :href="sectionData.donateLink.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn"
+        >
+          {{ sectionData.donateLink.text }}
+        </a>
+        <NuxtLink
+          v-if="sectionData.contactCTA"
+          to="/contact"
+          class="btn btn--outline"
+        >
+          {{ sectionData.contactCTA.text }}
+        </NuxtLink>
       </div>
 
-      <slot name="illustration">
-        <IllustrationsWorldMap class="partner-section__illustration" />
-      </slot>
+      <slot name="illustration" />
     </div>
   </section>
 </template>
 <style scoped>
-.partners__logo-cont {
-  @apply flex h-28 w-52 items-center justify-center;
+.partners {
+  @apply mb-10 flex flex-wrap items-center justify-center gap-x-14 gap-y-8;
+}
+
+.partners__item {
+  @apply flex h-20 w-44 items-center justify-center;
 }
 
 .partners__logo {

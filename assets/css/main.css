@@ -8,38 +8,37 @@
 }
 
 body {
-  @apply bg-white text-slate-800 lg:text-lg;
+  @apply bg-white text-slate-700 antialiased lg:text-lg;
 }
 
 li {
   @apply list-none;
 }
 
-/* Nothing in the site had a visible focus state before. */
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible,
 [tabindex]:focus-visible {
-  @apply rounded-md outline outline-2 outline-offset-2 outline-brand-600;
+  @apply rounded-full outline outline-2 outline-offset-2 outline-brand-600;
 }
 
 @layer components {
-  /* ICON */
   .icon {
     @apply h-6 w-6;
   }
 
-  /* BUTTON */
+  /* BUTTONS — every control is a pill. */
   .btn {
-    @apply inline-flex items-center justify-center rounded-xl border border-transparent bg-brand-600 px-5 py-2.5 font-heading font-bold text-white transition-colors duration-200 hover:bg-brand-700 active:bg-brand-800;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-transparent bg-brand-600 px-6 py-3 font-heading text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-pill active:translate-y-0 active:bg-brand-800;
   }
 
-  .btn--secondary {
-    @apply bg-slate-800 text-white hover:bg-slate-900 active:bg-slate-950;
+  .btn--secondary,
+  .btn--outline {
+    @apply border-slate-200 bg-white text-slate-900 hover:border-slate-300 hover:bg-slate-50 active:bg-slate-100;
   }
 
   .btn--alt {
-    @apply border-brand-200 bg-brand-50 text-brand-700 hover:bg-brand-100 active:bg-brand-200;
+    @apply border-brand-200 bg-brand-100 text-brand-900 hover:bg-brand-200 active:bg-brand-300;
   }
 
   .btn--alt.btn--active {
@@ -47,162 +46,308 @@ summary:focus-visible,
   }
 
   .btn--ghost {
-    @apply bg-transparent text-brand-700 hover:bg-brand-50 active:bg-brand-100;
+    @apply border-transparent bg-transparent text-slate-900 hover:bg-slate-100 active:bg-slate-200;
+  }
+
+  .btn--sm {
+    @apply px-4 py-2 text-sm;
   }
 
   .btn:disabled {
     @apply pointer-events-none cursor-not-allowed opacity-60 grayscale;
   }
 
-  /* A label that states something is unavailable must not look pressable. */
   .btn[aria-disabled="true"] {
     @apply pointer-events-none border-slate-200 bg-slate-100 text-slate-500;
   }
 
-  .btn:has(> .icon) {
-    @apply flex gap-2 p-3;
+  .btn > .icon {
+    @apply h-5 w-5;
   }
 
-  /* BTN GROUP */
   .btn-group {
-    @apply flex flex-row !gap-0;
+    @apply inline-flex rounded-full border border-slate-200 bg-white p-1;
   }
 
-  .btn-group > .btn:first-of-type {
-    @apply rounded-r-none;
+  .btn-group > .btn {
+    @apply border-transparent bg-transparent text-slate-700 hover:bg-slate-100;
   }
 
-  .btn-group > .btn:last-of-type {
-    @apply rounded-l-none;
-  }
-
-  /* END BTN GROUP */
-
-  /* IMG CONT */
-  .img-cont {
-    /* @apply r elative; */
+  .btn-group > .btn.btn--active {
+    @apply bg-slate-900 text-white hover:bg-slate-900;
   }
 
   .img-cont > img {
     @apply h-full w-full object-cover;
   }
-
-  /* IMG CONT */
 }
 
+/* LAYOUT */
 .site-section {
-  @apply p-4 py-20;
+  @apply px-4 py-16 lg:py-24;
 }
 
 .site-section > .wrapper {
   @apply m-auto w-full max-w-6xl;
 }
 
+.site-section--tight {
+  @apply py-10 lg:py-14;
+}
+
+/* SECTION HEADERS — centred by default, as the reference design sets them. */
 .site-section__header {
-  @apply mb-5 flex flex-col gap-2 text-center;
+  @apply mx-auto mb-10 flex max-w-3xl flex-col items-center gap-3 text-center lg:mb-14;
 }
 
 .site-section__header--left {
-  @apply text-left;
+  @apply mx-0 items-start text-left;
 }
 
 .site-section__caption {
-  @apply font-heading text-3xl font-extrabold lg:text-5xl;
+  @apply font-heading text-3xl font-semibold tracking-tight text-slate-900 lg:text-5xl lg:leading-[1.08];
+  text-wrap: balance;
 }
 
-.site-section__header > p {
-  @apply max-w-measure;
+.site-section__header > p,
+.site-section__subtext {
+  @apply max-w-2xl text-base text-slate-600 lg:text-lg;
 }
 
-.site-section__header:not(.site-section__header--left) > p {
-  @apply mx-auto;
+.site-section__eyebrow {
+  @apply font-heading text-xs font-semibold uppercase tracking-[0.16em] text-brand-600;
 }
 
 .site-section__text-cont {
   @apply flex flex-col gap-4;
 }
 
-/* ILLUSTRATION CONT */
-.illustration-cont > svg {
-  @apply h-full w-full;
-}
-/* END ILLUSTRATION CONT */
-
-/* ACTION CONT */
-.action-cont {
-  @apply flex flex-wrap justify-center gap-4;
-}
-/* END ACTION CONT */
-
-/* PAGE HEADER */
-.page-header {
-  @apply relative overflow-x-clip;
-}
-.page-header > .wrapper {
-  @apply flex h-full items-center justify-between gap-4;
-}
-
-.page-header > .wrapper:has(.page-header__media-cont) {
-  @apply flex-col-reverse lg:flex-row;
-}
-
-.page-header__text-cont {
-  @apply flex flex-col justify-center gap-4 lg:min-h-[22rem] lg:flex-1 xl:min-h-[38rem] 2xl:min-h-[40rem];
-}
-
-.page-header__caption {
-  @apply font-heading text-4xl font-bold lg:text-6xl;
-}
-
-.page-header__subtext {
+.measure {
   @apply max-w-measure;
 }
 
-.page-header__media-cont {
-  @apply w-full lg:flex-1;
+.action-cont {
+  @apply flex flex-wrap items-center justify-center gap-3;
 }
 
-.page-header:has(.images-grid) > .wrapper {
-  @apply max-w-7xl flex-col gap-8 lg:flex-row;
+/* PAGE INTRO — the inner-page hero: title, copy and actions on the left,
+   the page's photograph on the right. */
+.page-intro {
+  @apply px-4 pb-8 pt-10 lg:pb-12 lg:pt-16;
 }
 
-.page-header:has(.images-grid) .page-header__text-cont {
-  @apply xl:ml-16;
+.page-intro > .wrapper {
+  @apply m-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-2 lg:gap-14;
 }
 
-/* END PAGE HEADER */
-
-/* PARTNER SECTION */
-.partner-section {
-  @apply px-0 pt-2;
+.page-intro--plain > .wrapper {
+  @apply lg:grid-cols-1;
 }
 
-.partner-section > .wrapper {
-  @apply flex max-w-[140rem] flex-col-reverse gap-2;
+.page-intro__text {
+  @apply flex flex-col items-start gap-4;
 }
 
-.partner-section .site-section__header {
-  @apply m-auto flex max-w-5xl flex-col gap-4 p-4;
+.page-intro--plain .page-intro__text {
+  @apply mx-auto max-w-3xl items-center text-center;
 }
 
-.partner-section__illustration {
-  @apply py-0;
+.page-intro__caption {
+  @apply font-heading text-4xl font-semibold tracking-tight text-slate-900 lg:text-[3.4rem] lg:leading-[1.06];
+  text-wrap: balance;
 }
-/* END PARTNER SECTION */
 
-/* ABSTRACT ILLUSTRATION */
-.abstract-illustration {
-  @apply h-96 w-full lg:absolute lg:-right-[3.85%] lg:top-1/2 lg:m-0 lg:h-[115%] lg:w-1/2 lg:-translate-y-[43.5%] 2xl:left-[52.5%] 2xl:w-auto;
+.page-intro__subtext {
+  @apply text-base text-slate-600 lg:text-lg;
 }
-/* END ABSTRACT ILLUSTRATION */
 
-/* FORM */
+.page-intro__photo {
+  @apply aspect-[4/3] w-full lg:aspect-[5/4];
+}
+
+/* TILES — the rounded panels the reference builds everything from. */
+.tile {
+  @apply relative overflow-hidden rounded-tile bg-slate-50 p-6 transition-transform duration-300;
+}
+
+a.tile:hover {
+  @apply -translate-y-1;
+}
+
+.tile--tint {
+  @apply bg-brand-100;
+}
+
+.tile--outline {
+  @apply border border-slate-200 bg-white;
+}
+
+.tile--photo {
+  @apply bg-brand-100 p-0;
+}
+
+.tile--photo > img {
+  @apply h-full w-full object-cover;
+}
+
+.tile__title {
+  @apply font-heading text-xl font-semibold text-slate-900;
+}
+
+.tile__text {
+  @apply text-base text-slate-600;
+}
+
+.tile__stat {
+  @apply font-heading text-4xl font-semibold tracking-tight text-slate-900 lg:text-5xl;
+}
+
+/* CHIP — a pill-shaped label, used for short facts and captions. */
+.chip {
+  @apply inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 font-heading text-sm font-medium text-slate-800 shadow-pill;
+}
+
+.chip__icon {
+  @apply flex h-7 w-7 items-center justify-center rounded-full bg-brand-100 text-brand-700;
+}
+
+.chip__icon > .icon {
+  @apply h-4 w-4;
+}
+
+/* MINI CARD — a compact card with an arrow in its corner. */
+.mini-card {
+  @apply flex h-full flex-col gap-3 rounded-2xl bg-slate-50 p-5 transition-colors;
+}
+
+a.mini-card:hover,
+.mini-card--link:hover {
+  @apply bg-brand-50;
+}
+
+.mini-card__head {
+  @apply flex items-start justify-between gap-3;
+}
+
+.mini-card__title {
+  @apply font-heading text-base font-semibold text-slate-900 lg:text-lg;
+}
+
+.mini-card__arrow {
+  @apply shrink-0 text-slate-400;
+}
+
+.mini-card__arrow > .icon {
+  @apply h-4 w-4;
+}
+
+.mini-card__text {
+  @apply text-sm text-slate-600 lg:text-base;
+}
+
+/* CARD — the fuller card for content that needs room. */
+.card {
+  @apply flex h-full flex-col gap-3 rounded-tile border border-slate-200 bg-white p-6;
+}
+
+.card__title {
+  @apply font-heading text-xl font-semibold text-slate-900;
+}
+
+.card__text {
+  @apply text-slate-600;
+}
+
+.icon-badge {
+  @apply flex h-11 w-11 items-center justify-center rounded-full bg-brand-100 text-brand-700;
+}
+
+.icon-badge > .icon {
+  @apply h-5 w-5;
+}
+
+/* STATS PANEL — one bordered panel split into columns. */
+.stats {
+  @apply grid overflow-hidden rounded-tile border border-slate-200 bg-white md:grid-cols-3;
+}
+
+.stats__item {
+  @apply flex flex-col items-center gap-4 border-b border-slate-200 p-8 text-center last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0;
+}
+
+.stats__value {
+  @apply rounded-2xl bg-slate-50 px-6 py-3 font-heading text-4xl font-semibold tracking-tight text-slate-900 lg:text-5xl;
+}
+
+.stats__label {
+  @apply max-w-xs text-sm text-slate-600 lg:text-base;
+}
+
+/* CHECKLIST */
+.checklist {
+  @apply flex flex-col gap-3;
+}
+
+.checklist__item {
+  @apply flex items-start gap-3 rounded-2xl bg-slate-50 p-4;
+}
+
+.checklist__icon-cont {
+  @apply mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700;
+}
+
+.checklist__icon-cont > .icon {
+  @apply h-4 w-4;
+}
+
+/* FAQ */
+.faq {
+  @apply rounded-2xl border border-slate-200 bg-white px-5 py-4;
+}
+
+.faq .wrapper {
+  @apply flex items-center justify-between gap-4;
+}
+
+.faq__summary {
+  @apply block cursor-pointer;
+}
+
+.faq__summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__topic {
+  @apply font-heading text-base font-semibold text-slate-900 lg:text-lg;
+}
+
+.faq__icon-cont {
+  @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-800 transition-transform;
+}
+
+.faq__icon-cont > .icon {
+  @apply h-4 w-4;
+}
+
+.faq[open] .faq__icon-cont {
+  @apply rotate-45;
+}
+
+.faq__content {
+  @apply mt-3 hidden max-w-measure text-base text-slate-600;
+}
+
+.faq[open] .faq__content {
+  @apply block;
+}
+
+/* FORMS */
 .site-form {
-  @apply rounded-3xl border-2 border-slate-200 p-6 ring-8 ring-slate-50 ring-offset-8 ring-offset-slate-100;
+  @apply rounded-tile border border-slate-200 bg-white p-6 lg:p-8;
 }
 
 .site-form > .wrapper {
-  @apply flex flex-col gap-6;
+  @apply flex flex-col gap-5;
 }
 
 .form-control {
@@ -210,7 +355,7 @@ summary:focus-visible,
 }
 
 .form-control--radio {
-  @apply btn btn--alt relative items-center;
+  @apply btn btn--alt relative cursor-pointer;
 }
 
 .form-control--radio > .form-radio {
@@ -221,18 +366,8 @@ summary:focus-visible,
   @apply btn btn--active;
 }
 
-.form-control--radio .form-input {
-  @apply border-none bg-transparent p-0 text-brand-800 shadow-none outline-none ring-0 placeholder:text-brand-400;
-}
-
-/* The custom-amount field inherited pale orange text on a pale orange
-   ground, so it was unreadable until its option was selected. */
-.form-control--radio:has(.form-radio:checked) .form-input {
-  @apply text-white placeholder:text-brand-100;
-}
-
 .form-group {
-  @apply flex flex-row flex-wrap gap-2;
+  @apply flex flex-row flex-wrap gap-3;
 }
 
 .form-group > .form-control {
@@ -240,133 +375,353 @@ summary:focus-visible,
 }
 
 .form-label {
-  @apply font-semibold text-slate-700;
+  @apply text-sm font-medium text-slate-700;
 }
 
 .form-input,
 .form-select,
 .form-textarea {
-  @apply rounded-xl border border-slate-200 bg-slate-100 p-5 py-2 text-slate-800 shadow-inner shadow-white;
+  @apply rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand-400 focus:ring-2 focus:ring-brand-100;
 }
 
-.form-textarea {
-  @apply py-5;
+/* CTA BAND — solid accent, centred, dashed corners. */
+.cta-band {
+  @apply relative overflow-hidden rounded-tile bg-brand-500 px-6 py-14 text-center lg:px-14 lg:py-20;
 }
-/* END FORM */
 
-/* DONATE FORM */
+.cta-band::before,
+.cta-band::after {
+  content: "";
+  @apply pointer-events-none absolute bottom-0 h-40 w-56 opacity-60;
+  background-image: repeating-linear-gradient(
+    -50deg,
+    rgb(255 255 255 / 0.55) 0 5px,
+    transparent 5px 18px
+  );
+  mask-image: repeating-linear-gradient(
+    40deg,
+    black 0 16px,
+    transparent 16px 26px
+  );
+  -webkit-mask-image: repeating-linear-gradient(
+    40deg,
+    black 0 16px,
+    transparent 16px 26px
+  );
+}
+
+.cta-band::before {
+  @apply -left-6;
+  transform: scaleX(-1);
+}
+
+.cta-band::after {
+  @apply -right-6;
+}
+
+.cta-band > .wrapper {
+  @apply relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5;
+}
+
+.cta-band__title {
+  @apply font-heading text-3xl font-semibold tracking-tight text-slate-950 lg:text-4xl;
+  text-wrap: balance;
+}
+
+.cta-band__text {
+  @apply text-base text-slate-900 lg:text-lg;
+}
+
+.cta-band .btn {
+  @apply bg-slate-950 text-white hover:bg-slate-800;
+}
+
+.cta-band .btn--outline {
+  @apply border-transparent bg-white text-slate-950 hover:bg-brand-50;
+}
+
+.cta-band .site-section__eyebrow {
+  @apply text-slate-900;
+}
+
+/* IMAGE STRIP — a row of rounded photos. */
+.photo-strip {
+  @apply grid grid-cols-2 gap-3 md:grid-cols-4;
+}
+
+.photo-strip--3 {
+  @apply md:grid-cols-3;
+}
+
+.photo-strip > figure {
+  @apply aspect-[4/3] overflow-hidden rounded-2xl bg-brand-100 md:aspect-[3/4];
+}
+
+.photo-strip > figure > img {
+  @apply h-full w-full object-cover;
+}
+
+/* PROSE (news articles) */
+.prose {
+  @apply max-w-none text-slate-700;
+}
+
+.prose :where(h2, h3) {
+  @apply font-heading font-semibold tracking-tight text-slate-900;
+}
+
+.prose :where(a) {
+  @apply text-brand-700;
+}
+
+.prose :where(img) {
+  @apply rounded-2xl;
+}
+
+/* MOTION
+   .js-reveal starts hidden only on a scripted document; the motion plugin
+   arms it and animates it in. Anything never armed (the plugin failed to
+   run) becomes visible on its own after a moment. */
+html.js .js-reveal:not(.is-armed) {
+  opacity: 0;
+  animation: reveal-fallback 0s 2.5s forwards;
+}
+
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .js-reveal {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-leave-to {
+  opacity: 0;
+}
+
+/* PHOTO TILE — a photograph in a rounded frame, full colour. */
+.photo-tile {
+  @apply relative overflow-hidden rounded-tile bg-brand-100;
+}
+
+.photo-tile > img {
+  @apply h-full w-full object-cover transition-transform duration-700;
+}
+
+.photo-tile:hover > img {
+  @apply scale-[1.04];
+}
+
+/* PANEL — the soft rounded container cards and lists sit in. */
+.panel {
+  @apply rounded-tile bg-slate-50 p-4 lg:p-6;
+}
+
+.panel__head {
+  @apply mb-4 flex items-center justify-between gap-3 px-2;
+}
+
+.panel__title {
+  @apply font-heading text-xl font-semibold text-slate-900;
+}
+
+.panel__body {
+  @apply flex flex-col gap-3 rounded-2xl bg-white p-5 text-base text-slate-600 lg:p-6;
+}
+
+/* NUMBERED LIST — 01, 02, 03 in a white card inside a panel. */
+.numbered-list {
+  @apply flex flex-col rounded-2xl bg-white px-5;
+}
+
+.numbered-list > li {
+  @apply flex items-start gap-4 border-b border-slate-100 py-4 last:border-b-0;
+}
+
+.numbered-list__num {
+  @apply mt-0.5 flex h-7 w-9 shrink-0 items-center justify-center rounded-full bg-brand-100 font-heading text-xs font-semibold text-brand-800;
+}
+
+.numbered-list__body {
+  @apply text-base text-slate-600;
+}
+
+.numbered-list__body > strong {
+  @apply block font-heading font-semibold text-slate-900;
+}
+
+/* ZIG-ZAG — a photo tile beside a panel, mirrored on alternate rows. */
+.zigzag {
+  @apply grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:items-stretch;
+}
+
+.zigzag--flip {
+  @apply lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)];
+}
+
+.zigzag--flip > .zigzag__photo {
+  @apply lg:order-2;
+}
+
+.zigzag__photo {
+  @apply aspect-[4/3] lg:aspect-auto lg:min-h-[24rem];
+}
+
+/* SPLIT — copy on one side, its photograph on the other. Never stacked
+   with the photo underneath on large screens. */
+.split-feature {
+  @apply grid items-center gap-6 lg:grid-cols-2 lg:gap-12;
+}
+
+.split-feature--flip > .split-feature__photo {
+  @apply lg:order-first;
+}
+
+.split-feature__text {
+  @apply flex flex-col items-start gap-4;
+}
+
+.split-feature__title {
+  @apply font-heading text-3xl font-semibold tracking-tight text-slate-900 lg:text-5xl lg:leading-[1.08];
+  text-wrap: balance;
+}
+
+.split-feature__text > p {
+  @apply text-base text-slate-600 lg:text-lg;
+}
+
+.split-feature__photo {
+  @apply aspect-[4/3] w-full;
+}
+
+.card-row {
+  @apply grid gap-3 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.panel .mini-card {
+  @apply bg-white;
+}
+
+.panel a.mini-card:hover {
+  @apply bg-brand-50;
+}
+
+/* GIVE — the donation block: the case for giving beside the form. */
+.give {
+  @apply grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-stretch lg:gap-8;
+}
+
+.give__case {
+  @apply flex flex-col gap-5;
+}
+
+.give__photo {
+  @apply aspect-[16/10] w-full grow lg:aspect-auto lg:min-h-[16rem];
+}
+
+.donate-form {
+  @apply flex h-full flex-col rounded-tile border border-slate-200 bg-white p-5 shadow-card lg:p-8;
+}
+
+.donate-form > .wrapper {
+  @apply flex grow flex-col gap-6;
+}
+
+.donate-form__modes {
+  @apply grid grid-cols-2 rounded-full bg-slate-100 p-1;
+}
+
+.donate-form__mode {
+  @apply rounded-full px-4 py-2.5 font-heading text-sm font-semibold text-slate-600 transition-colors;
+}
+
+.donate-form__mode--active {
+  @apply bg-white text-slate-900 shadow-pill;
+}
+
+.donate-form__label {
+  @apply font-heading text-sm font-semibold uppercase tracking-[0.12em] text-slate-500;
+}
+
 .donate-form__amount-group {
-  @apply flex flex-row flex-wrap gap-2;
+  @apply grid grid-cols-2 gap-2 sm:grid-cols-3;
 }
 
-.donate-form__amount-group > .form-control {
-  /* The flat 18rem minimum overflowed the viewport at 320px. */
-  @apply min-w-0 sm:min-w-[18rem];
-}
-/* END DONATE FORM */
-
-/* FAQ */
-/* Style for the wrapper */
-.faq {
-  @apply rounded-2xl border border-slate-100 p-5;
+.donate-form__amount-group > .form-control--radio {
+  @apply min-w-0 justify-center rounded-2xl border-slate-200 bg-white px-3 py-4 text-slate-900 hover:border-brand-300 hover:bg-brand-50;
 }
 
-.faq .wrapper {
-  @apply flex items-center justify-between;
+.donate-form__amount-group > .form-control--radio:has(.form-radio:checked) {
+  @apply border-brand-600 bg-brand-600 text-white;
 }
 
-/* Style for the summary */
-.faq__summary {
-  @apply block cursor-pointer;
+.donate-form__amounts {
+  @apply flex flex-col gap-4;
 }
 
-/* Style for the topic */
-.faq__topic {
-  @apply font-heading text-xl font-semibold;
+/* CUSTOM AMOUNT — a full-width field with the currency either side of a
+   large figure, in place of an input squeezed inside a pill. */
+.donate-form__custom {
+  @apply flex flex-col gap-2;
 }
 
-/* Style for the icon container */
-.faq__icon-cont {
-  @apply flex items-center space-x-2 transition;
+.donate-form__custom-field {
+  @apply flex items-center gap-3 rounded-2xl border-2 border-slate-200 bg-white px-5 py-3 transition-colors focus-within:border-brand-500 focus-within:ring-4 focus-within:ring-brand-100;
 }
 
-.faq[open] .faq__icon-cont {
-  @apply rotate-180 transform;
+.donate-form__custom-affix {
+  @apply font-heading text-2xl font-semibold text-slate-400;
 }
 
-/* Style for the content */
-.faq__content {
-  @apply mt-2 hidden;
+.donate-form__custom-affix--end {
+  @apply text-sm uppercase tracking-[0.12em];
 }
 
-.faq[open] .faq__content {
-  @apply block;
+.donate-form__custom-input {
+  @apply w-full min-w-0 grow border-0 bg-transparent p-0 font-heading text-3xl font-semibold tracking-tight text-slate-900 placeholder:text-slate-300 focus:outline-none focus:ring-0;
+  appearance: textfield;
+  -moz-appearance: textfield;
 }
 
-/* END FAQ */
-
-/* DOINGS ICON */
-.doings-card__icon-cont {
-  @apply flex w-fit items-center justify-center rounded-2xl border border-orange-200 bg-orange-100 p-4 shadow-inner shadow-orange-50;
+.donate-form__custom-input::-webkit-outer-spin-button,
+.donate-form__custom-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.doings-card__icon {
-  @apply h-10 w-10 text-orange-500;
-}
-/* END DOINGS ICON */
-
-/* SECTION EYEBROW */
-.site-section__eyebrow {
-  @apply font-heading text-xs font-bold uppercase tracking-[0.14em] text-brand-600;
-}
-/* END SECTION EYEBROW */
-
-/* MEASURE — keeps running text near 68 characters */
-.measure {
-  @apply max-w-measure;
-}
-/* END MEASURE */
-
-/* CARD — one definition, replacing the string that was copy-pasted
-   across the programme, about and team pages */
-.card {
-  @apply flex h-full flex-col gap-3 rounded-card border border-slate-200 bg-white p-6 shadow-card transition-shadow duration-300;
+.donate-form__custom-hint {
+  @apply text-sm text-slate-500;
 }
 
-.card:hover {
-  @apply shadow-card-hover;
+.donate-form__impact {
+  @apply flex flex-col gap-2 rounded-2xl bg-brand-100 p-5;
 }
 
-.card__title {
-  @apply font-heading text-xl font-bold text-slate-900;
+.donate-form__impact-label {
+  @apply font-heading text-xs font-semibold uppercase tracking-[0.14em] text-brand-800;
 }
 
-.card__text {
-  @apply text-slate-600;
-}
-/* END CARD */
-
-/* ICON BADGE */
-.icon-badge {
-  @apply flex w-fit items-center justify-center rounded-2xl border border-brand-200 bg-brand-50 p-3 text-brand-600;
-}
-/* END ICON BADGE */
-
-/* CHECKLIST — for lists of things you receive, rather than
-   equally-weighted pillars */
-.checklist {
-  @apply flex flex-col gap-3;
+.donate-form__impact-text {
+  @apply text-base text-slate-800;
 }
 
-.checklist__item {
-  @apply flex items-start gap-4 rounded-card border border-slate-200 bg-white p-5 shadow-card;
+.donate-form__note {
+  @apply text-center text-sm text-slate-500;
 }
-
-.checklist__icon-cont {
-  @apply mt-0.5 flex shrink-0 items-center justify-center rounded-xl bg-brand-50 p-2 text-brand-600;
-}
-
-.checklist__icon-cont > .icon {
-  @apply h-5 w-5;
-}
-/* END CHECKLIST */

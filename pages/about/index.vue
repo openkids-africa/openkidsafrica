@@ -1,26 +1,4 @@
 <script setup lang="ts">
-import gsap from "gsap";
-import { HelpingHandIcon, MailIcon } from "lucide-vue-next";
-
-// const main = ref();
-// let tl: gsap.core.Timeline;
-// let ctx: gsap.Context;
-
-// const toggleTimeline = () => {
-//   tl.reversed(!tl.reversed());
-// };
-//   ctx = gsap.context((self) => {
-//     if (!self.selector) return;
-//     const boxes = self.selector(".box");
-//     tl = gsap
-//       .timeline()
-//       .to(boxes[0], { x: 120, rotation: 360 })
-//       .to(boxes[1], { x: -120, rotation: -360 }, "<")
-//       .to(boxes[2], { y: -166 })
-//       .reverse();
-//   }, main.value); // <- Scope!
-// onUnmounted(() => {
-//   ctx.revert(); // <- Easy Cleanup!
 const aboutContent = ref<AboutPageContent>({
   heroSection: {
     title: "About Us",
@@ -31,28 +9,8 @@ const aboutContent = ref<AboutPageContent>({
     ],
     images: [
       {
-        src: "/assets/images/photos/photo-29.jpeg",
-        alt: "Hero Image 1",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-14.jpg",
-        alt: "Hero Image 2",
-      },
-      {
-        src: "/assets/images/photos/photo-30.jpg",
-        alt: "Hero Image 3",
-      },
-      {
-        src: "/assets/images/photos/photo-31.jpg",
-        alt: "Hero Image 4",
-      },
-      {
-        type: "block",
-        color: "purple",
+        src: "/assets/images/photos/photo-33.jpeg",
+        alt: "Pupils and volunteers gathered outside a school after a visit",
       },
     ],
   },
@@ -160,19 +118,6 @@ const aboutContent = ref<AboutPageContent>({
           },
         ],
       },
-
-      // {
-      //   name: "Ibigbari",
-      //   role: "PROGRAM COORDINATOR, OpenKids Africa ",
-      //   image: "/assets/images/team/Ibigbari.png",
-      //   socials: [],
-      // },
-      // {
-      //   name: "Uboho Essien",
-      //   role: "WEB DESIGNER, OpenKids Africa ",
-      //   image: "/assets/images/team/Uboho Essien.png",
-      //   socials: [],
-      // },
     ],
   },
   partnersSection: {
@@ -202,193 +147,170 @@ useHead({
 });
 </script>
 <template>
-  <header class="page-header site-section">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ aboutContent.heroSection.title }}
-        </h1>
-        <p
-          v-for="(text, i) in aboutContent.heroSection.text"
-          :key="i"
-          class="page-header__subtext"
-        >
-          {{ text }}
-        </p>
-      </div>
-      <div class="page-header__media-cont img-cont">
-        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont"
-          :images="aboutContent.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
-  <!-- <section class="site-section bg-orange-100 text-orange-950">
-    <div class="wrapper">
-      <header class="site-section__header site-section__header--left">
-        <h2 class="site-section__caption">
-          {{ aboutContent.journeySection.title }}
-        </h2>
-      </header>
-      <div class="site-section__text-cont">
-        <p
-          v-for="(text, i) in aboutContent.journeySection.text"
-          :key="i"
-          class="site-section__subtext"
-        >
-          {{ text }}
-        </p>
-      </div>
-    </div>
-  </section> -->
-  <section class="site-section bg-slate-800 text-slate-100">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <q
-          v-for="(text, i) in aboutContent.believeSection.text"
-          :key="i"
-          class="font-heading text-lg font-medium leading-tight lg:text-2xl"
-        >
-          {{ text }}
-        </q>
-      </header>
-    </div>
-  </section>
+  <div class="page">
+    <PageIntro
+      :caption="aboutContent.heroSection.title"
+      :text="aboutContent.heroSection.text"
+      :images="aboutContent.heroSection.images"
+    />
 
-  <section class="site-section bg-slate-950 text-slate-100">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">
-          {{ aboutContent.valuesSection.title }}
-        </h2>
-      </header>
-      <ul class="value-list">
-        <li
-          v-for="(item, index) in aboutContent.valuesSection.items"
-          :key="index"
-          class="card-list__item"
-        >
-          <article class="value-card">
-            <h3 class="value-card__title">{{ item }}</h3>
-            <div class="value-card__img-cont img-cont">
-              <img
-                :src="`/assets/images/svg/frame (${index + 1}).svg`"
-                alt=""
-              />
-            </div>
-          </article>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <section class="site-section">
-    <div class="wrapper">
-      <ul class="infographic-list">
-        <li
-          v-for="(item, i) in aboutContent.infographicSection.items"
-          :key="i"
-          class="infographic-list__item"
-        >
-          <article
-            :class="`infographic !gap-24 ${i % 2 ? 'lg:!flex-row-reverse' : ''}`"
-          >
-            <header class="infographic__header">
-              <h2 class="infographic__title">
-                {{ item.title }}
+    <!-- BELIEF -->
+    <section class="site-section site-section--tight">
+      <div class="wrapper">
+        <div class="tile tile--tint belief js-reveal" v-reveal>
+          <p class="belief__quote">{{ aboutContent.believeSection.text[0] }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY + VALUES: photo beside a panel, then mirrored -->
+    <section class="site-section">
+      <div class="wrapper flex flex-col gap-4">
+        <div class="zigzag js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            src="/assets/images/photos/photo-4.jpg"
+            alt="A volunteer teaching a hall full of pupils"
+          />
+          <div class="panel flex h-full flex-col">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                {{ aboutContent.journeySection.title }}
               </h2>
-              <div class="img-cont">
-                <img :src="item.image" :alt="item.title" />
-              </div>
-            </header>
-            <div class="infographic__text-cont">
-              <p v-for="text in item.text">
+            </div>
+            <div class="panel__body grow">
+              <p v-for="(text, i) in aboutContent.journeySection.text" :key="i">
                 {{ text }}
               </p>
             </div>
-          </article>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <section class="site-section contact-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">Get in touch with us</h2>
-        <p class="site-section__subtext">
-          We are constantly seeking volunteers, including teachers and
-          technology enthusiasts. Please contact us below, and we will get back
-          to you
-        </p>
-      </header>
+          </div>
+        </div>
+        <div class="zigzag zigzag--flip js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            src="/assets/images/photos/photo-25.jpg"
+            alt="A pupil standing to answer in class"
+          />
+          <NumberedPanel
+            :title="aboutContent.valuesSection.title"
+            :items="aboutContent.valuesSection.items"
+          />
+        </div>
+      </div>
+    </section>
 
-      <ContactForm />
-    </div>
-  </section>
-  <PartnersSection :section-data="aboutContent.partnersSection">
-    <template #illustration>
-      <SiteSlideshow class="m-auto max-w-7xl" />
-    </template>
-  </PartnersSection>
+    <!-- THE GAP -->
+    <section class="site-section pt-0">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <p class="site-section__eyebrow">The gap we work to close</p>
+          <h2 class="site-section__caption">Why access matters</h2>
+        </header>
+        <ul class="infographics">
+          <li
+            v-for="(item, i) in aboutContent.infographicSection.items"
+            :key="i"
+          >
+            <article
+              class="zigzag js-reveal"
+              :class="{ 'zigzag--flip': i % 2 }"
+              v-reveal.stagger
+            >
+              <figure class="tile tile--tint zigzag__photo infographic__figure">
+                <img :src="item.image" :alt="item.title" />
+              </figure>
+              <div class="panel flex h-full flex-col">
+                <div class="panel__body grow justify-center">
+                  <h3 class="infographic__title">{{ item.title }}</h3>
+                  <p v-for="(text, n) in item.text" :key="n">{{ text }}</p>
+                  <a
+                    :href="item.link.link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn--outline btn--sm w-fit"
+                  >
+                    {{ item.link.text }}
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-  <!-- <section class="boxes-container" ref="main">
-    <h1>Use the button to toggle a Timeline</h1>
-    <div>
-      <button @click="toggleTimeline">Toggle Timeline</button>
-    </div>
-    <div class="box">Box 1</div>
-    <div class="box">Box 2</div>
-    <div class="box">Box 3</div>
-  </section> -->
+    <!-- TEAM -->
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">
+            {{ aboutContent.teamSection.title }}
+          </h2>
+        </header>
+        <ul class="team js-reveal" v-reveal.stagger>
+          <li
+            v-for="(member, i) in aboutContent.teamSection.team"
+            :key="member.name"
+          >
+            <TeamCard :member="member" :i="i" />
+          </li>
+        </ul>
+        <div class="action-cont mt-10">
+          <NuxtLink to="/about/team" class="btn btn--outline"
+            >Meet the whole team</NuxtLink
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">Get in touch with us</h2>
+          <p>
+            We are constantly seeking volunteers, including teachers and
+            technology enthusiasts. Please contact us below, and we will get
+            back to you
+          </p>
+        </header>
+        <div class="js-reveal mx-auto max-w-3xl" v-reveal>
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+
+    <PartnersSection :section-data="aboutContent.partnersSection" />
+  </div>
 </template>
 <style scoped>
-.value-list {
-  @apply grid gap-6 md:grid-cols-2;
+.belief {
+  @apply px-8 py-12 text-center lg:px-20 lg:py-16;
 }
 
-.value-card {
-  @apply flex h-full flex-col justify-between gap-4 overflow-clip rounded-3xl border border-slate-600;
+.belief__quote {
+  @apply mx-auto max-w-3xl font-heading text-2xl font-medium leading-snug text-slate-900 lg:text-3xl;
+  text-wrap: balance;
 }
 
-.value-card__title {
-  @apply p-6 font-heading text-lg font-medium leading-tight lg:text-2xl;
+.infographics {
+  @apply flex flex-col gap-4;
 }
 
-.value-card__img-cont {
-  @apply h-24 w-full bg-slate-900;
+.infographic__figure {
+  @apply flex items-center justify-center p-8;
 }
 
-.value-card__img-cont > img {
-  @apply h-full w-full object-cover object-top;
-}
-
-.infographic-list {
-  @apply flex flex-col gap-12;
-}
-
-.infographic {
-  @apply flex flex-col items-center gap-6 lg:flex-row;
-}
-
-.infographic__header {
-  @apply flex flex-1 flex-col-reverse gap-2 text-center;
+.infographic__figure > img {
+  @apply max-h-64 w-auto;
 }
 
 .infographic__title {
-  @apply font-heading text-2xl font-bold;
+  @apply font-heading text-2xl font-semibold leading-snug text-slate-900;
+  text-wrap: balance;
 }
 
-.infographic__text-cont {
-  @apply flex flex-1 flex-col gap-2;
-}
-
-.team-list {
-  @apply grid gap-12 sm:grid-cols-2 lg:grid-cols-3;
-  /* @apply flex flex-wrap justify-center gap-6; */
-}
-
-.team-list__item {
-  @apply min-w-[12rem] max-w-lg;
+.team {
+  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
 }
 </style>

@@ -66,6 +66,10 @@ export const useDonate = () => {
       if (amount > 500) {
         statement = _CUSTOM_STATEMENT;
       }
+      /* Any other monthly amount is a custom one. */
+      if (!statement && amount > 0) {
+        statement = _CUSTOM_STATEMENT;
+      }
     } else if (mode === "once") {
       childrenEnabled = amount < 4 && amount > 0 ? 1 : Math.floor(amount / 4);
 

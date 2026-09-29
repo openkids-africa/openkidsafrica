@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { RotateCcwIcon } from "lucide-vue-next";
 import { LoaderIcon } from "lucide-vue-next";
-import { SendHorizontalIcon, SendIcon } from "lucide-vue-next";
 const formData = ref({
   name: "",
   email: "",
@@ -115,7 +113,6 @@ const resetForm = () => {
           class="btn"
         >
           <LoaderIcon v-if="isLoading" class="icon animate-spin" />
-          <SendIcon v-else class="icon" />
           <span class="text">
             {{ isLoading ? "Sending..." : "Send Message" }}
           </span>

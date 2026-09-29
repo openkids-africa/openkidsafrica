@@ -15,13 +15,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      /* One geometric family throughout, as the reference design does. */
       fontFamily: {
         heading: ["DM Sans", ...defaultTheme.fontFamily.sans],
-        sans: ["Schibsted Grotesk", ...defaultTheme.fontFamily.sans],
+        sans: ["DM Sans", ...defaultTheme.fontFamily.sans],
       },
-      /* Brand orange. Tracks Tailwind's orange closely so existing
-         orange-* utilities stay in tune, with 500-700 deepened a step
-         so solid buttons read less candy. */
       colors: {
         brand: {
           50: "#fff7ed",
@@ -39,6 +37,7 @@ module.exports = {
       },
       borderRadius: {
         card: "1.25rem",
+        tile: "1.5rem",
       },
       boxShadow: {
         card: "0 1px 2px rgb(15 23 42 / 0.04), 0 12px 28px -20px rgb(15 23 42 / 0.16)",
@@ -46,9 +45,9 @@ module.exports = {
           "0 1px 2px rgb(15 23 42 / 0.05), 0 18px 36px -20px rgb(15 23 42 / 0.22)",
         header:
           "0 1px 0 rgb(15 23 42 / 0.06), 0 8px 24px -18px rgb(15 23 42 / 0.3)",
+        pill: "0 1px 2px rgb(15 23 42 / 0.04), 0 10px 30px -18px rgb(15 23 42 / 0.25)",
       },
       maxWidth: {
-        /* Keeps running text near 68 characters. */
         measure: "68ch",
       },
     },

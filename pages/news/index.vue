@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Loader } from "lucide-vue-next";
+import { Loader, ExternalLinkIcon } from "lucide-vue-next";
+const { socialLinks } = useSiteNav();
 const query = groq`
 *[_type == "post" && (
   publishedAt > $lastPublishedAt ||
@@ -15,36 +16,10 @@ const newsContent = ref<{
     text: [
       "Grab all the latest news for campaigns, donations, fund-raising or new projects from OpenKids Africa.",
     ],
-    // images: [
-    //   {
-    //     src: "/assets/images/svg/updates.svg",
-    //     alt: "Blog Hero",
-    //   },
-    // ],
     images: [
       {
         src: "/assets/images/photos/photo-17.jpg",
-        alt: "Hero Image 1",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-18.jpg",
-        alt: "Hero Image 2",
-      },
-      {
-        src: "/assets/images/photos/photo-19.jpg",
-        alt: "Hero Image 3",
-      },
-      {
-        src: "/assets/images/photos/photo-20.jpg",
-        alt: "Hero Image 4",
-      },
-      {
-        type: "block",
-        color: "purple",
+        alt: "The OpenKids Africa and Tech She Can volunteers on a school visit",
       },
     ],
   },
@@ -59,8 +34,9 @@ const getLastItem = (value: string | any[]) => value[value.length - 1];
 
 const fetchNextPage = async () => {
   isLoading.value = true;
-  if (lastId === null) {
-    return [];
+  if (lastId.value === null) {
+    isLoading.value = false;
+    return ref([]);
   }
 
   const { data: result } = await useSanityQuery(query, {
@@ -90,101 +66,93 @@ const { data, refresh } = useSanityQuery(query, {
 });
 
 articles.value = data.value;
-if (data.value) {
+if (data.value?.length) {
   lastPublishedAt.value = getLastItem(data.value).publishedAt;
   lastId.value = getLastItem(data.value)._id;
 }
+/* Derived from the fetched data, so server and client agree on it during
+   hydration; a page shorter than three posts is the last one. */
+const hasMore = computed(() => {
+  const list = articles.value?.length ? articles.value : data.value;
+  return lastId.value !== null && (list?.length ?? 0) >= 3;
+});
 
 useHead({
-  script: [
-    {
-      src: "https://platform.twitter.com/widgets.js",
-      async: true,
-      defer: true,
-    },
-  ],
+  title: "News",
 });
 </script>
 <template>
-  <header class="page-header site-section">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption">
-          {{ newsContent.heroSection.title }}
-        </h1>
-        <p
-          v-for="text in newsContent.heroSection.text"
-          class="page-header__subtext"
-        >
-          {{ text }}
-        </p>
-      </div>
-      <!-- <div class="page-header__media-cont">
-        <NuxtImg
-          v-if="newsContent.heroSection?.images"
-          :src="newsContent.heroSection?.images[0].src"
-          :alt="newsContent.heroSection?.images[0].alt"
-          class="abstract-illustration"
-        />
-      </div> -->
-      <div class="page-header__media-cont img-cont">
-        <!-- <IllustrationsAbstract1 class="abstract-illustration" /> -->
-        <SiteHeroImagesGrid
-          class="images-grid programs-header__media-cont"
-          :images="newsContent.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
-  <section class="site-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">Latest News</h2>
-      </header>
-      <ul class="flex flex-col gap-8 lg:gap-12">
-        <li v-for="article in articles || data" :key="article._id">
-          <NuxtLink
-            :to="`/news/${article.slug.current}`"
-            :aria-current-value="article.title"
+  <div class="page">
+    <PageIntro
+      :caption="newsContent.heroSection.title"
+      :text="newsContent.heroSection.text"
+      :images="newsContent.heroSection.images"
+    />
+
+    <section class="site-section">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">Latest News</h2>
+        </header>
+        <ul class="news-grid" v-reveal.stagger>
+          <li
+            v-for="article in articles || data"
+            :key="article._id"
+            class="js-reveal"
           >
-            <ArticleCard :article="article" />
-          </NuxtLink>
-        </li>
-      </ul>
-      <div class="flex justify-center py-12">
-        <button
-          :aria-label="isLoading ? 'Loading...' : 'Load More'"
-          v-if="lastId !== null"
-          class="btn"
-          @click="handleFetchNextPage"
-        >
-          <Loader class="icon animate-spin" v-if="isLoading" />
-          <span v-else class="text"> Load More </span>
-        </button>
+            <NuxtLink
+              :to="`/news/${article.slug.current}`"
+              class="block h-full"
+            >
+              <ArticleCard :article="article" />
+            </NuxtLink>
+          </li>
+        </ul>
+        <div v-if="hasMore" class="action-cont pt-10">
+          <button
+            :aria-label="isLoading ? 'Loading...' : 'Load More'"
+            class="btn btn--outline"
+            @click="handleFetchNextPage"
+          >
+            <Loader class="icon animate-spin" v-if="isLoading" />
+            <span v-else>Load More</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="site-section tweets-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <h2 class="site-section__caption">Tweets</h2>
-        <p class="site-section__subtext">
-          Follow us on Twitter to get the latest updates and news.
-        </p>
-      </header>
-      <a
-        class="twitter-timeline flex justify-center text-center"
-        href="https://twitter.com/openkidsafrica?ref_src=twsrc%5Etfw"
-        >Tweets by openkidsafrica</a
-      >
-    </div>
-  </section>
+    </section>
+
+    <section class="site-section bg-slate-50 lg:rounded-[3rem]">
+      <div class="wrapper">
+        <header class="site-section__header js-reveal" v-reveal>
+          <h2 class="site-section__caption">Follow along</h2>
+          <p>
+            Day-to-day updates from our school visits and programs are on our
+            social channels.
+          </p>
+        </header>
+        <ul class="follow" v-reveal.stagger>
+          <li v-for="link in socialLinks" :key="link.name" class="js-reveal">
+            <a
+              :href="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="chip"
+            >
+              <span class="chip__icon"><ExternalLinkIcon class="icon" /></span>
+              {{ link.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
 </template>
 <style scoped>
-.page-header {
-  /* @apply py-0; */
+.news-grid {
+  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
 }
-.page-header__text-cont {
-  /* @apply min-h-[20rem]; */
+
+.follow {
+  @apply flex flex-wrap justify-center gap-3;
 }
 </style>

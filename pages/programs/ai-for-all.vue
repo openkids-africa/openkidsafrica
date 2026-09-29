@@ -4,11 +4,10 @@ import {
   BrainCircuitIcon,
   CompassIcon,
   ImageIcon,
-  MailIcon,
+  LaptopIcon,
   MessageSquareIcon,
   RouteIcon,
   SearchCheckIcon,
-  SparklesIcon,
 } from "lucide-vue-next";
 
 const SITE_URL = "https://www.openkidsafrica.org";
@@ -16,41 +15,31 @@ const PAGE_PATH = "/programs/ai-for-all";
 const CONTACT_EMAIL = "info@openkidsafrica.org";
 
 const pageTitle =
-  "AI for All — Open Kids Africa × Tech She Can × Microsoft | Free AI training for Teacher CPD";
+  "AI for All: Open Kids Africa × Tech She Can × Microsoft | Free AI training for Teacher CPD";
 const pageDescription =
   "A free, internationally accredited AI training program for Nigerian teachers, delivered by Open Kids Africa in partnership with Tech She Can and Microsoft. Join the 2026 pilot across Nigeria.";
 
 const content = ref({
   heroSection: {
-    caption: "AI for All — Empowering Nigerian Teachers",
+    caption: "AI for All: Empowering Nigerian Teachers",
     subtext:
       "Open Kids Africa, in partnership with Tech She Can and Microsoft is bringing an internationally accredited AI training program to teachers across Nigeria, helping educators confidently understand, use, and teach AI concepts in their classrooms and beyond.",
     images: [
       {
-        src: "/assets/images/photos/photo-1.jpeg",
-        alt: "An educator working through a lesson with her students",
-      },
-      {
-        src: "/assets/images/photos/photo-24.jpg",
-        alt: "Students at a shared computer during a technology session",
-      },
-      {
-        type: "block",
-        color: "orange",
-      },
-      {
-        src: "/assets/images/photos/photo-8.jpg",
-        alt: "A classroom technology session in progress",
-      },
-      {
-        src: "/assets/images/photos/photo-16.jpg",
-        alt: "A mentor teaching a group of pupils",
-      },
-      {
-        type: "block",
-        color: "purple",
+        src: "/assets/images/photos/photo-14.jpg",
+        alt: "A pupil trying a virtual-reality headset during a tech lesson",
       },
     ],
+  },
+  photos: {
+    about: {
+      src: "/assets/images/photos/photo-36.jpg",
+      alt: "A teacher leading a full classroom",
+    },
+    gain: {
+      src: "/assets/images/photos/photo-45.jpg",
+      alt: "Pupils following a lesson on the classroom screen",
+    },
   },
   partners: [
     {
@@ -82,7 +71,7 @@ const content = ref({
         {
           id: "understanding",
           title: "Understanding AI",
-          text: "Teachers gain a clear, practical foundation on AI — no tech background required.",
+          text: "Teachers gain a clear, practical foundation on AI, no tech background required.",
         },
         {
           id: "using",
@@ -131,7 +120,7 @@ const content = ref({
     text: "Whether you are a school leader, education partner, or donor, we would love to hear from you. Get in touch to find out how your school can join the 2026 pilot.",
     actionText: `Reach out to us: ${CONTACT_EMAIL}`,
     actionUrl: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      "AI for All — school enquiry",
+      "AI for All: school enquiry",
     )}`,
     website: "www.openkidsafrica.org",
   },
@@ -159,7 +148,7 @@ useHead({
     {
       key: "og-image",
       property: "og:image",
-      content: `${SITE_URL}/assets/images/photos/photo-1.jpeg`,
+      content: `${SITE_URL}/assets/images/photos/photo-14.jpg`,
     },
     { key: "twitter-title", name: "twitter:title", content: pageTitle },
     {
@@ -170,7 +159,7 @@ useHead({
     {
       key: "twitter-image",
       name: "twitter:image",
-      content: `${SITE_URL}/assets/images/photos/photo-1.jpeg`,
+      content: `${SITE_URL}/assets/images/photos/photo-14.jpg`,
     },
   ],
   script: [
@@ -207,199 +196,174 @@ useHead({
 });
 </script>
 <template>
-  <header class="page-header site-section ai-header">
-    <div class="wrapper !max-w-[90rem]">
-      <div class="page-header__text-cont 2xl:!ml-40">
-        <h1 class="page-header__caption text-balance">
-          {{ content.heroSection.caption }}
-        </h1>
-        <p class="page-header__subtext measure">
-          {{ content.heroSection.subtext }}
-        </p>
-        <div class="action-cont !justify-start pt-2">
-          <a :href="content.ctaSection.actionUrl" class="btn">
-            <MailIcon class="icon" />
-            <span class="text">Bring AI for All to your school</span>
-          </a>
-        </div>
-      </div>
-      <div class="page-header__media-cont img-cont">
-        <SiteHeroImagesGrid
-          class="images-grid"
-          :images="content.heroSection.images || []"
-        />
-      </div>
-    </div>
-  </header>
-
-  <section class="site-section partner-bar">
-    <div class="wrapper">
-      <PartnerLockup :partners="content.partners" />
-    </div>
-  </section>
-
-  <section class="site-section about-section">
-    <div class="wrapper">
-      <div class="split">
-        <header class="site-section__header site-section__header--left !mb-0">
-          <p class="site-section__eyebrow">
-            {{ content.aboutSection.eyebrow }}
-          </p>
-          <h2 class="site-section__caption text-balance">
-            {{ content.aboutSection.caption }}
-          </h2>
-        </header>
-        <div class="site-section__text-cont">
-          <p v-for="(text, i) in content.aboutSection.text" :key="i">
-            {{ text }}
-          </p>
-        </div>
-      </div>
-
-      <div class="outcomes">
-        <h3 class="outcomes__title">
-          {{ content.aboutSection.outcomes.title }}
-        </h3>
-        <ul class="outcomes__list">
-          <li
-            v-for="outcome in content.aboutSection.outcomes.items"
-            :key="outcome.id"
-          >
-            <article class="card">
-              <div class="icon-badge">
-                <BrainCircuitIcon
-                  v-if="outcome.id === 'understanding'"
-                  class="icon"
-                />
-                <SparklesIcon v-else-if="outcome.id === 'using'" class="icon" />
-                <SearchCheckIcon
-                  v-else-if="outcome.id === 'critical'"
-                  class="icon"
-                />
-                <CompassIcon v-else class="icon" />
-              </div>
-              <h4 class="card__title">{{ outcome.title }}</h4>
-              <p class="card__text">{{ outcome.text }}</p>
-            </article>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="site-section gain-section bg-slate-50">
-    <div class="wrapper">
-      <div class="split">
-        <header class="site-section__header site-section__header--left !mb-0">
-          <p class="site-section__eyebrow">{{ content.gainSection.eyebrow }}</p>
-          <h2 class="site-section__caption text-balance">
-            {{ content.gainSection.caption }}
-          </h2>
-          <p>{{ content.gainSection.text }}</p>
-        </header>
-        <ul class="checklist gain-section__list">
-          <li
-            v-for="item in content.gainSection.items"
-            :key="item.id"
-            class="checklist__item"
-          >
-            <span class="checklist__icon-cont">
-              <MessageSquareIcon v-if="item.id === 'prompts'" class="icon" />
-              <ImageIcon v-else-if="item.id === 'posters'" class="icon" />
-              <RouteIcon v-else-if="item.id === 'pathways'" class="icon" />
-              <AwardIcon v-else class="icon" />
-            </span>
-            <p>{{ item.text }}</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="site-section cta-section">
-    <div class="wrapper">
-      <header class="site-section__header">
-        <p class="site-section__eyebrow">{{ content.ctaSection.eyebrow }}</p>
-        <h2 class="site-section__caption text-balance">
-          {{ content.ctaSection.caption }}
-        </h2>
-        <p class="measure mx-auto">{{ content.ctaSection.text }}</p>
-      </header>
-      <div class="cta-section__actions">
+  <div class="page">
+    <PageIntro
+      :caption="content.heroSection.caption"
+      :text="[content.heroSection.subtext]"
+      :images="content.heroSection.images"
+    >
+      <template #eyebrow>Open Kids Africa × Tech She Can × Microsoft</template>
+      <template #actions>
         <a :href="content.ctaSection.actionUrl" class="btn">
-          <MailIcon class="icon" />
-          <span class="text">{{ content.ctaSection.actionText }}</span>
+          Bring AI for All to your school
         </a>
-        <p class="cta-section__site">
-          Website: <span>{{ content.ctaSection.website }}</span>
-        </p>
+      </template>
+    </PageIntro>
+
+    <section class="site-section site-section--tight">
+      <div class="wrapper">
+        <div class="tile tile--outline partner-bar js-reveal" v-reveal>
+          <PartnerLockup :partners="content.partners" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ABOUT: classroom photo beside the programme copy -->
+    <section class="site-section">
+      <div class="wrapper">
+        <div class="zigzag js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            :src="content.photos.about.src"
+            :alt="content.photos.about.alt"
+          />
+          <div class="panel flex h-full flex-col">
+            <div class="panel__body grow justify-center">
+              <p class="site-section__eyebrow">
+                {{ content.aboutSection.eyebrow }}
+              </p>
+              <h2 class="panel-heading">{{ content.aboutSection.caption }}</h2>
+              <p v-for="(text, i) in content.aboutSection.text" :key="i">
+                {{ text }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="outcomes">
+          <h3 class="outcomes__title js-reveal" v-reveal>
+            {{ content.aboutSection.outcomes.title }}
+          </h3>
+          <ul class="outcomes__list js-reveal" v-reveal.stagger>
+            <li
+              v-for="outcome in content.aboutSection.outcomes.items"
+              :key="outcome.id"
+            >
+              <article class="tile tile--tint outcome">
+                <span class="icon-badge !bg-white">
+                  <BrainCircuitIcon
+                    v-if="outcome.id === 'understanding'"
+                    class="icon"
+                  />
+                  <LaptopIcon v-else-if="outcome.id === 'using'" class="icon" />
+                  <SearchCheckIcon
+                    v-else-if="outcome.id === 'critical'"
+                    class="icon"
+                  />
+                  <CompassIcon v-else class="icon" />
+                </span>
+                <h4 class="tile__title">{{ outcome.title }}</h4>
+                <p class="tile__text">{{ outcome.text }}</p>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAIN: the toolkit beside a photo of a lesson in progress -->
+    <section class="site-section pt-0">
+      <div class="wrapper">
+        <div class="zigzag zigzag--flip js-reveal" v-reveal.stagger>
+          <PhotoTile
+            class="zigzag__photo"
+            :src="content.photos.gain.src"
+            :alt="content.photos.gain.alt"
+          />
+          <div class="panel flex h-full flex-col">
+            <div class="panel__body grow">
+              <p class="site-section__eyebrow">
+                {{ content.gainSection.eyebrow }}
+              </p>
+              <h2 class="panel-heading">{{ content.gainSection.caption }}</h2>
+              <p>{{ content.gainSection.text }}</p>
+              <ul class="checklist">
+                <li
+                  v-for="item in content.gainSection.items"
+                  :key="item.id"
+                  class="checklist__item"
+                >
+                  <span class="checklist__icon-cont">
+                    <MessageSquareIcon
+                      v-if="item.id === 'prompts'"
+                      class="icon"
+                    />
+                    <ImageIcon v-else-if="item.id === 'posters'" class="icon" />
+                    <RouteIcon
+                      v-else-if="item.id === 'pathways'"
+                      class="icon"
+                    />
+                    <AwardIcon v-else class="icon" />
+                  </span>
+                  <p>{{ item.text }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="site-section site-section--tight">
+      <div class="wrapper">
+        <div class="cta-band js-reveal" v-reveal>
+          <div class="wrapper">
+            <p class="site-section__eyebrow">
+              {{ content.ctaSection.eyebrow }}
+            </p>
+            <h2 class="cta-band__title">{{ content.ctaSection.caption }}</h2>
+            <p class="cta-band__text">{{ content.ctaSection.text }}</p>
+            <div class="action-cont">
+              <a :href="content.ctaSection.actionUrl" class="btn">
+                {{ content.ctaSection.actionText }}
+              </a>
+            </div>
+            <p class="text-sm text-slate-600">
+              Website:
+              <strong class="text-slate-900">{{
+                content.ctaSection.website
+              }}</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 <style scoped>
-.ai-header .page-header__text-cont {
-  @apply lg:max-w-xl xl:ml-16;
-}
-
-.ai-header .page-header__text-cont,
-.ai-header .images-grid {
-  @apply lg:flex-1;
-}
-
-/* SPLIT — section header beside its body copy on desktop */
-.split {
-  @apply flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,23rem)_minmax(0,1fr)] lg:gap-14;
-}
-
-/* A heading in a column this narrow wants a step down from the
-   full-width section size. */
-.split .site-section__caption {
-  @apply lg:text-4xl;
-}
-/* END SPLIT */
-
-/* PARTNER BAR */
 .partner-bar {
-  @apply border-y border-slate-200 bg-white !py-8;
+  @apply py-8;
 }
-/* END PARTNER BAR */
 
-/* OUTCOMES */
+.panel-heading {
+  @apply font-heading text-2xl font-semibold tracking-tight text-slate-900 lg:text-3xl;
+  text-wrap: balance;
+}
+
 .outcomes {
-  @apply mt-16 flex flex-col gap-6;
+  @apply mt-12 flex flex-col gap-6;
 }
 
 .outcomes__title {
-  @apply font-heading text-2xl font-bold text-slate-900;
+  @apply font-heading text-2xl font-semibold text-slate-900;
 }
 
 .outcomes__list {
   @apply grid gap-4 md:grid-cols-2;
 }
-/* END OUTCOMES */
 
-/* GAIN */
-.gain-section__list {
-  @apply w-full;
+.outcome {
+  @apply flex h-full flex-col gap-3;
 }
-/* END GAIN */
-
-/* CTA */
-.cta-section {
-  @apply bg-brand-50;
-}
-
-.cta-section__actions {
-  @apply mt-8 flex flex-col items-center gap-4;
-}
-
-.cta-section__site {
-  @apply text-base text-slate-600;
-}
-
-.cta-section__site > span {
-  @apply font-semibold text-slate-800;
-}
-/* END CTA */
 </style>
