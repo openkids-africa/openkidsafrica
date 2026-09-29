@@ -1,6 +1,26 @@
 <script setup lang="ts">
-import { Loader, ExternalLinkIcon } from "lucide-vue-next";
+import type { Component } from "vue";
+import {
+  Loader,
+  ExternalLinkIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  YoutubeIcon,
+  FacebookIcon,
+  InstagramIcon,
+} from "lucide-vue-next";
 const { socialLinks } = useSiteNav();
+
+/* Each channel's own mark; a channel without one keeps the link arrow. */
+const socialIcons: Record<string, Component> = {
+  twitter: TwitterIcon,
+  linkedin: LinkedinIcon,
+  youtube: YoutubeIcon,
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+};
+const socialIcon = (name: string) =>
+  socialIcons[name.toLowerCase()] ?? ExternalLinkIcon;
 const query = groq`
 *[_type == "post" && (
   publishedAt > $lastPublishedAt ||
@@ -138,7 +158,9 @@ useHead({
               rel="noopener noreferrer"
               class="chip"
             >
-              <span class="chip__icon"><ExternalLinkIcon class="icon" /></span>
+              <span class="chip__icon">
+                <component :is="socialIcon(link.name)" class="icon" />
+              </span>
               {{ link.name }}
             </a>
           </li>
