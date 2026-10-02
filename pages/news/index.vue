@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Component } from "vue";
 import {
-  Loader,
   ExternalLinkIcon,
   TwitterIcon,
   LinkedinIcon,
@@ -21,13 +20,6 @@ const socialIcons: Record<string, Component> = {
 };
 const socialIcon = (name: string) =>
   socialIcons[name.toLowerCase()] ?? ExternalLinkIcon;
-const query = groq`
-*[_type == "post" && (
-  publishedAt > $lastPublishedAt ||
-  (publishedAt == $lastPublishedAt && _id > $lastId)
-)] | order(publishedAt) [0...3]
-{_id, slug, title, publishedAt, description, "imageUrl": mainImage.asset->url, author->{name}}`;
-
 const newsContent = ref<{
   heroSection: BasicSectionContent;
 }>({
@@ -45,57 +37,18 @@ const newsContent = ref<{
   },
 });
 
-const isLoading = ref(false);
-const lastPublishedAt = ref("");
-const lastId = ref<string | null>("");
-const articles = ref<ArticleCard[]>([]);
-
-const getLastItem = (value: string | any[]) => value[value.length - 1];
-
-const fetchNextPage = async () => {
-  isLoading.value = true;
-  if (lastId.value === null) {
-    isLoading.value = false;
-    return ref([]);
-  }
-
-  const { data: result } = await useSanityQuery(query, {
-    lastPublishedAt: lastPublishedAt.value,
-    lastId: lastId.value,
-  });
-
-  if (result.value?.length > 0) {
-    lastPublishedAt.value = getLastItem(result.value).publishedAt;
-    lastId.value = getLastItem(result.value)._id;
-  } else {
-    lastId.value = null; // Reached the end
-  }
-  isLoading.value = false;
-  return result;
-};
-
-const handleFetchNextPage = async () => {
-  const result = await fetchNextPage();
-
-  articles.value = [...(articles.value || []), ...result.value];
-};
-
-const { data, refresh } = useSanityQuery(query, {
-  lastPublishedAt: lastPublishedAt.value,
-  lastId: lastId.value,
-});
-
-articles.value = data.value;
-if (data.value?.length) {
-  lastPublishedAt.value = getLastItem(data.value).publishedAt;
-  lastId.value = getLastItem(data.value)._id;
-}
-/* Derived from the fetched data, so server and client agree on it during
-   hydration; a page shorter than three posts is the last one. */
-const hasMore = computed(() => {
-  const list = articles.value?.length ? articles.value : data.value;
-  return lastId.value !== null && (list?.length ?? 0) >= 3;
-});
+/* Posts are Markdown files in content/news, newest first, shown three at
+   a time. */
+const PAGE_SIZE = 3;
+const { data: posts } = await useAsyncData("news", () =>
+  queryContent<ArticleCard>("news")
+    .only(["slug", "title", "date", "summary", "image", "imageAlt", "author"])
+    .sort({ date: -1 })
+    .find(),
+);
+const shown = ref(PAGE_SIZE);
+const articles = computed(() => (posts.value ?? []).slice(0, shown.value));
+const hasMore = computed(() => (posts.value?.length ?? 0) > shown.value);
 
 useHead({
   title: "News",
@@ -115,27 +68,15 @@ useHead({
           <h2 class="site-section__caption">Latest News</h2>
         </header>
         <ul class="news-grid" v-reveal.stagger>
-          <li
-            v-for="article in articles || data"
-            :key="article._id"
-            class="js-reveal"
-          >
-            <NuxtLink
-              :to="`/news/${article.slug.current}`"
-              class="block h-full"
-            >
+          <li v-for="article in articles" :key="article.slug" class="js-reveal">
+            <NuxtLink :to="`/news/${article.slug}`" class="block h-full">
               <ArticleCard :article="article" />
             </NuxtLink>
           </li>
         </ul>
         <div v-if="hasMore" class="action-cont pt-10">
-          <button
-            :aria-label="isLoading ? 'Loading...' : 'Load More'"
-            class="btn btn--outline"
-            @click="handleFetchNextPage"
-          >
-            <Loader class="icon animate-spin" v-if="isLoading" />
-            <span v-else>Load More</span>
+          <button class="btn btn--outline" @click="shown += PAGE_SIZE">
+            Load More
           </button>
         </div>
       </div>

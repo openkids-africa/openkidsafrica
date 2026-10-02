@@ -14,13 +14,11 @@ export default defineNuxtConfig({
   build: {
     transpile: ["gsap"],
   },
-  modules: ["@nuxtjs/sanity", "@nuxt/image", "@vue-email/nuxt"],
-  sanity: {
-    projectId: "xhwhqbhq",
-    apiVersion: "2023-09-08",
-  },
-  image: {
-    domains: ["cdn.sanity.io"],
+  modules: ["@nuxt/content", "@nuxt/image", "@vue-email/nuxt"],
+  content: {
+    markdown: {
+      anchorLinks: false,
+    },
   },
   vueEmail: {
     baseUrl: "https://www.openkidsafrica.org/",

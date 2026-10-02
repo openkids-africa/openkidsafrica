@@ -90,19 +90,15 @@ declare global {
     partnersSection: PartnerSection;
   }
 
+  /* A news post's front matter, from content/news/*.md */
   interface ArticleCard {
-    _id: string;
-    slug: {
-      current: string;
-      _type: string;
-    };
+    slug: string;
     title: string;
-    publishedAt: string;
-    description: string;
-    imageUrl: string;
-    author: {
-      name: string;
-    };
+    date: string;
+    summary: string;
+    image: string;
+    imageAlt?: string;
+    author: string;
   }
 
   /* Represents amount options for donate form */

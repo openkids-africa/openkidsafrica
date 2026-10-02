@@ -10,23 +10,22 @@ const { formatDate } = useFormat();
   <article class="article-card">
     <figure class="article-card__img-cont">
       <NuxtImg
-        :src="article.imageUrl + '?h=480&w=800&fit=crop'"
+        :src="article.image"
         width="800"
         height="480"
+        fit="cover"
         loading="lazy"
         alt=""
       />
     </figure>
     <div class="article-card__body">
       <div class="article-card__meta">
-        <time :datetime="article.publishedAt">{{
-          formatDate(article.publishedAt)
-        }}</time>
+        <time :datetime="article.date">{{ formatDate(article.date) }}</time>
         <span aria-hidden="true">·</span>
-        <span>{{ article.author.name }}</span>
+        <span>{{ article.author }}</span>
       </div>
       <h2 class="article-card__title">{{ article.title }}</h2>
-      <p class="article-card__text">{{ article.description }}</p>
+      <p class="article-card__text">{{ article.summary }}</p>
       <span class="article-card__more">
         Read more
         <ArrowUpRightIcon class="icon h-4 w-4" />

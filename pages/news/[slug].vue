@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import { ClockIcon } from "lucide-vue-next";
 const route = useRoute();
-const slug = route.params.slug;
-const query = groq`
-*[_type == "post" && slug.current == $slug][0]{
-  _id,
-  title,
-  publishedAt,
-  description,
-  "imageUrl": mainImage.asset->url,
-  author->{name, "imageUrl": image.asset->url},
-  body
-}`;
-
-const { data, refresh } = useSanityQuery(query, {
-  slug,
-});
+const slug = String(route.params.slug);
+const { data } = await useAsyncData(`news-${slug}`, () =>
+  queryContent("news").where({ slug }).findOne(),
+);
+if (!data.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page Not Found",
+    fatal: true,
+  });
+}
 const { formatDate } = useFormat();
 
 useHead({
@@ -29,31 +25,32 @@ useHead({
         <div class="page-intro__text" v-reveal.stagger>
           <p class="site-section__eyebrow js-reveal">News</p>
           <h1 class="page-intro__caption js-reveal">{{ data.title }}</h1>
-          <p class="page-intro__subtext js-reveal">{{ data.description }}</p>
+          <p class="page-intro__subtext js-reveal">{{ data.summary }}</p>
           <div class="action-cont js-reveal pt-2">
             <span class="chip">
               <span class="chip__icon">
                 <NuxtImg
                   class="h-7 w-7 rounded-full object-cover"
-                  :src="data.author.imageUrl"
+                  src="/assets/images/author-default.png"
                   width="28"
                   height="28"
-                  :alt="data.author.name"
+                  alt=""
                 />
               </span>
-              By {{ data.author.name }}
+              By {{ data.author }}
             </span>
             <span class="chip">
               <span class="chip__icon"><ClockIcon class="icon" /></span>
-              <time :datetime="data.publishedAt">
-                {{ formatDate(data.publishedAt) }}
+              <time :datetime="data.date">
+                {{ formatDate(data.date) }}
               </time>
             </span>
           </div>
         </div>
         <figure class="article__cover js-reveal" v-reveal="0.15">
           <NuxtPicture
-            :src="data.imageUrl"
+            :src="data.image"
+            :alt="data.imageAlt || ''"
             width="1280"
             height="720"
             sizes="xs:400px md:800px lg:1152px"
@@ -62,9 +59,7 @@ useHead({
       </div>
     </header>
     <section class="site-section pt-4">
-      <div class="wrapper prose prose-lg">
-        <SanityContent :blocks="data.body" />
-      </div>
+      <ContentRenderer :value="data" class="wrapper prose prose-lg" />
     </section>
   </article>
 </template>
