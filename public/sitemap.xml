@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Static routes. News articles are rendered from Sanity and are not
-     listed here; a generated sitemap would be needed to index those. -->
+<!-- Static routes. News articles are Markdown files in content/news and are
+     not listed here; a generated sitemap would be needed to index those. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.openkidsafrica.org/</loc>
