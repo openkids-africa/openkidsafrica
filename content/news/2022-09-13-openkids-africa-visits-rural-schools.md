@@ -1,7 +1,7 @@
 ---
-title: Openkids Africa Visits Rural Schools
+title: OpenKids Africa Visits Rural Schools
 slug: openkids-africa-visits-rural-schools
-date: "2022-09-13"
+date: '2022-09-13'
 summary: We visited H&C Nursery and primary school at Ibadan for an interactive session with the kids.
 image: /assets/images/news/openkids-africa-visits-rural-schools.jpg
 imageAlt: Pupils in pink and purple uniforms raising their hands in a classroom
