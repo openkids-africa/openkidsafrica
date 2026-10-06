@@ -1,8 +1,8 @@
 ---
 title: OpenKids Africa Visits Rosegate Nursery and Primary School
 slug: openkids-africa-visits-rosegate-nursery-and-primary-school
-date: "2022-12-30"
-summary: We had an exciting and insightful time with the children of Rosegate Nursery and Primary School, Oshuntokun, Ibadan, Nigeria
+date: '2022-12-30'
+summary: 'We had an exciting and insightful time with the children of Rosegate Nursery and Primary School, Oshuntokun, Ibadan, Nigeria.'
 image: /assets/images/news/openkids-africa-visits-rosegate-nursery-and-primary-school.jpg
 imageAlt: Pupils in yellow shirts with OpenKids Africa volunteers outside Rosegate Nursery and Primary School
 author: Openkids Africa
