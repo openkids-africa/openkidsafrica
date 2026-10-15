@@ -1,61 +1,12 @@
 <script setup lang="ts">
 import { CheckIcon } from "lucide-vue-next";
+import team from "~/content/team.json";
 
+/* The team list lives in content/team.json. */
 const teamContent = ref<TeamPageContent>({
   teamSection: {
     title: "Our Team",
-    team: [
-      {
-        name: "Regina Nkenchor",
-        role: "Founder & Executive Director OpenKids Africa",
-        image: "/assets/images/team/Regina Nkemchor.png",
-        socials: [
-          { name: "twitter", url: "https://twitter.com/reginankenchor" },
-          {
-            name: "linkedin",
-            url: "https://www.linkedin.com/in/reginankenchor/",
-          },
-        ],
-      },
-      {
-        name: "Adebola Temitayo Ogunyemi",
-        role: "Early Child Educator & Program Coordinator",
-        image: "/assets/images/team/Adebola Ogunyemi.png",
-        socials: [
-          {
-            name: "facebook",
-            url: "https://www.facebook.com/AmBeulah?mibextid=ZbWKwL",
-          },
-          {
-            name: "linkedin",
-            url: "https://www.linkedin.com/in/jesutimilehin-temitayo-ogunyemi-a260aa13a",
-          },
-          {
-            name: "twitter",
-            url: "https://x.com/D_Repairer",
-          },
-          {
-            name: "instagram",
-            url: "https://www.instagram.com/officialrepairer",
-          },
-        ],
-      },
-      {
-        name: "Anita Ihuman",
-        role: "Program Coordinator",
-        image: "/assets/images/team/Anita Ihuman.png",
-        socials: [
-          {
-            name: "twitter",
-            url: "https://twitter.com/Anita_ihuman",
-          },
-          {
-            name: "linkedin",
-            url: "https://www.linkedin.com/in/anita-ihuman/",
-          },
-        ],
-      },
-    ],
+    team: team.members,
   },
   educationChampionsSection: {
     title: "Join Us as an OpenKids Africa Educational Champion!",

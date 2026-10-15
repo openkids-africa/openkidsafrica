@@ -1,0 +1,153 @@
+{
+  "hero": {
+    "eyebrow": "Welcome to OpenKids Africa",
+    "headingBefore": "Connecting every African child to a ",
+    "headingAccent": "digital future",
+    "headingAfter": " through the delivery of free tech lessons in rural schools",
+    "subtext": "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country.",
+    "reached": "Over 1,000 children reached so far",
+    "mapPhotos": [
+      {
+        "src": "/assets/images/photos/photo-18.jpg",
+        "alt": "Pupils in blue uniforms cheering outside their school"
+      },
+      {
+        "src": "/assets/images/photos/photo-33.jpeg",
+        "alt": "A class gathered for a photo outside their school",
+        "position": "50% 80%",
+        "zoom": 1.55
+      },
+      {
+        "src": "/assets/images/photos/photo-30.jpg",
+        "alt": "A full classroom of pupils during a lesson",
+        "position": "30% 50%"
+      },
+      {
+        "src": "/assets/images/photos/photo-41.jpg",
+        "alt": "Pupils cheering on the school field"
+      },
+      {
+        "src": "/assets/images/photos/photo-7.jpg",
+        "alt": "Pupils holding up their certificates after a session",
+        "position": "50% 40%"
+      },
+      {
+        "src": "/assets/images/photos/photo-44.jpg",
+        "alt": "Pupils in white uniforms standing together",
+        "position": "50% 75%"
+      },
+      {
+        "src": "/assets/images/photos/photo-20.jpg",
+        "alt": "Pupils in blue uniforms posing on the field"
+      },
+      {
+        "src": "/assets/images/photos/photo-36.jpg",
+        "alt": "A class with hands raised during a lesson",
+        "position": "40% 80%",
+        "zoom": 1.35
+      }
+    ],
+    "bubbles": [
+      {
+        "src": "/assets/images/photos/photo-13.jpg",
+        "alt": "Two pupils laughing during a session"
+      },
+      {
+        "src": "/assets/images/photos/photo-5.jpg",
+        "alt": "A pupil speaking into a microphone"
+      }
+    ]
+  },
+  "stats": {
+    "title": "Why it matters",
+    "stats": [
+      {
+        "value": "90%",
+        "label": "of children in sub-Saharan Africa do not have access to a computer"
+      },
+      {
+        "value": "80%",
+        "label": "of African children do not enjoy a basic internet connection (UNESCO)"
+      },
+      {
+        "value": "20,000",
+        "label": "children we aim to reach by the year 2030"
+      }
+    ]
+  },
+  "programs": {
+    "title": "Programs",
+    "text": "We offer a variety of programs to help children in underserved and underdeveloped communities in Africa.",
+    "programs": [
+      {
+        "id": "ai-for-all",
+        "title": "AI for All",
+        "badge": "2026 pilot",
+        "text": "Internationally accredited AI training for Nigerian teachers, delivered with Tech She Can and Microsoft. Free, CPD-certified, and built for every subject.",
+        "path": "/programs/ai-for-all",
+        "photo": {
+          "src": "/assets/images/photos/photo-32.jpeg",
+          "alt": "A facilitator presenting a lesson on screen"
+        }
+      },
+      {
+        "id": "educators",
+        "title": "Educators Program",
+        "badge": "",
+        "text": "We provide free tech lessons to educators in Africa to help them teach their students better.",
+        "path": "/programs/educators",
+        "photo": {
+          "src": "/assets/images/photos/photo-24.jpg",
+          "alt": "An educator explaining a concept to her class"
+        }
+      },
+      {
+        "id": "kids",
+        "title": "Kids Program",
+        "badge": "",
+        "text": "We provide free tech lessons to kids in Africa to help them learn better.",
+        "path": "/programs/kids",
+        "photo": {
+          "src": "/assets/images/photos/photo-12.jpg",
+          "alt": "Pupils crowding in for a photo during a school visit"
+        }
+      }
+    ]
+  },
+  "founder": {
+    "title": "Changing what a child can imagine for themselves",
+    "quote": "I founded OpenKids Africa to help bridge the digital skills gap across Africa by giving children in underserved communities early exposure to technology, equipping them with the skills and awareness to explore future opportunities, while encouraging more girls to see themselves in technology.",
+    "name": "Regina Nkenchor",
+    "role": "Founder & Executive Director"
+  },
+  "volunteer": {
+    "title": "Volunteer with us",
+    "text": "OpenKids Africa Education Champions are passionate volunteers dedicated to delivering tech lessons to children in rural schools using our combined free digital resources.",
+    "photo": {
+      "src": "/assets/images/photos/photo-40.jpeg",
+      "alt": "A volunteer leading a hall of pupils with their arms raised"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "text": "Questions About Donating",
+    "faqs": [
+      {
+        "topic": "How do I donate?",
+        "content": "You can donate to us through our website by clicking the 'Donate' button on the top right corner of the page. Additionally, we offer the option to donate via PayPal for added convenience."
+      },
+      {
+        "topic": "Can I donate via check?",
+        "content": "Absolutely! If you prefer to donate via check, please reach out to us at openkidsafrica@gmail.com, and we will promptly provide you with the required details. Your commitment to empowering young minds in Africa is making a significant difference. Thank you for being a crucial part of our mission!"
+      },
+      {
+        "topic": "I am an aspiring educator but have not taught in school, can I apply?",
+        "content": "Yes, aspiring educators are encouraged to apply and gain experience through our program."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Support the future of children in rural African schools",
+    "text": "Every month, your contribution plays a pivotal role in shaping the future of African children by providing access to our free tech lessons."
+  }
+}

@@ -8,6 +8,7 @@ import {
   FacebookIcon,
   InstagramIcon,
 } from "lucide-vue-next";
+import news from "~/content/pages/news.json";
 const { socialLinks } = useSiteNav();
 
 /* Each channel's own mark; a channel without one keeps the link arrow. */
@@ -20,20 +21,14 @@ const socialIcons: Record<string, Component> = {
 };
 const socialIcon = (name: string) =>
   socialIcons[name.toLowerCase()] ?? ExternalLinkIcon;
+/* The intro copy lives in content/pages/news.json. */
 const newsContent = ref<{
   heroSection: BasicSectionContent;
 }>({
   heroSection: {
-    title: "Stay in the loop with News and Updates",
-    text: [
-      "Grab all the latest news for campaigns, donations, fund-raising or new projects from OpenKids Africa.",
-    ],
-    images: [
-      {
-        src: "/assets/images/photos/photo-17.jpg",
-        alt: "The OpenKids Africa and Tech She Can volunteers on a school visit",
-      },
-    ],
+    title: news.intro.title,
+    text: news.intro.text,
+    images: [news.intro.image],
   },
 });
 

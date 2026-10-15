@@ -1,17 +1,13 @@
 <script setup lang="ts">
 import { MailIcon } from "lucide-vue-next";
+import contact from "~/content/pages/contact.json";
 
+/* The intro copy lives in content/pages/contact.json. */
 const contactContent = ref({
   heroSection: {
-    caption: "Get in touch",
-    subtext:
-      "If you would like to get in touch with OpenKids Africa or donate to our projects, email us. We will be happy to get in touch with you.",
-    images: [
-      {
-        src: "/assets/images/photos/photo-44.jpg",
-        alt: "Pupils gathered at a school event",
-      },
-    ],
+    caption: contact.intro.caption,
+    subtext: contact.intro.subtext,
+    images: [contact.intro.image],
   },
 });
 useHead({
