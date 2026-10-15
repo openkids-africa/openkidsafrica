@@ -1,3 +1,5 @@
+import donate from "~/content/pages/donate.json";
+
 interface DonationResult {
   childrenEnabled: number;
   laptopsDeployed: number;
@@ -6,16 +8,22 @@ interface DonationResult {
 
 const { formatNumber, formatCurrency } = useFormat();
 
-const _50_STATEMENT =
-  "With your $50 monthly donation, we can provide 4 free tech lessons and resources to rural schools every month. This enables 15 more children in rural schools annually to gain technology skills, opening up new possibilities and opportunities for their education and future.";
-const _100_STATEMENT =
-  "With your $100 monthly donation, we can provide 8 free tech lessons and resources  to rural schools every month. This enables 30 more children in rural schools annually to gain technology skills, opening up new possibilities and opportunities for their education and future";
-const _150_STATEMENT =
-  "With your $150 monthly donation, we can provide 12 free tech lessons to rural schools every month. This enables 45 more children in rural schools annually to gain technology skills, opening up new possibilities and opportunities for their education and future.";
-const _500_STATEMENT =
-  "With your $500 monthly donation, we can provide 16 free tech lessons to rural schools every month. This enables 150 more children in rural schools annually to gain technology skills, opening up new possibilities and opportunities for their education and future.";
-const _CUSTOM_STATEMENT =
-  "Your custom donation empowers children in rural African schools with essential tech lessons and resources, shaping their educational journey and future opportunities.";
+/* The monthly statements are the amounts listed on the donate page
+   (content/pages/donate.json): an option titled "$50 Monthly Donation"
+   describes a $50 monthly gift, and the one without an amount in its
+   title describes a custom gift. */
+const MONTHLY_STATEMENTS = new Map<number, string>();
+let customStatement = "";
+for (const option of donate.impact.options) {
+  const amount = /^\$([\d,]+)/.exec(option.title)?.[1];
+  if (amount)
+    MONTHLY_STATEMENTS.set(
+      Number(amount.replace(/,/g, "")),
+      option.description,
+    );
+  else customStatement = option.description;
+}
+const _CUSTOM_STATEMENT = customStatement;
 
 // statement =
 // `Because of your ${formatCurrency(amount)} ${
@@ -51,18 +59,7 @@ export const useDonate = () => {
         laptopsDeployed = Math.floor(amount / 25) * 6;
       }
 
-      if (amount === 50) {
-        statement = _50_STATEMENT;
-      }
-      if (amount === 100) {
-        statement = _100_STATEMENT;
-      }
-      if (amount === 150) {
-        statement = _150_STATEMENT;
-      }
-      if (amount === 500) {
-        statement = _500_STATEMENT;
-      }
+      statement = MONTHLY_STATEMENTS.get(amount) ?? "";
       if (amount > 500) {
         statement = _CUSTOM_STATEMENT;
       }

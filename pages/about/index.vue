@@ -1,41 +1,22 @@
 <script setup lang="ts">
+import about from "~/content/pages/about.json";
+import team from "~/content/team.json";
+
+/* The intro, journey and values copy lives in content/pages/about.json and
+   the team in content/team.json. */
 const aboutContent = ref<AboutPageContent>({
   heroSection: {
-    title: "About Us",
-    text: [
-      "Established in 2021 by Regina Nkenchor, OpenKids Africa is a non-profit organization registered in Sweden, with operations in Nigeria.",
-      "Our primary focus is on utilizing free digital resources and open educational resources to deliver tech lessons to children in rural schools, introducing them to the world of technology and its potential impact on their future careers.",
-      "Our goal is to expand this impact to reach 20,000 children by the year 2030. Recognizing that achieving such a goal necessitates collaborative efforts, we actively partner with diverse groups, schools, and governmental bodies to advance our mission.",
-    ],
-    images: [
-      {
-        src: "/assets/images/photos/photo-33.jpeg",
-        alt: "Pupils and volunteers gathered outside a school after a visit",
-      },
-    ],
+    title: about.intro.title,
+    text: about.intro.text,
+    images: [about.intro.image],
   },
   believeSection: {
     text: [
       "We believe that through tech lessons, children gain access to resources and skills that nurture both present and future innovation and creativity.",
     ],
   },
-  journeySection: {
-    title: "Our Journey",
-    text: [
-      "OpenKids Africa was established in 2019 by Regina Nkenchor with the primary goal of providing students in underserved communities with equitable access to information technology skills. Recognizing the magnitude of this task, we have formed collaborations with other organizations, schools, and governmental bodies to advance the mission of OpenKids Africa.",
-      "Commencing our efforts in Nigeria, we harness freely available digital resources to introduce children to the realm of technology and its potential benefits for their future careers. To date, we have successfully enabled over 1000 children to grasp the fundamentals of the internet and various technology-related vocational sectors.",
-      "Our curriculum includes introductory courses in basic animation and technology applications for fields such as medicine, agriculture, education, safety, security, and even space exploration. Our aspiration is that these early exposures will nurture the growth of future technology innovators.",
-    ],
-  },
-  valuesSection: {
-    title: "Our Values",
-    items: [
-      "We are champions of change; we believe every African child in underserved communities deserves equal access to information technology resources and skills.",
-      "We recognize the importance of children having equal access to technology skills and resources.",
-      "We believe that through tech lessons, children gain access to resources and skills that nurture both present and future innovation and creativity.",
-      "We believe that parents and guardians have a role to play in inspiring children to learn digital skills and possibly explore a technology career in the future.",
-    ],
-  },
+  journeySection: about.journey,
+  valuesSection: about.values,
   infographicSection: {
     items: [
       {
@@ -67,58 +48,7 @@ const aboutContent = ref<AboutPageContent>({
   },
   teamSection: {
     title: "Our Team",
-    team: [
-      {
-        name: "Regina Nkenchor",
-        role: "Founder & Executive Director OpenKids Africa",
-        image: "/assets/images/team/Regina Nkemchor.png",
-        socials: [
-          { name: "twitter", url: "https://twitter.com/reginankenchor" },
-          {
-            name: "linkedin",
-            url: "https://www.linkedin.com/in/reginankenchor/",
-          },
-        ],
-      },
-      {
-        name: "Adebola Temitayo Ogunyemi",
-        role: "Early Child Educator & Program Coordinator",
-        image: "/assets/images/team/Adebola Ogunyemi.png",
-        socials: [
-          {
-            name: "facebook",
-            url: "https://www.facebook.com/AmBeulah?mibextid=ZbWKwL",
-          },
-          {
-            name: "linkedin",
-            url: "https://www.linkedin.com/in/jesutimilehin-temitayo-ogunyemi-a260aa13a",
-          },
-          {
-            name: "twitter",
-            url: "https://x.com/D_Repairer",
-          },
-          {
-            name: "instagram",
-            url: "https://www.instagram.com/officialrepairer",
-          },
-        ],
-      },
-      {
-        name: "Anita Ihuman",
-        role: "Program Coordinator  & Fundraising Assistant, OpenKids Africa ",
-        image: "/assets/images/team/Anita Ihuman.png",
-        socials: [
-          {
-            name: "twitter",
-            url: "https://twitter.com/Anita_ihuman",
-          },
-          {
-            name: "linkedin",
-            url: "https://www.linkedin.com/in/anita-ihuman/",
-          },
-        ],
-      },
-    ],
+    team: team.members,
   },
   partnersSection: {
     title: "Partner with us",

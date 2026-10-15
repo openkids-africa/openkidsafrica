@@ -1,3 +1,5 @@
+import site from "~/content/site.json";
+
 export const useSiteNav = () => {
   const links = useState("links", () => [
     {
@@ -51,28 +53,8 @@ export const useSiteNav = () => {
     },
   ]);
 
-  const socialLinks = useState("socialLinks", () => [
-    {
-      name: "Twitter",
-      url: "https://twitter.com/openkidsafrica",
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/openkidsafrica/",
-    },
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/company/openkidsafrica/",
-    },
-    {
-      name: "YouTube",
-      url: "https://www.youtube.com/@openkidsafrica",
-    },
-    {
-      name: "Facebook",
-      url: "https://www.facebook.com/openkidsafrica",
-    },
-  ]);
+  /* The social media links live in content/site.json. */
+  const socialLinks = useState("socialLinks", () => site.socialLinks.links);
 
   return {
     links,

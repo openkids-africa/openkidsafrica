@@ -1,59 +1,28 @@
 <script setup lang="ts">
+import donate from "~/content/pages/donate.json";
+
+/* The intro, video link, impact copy and monthly amounts live in
+   content/pages/donate.json; the donate form reads the same amounts. */
 const donateContent = ref({
   heroSection: {
-    caption: "Donate to Openkids Africa",
-    subtext:
-      "Support the Future of Children in Rural African Schools: Donate Now",
-    images: [
-      {
-        src: "/assets/images/photos/photo-10.jpg",
-        alt: "Pupils in class during an OpenKids Africa visit",
-      },
-    ],
+    caption: donate.intro.caption,
+    subtext: donate.intro.subtext,
+    images: [donate.intro.image],
   },
   videoSection: {
     title: "Watch our video",
     text: "Watch our video to learn more about our mission and how you can help.",
     video: {
-      src: "https://www.youtube.com/embed/_MtO_fHlkG4?si=m3fvsb9YxK9rXnNE",
+      src: donate.intro.videoUrl,
       alt: "Video",
     },
   },
   impactSection: {
-    title: "Your impact",
-    text: [
-      "Every month, your contribution plays a pivotal role in shaping the future of African children by providing access to our free tech lessons. Through your donations, we ensure that children in underserved regions are not left behind in this rapidly evolving digital economy.",
-      "Your support directly funds our school outreach programs, providing essential resources and training for both children and educators in rural schools.",
-    ],
+    title: donate.impact.title,
+    text: donate.impact.text,
   },
   donateSection: {
-    donateOptions: [
-      {
-        title: "$50 Monthly Donation",
-        description:
-          "With your $50 monthly donation, we can provide 4 free tech lessons and resources to rural schools every month. This enables 15 more children in rural schools annually to learn tech lessons, opening up new possibilities and opportunities for their education and future.",
-      },
-      {
-        title: "$100 Monthly Donation",
-        description:
-          "With your $100 monthly donation, we can provide 8 free tech lessons and resources to rural schools every month. This enables 30 more children in rural schools annually to learn tech lessons, opening up new possibilities and opportunities for their education and future.",
-      },
-      {
-        title: "$150 Monthly Donation",
-        description:
-          "With your $150 monthly donation, we can provide 12 free tech lessons to rural schools every month. This enables 45 more children in rural schools annually to learn tech lessons, opening up new possibilities and opportunities for their education and future.",
-      },
-      {
-        title: "$500 Monthly Donation",
-        description:
-          "With your $500 monthly donation, we can provide 16 free tech lessons to rural schools every month. This enables 150 more children in rural schools annually to learn tech lessons, opening up new possibilities and opportunities for their education and future.",
-      },
-      {
-        title: "Custom Donations",
-        description:
-          "Your custom donation empowers children in rural African schools with essential tech lessons and resources, shaping their educational journey and future opportunities.",
-      },
-    ],
+    donateOptions: donate.impact.options,
   },
   giveSection: {
     title: "Donate to Empower Children in Rural Schools in Africa",

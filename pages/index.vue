@@ -11,6 +11,9 @@ import {
   UsersIcon,
 } from "lucide-vue-next";
 import { gsap } from "gsap";
+import home from "~/content/pages/home.json";
+import about from "~/content/pages/about.json";
+import team from "~/content/team.json";
 
 /* No photograph appears twice on this page. The rotation inside the map
    also borrows group photographs from other pages. */
@@ -24,52 +27,25 @@ const photo = (
   ...frame,
 });
 
+/* The copy of the hero, numbers, programs, founder, volunteer, FAQ and
+   closing bands lives in content/pages/home.json; the values list and the
+   team come from content/pages/about.json and content/team.json. */
 const content = ref({
   heroSection: {
-    eyebrow: "Welcome to OpenKids Africa",
+    eyebrow: home.hero.eyebrow,
     captionParts: [
-      "Connecting every African child to a ",
-      "digital future",
-      " through the delivery of free tech lessons in rural schools",
+      home.hero.headingBefore,
+      home.hero.headingAccent,
+      home.hero.headingAfter,
     ],
-    map: [
-      photo(
-        "photo-18.jpg",
-        "Pupils in blue uniforms cheering outside their school",
-      ),
-      photo(
-        "photo-33.jpeg",
-        "A class gathered for a photo outside their school",
-        { position: "50% 80%", zoom: 1.55 },
-      ),
-      photo("photo-30.jpg", "A full classroom of pupils during a lesson", {
-        position: "30% 50%",
-      }),
-      photo("photo-41.jpg", "Pupils cheering on the school field"),
-      photo(
-        "photo-7.jpg",
-        "Pupils holding up their certificates after a session",
-        { position: "50% 40%" },
-      ),
-      photo("photo-44.jpg", "Pupils in white uniforms standing together", {
-        position: "50% 75%",
-      }),
-      photo("photo-20.jpg", "Pupils in blue uniforms posing on the field"),
-      photo("photo-36.jpg", "A class with hands raised during a lesson", {
-        position: "40% 80%",
-        zoom: 1.35,
-      }),
-    ],
-    bubbles: [
-      photo("photo-13.jpg", "Two pupils laughing during a session"),
-      photo("photo-5.jpg", "A pupil speaking into a microphone"),
-    ],
-    reached: "Over 1,000 children reached so far",
+    map: home.hero.mapPhotos,
+    bubbles: home.hero.bubbles,
+    reached: home.hero.reached,
   },
   welcomeSection: {
     title: "Welcome to Openkids Africa",
     text: [
-      "OpenKids Africa is a non-profit organization. We believe that information and communication technology is the key to the strong and sustainable development of a country.",
+      home.hero.subtext,
       "Therefore, we leverage free digital resources and open educational resources to provide quality information technology lessons and materials for kids and schools in rural communities in Africa.",
     ],
     photos: [
@@ -79,25 +55,7 @@ const content = ref({
     ],
   },
   /* Figures the About page already states, gathered for the numbers panel. */
-  statsSection: {
-    title: "Why it matters",
-    stats: [
-      {
-        value: "90%",
-        label:
-          "of children in sub-Saharan Africa do not have access to a computer",
-      },
-      {
-        value: "80%",
-        label:
-          "of African children do not enjoy a basic internet connection (UNESCO)",
-      },
-      {
-        value: "20,000",
-        label: "children we aim to reach by the year 2030",
-      },
-    ],
-  },
+  statsSection: home.stats,
   whatWeDoSection: {
     title: "What We Do",
     text: "OpenKids Africa is a non-profit organization collaborating with government, schools, and industry to provide free, quality information technology lessons and resources for children in rural African communities.",
@@ -140,54 +98,8 @@ const content = ref({
   },
   /* The lists below repeat copy from the About, Programs, Donate and
      Educators pages, where each has its full treatment. */
-  valuesSection: {
-    title: "Our Values",
-    items: [
-      "We are champions of change; we believe every African child in underserved communities deserves equal access to information technology resources and skills.",
-      "We recognize the importance of children having equal access to technology skills and resources.",
-      "We believe that through tech lessons, children gain access to resources and skills that nurture both present and future innovation and creativity.",
-      "We believe that parents and guardians have a role to play in inspiring children to learn digital skills and possibly explore a technology career in the future.",
-    ],
-  },
-  programsSection: {
-    title: "Programs",
-    text: "We offer a variety of programs to help children in underserved and underdeveloped communities in Africa.",
-    programs: [
-      {
-        id: "ai-for-all",
-        title: "AI for All",
-        badge: "2026 pilot",
-        text: "Internationally accredited AI training for Nigerian teachers, delivered with Tech She Can and Microsoft. Free, CPD-certified, and built for every subject.",
-        path: "/programs/ai-for-all",
-        photo: photo(
-          "photo-32.jpeg",
-          "A facilitator presenting a lesson on screen",
-        ),
-      },
-      {
-        id: "educators",
-        title: "Educators Program",
-        badge: "",
-        text: "We provide free tech lessons to educators in Africa to help them teach their students better.",
-        path: "/programs/educators",
-        photo: photo(
-          "photo-24.jpg",
-          "An educator explaining a concept to her class",
-        ),
-      },
-      {
-        id: "kids",
-        title: "Kids Program",
-        badge: "",
-        text: "We provide free tech lessons to kids in Africa to help them learn better.",
-        path: "/programs/kids",
-        photo: photo(
-          "photo-12.jpg",
-          "Pupils crowding in for a photo during a school visit",
-        ),
-      },
-    ],
-  },
+  valuesSection: about.values,
+  programsSection: home.programs,
   gallerySection: {
     title: "From our classrooms",
     text: "Moments from our visits to rural schools.",
@@ -219,34 +131,11 @@ const content = ref({
       ],
     ],
   },
-  founderSection: {
-    title: "Changing what a child can imagine for themselves",
-    quote:
-      "I founded OpenKids Africa to help bridge the digital skills gap across Africa by giving children in underserved communities early exposure to technology, equipping them with the skills and awareness to explore future opportunities, while encouraging more girls to see themselves in technology.",
-    name: "Regina Nkenchor",
-    role: "Founder & Executive Director",
-  },
+  founderSection: home.founder,
   teamSection: {
-    avatars: [
-      {
-        name: "Regina Nkenchor",
-        image: "/assets/images/team/Regina Nkemchor.png",
-      },
-      {
-        name: "Adebola Temitayo Ogunyemi",
-        image: "/assets/images/team/Adebola Ogunyemi.png",
-      },
-      { name: "Anita Ihuman", image: "/assets/images/team/Anita Ihuman.png" },
-    ],
+    avatars: team.members.map(({ name, image }) => ({ name, image })),
   },
-  championsSection: {
-    title: "Volunteer with us",
-    text: "OpenKids Africa Education Champions are passionate volunteers dedicated to delivering tech lessons to children in rural schools using our combined free digital resources.",
-    photo: photo(
-      "photo-40.jpeg",
-      "A volunteer leading a hall of pupils with their arms raised",
-    ),
-  },
+  championsSection: home.volunteer,
   partnersSection: {
     title: "Our Partners",
     partners: [
@@ -260,32 +149,8 @@ const content = ref({
       },
     ],
   },
-  faqSection: {
-    title: "Frequently Asked Questions",
-    text: "Questions About Donating",
-    faqs: [
-      {
-        topic: "How do I donate?",
-        content:
-          "You can donate to us through our website by clicking the 'Donate' button on the top right corner of the page. Additionally, we offer the option to donate via PayPal for added convenience.",
-      },
-      {
-        topic: "Can I donate via check?",
-        content:
-          "Absolutely! If you prefer to donate via check, please reach out to us at openkidsafrica@gmail.com, and we will promptly provide you with the required details. Your commitment to empowering young minds in Africa is making a significant difference. Thank you for being a crucial part of our mission!",
-      },
-      {
-        topic:
-          "I am an aspiring educator but have not taught in school, can I apply?",
-        content:
-          "Yes, aspiring educators are encouraged to apply and gain experience through our program.",
-      },
-    ],
-  },
-  ctaSection: {
-    title: "Support the future of children in rural African schools",
-    text: "Every month, your contribution plays a pivotal role in shaping the future of African children by providing access to our free tech lessons.",
-  },
+  faqSection: home.faq,
+  ctaSection: home.cta,
 });
 
 const pillarIcons: Record<string, unknown> = {

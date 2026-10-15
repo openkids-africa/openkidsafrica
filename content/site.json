@@ -1,0 +1,26 @@
+{
+  "socialLinks": {
+    "links": [
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/openkidsafrica"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/openkidsafrica/"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/company/openkidsafrica/"
+      },
+      {
+        "name": "YouTube",
+        "url": "https://www.youtube.com/@openkidsafrica"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/openkidsafrica"
+      }
+    ]
+  }
+}
